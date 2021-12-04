@@ -11,6 +11,13 @@ First, make sure the following are installed
  - react-beautiful-dnd
  - sass
  - babel
+ - eslint
+
+These should automatically install if you run
+```bash
+npm install
+```
+in the 404 folder.
 
 After installing those, find the .eslintrc.json file, and change
 ```bash
