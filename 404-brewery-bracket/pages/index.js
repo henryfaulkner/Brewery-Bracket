@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import {GetBreweriesNamesAndIds, GetAllBeersFromGivenBrewery} from "./api/catalog-beer"
+import { GetBreweriesNamesAndIds, GetAllBeersFromGivenBrewery } from "./api/catalog-beer"
 import React, { Component } from 'react'
 import CardInBracket from '../components/CardInBracket'
 import RatingModal from '../components/RatingModal'
 import Header from '../components/Header'
+import ActiveBracketCard from '../components/ActiveBracketCard'
 
 export default class Home extends React.Component {
-  constructor(props){  
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -46,7 +47,8 @@ export default class Home extends React.Component {
           "name": "Red Clay Ciderworks",
           "id": "926955c8-640a-4bd5-98cb-49fe988bdc6d"
         }
-      ]
+      ],
+      actieBrackets: ["le Homies", "Beertrinken", "Shwasteds"]
     };
   }
 
@@ -58,23 +60,35 @@ export default class Home extends React.Component {
 
   render() {
     GetBreweriesNamesAndIds()
-    var activeBracketCards = this.state.activeBracket.map((breweryObj) => 
-      <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id}  />
+    var activeBracketCards = this.state.activeBracket.map((breweryObj) =>
+      <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id} />
     );
 
-    var ratingModal = this.state.ratingModal ? <RatingModal/> : <div/>;
+    var ratingModal = this.state.ratingModal ? <RatingModal /> : <div />;
+
+    let currentBrackets = (
+      this.state.actieBrackets.map((bracketName) => {
+        return (
+          <ActiveBracketCard
+            name={bracketName}
+          />
+        )
+      })
+    )
+
 
     return (
       <div className="container">
         <Header
-
         />
-        <p>home page should be bracket creation. change for that tbd. 
-          right now I'm testing clickable cards to go to individual brewery day pages.</p>
-        <a href="/bracket">Go to tournament bracket</a>
-        <a onClick={this.toggleRatingModal}>showModal</a>
-        {ratingModal}
-        {activeBracketCards}
+        <h2>Active Brackets</h2>
+          <hr />
+        <div className={styles.cardContainer}>
+          {currentBrackets}
+          <ActiveBracketCard
+        override={true}
+        />
+        </div>
       </div>
     )
   };
