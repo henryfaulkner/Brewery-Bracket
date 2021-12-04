@@ -12,6 +12,9 @@
   align-items: center;
 }
 
+.cardContainer {
+  display: flex;
+}
 .footer {
   display: flex;
   flex: 1;
