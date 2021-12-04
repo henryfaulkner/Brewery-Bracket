@@ -1,4 +1,3 @@
-import {catalogKey} from "../../keys/CatalogBeer-Key"; 
 var base64 = require('base-64');
 var BaseUrl = "http://api.catalog.beer";
 
