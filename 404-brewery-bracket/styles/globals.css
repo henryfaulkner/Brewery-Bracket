@@ -56,3 +56,60 @@ a {
   font-family: 'Montserrat', sans-serif;
   transition: all ease-in 100ms;
 }
+
+
+.bracket-card {
+    width:500px;
+    height:250px;
+    display:flex;
+}
+
+.bracket-card .card {
+    width: 350px;
+    max-width: 350px;
+}
+
+.bracket-card .card-container{
+    display:flex;
+    flex-direction:column;
+}
+
+.bracket-card .card:last-child {
+    margin-top:auto;
+}
+
+
+.bracket-card .bracket-lines {
+    display:flex;
+    width:100px;
+    padding: 50px 0;
+
+}
+
+.bracket-card .bracket-lines .horizontal-lines {
+    display: flex;
+    flex-direction: column;
+    width:25px;
+}
+
+.bracket-card .bracket-lines .line {
+    background-color:black;
+    width:5px;
+    height:5px;
+}
+
+.bracket-card .bracket-lines .line.bottom {
+    margin-top: auto;
+}
+
+.bracket-card .bracket-lines .line.center {
+    margin: auto 0;
+}
+
+.bracket-card .bracket-lines .line.horizontal {
+    width: 25px;
+}
+
+.bracket-card .bracket-lines .line.vertical {
+    height: 100%;
+}
