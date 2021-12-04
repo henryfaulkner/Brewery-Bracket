@@ -57,3 +57,81 @@ a {
   font-family: 'Montserrat', sans-serif;
   transition: all ease-in 100ms;
 }
+
+
+/*
+
+     <div className="bracket-card">
+              <div className="card-container">
+
+                  {this.props.card1}
+                  {this.props.card2}
+              </div>
+              <div className="bracket-lines">
+                  <div className="horizontal-lines">
+                      <div className="line horizontal top"></div>
+                      <div className="line horizontal bottom"></div>
+                  </div>
+                  <div className="line vertical"></div>
+                  <div className="line horizontal center"></div>
+              </div>
+
+          </div>
+*/
+
+
+.bracket-card {
+    width:500px;
+    height:250px;
+    display:flex;
+}
+
+.bracket-card .card {
+    width: 350px;
+    max-width: 350px;
+}
+
+.bracket-card .card-container{
+    display:flex;
+    flex-direction:column;
+}
+
+.bracket-card .card:last-child {
+    margin-top:auto;
+}
+
+
+.bracket-card .bracket-lines {
+    display:flex;
+    width:100px;
+    padding: 50px 0;
+
+}
+
+.bracket-card .bracket-lines .horizontal-lines {
+    display: flex;
+    flex-direction: column;
+    width:25px;
+}
+
+.bracket-card .bracket-lines .line {
+    background-color:black;
+    width:5px;
+    height:5px;
+}
+
+.bracket-card .bracket-lines .line.bottom {
+    margin-top: auto;
+}
+
+.bracket-card .bracket-lines .line.center {
+    margin: auto 0;
+}
+
+.bracket-card .bracket-lines .line.horizontal {
+    width: 25px;
+}
+
+.bracket-card .bracket-lines .line.vertical {
+    height: 100%;
+}

@@ -1,24 +1,32 @@
 import {GetBreweriesNamesAndIds} from "../api/catalog-beer";
 import Card from "../../components/Card";
+import BracketCard from "../../components/Bracket";
 
-export default function Bracket({allBreweriesData}) {
-    var breweryCards = allBreweriesData.map((breweryObj) => 
-        <Card name={breweryObj.name}/>
-    );
+export default function Bracket({ allBreweriesData }) {
+
+    var breweryNames = [];
+
+    var breweryCards = allBreweriesData.map((breweryObj) => {
+        breweryNames.push(breweryObj.name);
+        return <Card name={breweryObj.name} />;
+    });
+
+    let brackets = [];
+
+    while (breweryNames.length) {
+        let bracketCards = breweryNames.splice(0, 2);
+        let card1 = <Card name={bracketCards[0]} />;
+        let card2 = <Card name={bracketCards[1]} />;
+        brackets.push(<BracketCard card1={card1} card2={card2} />);
+    }
 
     return (
-        <div class="container">
-            <div className="cards">
-                {breweryCards}
-            </div>
-            
+        <div className="container">
             <div className="bracket">
-                
+                { brackets}
             </div> 
         </div>
     );
-    
-
 }
 
 export async function getStaticProps() {
