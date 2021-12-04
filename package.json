@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "fs": "^0.0.1-security",
+    "react-beautiful-dnd": "^13.1.0",
+    "sass": "^1.44.0"
+  }
+}

@@ -2,15 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {GetBreweriesNamesAndIds, GetAllBeersFromGivenBrewery} from "./api/catalog-beer"
-import {handler} from "./api/hello"
 import React, { Component } from 'react'
 import CardInBracket from '../components/CardInBracket'
+import RatingModal from '../components/RatingModal'
 
 export default class Home extends React.Component {
   constructor(props){  
     super(props);
 
     this.state = {
+      showRatingModal: false,
       activeBracket: [
         {
           "name": "Eventide Brewing",
@@ -48,16 +49,27 @@ export default class Home extends React.Component {
     };
   }
 
+  toggleRatingModal() {
+    this.setState({
+      showRatingModal: this.state.showRatingModal ? false : true
+    })
+  }
+
   render() {
     GetBreweriesNamesAndIds()
     var activeBracketCards = this.state.activeBracket.map((breweryObj) => 
-      <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id} />
+      <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id}  />
     );
+
+    var ratingModal = this.state.ratingModal ? <RatingModal/> : <div/>;
 
     return (
       <div className="container">
         <p>home page should be bracket creation. change for that tbd. 
           right now I'm testing clickable cards to go to individual brewery day pages.</p>
+        <a href="/bracket">Go to tournament bracket</a>
+        <a onClick={this.toggleRatingModal}>showModal</a>
+        {ratingModal}
         {activeBracketCards}
       </div>
     )

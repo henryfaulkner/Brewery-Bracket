@@ -1,36 +1,49 @@
 import {useRouter} from "next/router"
 import {GetAllBeersFromGivenBrewery} from "../api/catalog-beer"
+import Card from "../../components/Card"
+import {React, Component} from 'react'
 
-export default function BreweryDay({breweryObj}) {
+export default class BreweryDay extends Component {  
+    constructor() {
+        super();
+        this.state = {
+            breweryObj: {
+                breweryName: "",
+                beerCards: []
+            }
+        }
+    }
+
+    async componentDidMount() {
+        const router = useRouter();
+        this.setState({
+            breweryObj: await getBeerCards(router)
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className="brewery-title">{this.state.breweryObj.breweryName}</h1>
+                {this.state.breweryObj.beerCards}
+            </div>
+        );
+    }
+}
+
+async function getBeerCards(router) {
+    const {id} = router.query;
+
+    var breweryObj = await GetAllBeersFromGivenBrewery(null, null, id);
     console.log(breweryObj)
 
+    var breweryName = breweryObj.name;
     var beerCards = breweryObj.beers.map(beer => {
         <Card name={beer.name}/>
-    })
-
-    return (
-        <div>
-            <h1 class="brewery-title">{breweryObj.name}</h1>
-            {/* {beerCards} */}
-        </div>
-    );
-}
-
-export async function getStaticPaths() {
-    return {
-        paths: [], //indicates that no page needs be created at build time
-        fallback: 'blocking' //indicates the type of fallback
-    }
-}
-
-export async function getStaticProps() {
-    const router = useRouter();
-    const {id} = router.query;
-    var breweryObj = await GetAllBeersFromGivenBrewery(id);
+    });
 
     return {
-      props: {
-        breweryObj
-      }
-    }
-  }
+        breweryName: breweryName,
+        beerCards: beerCards
+    };
+}
