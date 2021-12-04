@@ -50,7 +50,7 @@ export default class Home extends React.Component {
     };
   }
 
-  toggleRatingModal() {
+  toggleRatingModal = () => {
     this.setState({
       showRatingModal: this.state.showRatingModal ? false : true
     })
