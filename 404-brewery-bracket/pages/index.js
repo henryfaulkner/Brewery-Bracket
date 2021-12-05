@@ -48,7 +48,7 @@ export default class Home extends React.Component {
           "id": "926955c8-640a-4bd5-98cb-49fe988bdc6d"
         }
       ],
-      actieBrackets: ["le Homies", "Beertrinken", "Shwasteds"]
+      activeBrackets: []
     };
   }
 
@@ -67,7 +67,7 @@ export default class Home extends React.Component {
     var ratingModal = this.state.ratingModal ? <RatingModal /> : <div />;
 
     let currentBrackets = (
-      this.state.actieBrackets.map((bracketName) => {
+      this.state.activeBrackets.map((bracketName) => {
         return (
           <ActiveBracketCard
             name={bracketName}
@@ -86,8 +86,8 @@ export default class Home extends React.Component {
         <div className={styles.cardContainer}>
           {currentBrackets}
           <ActiveBracketCard
-        override={true}
-        />
+            override={true}
+          />
         </div>
       </div>
     )

@@ -1,20 +1,23 @@
 import React from 'react';
 import styles from '../styles/Header.module.scss';
+import Link from 'next/dist/client/link';
 
 const Header = (props) => {
 
 
 
 
-        return (
+    return (
         <div className={styles.navBar}>
-            <h1>Brewery Bracket</h1>
+            <Link href="/">
+                <h1>Brewery Bracket</h1>
+            </Link>
             <div className={styles.headerOptions}>
-                <p class={styles.headerLink} onClick={props.breweries}>Breweries</p>
-                <p class={styles.headerLink} onClick={props.account}>Account</p>
+                <p className={styles.headerLink} onClick={props.breweries}>Breweries</p>
+                <p className={styles.headerLink} onClick={props.account}>Account</p>
             </div>
         </div>
-        );
+    );
 }
 
 export default Header;
