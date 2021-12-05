@@ -1,6 +1,7 @@
 import {GetBreweriesNamesAndIds} from "../api/catalog-beer";
 import Card from "../../components/Card";
 import BracketCard from "../../components/Bracket";
+import Header from "../../components/Header";
 
 export default function Bracket({ allBreweriesData }) {
 
@@ -22,6 +23,7 @@ export default function Bracket({ allBreweriesData }) {
 
     return (
         <div className="container">
+            <Header />
             <div className="bracket">
                 { brackets}
             </div> 
