@@ -1,6 +1,9 @@
 # PRFT-Deficient
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Development Workflow
+We use [Github's Flow](https://docs.github.com/en/get-started/quickstart/github-flow) to collaberate and share code.
+
 ## Getting Started
 
 First, make sure the following are installed
