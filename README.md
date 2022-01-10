@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Development Workflow
 We use [Github's Flow](https://docs.github.com/en/get-started/quickstart/github-flow) to collaberate and share code.
 
+For styling, we utilize [SassDoc](http://sassdoc.com/) and follow [these guidelines](https://cssguidelin.es/) for writing HTML and css. Our JS in general will conform to Google's [Typescript guidelines](https://google.github.io/styleguide/tsguide.html), in the event of a conflict Google's style rules supersede the other guidelines.
+
 ## Getting Started
 
 First, make sure the following are installed
