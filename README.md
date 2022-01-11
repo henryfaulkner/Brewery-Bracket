@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Development Workflow
 We use [Github's Flow](https://docs.github.com/en/get-started/quickstart/github-flow) to collaberate and share code.
 
-For styling, we utilize [SassDoc](http://sassdoc.com/) and follow [these guidelines](https://cssguidelin.es/) for writing HTML and css. Our JS in general will conform to Google's [Typescript guidelines](https://google.github.io/styleguide/tsguide.html), in the event of a conflict Google's style rules supersede the other guidelines.
+For styling, we utilize [SassDoc](http://sassdoc.com/) and follow [this setup](https://gist.github.com/bradtraversy/aab26d1e8983d9f8d79be1a9ca894ab4), conforming to [AirBnb's](https://github.com/airbnb) style guides for all code.
 
 ## Getting Started
 
