@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { GetBreweriesNamesAndIds, GetAllBeersFromGivenBrewery } from "./api/catalog-beer"
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import CardInBracket from '../components/CardInBracket'
 import RatingModal from '../components/RatingModal'
 import Header from '../components/Header'
@@ -71,7 +71,7 @@ export default class Home extends React.Component {
         return (
           <ActiveBracketCard
             name={bracketName}
-          />
+             />
         )
       })
     )
