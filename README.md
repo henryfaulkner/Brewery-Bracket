@@ -17,6 +17,9 @@ First, make sure the following are installed
  - sass
  - babel
  - eslint
+ - express
+ - cors
+ - dotenv
 
 These should automatically install if you run
 ```bash
