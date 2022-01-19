@@ -3,9 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getFirestore} from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Initialize Firebase
 const app = initializeApp( {
   apiKey: process.env.FIREBASE_APIKEY,
@@ -17,7 +14,10 @@ const app = initializeApp( {
   measurementId: process.env.FIREBASE_MEASUREMENTID
 });
 
+// Create Analytics instance
 const analytics = getAnalytics(app);
+
+// Create Firestore instance
 const firestore = getFirestore();
 
-export {firestore};
+export {firestore, analytics};
