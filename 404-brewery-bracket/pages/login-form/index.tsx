@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styles from "../../styles/Login-Form.module.scss";
 
 type authentication = {
-  username: string;
+  email: string;
   password: string;
 };
 
 const LoginForm: React.FC = () => {
-  const [username, setUsername] = useState(0);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const tryLogin = async () => {
     const response = await fetch("/api/Firebase/LoginAttempt");
@@ -18,27 +19,20 @@ const LoginForm: React.FC = () => {
 
   const createUser = async () => {
     var auth: authentication = {
-      username: document.getElementById("email").innerText,
-      password: document.getElementById("password").innerText,
+      email: email,
+      password: password,
     };
 
-    var queryString: string = createQueryString(auth);
-
-    const response = await fetch("/api/Firebase/CreateUser?" + auth);
+    const response = await fetch("/api/Firebase/CreateUser", {
+      method: "POST",
+      body: JSON.stringify(auth),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
     const data = await response.json();
 
-    console.log("Login attempted");
-  };
-
-  const createQueryString = (paramsObj: object) => {
-    var parameters = [];
-    for (var property in paramsObj) {
-      if (paramsObj.hasOwnProperty(property)) {
-        parameters.push(encodeURI(property + "=" + paramsObj[property]));
-      }
-    }
-
-    return parameters.join("&");
+    console.log("User creation attempted.");
   };
 
   return (
@@ -49,8 +43,20 @@ const LoginForm: React.FC = () => {
           src="/Frothy-Beer.jpg"
           alt="Frothy Beer"
         />
-        <input placeholder="Email" id="email" />
-        <input placeholder="Password" id="password" />
+
+        <div className={styles.Textboxes}>
+          <input
+            placeholder="Email"
+            id="email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <input
+            placeholder="Password"
+            id="password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+
         <button className={styles.loginButton} onClick={tryLogin}>
           Log in
         </button>

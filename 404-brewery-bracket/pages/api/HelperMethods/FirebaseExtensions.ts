@@ -21,4 +21,4 @@ function InitializeFirebase(): [FirebaseApp, Firestore] {
   return [app, firestore];
 }
 
-export { InitializeFirebase };
+export default { InitializeFirebase };
