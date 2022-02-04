@@ -51,16 +51,12 @@ const LoginForm: React.FC = () => {
         />
         <input placeholder="Email" id="email" />
         <input placeholder="Password" id="password" />
-        <button
-          className={styles.loginButton}
-          onClick={tryLogin}
-          value="Login"
-        />
-        <button
-          className={styles.createUserButton}
-          onClick={tryLogin}
-          value="Create Account"
-        />
+        <button className={styles.loginButton} onClick={tryLogin}>
+          Log in
+        </button>
+        <button className={styles.createUserButton} onClick={createUser}>
+          Create Account
+        </button>
       </div>
     </div>
   );

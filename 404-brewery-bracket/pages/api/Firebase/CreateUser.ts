@@ -1,11 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { InitializeFirebase } from "../../../HelperMethods/FirebaseExtensions";
+import { Firestore } from "firebase/firestore";
+import { FirebaseApp } from "firebase/app";
 
 type Data = {
   statusMessage: string;
 };
 
-const auth = getAuth();
+var firebase: [FirebaseApp, Firestore] = InitializeFirebase();
+
+const auth = getAuth(firebase[0]);
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   var queryString = window.location.search;
@@ -27,6 +32,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("Error code: " + error.code);
       console.log("Error message: " + error.message);
     });
+
+  console.log("Successfully created user");
 
   res.status(200).json({ statusMessage: "Successfully created user" });
 };
