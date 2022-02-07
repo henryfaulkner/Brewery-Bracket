@@ -88,7 +88,11 @@ const LoginForm: React.FC = () => {
           </button>
         </div>
         <p>
-          <a className={styles.hypertext} onClick={logOut}>
+          <a
+            href="/login-form/logout"
+            className={styles.hypertext}
+            onClick={logOut}
+          >
             Logout
           </a>
         </p>
