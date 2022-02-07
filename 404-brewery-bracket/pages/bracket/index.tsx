@@ -3,7 +3,7 @@ import Card from "../../components/Card";
 import BracketCard from "../../components/Bracket";
 import Header from "../../components/Header";
 
-export default function Bracket({ allBreweriesData }) {
+const Bracket = ({ allBreweriesData }) => {
   var breweryNames = [];
 
   var breweryCards = allBreweriesData.map((breweryObj) => {
@@ -26,7 +26,7 @@ export default function Bracket({ allBreweriesData }) {
       <div className="bracket">{brackets}</div>
     </div>
   );
-}
+};
 
 export async function getStaticProps() {
   const allBreweriesData = await GetBreweriesNamesAndIds();
@@ -36,3 +36,5 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default Bracket;
