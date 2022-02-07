@@ -15,8 +15,6 @@ var firebase: [FirebaseApp, Firestore] =
 const auth = getAuth(firebase[0]);
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  console.log("in handler");
-
   const email: string = req.body["email"];
   const password: string = req.body["password"];
 
@@ -28,18 +26,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("User creds: " + user);
       console.log("Email used: " + email);
       console.log("Password used: " + password);
+      console.log("Successfully created user");
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      const errorCode: string = error.code;
+      const errorMessage: string = error.message;
 
-      console.log("Error code: " + error.code);
-      console.log("Error message: " + error.message);
+      console.log("Error code: " + errorCode);
+      console.log("Error message: " + errorMessage);
     });
 
-  console.log("Successfully created user");
-
-  res.status(200).json({ statusMessage: "Successfully created user" });
+  res.status(200).json({ statusMessage: "Successfully call." });
 };
 
 export default handler;

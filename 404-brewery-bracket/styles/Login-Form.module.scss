@@ -1,26 +1,45 @@
 .pageBackdrop {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+.aroundForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginModal {
-    display: inherit;
-    flex-direction: column;
-    border: gray 1px solid;
-    border-radius: 2px;
-    padding: 5px;
+  display: inherit;
+  flex-direction: column;
+  border: gray 1px solid;
+  border-radius: 2px;
+  padding: 5px;
 }
 
 .logoImage {
-    height: 50px;
-    width: 50px;
-    position: relative;
-    left: 35%;
-    margin-bottom: 10px;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  left: 35%;
+  margin-bottom: 10px;
 }
 
-.loginButton, .createUserButton {
-    height: 20px;
+.loginButton,
+.createUserButton {
+  height: 20px;
+}
+
+.hypertext {
+  color: blue;
+  text-decoration: underline;
+}
+
+.hypertext:hover {
+  color: darkblue;
+  text-decoration: none;
+  cursor: pointer;
 }
