@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
-import { GetBreweriesNamesAndIds } from "./api/catalog-beer";
+import { GetBreweriesNamesAndIds } from "./api/BeerAPI/catalog-beer";
 import CardInBracket from "../components/CardInBracket";
 import RatingModal from "../components/RatingModal";
 import Header from "../components/Header";
