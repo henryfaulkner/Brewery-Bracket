@@ -17,6 +17,11 @@ const Header = (props) => {
             Account
           </p>
         </Link>
+        <Link href="/login-form">
+          <p className={styles.headerLink} onClick={props.account}>
+            Signup
+          </p>
+        </Link>
       </div>
     </div>
   );

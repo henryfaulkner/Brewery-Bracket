@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Header from "../../components/Header";
 import styles from "../../styles/Login-Form.module.scss";
+import homeStyle from "../../styles/Home.module.scss";
 
 type authentication = {
   email: string;
@@ -58,44 +60,47 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className={styles.pageBackdrop}>
-      <div className={styles.aroundForm}>
-        <div className={styles.loginModal}>
-          <img
-            className={styles.logoImage}
-            src="/Frothy-Beer.jpg"
-            alt="Frothy Beer"
-          />
+    <div>
+      <Header />
+      <div className={homeStyle.container}>
+        <div className={styles.aroundForm}>
+          <div className={styles.loginModal}>
+            <img
+              className={styles.logoImage}
+              src="/Frothy-Beer.jpg"
+              alt="Frothy Beer"
+            />
 
-          <div className={styles.Textboxes}>
-            <input
-              placeholder="Email"
-              id="email"
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <input
-              placeholder="Password"
-              id="password"
-              onChange={(event) => setPassword(event.target.value)}
-            />
+            <div className={styles.Textboxes}>
+              <input
+                placeholder="Email"
+                id="email"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <input
+                placeholder="Password"
+                id="password"
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </div>
+
+            <button className={styles.loginButton} onClick={tryLogin}>
+              Log in
+            </button>
+            <button className={styles.createUserButton} onClick={createUser}>
+              Create Account
+            </button>
           </div>
-
-          <button className={styles.loginButton} onClick={tryLogin}>
-            Log in
-          </button>
-          <button className={styles.createUserButton} onClick={createUser}>
-            Create Account
-          </button>
+          <p>
+            <a
+              href="/login-form/logout"
+              className={styles.hypertext}
+              onClick={logOut}
+            >
+              Logout
+            </a>
+          </p>
         </div>
-        <p>
-          <a
-            href="/login-form/logout"
-            className={styles.hypertext}
-            onClick={logOut}
-          >
-            Logout
-          </a>
-        </p>
       </div>
     </div>
   );
