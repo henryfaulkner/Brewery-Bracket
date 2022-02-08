@@ -1,6 +1,6 @@
 import React from 'react';
 
-import globalStyles from '../../styles/Home.module.css';
+import globalStyles from '../../styles/Home.module.scss';
 import styles from '../../styles/BrackerCreator.module.scss';
 import Header from "../../components/Header";
 
@@ -13,7 +13,7 @@ export default class BracketCreator extends React.Component {
 
         }
         return (
-            <div>
+            <div className={globalStyles.container}>
                 <Header
                 />
                 <h2>Add Breweries</h2>

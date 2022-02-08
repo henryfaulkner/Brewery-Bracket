@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import { GetBreweriesNamesAndIds } from "./api/BeerAPI/catalog-beer";
 import CardInBracket from "../components/CardInBracket";
 import RatingModal from "../components/RatingModal";
@@ -69,13 +69,15 @@ export default class Home extends React.Component {
     });
 
     return (
-      <div className="container">
+      <div>
         <Header />
-        <h2>Active Brackets</h2>
-        <hr />
-        <div className={styles.cardContainer}>
-          {currentBrackets}
-          <ActiveBracketCard override={true} />
+        <div className={styles.container}>
+          <h2>Active Brackets</h2>
+          <hr />
+          <div className={styles.cardContainer}>
+            {currentBrackets}
+            <ActiveBracketCard override={true} />
+          </div>
         </div>
       </div>
     );
