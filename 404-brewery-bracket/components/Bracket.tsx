@@ -6,9 +6,6 @@ class Bracket extends React.Component {
       return(
           <div className="bracket-card">
               <div className="card-container">
-
-                  {this.props.card1}
-                  {this.props.card2}
               </div>
               <div className="bracket-lines">
                   <div className="horizontal-lines">
