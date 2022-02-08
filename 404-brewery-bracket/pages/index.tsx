@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/Home.module.scss";
 import { GetBreweriesNamesAndIds } from "./api/BeerAPI/catalog-beer";
 import CardInBracket from "../components/CardInBracket";
-import RatingModal from "../components/RatingModal";
 import Header from "../components/Header";
 import ActiveBracketCard from "../components/ActiveBracketCard";
 
@@ -50,23 +49,15 @@ export default class Home extends React.Component {
     };
   }
 
-  toggleRatingModal = () => {
-    this.setState({
-      showRatingModal: this.state.showRatingModal ? false : true,
-    });
-  };
-
   render() {
     GetBreweriesNamesAndIds();
-    var activeBracketCards = this.state.activeBracket.map((breweryObj) => (
-      <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id} />
-    ));
+    // var activeBracketCards = this.state.activeBracket.map((breweryObj) => (
+    //   <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id} />
+    // ));
 
-    var ratingModal = this.state.ratingModal ? <RatingModal /> : <div />;
-
-    let currentBrackets = this.state.activeBrackets.map((bracketName) => {
-      return <ActiveBracketCard name={bracketName} />;
-    });
+    // let currentBrackets = this.state.activeBrackets.map((bracketName) => {
+    //   return <ActiveBracketCard name={bracketName} />;
+    // });
 
     return (
       <div>
@@ -75,7 +66,7 @@ export default class Home extends React.Component {
           <h2>Active Brackets</h2>
           <hr />
           <div className={styles.cardContainer}>
-            {currentBrackets}
+            {/* {currentBrackets} */}
             <ActiveBracketCard override={true} />
           </div>
         </div>

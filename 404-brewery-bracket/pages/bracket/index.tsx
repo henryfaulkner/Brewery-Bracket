@@ -17,7 +17,7 @@ const Bracket = ({ allBreweriesData }) => {
     let bracketCards = breweryNames.splice(0, 2);
     let card1 = <Card name={bracketCards[0]} />;
     let card2 = <Card name={bracketCards[1]} />;
-    brackets.push(<BracketCard card1={card1} card2={card2} />);
+    // brackets.push(<BracketCard card1={card1} card2={card2} />);
   }
 
   return (

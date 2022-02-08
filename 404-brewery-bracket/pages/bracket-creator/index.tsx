@@ -27,7 +27,7 @@ export default class BracketCreator extends React.Component {
                                     <label htmlFor="custom brewery">Custom Brewery</label>
                                     <input id="custom brewery" type="text" autoComplete="name" />
                                 </div>
-                                <button onClick={addCustomBrewery()}>Add</button>
+                                <button onClick={() => addCustomBrewery()}>Add</button>
                             </div>
                         </div>
                         <div className={styles.verticalDividerDiv}></div>
