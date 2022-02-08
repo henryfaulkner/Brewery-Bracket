@@ -50,7 +50,7 @@ export default class Home extends React.Component {
   }
 
   render() {
-    GetBreweriesNamesAndIds();
+    // GetBreweriesNamesAndIds();
     // var activeBracketCards = this.state.activeBracket.map((breweryObj) => (
     //   <CardInBracket breweryName={breweryObj.name} breweryId={breweryObj.id} />
     // ));

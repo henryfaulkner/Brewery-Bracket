@@ -29,11 +29,11 @@ const Bracket = ({ allBreweriesData }) => {
 };
 
 export async function getStaticProps() {
-  const allBreweriesData = await GetBreweriesNamesAndIds();
+  // const allBreweriesData = await GetBreweriesNamesAndIds();
   return {
-    props: {
-      allBreweriesData,
-    },
+    // props: {
+    //   allBreweriesData,
+    // },
   };
 }
 
