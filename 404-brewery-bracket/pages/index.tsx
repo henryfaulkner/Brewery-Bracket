@@ -61,7 +61,6 @@ export default class Home extends React.Component {
 
     return (
       <div>
-        <Header />
         <div className={styles.container}>
           <h2>Active Brackets</h2>
           <hr />

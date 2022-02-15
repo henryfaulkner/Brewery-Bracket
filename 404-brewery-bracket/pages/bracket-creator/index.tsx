@@ -9,7 +9,6 @@ export default class BracketCreator extends React.Component {
     function addCustomBrewery() {}
     return (
       <div>
-        <Header />
         <h2>Add Breweries</h2>
         <hr />
         <div className={styles.pageContentContainer}>
