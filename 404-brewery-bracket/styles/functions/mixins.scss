@@ -1,0 +1,17 @@
+@import "../variables.module.scss";
+
+@mixin layout-for($viewport) {
+    @if $viewport==$mobile-breakpoint {
+        @media only screen and (max-width: $mobile-breakpoint) {
+            @content;
+        }
+    } @else if $viewport==$tablet-breakpoint {
+        @media only screen and (min-width: $tablet-breakpoint) {
+            @content;
+        }
+    } @else if $viewport==$desktop-breakpoint {
+        @media only screen and (min-width: $desktop-breakpoint) {
+            @content;
+        }
+    }
+}

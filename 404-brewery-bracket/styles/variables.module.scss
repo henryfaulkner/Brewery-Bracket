@@ -1,4 +1,16 @@
+/* Colors */
 $beer-yellow: #eebb01;
-$off-white: #F5F5F3;
 $beer-brown: #892f08;
+$beer-red-link: #d83c01;
+$off-white: #F5F5F3;
 $grey: #a3a3a3;
+$black: #000000;
+
+/* Fonts */
+$default-font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+/* Viewport Breakpoints */
+$mobile-breakpoint: 600px;
+$tablet-breakpoint: 1000px;
+$desktop-breakpoint: 1280px;
