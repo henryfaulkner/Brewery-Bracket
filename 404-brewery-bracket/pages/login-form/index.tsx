@@ -61,7 +61,6 @@ const LoginForm: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <div className={homeStyle.container}>
         <div className={styles.aroundForm}>
           <div className={styles.loginModal}>

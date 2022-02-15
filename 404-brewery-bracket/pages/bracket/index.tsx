@@ -38,7 +38,6 @@ const Bracket = ({ allBreweriesData }) => {
 
   return (
     <div>
-      <Header />
       <div>
         <div>
           <h4>You have been logged out.</h4>
