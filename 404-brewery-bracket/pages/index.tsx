@@ -1,8 +1,4 @@
 import React from "react";
-import styles from "../styles/Home.module.scss";
-import { GetBreweriesNamesAndIds } from "./api/BeerAPI/catalog-beer";
-import CardInBracket from "../components/CardInBracket";
-import Header from "../components/Header";
 import ActiveBracketCard from "../components/ActiveBracketCard";
 
 export default class Home extends React.Component {
@@ -61,10 +57,10 @@ export default class Home extends React.Component {
 
     return (
       <div>
-        <div className={styles.container}>
+        <div>
           <h2>Active Brackets</h2>
           <hr />
-          <div className={styles.cardContainer}>
+          <div>
             {/* {currentBrackets} */}
             <ActiveBracketCard override={true} />
           </div>

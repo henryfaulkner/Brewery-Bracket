@@ -1,3 +1,5 @@
+@import "variables.module.scss";
+
 .pageBackdrop {
   display: flex;
   justify-content: center;
@@ -34,12 +36,12 @@
 }
 
 .hypertext {
-  color: blue;
+  color: $beer-red-link;
   text-decoration: underline;
 }
 
 .hypertext:hover {
-  color: darkblue;
+  color: $beer-brown;
   text-decoration: none;
   cursor: pointer;
 }

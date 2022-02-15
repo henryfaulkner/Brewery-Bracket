@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Header from "../../components/Header";
 import styles from "../../styles/Login-Form.module.scss";
-import homeStyle from "../../styles/Home.module.scss";
 
 type authentication = {
   email: string;
@@ -61,7 +60,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div>
-      <div className={homeStyle.container}>
+      <div className="container">
         <div className={styles.aroundForm}>
           <div className={styles.loginModal}>
             <img
