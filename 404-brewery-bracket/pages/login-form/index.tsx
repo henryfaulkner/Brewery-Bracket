@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "../../components/Header";
 import styles from "../../styles/Login-Form.module.scss";
+import Image from "next/image";
 
 type authentication = {
   email: string;
@@ -59,47 +59,39 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="container">
-        <div className={styles.aroundForm}>
-          <div className={styles.loginModal}>
-            <img
-              className={styles.logoImage}
-              src="/Frothy-Beer.jpg"
-              alt="Frothy Beer"
-            />
-
-            <div className={styles.Textboxes}>
-              <input
-                placeholder="Email"
-                id="email"
-                onChange={(event) => setEmail(event.target.value)}
-              />
-              <input
-                placeholder="Password"
-                id="password"
-                onChange={(event) => setPassword(event.target.value)}
-              />
-            </div>
-
-            <button className={styles.loginButton} onClick={tryLogin}>
-              Log in
-            </button>
-            <button className={styles.createUserButton} onClick={createUser}>
-              Create Account
-            </button>
-          </div>
-          <p>
-            <a
-              href="/login-form/logout"
-              className={styles.hypertext}
-              onClick={logOut}
-            >
-              Logout
-            </a>
-          </p>
+    <div className={styles.loginPage}>
+      <div className={styles.loginModal}>
+        <div className="image-container">
+          <Image src="/Frothy-Beer.jpg" alt="Frothy Beer" layout="fill" objectFit="contain"></Image>
+        </div>
+        <div className={styles.textBoxes}>
+          <input
+            placeholder="Email"
+            id="email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <input
+            placeholder="Password"
+            id="password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <div className={styles.buttonContainer}>
+          <button className={styles.loginButton} onClick={tryLogin}>
+            Log in
+          </button>
+          <button className={styles.createUserButton} onClick={createUser}>
+            Create Account
+          </button>
         </div>
       </div>
+      <a
+        href="/login-form/logout"
+        className={styles.logout}
+        onClick={logOut}
+      >
+        Logout
+      </a>
     </div>
   );
 };
