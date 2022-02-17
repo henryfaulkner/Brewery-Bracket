@@ -5,12 +5,12 @@ import { FirebaseApp } from "firebase/app";
 
 import FirebaseExtensions from "../HelperMethods/FirebaseExtensions";
 
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
 type Data = {
   User: User;
 };
+
+const firebase: [FirebaseApp, Firestore] =
+  FirebaseExtensions.InitializeFirebase();
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const email: string = req.body["email"];

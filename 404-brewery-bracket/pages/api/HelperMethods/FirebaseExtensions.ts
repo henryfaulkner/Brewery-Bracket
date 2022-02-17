@@ -13,10 +13,10 @@ function InitializeFirebase(): [FirebaseApp, Firestore] {
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  const app: FirebaseApp = initializeApp(firebaseConfig);
 
   // Create Firestore instance
-  const firestore = getFirestore(app);
+  const firestore: Firestore = getFirestore(app);
 
   return [app, firestore];
 }
