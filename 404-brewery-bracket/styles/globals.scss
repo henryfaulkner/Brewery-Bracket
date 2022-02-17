@@ -1,3 +1,5 @@
+@import "./functions/mixins.scss";
+
 html,
 body {
   padding: 0;
@@ -7,6 +9,9 @@ body {
 }
 main {
   padding: 50px;
+  @include layout-for($mobile-breakpoint) {
+    padding: 16px;
+  }
 }
 a {
   color: inherit;

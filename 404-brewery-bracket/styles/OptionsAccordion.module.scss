@@ -1,0 +1,23 @@
+@import '../styles/functions/mixins.scss';
+
+.accordionContainer {
+    flex-grow: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+    @include layout-for($desktop-breakpoint) {
+      flex-direction: row;
+    }
+    @include layout-for($tablet-breakpoint) {
+      flex-direction: row;
+    }
+    @include layout-for($mobile-breakpoint) {
+      flex-direction: column;
+    }
+  }
+  
+  .optionsLink {
+    font-weight: bold;
+  }

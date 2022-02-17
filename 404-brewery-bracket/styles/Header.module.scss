@@ -11,6 +11,8 @@
   padding: 0 30px;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-family: $default-font;
 
@@ -19,26 +21,4 @@
     white-space: nowrap;
     margin-right: 15px;
   }
-}
-
-.headerOptions {
-  flex-grow: 2;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  @include layout-for($desktop-breakpoint) {
-    flex-direction: row;
-  }
-  @include layout-for($tablet-breakpoint) {
-    flex-direction: row;
-  }
-  @include layout-for($mobile-breakpoint) {
-    flex-direction: column;
-  }
-}
-
-.headerLink {
-  font-weight: bold;
 }
