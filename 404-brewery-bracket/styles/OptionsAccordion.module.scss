@@ -1,23 +1,61 @@
 @import '../styles/functions/mixins.scss';
+@import '../styles/variables.module.scss';
 
-.accordionContainer {
+.navContainer {
     flex-grow: 2;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
   
-    @include layout-for($desktop-breakpoint) {
+    @include layout-for($desktopBreakpoint) {
       flex-direction: row;
     }
-    @include layout-for($tablet-breakpoint) {
+    @include layout-for($tabletBreakpoint) {
       flex-direction: row;
     }
-    @include layout-for($mobile-breakpoint) {
+    @include layout-for($mobileBreakpoint) {
       flex-direction: column;
     }
   }
   
   .optionsLink {
     font-weight: bold;
+  }
+
+  .mobileNav {
+    width: 50px;
+    border: 3px solid $beer-brown;
+    border-radius: 5px;
+    padding: 0 5px;
+
+    div {
+      hr {
+        width: 100%;
+        color: $beer-brown;
+        background-color: $beer-brown;
+        height: 3px;
+      }
+    }
+    .mobileLinksClose {
+      position: absolute;
+      top: 5px;
+      right: 15px;
+      width: 5px;
+      height: 5px;
+    }
+    .mobileLinks {
+      position: absolute;
+      top: 70px;
+      right: 50px;
+
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+
+      width: 150px;
+      border: 3px solid $beer-brown;
+      border-radius: 5px;
+      background-color: $beer-yellow;
+    }
   }
