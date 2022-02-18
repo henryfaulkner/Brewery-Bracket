@@ -9,7 +9,7 @@ body {
 }
 main {
   padding: 50px;
-  @include layout-for($mobile-breakpoint) {
+  @include layout-for($mobileBreakpoint) {
     padding: 16px;
   }
 }

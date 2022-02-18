@@ -12,6 +12,13 @@ $default-font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
 /* Viewport Breakpoints */
-$mobile-breakpoint: 600px;
-$tablet-breakpoint: 1000px;
-$desktop-breakpoint: 1280px;
+$mobileBreakpoint: 600px;
+$tabletBreakpoint: 1000px;
+$desktopBreakpoint: 1280px;
+
+/* Exports */
+:export {
+    mobileBreakpoint: $mobileBreakpoint;
+    tabletBreakpoint: $tabletBreakpoint;
+    desktopBreakpoint: $desktopBreakpoint;
+}
