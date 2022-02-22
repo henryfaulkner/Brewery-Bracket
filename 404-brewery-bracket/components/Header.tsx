@@ -14,7 +14,6 @@ let currentUser: CurrentUserData = null;
 const Header = (props) => {
   useEffect(() => {
     getCurrentUser();
-    alert("current user: " + JSON.stringify(currentUser));
   });
 
   const getCurrentUser = async () => {
@@ -26,7 +25,6 @@ const Header = (props) => {
       },
     });
     currentUser = await response.json();
-    console.log("Got current user.");
   };
 
   return (
@@ -34,8 +32,14 @@ const Header = (props) => {
       <Link href="/">
         <h1>Brewery Bracket</h1>
       </Link>
-        <OptionsAccordion options={[["/", "Breweries"], ["/account", "Account"], ["/login-form", "Signup / log-in"]]} />
-        {/*
+      <OptionsAccordion
+        options={[
+          ["/", "Breweries"],
+          ["/account", "Account"],
+          ["/login-form", "Signup / log-in"],
+        ]}
+      />
+      {/*
         <p className={styles.headerLink} onClick={props.breweries}>
           Breweries
         </p>
