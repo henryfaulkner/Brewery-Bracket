@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
+import { stringify } from "querystring";
 
 type BreweryData = {
   name: string;
   id: string;
-};
-
-type SearchResults = {
-  results: BreweryData[];
 };
 
 type SearchRequest = {
@@ -15,15 +12,12 @@ type SearchRequest = {
   limit: number;
 };
 
-const searchLimit = 30;
+const searchLimit = 6;
 let searchResultsOptions: JSX.Element[] = [];
-let dropdownDisplay = "none";
 
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
-  const [searchResults, setSearchResults]: [SearchResults, any] = useState({
-    results: [],
-  });
+  const [searchResults, setSearchResults]: [BreweryData[], any] = useState([]);
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
 
   const typing = (event) => {
@@ -33,33 +27,46 @@ const BrewerySearchByName = (props) => {
 
   const controlAutocompleteOptions = () => {
     setDropdownStyle({ display: "none" });
+
+    if (searchText !== "") {
+      setDropdownStyle({ display: "block" });
+    }
+
+    searchResultsOptions = searchResults.map((searchResult: BreweryData) => {
+      return (
+        <li className={styles.autocompleteOption}>
+          <a onClick={() => updateInputValue(searchResult.name)}>
+            {searchResult.name}
+          </a>
+        </li>
+      );
+    });
+  };
+
+  const updateInputValue = (value) => {
+    setSearchText(value);
   };
 
   const submitSearch = async (event) => {
-    if (event.charCode === 13 || event.keyCode === 13) {
-      let request: SearchRequest = {
-        typeahead: searchText,
-        limit: searchLimit,
-      };
+    //Pull data on component load
+    //Convert this into a dictionary lookup
+    //cause i hate this :)
+    let request: SearchRequest = {
+      typeahead: searchText,
+      limit: searchLimit,
+    };
 
-      await fetch("/api/BeerAPI/GetBreweriesByName", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((response: BreweryData[]) => {
-          console.log("response: " + JSON.stringify(response));
-
-          setSearchResults(response);
-          searchResultsOptions = response.map((searchResult: BreweryData) => {
-            console.log("name: " + JSON.stringify(searchResult));
-            return <option>{searchResult.name}</option>;
-          });
-        });
-    }
+    await fetch("/api/BeerAPI/GetBreweriesByName", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((response: BreweryData[]) => {
+        setSearchResults(response);
+      });
   };
 
   return (
@@ -67,15 +74,14 @@ const BrewerySearchByName = (props) => {
       <input
         type="text"
         id="searchInput"
+        value={searchText}
         placeholder="Brewery Typeahead"
         onChange={(e) => typing(e)}
         onKeyUp={(e) => submitSearch(e)}
       />
 
       <div className={styles.dropdown} style={dropdownStyle}>
-        <select className={styles.autocompleteOptions}>
-          {searchResultsOptions}
-        </select>
+        <ul className={styles.autocompleteOptions}>{searchResultsOptions}</ul>
       </div>
     </div>
   );

@@ -45,12 +45,9 @@ const handler = async (
     // max
     if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
     return (
-      breweryNameLower.startsWith(typeaheadTextLower) && numApproved > limit
+      breweryNameLower.startsWith(typeaheadTextLower) && numApproved < limit
     );
   });
-
-  console.log(typeaheadText);
-  console.log(breweryList);
 
   res.status(200).json(breweryList);
 };
