@@ -1,5 +1,6 @@
 import React from "react";
 import ActiveBracketCard from "../components/ActiveBracketCard";
+import BrewerySearchByName from "../components/BrewerySearchByName";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -63,6 +64,8 @@ export default class Home extends React.Component {
           <div>
             {/* {currentBrackets} */}
             <ActiveBracketCard override={true} />
+            {/* {testing brewery typeahead search} */}
+            <BrewerySearchByName />
           </div>
         </div>
       </div>
