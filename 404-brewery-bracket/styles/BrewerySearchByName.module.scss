@@ -2,4 +2,31 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  border: 1px black solid;
+  color: grey;
+  background-color: rgb(250, 250, 229);
+}
+
+.autocompleteOption :hover {
+  background-color: blue;
+}
+
+.dropdown {
+  display: flex;
+}
+
+.dropdown div {
+  flex-grow: 1;
+  width: 0;
+}
+
+.wrapper {
+  display: inline-block;
+  position: absolute;
+}
+
+.autocompleteList {
+  padding: 0;
+  position: absolute;
+  top: 6px;
 }

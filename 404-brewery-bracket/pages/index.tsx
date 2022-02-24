@@ -65,7 +65,6 @@ export default class Home extends React.Component {
             {/* {currentBrackets} */}
             <ActiveBracketCard override={true} />
             {/* {testing brewery typeahead search} */}
-            <BrewerySearchByName />
           </div>
         </div>
       </div>

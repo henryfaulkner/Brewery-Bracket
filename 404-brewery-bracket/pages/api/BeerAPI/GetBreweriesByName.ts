@@ -17,9 +17,6 @@ const handler = async (
   let username = process.env.beerapikey;
   let password = "";
 
-  let typeaheadText: string = req.body["typeahead"];
-  let limit: number = req.body["limit"];
-
   let headers = new Headers();
 
   headers.append(
@@ -33,23 +30,7 @@ const handler = async (
       return data;
     });
 
-  let numApproved: number = 0;
-  var breweryList: BreweryData[] = resData.data.filter((brewery) => {
-    //Make higher-order function to replicate this functionality
-    //if (numApproved > 20) break;
-
-    //normalize strings
-    var breweryNameLower = brewery.name.toLowerCase();
-    var typeaheadTextLower = typeaheadText.toLowerCase();
-
-    // max
-    if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
-    return (
-      breweryNameLower.startsWith(typeaheadTextLower) && numApproved < limit
-    );
-  });
-
-  res.status(200).json(breweryList);
+  res.status(200).json(resData.data);
 };
 
 export default handler;
