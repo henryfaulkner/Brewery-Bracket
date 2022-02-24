@@ -15,6 +15,10 @@ const searchLimit = 6;
 let searchResultsOptions: JSX.Element[] = [];
 let hasPulledData = false;
 
+//bug: if no result is long enough to fill space,
+//      the option block is too short
+//bug: hover only partially highlights
+//bug: takes two letter to kick in autocomplete
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
   const [allBreweries, setAllBreweries]: [BreweryData[], any] = useState([]);
@@ -28,7 +32,7 @@ const BrewerySearchByName = (props) => {
         limit: searchLimit,
       };
 
-      fetch("/api/BeerAPI/GetBreweriesByName", {
+      fetch("/api/BeerAPI/GetAllBreweries", {
         method: "POST",
         body: JSON.stringify(request),
         headers: {
