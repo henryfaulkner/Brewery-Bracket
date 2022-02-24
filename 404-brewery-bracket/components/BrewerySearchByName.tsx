@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
+import { off } from "process";
 
 type BreweryData = {
   name: string;
@@ -117,6 +118,7 @@ const BrewerySearchByName = (props) => {
         id="searchInput"
         value={searchText}
         onChange={(e) => typing(e)}
+        autoComplete={"off"}
       />
 
       <div className={styles.dropdown} style={dropdownStyle}>
