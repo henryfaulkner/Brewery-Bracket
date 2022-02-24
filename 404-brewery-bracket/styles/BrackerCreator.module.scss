@@ -1,44 +1,48 @@
-@import 'variables.module.scss';
+@import "variables.module.scss";
 
 .pageContentContainer {
-    margin: 0 30px;
+  margin: 0 30px;
 }
 
 .pageContentContainer {
-    margin: 0px 10%;
-    display: flex;
-    flex-direction: column;
+  margin: 0px 10%;
+  display: flex;
+  flex-direction: column;
 }
 
 .creationContainer {
-    margin: 2% 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  margin: 2% 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .addBrewsCont {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .addCustomCont {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .labelInputPair {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .verticalDividerDiv {
-    width: 1px;
-    margin: 0 20px;
-    background-color: $grey;
+  width: 1px;
+  margin: 0 20px;
+  background-color: $grey;
 }
 
 .currentBreweries {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.knownBreweries {
+  margin: 0px 0 30px 0;
 }
