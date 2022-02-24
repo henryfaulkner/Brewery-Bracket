@@ -116,7 +116,6 @@ const BrewerySearchByName = (props) => {
         type="text"
         id="searchInput"
         value={searchText}
-        placeholder="Brewery Typeahead"
         onChange={(e) => typing(e)}
       />
 
