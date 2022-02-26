@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "../styles/CustomBreweryTextbox.module.scss";
 
 type CustomBreweryObject = {
   name: string;
@@ -30,7 +31,9 @@ const CustomBreweryTextbox = () => {
         onChange={(e) => setInputText(e.target.value)}
         autoComplete={"off"}
       />
-      <button onClick={createCustomBrewery} />
+      <button className={styles.btn} onClick={createCustomBrewery}>
+        Add
+      </button>
     </div>
   );
 };
