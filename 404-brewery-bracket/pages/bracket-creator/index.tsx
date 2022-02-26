@@ -4,6 +4,7 @@ import globalStyles from "../../styles/Home.module.scss";
 import styles from "../../styles/BrackerCreator.module.scss";
 import Header from "../../components/Header";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
+import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 
 export default class BracketCreator extends React.Component {
   render() {
@@ -23,7 +24,7 @@ export default class BracketCreator extends React.Component {
               <div className={styles.addCustomCont}>
                 <div className={styles.labelInputPair}>
                   <label htmlFor="custom brewery">Custom Brewery</label>
-                  <input id="custom brewery" type="text" autoComplete="name" />
+                  <CustomBreweryTextbox />
                 </div>
                 {/* <button onClick={addCustomBrewery()}>Add</button> */}
               </div>
