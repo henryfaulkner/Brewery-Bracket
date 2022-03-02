@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/CustomBreweryTextbox.module.scss";
+import AdditionalInfoModal from "./AdditionalInfoModal";
+import Portal from "./Portal";
+import { stringify } from "querystring";
 
 type CustomBreweryObject = {
   name: string;
@@ -7,7 +10,18 @@ type CustomBreweryObject = {
 
 const CustomBreweryTextbox = () => {
   const [inputText, setInputText]: [string, any] = useState();
+  const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
+
   const createCustomBrewery = async () => {
+    //Uncomment this code when you're done testing the modal
+    //if(inputText === "") return;
+
+    //Show Modal
+    setShowModal(() => {
+      if (showModal["display"] === "none") return { display: "" };
+      else return { display: "none" };
+    });
+
     var customBreweryObject: CustomBreweryObject = {
       name: inputText,
     };
@@ -34,6 +48,7 @@ const CustomBreweryTextbox = () => {
       <button className={styles.btn} onClick={createCustomBrewery}>
         Add
       </button>
+      <Portal showModal={showModal} setShowModal={setShowModal}></Portal>
     </div>
   );
 };
