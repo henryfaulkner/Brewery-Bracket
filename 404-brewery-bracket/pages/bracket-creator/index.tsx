@@ -1,8 +1,6 @@
 import React from "react";
 
-import globalStyles from "../../styles/Home.module.scss";
 import styles from "../../styles/BrackerCreator.module.scss";
-import Header from "../../components/Header";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 
@@ -18,7 +16,6 @@ export default class BracketCreator extends React.Component {
             <div className={styles.addBrewsCont}>
               <div className={styles.knownBreweries}>
                 <h3>Add Brewery</h3>
-
                 <BrewerySearchByName />
               </div>
               <div className={styles.addCustomCont}>
@@ -26,7 +23,6 @@ export default class BracketCreator extends React.Component {
                   <label htmlFor="custom brewery">Custom Brewery</label>
                   <CustomBreweryTextbox />
                 </div>
-                {/* <button onClick={addCustomBrewery()}>Add</button> */}
               </div>
             </div>
             <div className={styles.verticalDividerDiv}></div>

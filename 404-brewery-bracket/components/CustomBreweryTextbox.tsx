@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/CustomBreweryTextbox.module.scss";
+import AdditionalInfoModal from "./AdditionalInfoModal";
+import Portal from "./Portal";
+import { stringify } from "querystring";
 
 type CustomBreweryObject = {
   name: string;
 };
 
 const CustomBreweryTextbox = () => {
-  const [inputText, setInputText]: [string, any] = useState();
+  const [inputText, setInputText]: [string, any] = useState("");
+  const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
+  const [recentAdditionId, setRecentAdditionId]: [string, any] = useState("");
+
   const createCustomBrewery = async () => {
+    if (inputText === "") return;
+
+    //Show Modal
+    setShowModal(() => {
+      if (showModal["display"] === "none") return { display: "" };
+      else return { display: "none" };
+    });
+
     var customBreweryObject: CustomBreweryObject = {
       name: inputText,
     };
@@ -21,6 +35,7 @@ const CustomBreweryTextbox = () => {
     });
 
     const data = await response.json();
+    setRecentAdditionId(data._key.path.segments[1]);
   };
 
   return (
@@ -34,6 +49,12 @@ const CustomBreweryTextbox = () => {
       <button className={styles.btn} onClick={createCustomBrewery}>
         Add
       </button>
+      <Portal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        recentAdditionName={inputText}
+        recentAdditionId={recentAdditionId}
+      />
     </div>
   );
 };

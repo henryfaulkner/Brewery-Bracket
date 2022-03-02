@@ -1,0 +1,78 @@
+@import "variables.module.scss";
+@import "functions/mixins.scss";
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalForm {
+  background-color: white;
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: thick black solid;
+  border-radius: 15px;
+}
+
+.h2 {
+  margin-bottom: 6px;
+}
+
+.p {
+  margin-top: 6px;
+}
+
+.inputRows {
+  margin-bottom: 10%;
+  width: 75%;
+  @include layout-for($mobileBreakpoint) {
+    margin-bottom: 7%;
+  }
+}
+
+.inputRow > .h5 {
+  margin-bottom: 4px;
+}
+
+.input {
+  border: none;
+  background-color: lightgrey;
+  border-radius: 4px;
+  width: 90%;
+  height: 40px;
+  padding-left: 20px;
+  font-size: large;
+}
+
+.button1 {
+  margin-right: 15px;
+  width: 80px;
+  align-items: center;
+  @include layout-for($mobileBreakpoint) {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 7px 0;
+  }
+}
+
+.button2 {
+  margin-left: 15px;
+  width: 80px;
+  @include layout-for($mobileBreakpoint) {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+}
