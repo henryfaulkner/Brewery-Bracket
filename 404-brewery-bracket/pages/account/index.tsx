@@ -1,17 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
+import { User } from "firebase/auth";
 
-export default class Account extends React.Component {
-  render() {
-    return (
+type CurrentUserData = {
+  CurrentUser: User;
+};
+
+let loadPage = false;
+
+const Account = (props) => {
+  useEffect(() => {
+    if (loadPage === false) {
+      getCurrentUser();
+      loadPage = true;
+    }
+  });
+
+  const [currentUser, setCurrentUser]: [CurrentUserData, any] = useState({
+    CurrentUser: null,
+  });
+
+  const getCurrentUser = async () => {
+    const response = await fetch("/api/Firebase/GetCurrentUser", {
+      method: "POST",
+      body: JSON.stringify({}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    setCurrentUser(await response.json());
+  };
+
+  return (
+    <div>
       <div>
-        <div>
-            <h1>Account Information</h1>
-            <h3>Name</h3>
-            <h3>Visted Breweries</h3>
-        </div>
-
+        <h1>Account Information</h1>
+        <h3>Email: {currentUser?.CurrentUser?.email ?? "not logged in"}</h3>
+        <h3>Visted Breweries</h3>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Account;

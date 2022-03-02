@@ -6,7 +6,7 @@ import { FirebaseApp } from "firebase/app";
 import FirebaseExtensions from "../HelperMethods/FirebaseExtensions";
 
 type Data = {
-  CurrentUser: User;
+  CurrentUser: User | string;
 };
 
 const firebase: [FirebaseApp, Firestore] =
@@ -15,7 +15,7 @@ const firebase: [FirebaseApp, Firestore] =
 const auth = getAuth(firebase[0]);
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  const userData: Data = { CurrentUser: auth.currentUser };
+  const userData: Data = { CurrentUser: auth.currentUser ?? "" };
   res.status(200).json(userData);
 };
 
