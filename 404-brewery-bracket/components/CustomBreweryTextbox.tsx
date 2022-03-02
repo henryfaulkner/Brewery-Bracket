@@ -9,12 +9,12 @@ type CustomBreweryObject = {
 };
 
 const CustomBreweryTextbox = () => {
-  const [inputText, setInputText]: [string, any] = useState();
+  const [inputText, setInputText]: [string, any] = useState("");
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
+  const [recentAdditionId, setRecentAdditionId]: [string, any] = useState("");
 
   const createCustomBrewery = async () => {
-    //Uncomment this code when you're done testing the modal
-    //if(inputText === "") return;
+    if (inputText === "") return;
 
     //Show Modal
     setShowModal(() => {
@@ -35,6 +35,7 @@ const CustomBreweryTextbox = () => {
     });
 
     const data = await response.json();
+    setRecentAdditionId(data._key.path.segments[1]);
   };
 
   return (
@@ -48,7 +49,12 @@ const CustomBreweryTextbox = () => {
       <button className={styles.btn} onClick={createCustomBrewery}>
         Add
       </button>
-      <Portal showModal={showModal} setShowModal={setShowModal}></Portal>
+      <Portal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        recentAdditionName={inputText}
+        recentAdditionId={recentAdditionId}
+      />
     </div>
   );
 };

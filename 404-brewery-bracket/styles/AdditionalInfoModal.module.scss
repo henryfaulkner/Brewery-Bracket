@@ -1,10 +1,6 @@
 @import "variables.module.scss";
 @import "functions/mixins.scss";
 
-#modal-root {
-  position: relative;
-}
-
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;

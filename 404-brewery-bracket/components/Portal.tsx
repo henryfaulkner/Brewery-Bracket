@@ -10,13 +10,14 @@ const Portal = (props) => {
 
     return () => setMounted(false);
   }, []);
-  console.log(props.showModel);
 
   return mounted
     ? createPortal(
         <AdditionalInfoModal
           showModal={props.showModal}
           setShowModal={props.setShowModal}
+          recentAdditionName={props.recentAdditionName}
+          recentAdditionId={props.recentAdditionId}
         />,
         document.body
       )
