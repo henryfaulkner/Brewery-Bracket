@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth } from "firebase/auth";
-import { Firestore, collection, addDoc } from "firebase/firestore";
+import { Firestore, collection, getDocs } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
 import FirebaseExtensions from "../HelperMethods/FirebaseExtensions";
@@ -22,21 +22,12 @@ var firebase: [FirebaseApp, Firestore] =
 const auth = getAuth(firebase[0]);
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const submittedBreweryName: string = req.body["name"];
-
-  const data = await addDoc(collection(firebase[1], "Custom Breweries"), {
-    name: submittedBreweryName,
-    description: "",
-    short_description: "",
-    url: "",
-    facebook_url: "",
-    twitter_url: "",
-    instagram_url: "",
-    address: "",
-  });
+  const data = await getDocs(collection(firebase[1], "Custom Breweries"));
 
   res.status(200).json(data);
-  console.log(submittedBreweryName + " added to custom breweries.");
+  data.forEach((doc) => {
+    console.log(doc);
+  });
 };
 
 export default handler;
