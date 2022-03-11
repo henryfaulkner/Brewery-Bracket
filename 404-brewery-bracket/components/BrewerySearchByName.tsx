@@ -108,7 +108,7 @@ const BrewerySearchByName = (props) => {
     }
 
     searchResultsOptions = localSearchResults.map(
-      (searchResult: BreweryData) => {
+      (searchResult: BreweryObject) => {
         return (
           <li className={styles.autocompleteOption}>
             <a
@@ -132,7 +132,7 @@ const BrewerySearchByName = (props) => {
   const submitSearch = async (event) => {
     let numApproved: number = 0;
     let inputText: string = event.target.value;
-    var breweryList: BreweryData[] = allBreweries.filter((brewery) => {
+    var breweryList: BreweryObject[] = allBreweries.filter((brewery) => {
       //TODO: Make higher-order function to replicate this functionality
       //if (numApproved > 20) break;
 
