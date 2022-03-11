@@ -6,6 +6,7 @@ import { FirebaseApp } from "firebase/app";
 import FirebaseExtensions from "../HelperMethods/FirebaseExtensions";
 
 type CustomBreweryObject = {
+  id: string;
   name: string;
   description: string;
   short_description: string;
@@ -21,13 +22,28 @@ var firebase: [FirebaseApp, Firestore] =
 
 const auth = getAuth(firebase[0]);
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse<CustomBreweryObject[]>
+) => {
   const data = await getDocs(collection(firebase[1], "Custom Breweries"));
-
-  res.status(200).json(data);
+  let response: CustomBreweryObject[] = [];
   data.forEach((doc) => {
-    console.log(doc);
+    response.push({
+      id: doc.id,
+      name: doc.data().name,
+      description: doc.data().description,
+      short_description: doc.data().short_description,
+      url: doc.data().url,
+      facebook_url: doc.data().facebook_url,
+      twitter_url: doc.data().twitter_url,
+      instagram_url: doc.data().instagram_url,
+      address: doc.data().address,
+    });
   });
+
+  res.status(200).json(response);
+  console.log(response);
 };
 
 export default handler;

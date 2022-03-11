@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
-import { off } from "process";
 
 type BreweryObject = {
   id: string;
@@ -34,6 +33,8 @@ const BrewerySearchByName = (props) => {
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
 
   const GetAllBreweries = async (request) => {
+    let apiBreweries: BreweryObject[] = [];
+
     //Call API breweries
     await fetch("/api/BeerAPI/GetAPIBreweries", {
       method: "POST",
@@ -44,7 +45,7 @@ const BrewerySearchByName = (props) => {
     })
       .then((response) => response.json())
       .then((response: BreweryObject[]) => {
-        setAllBreweries(response);
+        apiBreweries = response;
       });
 
     //Call Firestore breweries
@@ -56,24 +57,22 @@ const BrewerySearchByName = (props) => {
       },
     })
       .then((response) => response.json())
-      .then((res: BreweryObject[]) => {
+      .then((res) => {
         console.log(res);
-        setAllBreweries([
-          allBreweries,
-          res.map((doc) => {
-            return {
-              id: doc.id,
-              name: doc.name,
-              description: doc.description,
-              short_description: doc.short_description,
-              url: doc.url,
-              facebook_url: doc.facebook_url,
-              twitter_url: doc.twitter_url,
-              instagram_url: doc.instagram_url,
-              address: doc.address,
-            };
-          }),
-        ]);
+        const documents: BreweryObject[] = res.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.name,
+            description: doc.description,
+            short_description: doc.short_description,
+            url: doc.url,
+            facebook_url: doc.facebook_url,
+            twitter_url: doc.twitter_url,
+            instagram_url: doc.instagram_url,
+            address: doc.address,
+          };
+        });
+        setAllBreweries([...apiBreweries, ...documents]);
       });
   };
 
@@ -138,14 +137,18 @@ const BrewerySearchByName = (props) => {
       //if (numApproved > 20) break;
 
       //normalize strings
-      var breweryNameLower = brewery.name.toLowerCase();
-      var typeaheadTextLower = inputText.toLowerCase();
+      if (brewery.name === undefined)
+        console.log("fuck: " + JSON.stringify(brewery));
+      else {
+        var breweryNameLower = brewery.name.toLowerCase();
+        var typeaheadTextLower = inputText.toLowerCase();
 
-      if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
-      return (
-        breweryNameLower.startsWith(typeaheadTextLower) &&
-        numApproved < searchLimit
-      );
+        if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
+        return (
+          breweryNameLower.startsWith(typeaheadTextLower) &&
+          numApproved < searchLimit
+        );
+      }
     });
 
     controlAutocompleteOptions(breweryList);
