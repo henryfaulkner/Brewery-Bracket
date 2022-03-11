@@ -1,6 +1,10 @@
+@import "variables.module.scss";
+@import "functions/mixins.scss";
+
 .autocompleteOption {
   list-style-type: none;
-  padding: 0;
+  font-size: 2em;
+  padding: 3px;
   margin: 0;
   border: 1px black solid;
   color: grey;
@@ -8,11 +12,14 @@
 }
 
 .autocompleteOption :hover {
-  background-color: blue;
+  background-color: $beer-yellow;
 }
 
 .dropdown {
-  display: flex;
+  position: absolute;
+  @include layout-for($mobileBreakpoint) {
+    top: 20px;
+  }
 }
 
 .dropdown div {
@@ -23,6 +30,16 @@
 .wrapper {
   display: inline-block;
   position: absolute;
+
+  input:focus {
+    position: absolute;
+    -webkit-transition: transform 1s ease-in-out;
+    transform: scale(3) translate(30%, -50%);
+    @include layout-for($mobileBreakpoint) {
+      -webkit-transition: transform 1s ease-in-out;
+      transform: scale(2) translate(23%, -50%);
+    }
+  }
 }
 
 .autocompleteList {
