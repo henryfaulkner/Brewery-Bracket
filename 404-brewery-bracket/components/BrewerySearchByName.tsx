@@ -137,18 +137,14 @@ const BrewerySearchByName = (props) => {
       //if (numApproved > 20) break;
 
       //normalize strings
-      if (brewery.name === undefined)
-        console.log("fuck: " + JSON.stringify(brewery));
-      else {
-        var breweryNameLower = brewery.name.toLowerCase();
-        var typeaheadTextLower = inputText.toLowerCase();
+      var breweryNameLower = brewery.name.toLowerCase();
+      var typeaheadTextLower = inputText.toLowerCase();
 
-        if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
-        return (
-          breweryNameLower.startsWith(typeaheadTextLower) &&
-          numApproved < searchLimit
-        );
-      }
+      if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
+      return (
+        breweryNameLower.startsWith(typeaheadTextLower) &&
+        numApproved < searchLimit
+      );
     });
 
     controlAutocompleteOptions(breweryList);
