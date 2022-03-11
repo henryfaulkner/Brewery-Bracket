@@ -5,13 +5,24 @@ type BreweryData = {
   id: string;
 };
 
+type BreweryObject = {
+  name: string;
+  description: string;
+  short_description: string;
+  url: string;
+  facebook_url: string;
+  twitter_url: string;
+  instagram_url: string;
+  address: string;
+};
+
 var base64 = require("base-64");
 var BaseUrl = "http://api.catalog.beer";
 
 // Get all breweries that match typeahead filter
 const handler = async (
   req: NextApiRequest,
-  res: NextApiResponse<BreweryData[]>
+  res: NextApiResponse<BreweryObject[]>
 ) => {
   let url = BaseUrl + `/brewer?count=10000`;
   let username = process.env.beerapikey;

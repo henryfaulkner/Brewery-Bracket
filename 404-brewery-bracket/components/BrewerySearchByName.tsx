@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
-import { off } from "process";
 
-type BreweryData = {
-  name: string;
+type BreweryObject = {
   id: string;
+  name: string;
+  description: string;
+  short_description: string;
+  url: string;
+  facebook_url: string;
+  twitter_url: string;
+  instagram_url: string;
+  address: string;
 };
 
 type SearchRequest = {
@@ -22,9 +28,53 @@ let hasPulledData = false;
 //bug: takes two letter to kick in autocomplete
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
-  const [allBreweries, setAllBreweries]: [BreweryData[], any] = useState([]);
-  let [searchResults, setSearchResults]: [BreweryData[], any] = useState([]);
+  const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
+  let [searchResults, setSearchResults]: [BreweryObject[], any] = useState([]);
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
+
+  const GetAllBreweries = async (request) => {
+    let apiBreweries: BreweryObject[] = [];
+
+    //Call API breweries
+    await fetch("/api/BeerAPI/GetAPIBreweries", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((response: BreweryObject[]) => {
+        apiBreweries = response;
+      });
+
+    //Call Firestore breweries
+    await fetch("/api/Firebase/GetCustomBreweries", {
+      method: "POST",
+      body: JSON.stringify({}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res);
+        const documents: BreweryObject[] = res.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.name,
+            description: doc.description,
+            short_description: doc.short_description,
+            url: doc.url,
+            facebook_url: doc.facebook_url,
+            twitter_url: doc.twitter_url,
+            instagram_url: doc.instagram_url,
+            address: doc.address,
+          };
+        });
+        setAllBreweries([...apiBreweries, ...documents]);
+      });
+  };
 
   useEffect(() => {
     if (hasPulledData === false) {
@@ -33,18 +83,9 @@ const BrewerySearchByName = (props) => {
         limit: searchLimit,
       };
 
-      fetch("/api/BeerAPI/GetAllBreweries", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((response: BreweryData[]) => {
-          setAllBreweries(response);
-        });
+      GetAllBreweries(request);
 
+      console.log(allBreweries);
       console.log("Brewery data received.");
       hasPulledData = true;
     }
@@ -67,7 +108,7 @@ const BrewerySearchByName = (props) => {
     }
 
     searchResultsOptions = localSearchResults.map(
-      (searchResult: BreweryData) => {
+      (searchResult: BreweryObject) => {
         return (
           <li className={styles.autocompleteOption}>
             <a
@@ -91,7 +132,7 @@ const BrewerySearchByName = (props) => {
   const submitSearch = async (event) => {
     let numApproved: number = 0;
     let inputText: string = event.target.value;
-    var breweryList: BreweryData[] = allBreweries.filter((brewery) => {
+    var breweryList: BreweryObject[] = allBreweries.filter((brewery) => {
       //TODO: Make higher-order function to replicate this functionality
       //if (numApproved > 20) break;
 

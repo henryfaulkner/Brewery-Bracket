@@ -13,6 +13,7 @@ type CustomBreweryObject = {
   facebook_url: string;
   twitter_url: string;
   instagram_url: string;
+  address: string;
 };
 
 var firebase: [FirebaseApp, Firestore] =
@@ -31,6 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     facebook_url: "",
     twitter_url: "",
     instagram_url: "",
+    address: "",
   });
 
   res.status(200).json(data);
