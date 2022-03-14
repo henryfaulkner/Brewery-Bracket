@@ -1,7 +1,8 @@
 @import "variables.module.scss";
 
 .abCardCont {
-  background: $beer-brown;
+  background: $off-white;
+  border: $beer-yellow 5px solid;
   width: inherit;
   border-radius: 0.6em;
   margin: 1em;
@@ -17,7 +18,7 @@
   &:active {
     transform: scale(1.1);
   }
-  max-width: fit-content;
+  max-width: max-content;
 }
 
 .abCardBody {

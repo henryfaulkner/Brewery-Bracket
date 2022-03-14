@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
+import CardList from "./CardList";
+import Card from "./Card";
 
 type BreweryObject = {
   id: string;
@@ -152,6 +154,17 @@ const BrewerySearchByName = (props) => {
     return breweryList;
   };
 
+  //ADD CARD STUFF
+  const [breweryCards, setBreweryCards] = useState([]);
+  const AddBreweryCard = (brewery: string) => {
+    const breweryCard = (
+      <li style={{ listStyleType: "none" }}>
+        <Card name={brewery} />
+      </li>
+    );
+    setBreweryCards([...breweryCards, breweryCard]);
+  };
+
   return (
     <div className={styles.wrapper}>
       <input
@@ -161,10 +174,15 @@ const BrewerySearchByName = (props) => {
         onChange={(e) => typing(e)}
         autoComplete={"off"}
       />
+      <button className={styles.btn} onClick={() => AddBreweryCard(searchText)}>
+        Add
+      </button>
 
       <div className={styles.dropdown} style={dropdownStyle}>
         <ul className={styles.autocompleteList}>{searchResultsOptions}</ul>
       </div>
+
+      <CardList breweryCards={breweryCards ?? []} />
     </div>
   );
 };
