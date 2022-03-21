@@ -26,13 +26,16 @@ const AdditionalInfoModal = (props) => {
       url: urlValue,
     };
 
-    const response = await fetch("/api/Firebase/UpdateCustomBreweryDoc", {
-      method: "POST",
-      body: JSON.stringify(customBreweryObject),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
+    const response = await fetch(
+      "/api/Firebase/Endpoints/UpdateCustomBreweryDoc",
+      {
+        method: "POST",
+        body: JSON.stringify(customBreweryObject),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    );
   };
 
   return (

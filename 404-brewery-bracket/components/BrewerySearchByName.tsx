@@ -51,7 +51,7 @@ const BrewerySearchByName = (props) => {
       });
 
     //Call Firestore breweries
-    await fetch("/api/Firebase/GetCustomBreweries", {
+    await fetch("/api/Firebase/Endpoints/GetCustomBreweries", {
       method: "POST",
       body: JSON.stringify({}),
       headers: {

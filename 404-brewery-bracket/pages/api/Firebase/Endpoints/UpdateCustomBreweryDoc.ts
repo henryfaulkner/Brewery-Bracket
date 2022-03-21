@@ -3,7 +3,8 @@ import { getAuth } from "firebase/auth";
 import { Firestore, collection, updateDoc, doc } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
-import FirebaseExtensions from "../HelperMethods/FirebaseExtensions";
+import * as collectionConstants from "../CollectionConstants";
+import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 
 var firebase: [FirebaseApp, Firestore] =
   FirebaseExtensions.InitializeFirebase();
@@ -16,7 +17,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const address: string = req.body["address"];
   const url: string = req.body["url"];
 
-  const document = doc(firebase[1], "Custom Breweries", customBreweryId);
+  const document = doc(
+    firebase[1],
+    collectionConstants.CustomBreweries,
+    customBreweryId
+  );
 
   const data = await updateDoc(document, {
     address: address,
