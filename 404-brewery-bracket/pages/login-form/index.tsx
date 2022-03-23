@@ -17,18 +17,14 @@ const LoginForm: React.FC = () => {
       password: password,
     };
 
-    const response = await fetch("/api/Firebase/Login", {
+    await fetch("/api/Firebase/Login", {
       method: "POST",
       body: JSON.stringify(auth),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    const data = await response.json();
-
     console.log("Login attempted");
-
-    console.log(data);
   };
 
   const createUser = async () => {
@@ -37,20 +33,18 @@ const LoginForm: React.FC = () => {
       password: password,
     };
 
-    const response = await fetch("/api/Firebase/CreateUser", {
+    await fetch("/api/Firebase/CreateUser", {
       method: "POST",
       body: JSON.stringify(auth),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    const data = await response.json();
-
     console.log("User creation attempted.");
   };
 
   const logOut = async () => {
-    const response = await fetch("/api/Firebase/Logout", {
+    await fetch("/api/Firebase/Logout", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -62,25 +56,40 @@ const LoginForm: React.FC = () => {
     <div className={styles.loginPage}>
       <div className={styles.loginModal}>
         <div className="image-container">
-          <Image src="/Frothy-Beer.jpg" alt="Frothy Beer" layout="fill" objectFit="contain"></Image>
+          <Image
+            src="/Frothy-Beer.jpg"
+            alt="Frothy Beer"
+            layout="fill"
+            objectFit="contain"
+          ></Image>
         </div>
         <div className={styles.textBoxes}>
           <input
             placeholder="Email"
             id="email"
             onChange={(event) => setEmail(event.target.value)}
+            data-cy="email"
           />
           <input
             placeholder="Password"
             id="password"
             onChange={(event) => setPassword(event.target.value)}
+            data-cy="password"
           />
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.loginButton} onClick={tryLogin}>
+          <button
+            className={styles.loginButton}
+            onClick={tryLogin}
+            data-cy="login"
+          >
             Log in
           </button>
-          <button className={styles.createUserButton} onClick={createUser}>
+          <button
+            className={styles.createUserButton}
+            onClick={createUser}
+            data-cy="createuser"
+          >
             Create Account
           </button>
         </div>
@@ -89,6 +98,7 @@ const LoginForm: React.FC = () => {
         href="/login-form/logout"
         className={styles.logout}
         onClick={logOut}
+        data-cy="logout"
       >
         Logout
       </a>

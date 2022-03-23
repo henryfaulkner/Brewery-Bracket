@@ -22,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     .then((userCredential) => {
       const user: User = userCredential.user;
       userData = { User: user };
-      console.log("user: " + user);
+      console.log("user: " + JSON.stringify(userData));
     })
     .catch((error) => {
       const errorCode = error.code;
