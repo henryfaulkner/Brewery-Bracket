@@ -22,17 +22,17 @@ const handler = async (
   let response: CustomBrewery[] = [];
   data.forEach((doc) => {
     response.push(
-      new CustomBrewery(
-        doc.data().name,
-        doc.data().description,
-        doc.data().short_description,
-        doc.data().url,
-        doc.data().facebook_url,
-        doc.data().twitter_url,
-        doc.data().instagram_url,
-        doc.data().address,
-        doc.id
-      )
+      new CustomBrewery({
+        Name: doc.data().Name,
+        Description: doc.data().Description,
+        Short_Description: doc.data().Short_Description,
+        Url: doc.data().Url,
+        Facebook_Url: doc.data().Facebook_Url,
+        Twitter_Url: doc.data().Twitter_Url,
+        Instagram_Url: doc.data().Instagram_Url,
+        Address: doc.data().Address,
+        DocumentID: doc.data().DocumentID,
+      })
     );
   });
 

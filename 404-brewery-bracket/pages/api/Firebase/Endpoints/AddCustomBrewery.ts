@@ -17,20 +17,20 @@ const handler = async (
   res: NextApiResponse<CustomBrewery>
 ) => {
   const submittedBreweryName: string = req.body["name"];
-  let customBrewery: CustomBrewery = new CustomBrewery(
-    submittedBreweryName,
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  );
+  let customBrewery: CustomBrewery = new CustomBrewery({
+    Name: submittedBreweryName,
+    Description: "",
+    Short_Description: "",
+    Url: "",
+    Facebook_Url: "",
+    Twitter_Url: "",
+    Instagram_Url: "",
+    Address: "",
+  });
 
   const data = await addDoc(
     collection(firebase[1], collectionConstants.CustomBreweries),
-    customBrewery
+    JSON.parse(JSON.stringify(customBrewery))
   );
 
   customBrewery.SetDocumentID(data.id);

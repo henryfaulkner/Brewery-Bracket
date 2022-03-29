@@ -1,6 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth } from "firebase/auth";
-import { Firestore, collection, updateDoc, doc } from "firebase/firestore";
+import {
+  Firestore,
+  collection,
+  updateDoc,
+  doc,
+  where,
+  query,
+} from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
 import * as collectionConstants from "../CollectionConstants";
@@ -17,15 +24,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const address: string = req.body["address"];
   const url: string = req.body["url"];
 
-  const document = doc(
+  const collectionRef = collection(
     firebase[1],
-    collectionConstants.CustomBreweries,
-    customBreweryId
+    collectionConstants.CustomBreweries
   );
 
+  const document = doc(collectionRef, customBreweryId);
+
   const data = await updateDoc(document, {
-    address: address,
-    url: url,
+    Address: address,
+    Url: url,
   });
 
   res.status(200).json(data);

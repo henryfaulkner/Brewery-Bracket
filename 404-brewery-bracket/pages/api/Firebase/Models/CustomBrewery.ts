@@ -1,7 +1,7 @@
 import IFirebaseDocument from "./IFirebaseDocument";
 
 class CustomBrewery implements IFirebaseDocument {
-  private DocumentID: string;
+  public DocumentID: string;
   public Name: string;
   public Description: string;
   public Short_Description: string;
@@ -11,26 +11,16 @@ class CustomBrewery implements IFirebaseDocument {
   public Instagram_Url: string;
   public Address: string;
 
-  public constructor(
-    Name: string,
-    Description: string,
-    Short_Description: string,
-    Url: string,
-    Facebook_Url: string,
-    Twitter_Url: string,
-    Instagram_Url: string,
-    Address: string,
-    DocumentID?: string
-  ) {
-    this.Name = Name;
-    this.Description = Description;
-    this.Short_Description = Short_Description;
-    this.Url = Url;
-    this.Facebook_Url = Facebook_Url;
-    this.Twitter_Url = Twitter_Url;
-    this.Instagram_Url = Instagram_Url;
-    this.Address = Address;
-    if (DocumentID) this.DocumentID = DocumentID;
+  public constructor(json) {
+    this.Name = json["Name"];
+    this.Description = json["Description"];
+    this.Short_Description = json["Short_Description"];
+    this.Url = json["Url"];
+    this.Facebook_Url = json["Facebook_Url"];
+    this.Twitter_Url = json["Twitter_Url"];
+    this.Instagram_Url = json["Instagram_Url"];
+    this.Address = json["Address"];
+    if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
   }
 
   public GetDocumentID(): string {

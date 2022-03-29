@@ -1,7 +1,7 @@
 import IFirebaseDocument from "./IFirebaseDocument";
 
-class BreweryDay implements IFirebaseDocument {
-  private DocumentID: string;
+class BreweryDayScorecard implements IFirebaseDocument {
+  public DocumentID: string;
   public AssociatedBreweryDayID: string;
   public AssociatedBreweryID: string;
   public AssociatedBreweryName: string;
@@ -9,6 +9,24 @@ class BreweryDay implements IFirebaseDocument {
   public BeerScoreAggregate: number;
   public EnvironmentScore: number;
   public LocationScore: number;
+
+  public constructor(json) {
+    if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
+    if (json["AssociatedBreweryDayID"])
+      this.AssociatedBreweryDayID = json["AssociatedBreweryDayID"];
+    if (json["AssociatedBreweryID"])
+      this.AssociatedBreweryID = json["AssociatedBreweryID"];
+    if (json["AssociatedBreweryName"])
+      this.AssociatedBreweryName = json["AssociatedBreweryName"];
+    if (json["AssociatedUserID"])
+      this.AssociatedUserID = json["AssociatedUserID"];
+    if (json["BeerScoreAggregate"] !== NaN)
+      this.BeerScoreAggregate = json["BeerScoreAggregate"];
+    if (json["EnvironmentScore"] !== NaN)
+      this.EnvironmentScore = json["EnvironmentScore"];
+    if (json["LocationScore"] !== NaN)
+      this.LocationScore = json["LocationScore"];
+  }
 
   public GetDocumentID(): string {
     return this.DocumentID;
@@ -19,4 +37,4 @@ class BreweryDay implements IFirebaseDocument {
   }
 }
 
-export default BreweryDay;
+export default BreweryDayScorecard;

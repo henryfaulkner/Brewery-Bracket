@@ -3,6 +3,8 @@ import styles from "../styles/CustomBreweryTextbox.module.scss";
 import AdditionalInfoModal from "./AdditionalInfoModal";
 import Portal from "./Portal";
 import { stringify } from "querystring";
+import { json } from "stream/consumers";
+import CustomBrewery from "../pages/api/Firebase/Models/CustomBrewery";
 
 type CustomBreweryObject = {
   name: string;
@@ -22,9 +24,11 @@ const CustomBreweryTextbox = () => {
       else return { display: "none" };
     });
 
-    var customBreweryObject: CustomBreweryObject = {
+    let customBreweryObject: CustomBreweryObject = {
       name: inputText,
     };
+
+    console.log(JSON.stringify(customBreweryObject));
 
     const response = await fetch("/api/Firebase/Endpoints/AddCustomBrewery", {
       method: "POST",
@@ -34,8 +38,8 @@ const CustomBreweryTextbox = () => {
       },
     });
 
-    const data = await response.json();
-    setRecentAdditionId(data._key.path.segments[1]);
+    const data = new CustomBrewery(await response.json());
+    setRecentAdditionId(data.GetDocumentID());
   };
 
   return (
