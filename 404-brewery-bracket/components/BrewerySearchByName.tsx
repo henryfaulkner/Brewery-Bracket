@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
+import CardList from "./CardList";
+import Card from "./Card";
+import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 
 type BreweryObject = {
   id: string;
@@ -49,7 +52,7 @@ const BrewerySearchByName = (props) => {
       });
 
     //Call Firestore breweries
-    await fetch("/api/Firebase/GetCustomBreweries", {
+    await fetch("/api/Firebase/Endpoints/GetCustomBreweries", {
       method: "POST",
       body: JSON.stringify({}),
       headers: {
@@ -58,18 +61,17 @@ const BrewerySearchByName = (props) => {
     })
       .then((response) => response.json())
       .then((res) => {
-        console.log(res);
         const documents: BreweryObject[] = res.map((doc) => {
           return {
-            id: doc.id,
-            name: doc.name,
-            description: doc.description,
-            short_description: doc.short_description,
-            url: doc.url,
-            facebook_url: doc.facebook_url,
-            twitter_url: doc.twitter_url,
-            instagram_url: doc.instagram_url,
-            address: doc.address,
+            id: doc.DocumentID,
+            name: doc.Name,
+            description: doc.Description,
+            short_description: doc.Short_Description,
+            url: doc.Url,
+            facebook_url: doc.Facebook_Url,
+            twitter_url: doc.Twitter_Url,
+            instagram_url: doc.Instagram_Url,
+            address: doc.Address,
           };
         });
         setAllBreweries([...apiBreweries, ...documents]);
@@ -85,8 +87,6 @@ const BrewerySearchByName = (props) => {
 
       GetAllBreweries(request);
 
-      console.log(allBreweries);
-      console.log("Brewery data received.");
       hasPulledData = true;
     }
 
@@ -148,8 +148,67 @@ const BrewerySearchByName = (props) => {
     });
 
     controlAutocompleteOptions(breweryList);
-
     return breweryList;
+  };
+
+  //This is probably not performant
+  const submitValueSearch = async (value) => {
+    let result: BreweryObject;
+    allBreweries.every((brewery) => {
+      if (brewery.name === value) {
+        result = brewery;
+        return false;
+      }
+      return true;
+    });
+
+    return result;
+  };
+
+  //ADD CARD STUFF
+  const createOrGetScorecard = async (
+    breweryId,
+    breweryName
+  ): Promise<BreweryDayScorecard> => {
+    try {
+      return await fetch("/api/Firebase/Endpoints/CreateOrGetScorecard", {
+        method: "POST",
+        body: JSON.stringify({
+          breweryId: breweryId,
+          breweryName: breweryName,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          const scorecard = new BreweryDayScorecard(res);
+          return scorecard;
+        });
+    } catch (ex) {
+      return null;
+    }
+  };
+
+  const [breweryCards, setBreweryCards] = useState([]);
+  const AddBreweryCard = async (breweryName: string) => {
+    try {
+      const breweryObj = await submitValueSearch(breweryName);
+      const scorecard = await createOrGetScorecard(
+        breweryObj.id,
+        breweryObj.name
+      );
+
+      const breweryCard = (
+        <li style={{ listStyleType: "none" }}>
+          <Card scorecard={scorecard} />
+        </li>
+      );
+      setBreweryCards([...breweryCards, breweryCard]);
+    } catch (ex) {
+      console.log(`Invalid Brewery: ${ex}`);
+    }
   };
 
   return (
@@ -161,10 +220,15 @@ const BrewerySearchByName = (props) => {
         onChange={(e) => typing(e)}
         autoComplete={"off"}
       />
+      <button className={styles.btn} onClick={() => AddBreweryCard(searchText)}>
+        Add
+      </button>
 
       <div className={styles.dropdown} style={dropdownStyle}>
         <ul className={styles.autocompleteList}>{searchResultsOptions}</ul>
       </div>
+
+      <CardList breweryCards={breweryCards ?? []} />
     </div>
   );
 };

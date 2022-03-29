@@ -21,7 +21,7 @@ const Account = (props) => {
   });
 
   const getCurrentUser = async () => {
-    const response = await fetch("/api/Firebase/GetCurrentUser", {
+    const response = await fetch("/api/Firebase/Endpoints/GetCurrentUser", {
       method: "POST",
       body: JSON.stringify({}),
       headers: {

@@ -3,7 +3,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
-import FirebaseExtensions from "../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 
 type Data = {
   statusMessage: string;
