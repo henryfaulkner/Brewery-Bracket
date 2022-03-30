@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/AdditionalInfoModal.module.scss";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";
 
@@ -20,9 +20,17 @@ type Props = {
   Scorecard: BreweryDayScorecard;
 };
 
+let hasPulledData = false;
+
 const FinalizeScorecardModal: React.FC<Props> = (props) => {
-  const [locValue, setLocValue] = useState("");
-  const [envValue, setEnvValue] = useState("");
+  const [locValue, setLocValue] = useState(props.Scorecard.LocationScore);
+  const [envValue, setEnvValue] = useState(props.Scorecard.EnvironmentScore);
+  useEffect(() => {
+    setLocValue(props.Scorecard.LocationScore);
+    setEnvValue(props.Scorecard.EnvironmentScore);
+
+    hasPulledData = true;
+  }, [props.Scorecard.LocationScore, props.Scorecard.EnvironmentScore]);
 
   const restrictScore = (e, currScore) => {
     const validScores = ["1", "2", "3", "4", "5", ""];
@@ -54,9 +62,6 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
         <h2 className={styles.h2}>
           Finalize {props.Scorecard.AssociatedBreweryName} Scorecard
         </h2>
-        <p className={styles.p}>
-          *Totally optional but helps make the app better :)
-        </p>
 
         <div className={styles.inputRows}>
           <div className={styles.inputRow}>
