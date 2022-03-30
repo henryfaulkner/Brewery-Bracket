@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../styles/AdditionalInfoModal.module.scss";
-import { type } from "os";
 
 type Brewery = {
   url: string;
@@ -14,7 +13,14 @@ type CustomBreweryObject = {
   url: string;
 };
 
-const AdditionalInfoModal = (props) => {
+type Props = {
+  showModal: {};
+  setShowModal;
+  recentAdditionName: string;
+  recentAdditionId: string;
+};
+
+const AdditionalInfoModal: React.FC<Props> = (props) => {
   const [urlValue, setUrlValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
 

@@ -31,7 +31,7 @@ const handler = async (
         Twitter_Url: doc.data().Twitter_Url,
         Instagram_Url: doc.data().Instagram_Url,
         Address: doc.data().Address,
-        DocumentID: doc.data().DocumentID,
+        DocumentID: doc.id,
       })
     );
   });
