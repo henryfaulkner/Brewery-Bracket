@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/CustomBreweryTextbox.module.scss";
-import AdditionalInfoModal from "./AdditionalInfoModal";
 import Portal from "./Portal";
-import { stringify } from "querystring";
-import { json } from "stream/consumers";
 import CustomBrewery from "../pages/api/Firebase/Models/CustomBrewery";
 
 type CustomBreweryObject = {
@@ -54,6 +51,7 @@ const CustomBreweryTextbox = () => {
         Add
       </button>
       <Portal
+        Type={"AdditionalInfoModal"}
         showModal={showModal}
         setShowModal={setShowModal}
         recentAdditionName={inputText}
