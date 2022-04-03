@@ -16,3 +16,10 @@
 .btn:hover {
   box-shadow: 2px 3px $beer-brown;
 }
+
+.wrapper {
+  @include layout-for($mobileBreakpoint) {
+    display: flex;
+    flex-direction: column;
+  }
+}

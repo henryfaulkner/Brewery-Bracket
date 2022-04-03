@@ -31,6 +31,11 @@
   display: inline-block;
   position: absolute;
 
+  @include layout-for($mobileBreakpoint) {
+    display: flex;
+    flex-direction: column;
+  }
+
   input:focus {
     position: absolute;
     -webkit-transition: transform 1s ease-in-out;

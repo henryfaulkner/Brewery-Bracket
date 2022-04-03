@@ -1,4 +1,5 @@
 @import "variables.module.scss";
+@import "functions/mixins.scss";
 
 .pageContentContainer {
   margin: 0 30px;
@@ -45,4 +46,8 @@
 
 .knownBreweries {
   margin: 0px 0 30px 0;
+
+  @include layout-for($mobileBreakpoint) {
+    margin: 0px 0 65px 0;
+  }
 }

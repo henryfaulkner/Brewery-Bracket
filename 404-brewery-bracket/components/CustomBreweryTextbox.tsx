@@ -40,7 +40,7 @@ const CustomBreweryTextbox = () => {
   };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <input
         type="text"
         id="input"
