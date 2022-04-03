@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import AdditionalInfoModal from "./AdditionalInfoModal";
+import RedirectToLoginModal from "./RedirectToLoginModal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import FinalizeScorecardModal from "./Scorecard/FinalizeScorecardModal";
 
@@ -42,6 +43,16 @@ const Portal: React.FC<Props> = (props) => {
               showModal={props.showModal}
               setShowModal={props.setShowModal}
               Scorecard={props.Scorecard}
+            />,
+            document.body
+          )
+        : null;
+    case "RedirectToLoginModal":
+      return mounted
+        ? createPortal(
+            <RedirectToLoginModal
+              showModal={props.showModal}
+              setShowModal={props.setShowModal}
             />,
             document.body
           )

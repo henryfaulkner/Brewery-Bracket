@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
 import CardList from "./CardList";
 import Card from "./Card";
+import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
+import { User } from "firebase/auth";
+
+type CurrentUserData = {
+  CurrentUser: User;
+};
 
 type BreweryObject = {
   id: string;
@@ -24,6 +30,7 @@ type SearchRequest = {
 const searchLimit = 6;
 let searchResultsOptions: JSX.Element[] = [];
 let hasPulledData = false;
+let loadPage = false;
 
 //bug: if no result is long enough to fill space,
 //      the option block is too short
@@ -34,6 +41,7 @@ const BrewerySearchByName = (props) => {
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
   let [searchResults, setSearchResults]: [BreweryObject[], any] = useState([]);
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
+  const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
 
   const GetAllBreweries = async (request) => {
     let apiBreweries: BreweryObject[] = [];
@@ -84,6 +92,11 @@ const BrewerySearchByName = (props) => {
         typeahead: searchText,
         limit: searchLimit,
       };
+
+      if (loadPage === false) {
+        getCurrentUser();
+        loadPage = true;
+      }
 
       GetAllBreweries(request);
 
@@ -211,6 +224,29 @@ const BrewerySearchByName = (props) => {
     }
   };
 
+  //Get Auth User to see if user is signed in
+  const [currentUser, setCurrentUser]: [CurrentUserData, any] = useState({
+    CurrentUser: null,
+  });
+
+  const getCurrentUser = async () => {
+    const response = await fetch("/api/Firebase/Endpoints/GetCurrentUser", {
+      method: "POST",
+      body: JSON.stringify({}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    setCurrentUser(await response.json());
+  };
+
+  const ChangeShowModal = () => {
+    setShowModal(() => {
+      if (showModal["display"] === "none") return { display: "" };
+      else return { display: "none" };
+    });
+  };
+
   return (
     <div className={styles.wrapper}>
       <input
@@ -220,9 +256,23 @@ const BrewerySearchByName = (props) => {
         onChange={(e) => typing(e)}
         autoComplete={"off"}
       />
-      <button className={styles.btn} onClick={() => AddBreweryCard(searchText)}>
+      <button
+        className={styles.btn}
+        onClick={() => {
+          if (currentUser.CurrentUser) {
+            AddBreweryCard(searchText);
+          } else {
+            ChangeShowModal();
+          }
+        }}
+      >
         Add
       </button>
+      <Portal
+        Type={"RedirectToLoginModal"}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
 
       <div className={styles.dropdown} style={dropdownStyle}>
         <ul className={styles.autocompleteList}>{searchResultsOptions}</ul>
