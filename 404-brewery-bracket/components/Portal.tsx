@@ -1,8 +1,20 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import AdditionalInfoModal from "./AdditionalInfoModal";
+import RedirectToLoginModal from "./RedirectToLoginModal";
+import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
+import FinalizeScorecardModal from "./Scorecard/FinalizeScorecardModal";
 
-const Portal = (props) => {
+type Props = {
+  Type: string;
+  showModal: {};
+  setShowModal;
+  recentAdditionName?: string;
+  Scorecard?: BreweryDayScorecard;
+  recentAdditionId?: string;
+};
+
+const Portal: React.FC<Props> = (props) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -11,17 +23,42 @@ const Portal = (props) => {
     return () => setMounted(false);
   }, []);
 
-  return mounted
-    ? createPortal(
-        <AdditionalInfoModal
-          showModal={props.showModal}
-          setShowModal={props.setShowModal}
-          recentAdditionName={props.recentAdditionName}
-          recentAdditionId={props.recentAdditionId}
-        />,
-        document.body
-      )
-    : null;
+  switch (props.Type) {
+    case "AdditionalInfoModal":
+      return mounted
+        ? createPortal(
+            <AdditionalInfoModal
+              showModal={props.showModal}
+              setShowModal={props.setShowModal}
+              recentAdditionName={props.recentAdditionName}
+              recentAdditionId={props.recentAdditionId}
+            />,
+            document.body
+          )
+        : null;
+    case "FinalizeScorecardModal":
+      return mounted
+        ? createPortal(
+            <FinalizeScorecardModal
+              showModal={props.showModal}
+              setShowModal={props.setShowModal}
+              Scorecard={props.Scorecard}
+            />,
+            document.body
+          )
+        : null;
+    case "RedirectToLoginModal":
+      return mounted
+        ? createPortal(
+            <RedirectToLoginModal
+              showModal={props.showModal}
+              setShowModal={props.setShowModal}
+            />,
+            document.body
+          )
+        : null;
+  }
+  return;
 };
 
 export default Portal;

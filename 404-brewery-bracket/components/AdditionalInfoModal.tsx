@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../styles/AdditionalInfoModal.module.scss";
-import { type } from "os";
 
 type Brewery = {
   url: string;
@@ -14,7 +13,14 @@ type CustomBreweryObject = {
   url: string;
 };
 
-const AdditionalInfoModal = (props) => {
+type Props = {
+  showModal: {};
+  setShowModal;
+  recentAdditionName: string;
+  recentAdditionId: string;
+};
+
+const AdditionalInfoModal: React.FC<Props> = (props) => {
   const [urlValue, setUrlValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
 
@@ -26,13 +32,16 @@ const AdditionalInfoModal = (props) => {
       url: urlValue,
     };
 
-    const response = await fetch("/api/Firebase/UpdateCustomBreweryDoc", {
-      method: "POST",
-      body: JSON.stringify(customBreweryObject),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
+    const response = await fetch(
+      "/api/Firebase/Endpoints/UpdateCustomBreweryDoc",
+      {
+        method: "POST",
+        body: JSON.stringify(customBreweryObject),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    );
   };
 
   return (

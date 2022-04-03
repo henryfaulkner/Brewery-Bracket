@@ -21,7 +21,8 @@
 }
 
 .textBoxes {
-  input {
+  input[type="text"],
+  input[type="password"] {
     min-width: 300px;
     margin: 8px 0;
     display: inline-block;

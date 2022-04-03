@@ -47,3 +47,19 @@
   position: absolute;
   top: 6px;
 }
+
+.btn {
+  width: 40px;
+  border-radius: 5px;
+  height: 22px;
+  margin-left: 7px;
+  border-color: $beer-yellow;
+  @include layout-for($mobileBreakpoint) {
+    margin: 5px 0;
+    width: 147px;
+  }
+}
+
+.btn:hover {
+  box-shadow: 2px 3px $beer-brown;
+}

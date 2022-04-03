@@ -50,7 +50,7 @@ function GetAllBreweries(request) {
     });
 
   //Call Firestore breweries
-  fetch("/api/Firebase/GetCustomBreweries", {
+  fetch("/api/Firebase/Endpoints/GetCustomBreweries", {
     method: "POST",
     body: JSON.stringify({}),
     headers: {

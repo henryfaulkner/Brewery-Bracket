@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/CustomBreweryTextbox.module.scss";
-import AdditionalInfoModal from "./AdditionalInfoModal";
 import Portal from "./Portal";
-import { stringify } from "querystring";
+import CustomBrewery from "../pages/api/Firebase/Models/CustomBrewery";
 
 type CustomBreweryObject = {
   name: string;
@@ -22,11 +21,13 @@ const CustomBreweryTextbox = () => {
       else return { display: "none" };
     });
 
-    var customBreweryObject: CustomBreweryObject = {
+    let customBreweryObject: CustomBreweryObject = {
       name: inputText,
     };
 
-    const response = await fetch("/api/Firebase/AddCustomBrewery", {
+    console.log(JSON.stringify(customBreweryObject));
+
+    const response = await fetch("/api/Firebase/Endpoints/AddCustomBrewery", {
       method: "POST",
       body: JSON.stringify(customBreweryObject),
       headers: {
@@ -34,8 +35,8 @@ const CustomBreweryTextbox = () => {
       },
     });
 
-    const data = await response.json();
-    setRecentAdditionId(data._key.path.segments[1]);
+    const data = new CustomBrewery(await response.json());
+    setRecentAdditionId(data.GetDocumentID());
   };
 
   return (
@@ -50,6 +51,7 @@ const CustomBreweryTextbox = () => {
         Add
       </button>
       <Portal
+        Type={"AdditionalInfoModal"}
         showModal={showModal}
         setShowModal={setShowModal}
         recentAdditionName={inputText}

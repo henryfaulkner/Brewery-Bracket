@@ -10,6 +10,7 @@ type authentication = {
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisibility, setPasswordVisibility] = useState("password");
 
   const tryLogin = async () => {
     var auth: authentication = {
@@ -17,7 +18,11 @@ const LoginForm: React.FC = () => {
       password: password,
     };
 
+<<<<<<< HEAD
     await fetch("/api/Firebase/Login", {
+=======
+    const response = await fetch("/api/Firebase/Endpoints/Login", {
+>>>>>>> main
       method: "POST",
       body: JSON.stringify(auth),
       headers: {
@@ -33,7 +38,11 @@ const LoginForm: React.FC = () => {
       password: password,
     };
 
+<<<<<<< HEAD
     await fetch("/api/Firebase/CreateUser", {
+=======
+    const response = await fetch("/api/Firebase/Endpoints/CreateUser", {
+>>>>>>> main
       method: "POST",
       body: JSON.stringify(auth),
       headers: {
@@ -44,7 +53,11 @@ const LoginForm: React.FC = () => {
   };
 
   const logOut = async () => {
+<<<<<<< HEAD
     await fetch("/api/Firebase/Logout", {
+=======
+    const response = await fetch("/api/Firebase/Endpoints/Logout", {
+>>>>>>> main
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -68,14 +81,31 @@ const LoginForm: React.FC = () => {
             placeholder="Email"
             id="email"
             onChange={(event) => setEmail(event.target.value)}
+<<<<<<< HEAD
             data-cy="email"
+=======
+            type="text"
+>>>>>>> main
           />
           <input
             placeholder="Password"
             id="password"
             onChange={(event) => setPassword(event.target.value)}
+<<<<<<< HEAD
             data-cy="password"
+=======
+            type={passwordVisibility}
+>>>>>>> main
           />
+          {/* <input
+            type="checkbox"
+            onClick={() => {
+              passwordVisibility === "password"
+                ? setPasswordVisibility("text")
+                : setPasswordVisibility("password");
+            }}
+          /> 
+          <p>Show Password</p>*/}
         </div>
         <div className={styles.buttonContainer}>
           <button
@@ -94,12 +124,16 @@ const LoginForm: React.FC = () => {
           </button>
         </div>
       </div>
+<<<<<<< HEAD
       <a
         href="/login-form/logout"
         className={styles.logout}
         onClick={logOut}
         data-cy="logout"
       >
+=======
+      <a href="/login-form/logout" className={styles.logout} onClick={logOut}>
+>>>>>>> main
         Logout
       </a>
     </div>
