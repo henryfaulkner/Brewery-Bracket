@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth, signOut } from "firebase/auth";
 import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
+import { removeCookies } from "cookies-next";
 
 import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 
@@ -25,6 +26,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("error code: " + errorCode);
       console.log("error message: " + errorMessage);
     });
+
+  removeCookies("auth-token", { req, res });
+  res.status(200).json({ statusMessage: "success" });
 };
 
 export default handler;

@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth, signInWithEmailAndPassword, User } from "firebase/auth";
 import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
+import { getCookie, setCookies } from "cookies-next";
 
 import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 
@@ -18,11 +19,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
   const auth = getAuth();
   var userData: Data;
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+  let idToken;
+
+  await signInWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
       const user: User = userCredential.user;
       userData = { User: user };
       console.log("user: " + user);
+      idToken = await user.getIdTokenResult();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -31,7 +35,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("error message: " + errorMessage);
     });
 
-  res.status(200).json(userData);
+  setCookies("auth-token", idToken, { req, res });
+  console.log("auth-token: " + getCookie("auth-token", { req, res }));
+
+  return res.status(200).json(userData);
 };
 
 export default handler;
