@@ -12,10 +12,7 @@ var firebase: [FirebaseApp, Firestore] =
 
 const auth = getAuth(firebase[0]);
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<BreweryDayScorecard>
-) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const scorecardId: string = req.body["DocumentID"];
   const locationScore: string = req.body["locationScore"];
   const environmentScore: string = req.body["environmentScore"];
@@ -32,7 +29,7 @@ const handler = async (
     EnvironmentScore: environmentScore,
   });
 
-  res.status(200);
+  res.status(200).json({});
 };
 
 export default handler;

@@ -5,6 +5,7 @@ import Card from "./Card";
 import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import { User } from "firebase/auth";
+import { getCookie } from "cookies-next";
 
 type CurrentUserData = {
   CurrentUser: User;
@@ -29,12 +30,10 @@ type SearchRequest = {
 
 const searchLimit = 6;
 let searchResultsOptions: JSX.Element[] = [];
-let hasPulledData = false;
 let loadPage = false;
 
 //bug: if no result is long enough to fill space,
 //      the option block is too short
-//bug: hover only partially highlights
 //bug: takes two letter to kick in autocomplete
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
@@ -42,6 +41,7 @@ const BrewerySearchByName = (props) => {
   let [searchResults, setSearchResults]: [BreweryObject[], any] = useState([]);
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
+  const [hasPulledData, setHasPulledData] = useState(false);
 
   const GetAllBreweries = async (request) => {
     let apiBreweries: BreweryObject[] = [];
@@ -93,14 +93,9 @@ const BrewerySearchByName = (props) => {
         limit: searchLimit,
       };
 
-      if (loadPage === false) {
-        getCurrentUser();
-        loadPage = true;
-      }
-
+      getCurrentUser();
       GetAllBreweries(request);
-
-      hasPulledData = true;
+      setHasPulledData(true);
     }
 
     if (searchText == "") {
@@ -225,19 +220,13 @@ const BrewerySearchByName = (props) => {
   };
 
   //Get Auth User to see if user is signed in
-  const [currentUser, setCurrentUser]: [CurrentUserData, any] = useState({
-    CurrentUser: null,
-  });
+  const [isSignedIn, setIsSignedIn]: [boolean, any] = useState(false);
 
-  const getCurrentUser = async () => {
-    const response = await fetch("/api/Firebase/Endpoints/GetCurrentUser", {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-    setCurrentUser(await response.json());
+  const getCurrentUser = () => {
+    const authToken = getCookie("auth-token");
+    if (authToken !== "undefined" || authToken.toString() !== "") {
+      setIsSignedIn(true);
+    }
   };
 
   const ChangeShowModal = () => {
@@ -259,7 +248,7 @@ const BrewerySearchByName = (props) => {
       <button
         className={styles.btn}
         onClick={() => {
-          if (currentUser.CurrentUser) {
+          if (isSignedIn) {
             AddBreweryCard(searchText);
           } else {
             ChangeShowModal();

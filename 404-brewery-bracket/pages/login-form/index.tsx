@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Login-Form.module.scss";
 import Image from "next/image";
+import { getCookie, setCookies } from "cookies-next";
 
 type authentication = {
   email: string;
@@ -25,11 +26,11 @@ const LoginForm: React.FC = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    const data = await response.json();
 
+    console.log("auth-token: " + getCookie("auth-token"));
+    setCookies("cum-token", JSON.stringify(response.json));
     console.log("Login attempted");
-
-    console.log(data);
+    console.log("token: " + JSON.stringify(response.json));
   };
 
   const createUser = async () => {
@@ -45,7 +46,6 @@ const LoginForm: React.FC = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    const data = await response.json();
 
     console.log("User creation attempted.");
   };
