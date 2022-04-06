@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("error message: " + errorMessage);
     });
 
-  removeCookies("auth-token");
+  removeCookies("auth-token", { req, res });
   res.status(200).json({ statusMessage: "success" });
 };
 

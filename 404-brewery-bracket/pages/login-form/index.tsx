@@ -27,10 +27,7 @@ const LoginForm: React.FC = () => {
       },
     });
 
-    console.log("auth-token: " + getCookie("auth-token"));
-    setCookies("cum-token", JSON.stringify(response.json));
     console.log("Login attempted");
-    console.log("token: " + JSON.stringify(response.json));
   };
 
   const createUser = async () => {

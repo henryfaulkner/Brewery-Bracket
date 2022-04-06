@@ -5,7 +5,7 @@ import Card from "./Card";
 import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import { User } from "firebase/auth";
-import { getCookie } from "cookies-next";
+import { getCookie, checkCookies } from "cookies-next";
 
 type CurrentUserData = {
   CurrentUser: User;
@@ -223,8 +223,8 @@ const BrewerySearchByName = (props) => {
   const [isSignedIn, setIsSignedIn]: [boolean, any] = useState(false);
 
   const getCurrentUser = () => {
-    const authToken = getCookie("auth-token");
-    if (authToken !== "undefined" || authToken.toString() !== "") {
+    if (checkCookies("auth-token")) {
+      console.log("bitch");
       setIsSignedIn(true);
     }
   };
@@ -248,6 +248,7 @@ const BrewerySearchByName = (props) => {
       <button
         className={styles.btn}
         onClick={() => {
+          console.log(isSignedIn);
           if (isSignedIn) {
             AddBreweryCard(searchText);
           } else {

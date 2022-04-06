@@ -14,6 +14,7 @@ const BreweryDay = () => {
     new BreweryDayScorecard({})
   );
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
+  const [hasPulledData, setHasPulledData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +22,7 @@ const BreweryDay = () => {
         let { scorecardid } = router.query;
         await GetCurrentScorecard(scorecardid);
 
-        hasPulledData = true;
+        setHasPulledData(true);
       }
     };
 
