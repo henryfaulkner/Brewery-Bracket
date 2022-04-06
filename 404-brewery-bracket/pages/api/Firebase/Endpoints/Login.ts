@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth, signInWithEmailAndPassword, User } from "firebase/auth";
 import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
-import Cookies from "cookies";
 import { getCookie, setCookies } from "cookies-next";
 
 import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
