@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../styles/BrackerCreator.module.scss";
+import styles from "../../styles/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 

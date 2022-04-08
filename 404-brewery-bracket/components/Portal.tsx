@@ -12,6 +12,8 @@ type Props = {
   recentAdditionName?: string;
   Scorecard?: BreweryDayScorecard;
   recentAdditionId?: string;
+  AggregateBeerScore?: number;
+  BeerListLength?: number;
 };
 
 const Portal: React.FC<Props> = (props) => {
@@ -43,6 +45,8 @@ const Portal: React.FC<Props> = (props) => {
               showModal={props.showModal}
               setShowModal={props.setShowModal}
               Scorecard={props.Scorecard}
+              AggregateBeerScore={props.AggregateBeerScore}
+              BeerListLength={props.BeerListLength}
             />,
             document.body
           )

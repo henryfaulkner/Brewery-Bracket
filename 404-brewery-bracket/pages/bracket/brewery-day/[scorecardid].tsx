@@ -15,6 +15,8 @@ const BreweryDay = () => {
   const [beerList, setBeerList]: [BeerScore[], any] = useState([]);
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [hasPulledData, setHasPulledData] = useState(false);
+  const [aggregateBeerScore, setAggregateBeerScore]: [number, any] =
+    useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +24,7 @@ const BreweryDay = () => {
         let { scorecardid } = router.query;
         await GetCurrentScorecard(scorecardid);
         await GetExistingBeerScores(scorecardid);
+        AggregateExistingScores();
 
         setHasPulledData(true);
       }
@@ -45,7 +48,6 @@ const BreweryDay = () => {
       .then((response) => response.json())
       .then((res: JSON) => {
         setScorecard(new BreweryDayScorecard(res));
-        console.log("og scorecard: " + JSON.stringify(scorecard));
       });
   };
 
@@ -67,10 +69,18 @@ const BreweryDay = () => {
       });
   };
 
+  const AggregateExistingScores = () => {
+    setAggregateBeerScore(
+      beerList.reduce((agg: number, score: BeerScore) => {
+        return agg + score.Score;
+      }, 0)
+    );
+  };
+
   const AddBeerScore = async (
-    beerName,
-    beerId,
-    beerScore,
+    beerName: string,
+    beerId: string,
+    beerScore: number,
     isCustom = false
   ) => {
     const beerScoreObj = new BeerScore({
@@ -90,6 +100,8 @@ const BreweryDay = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
+
+    setAggregateBeerScore(aggregateBeerScore + beerScoreObj.Score);
   };
 
   const ChangeShowModal = () => {
@@ -115,6 +127,8 @@ const BreweryDay = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         Scorecard={scorecard}
+        AggregateBeerScore={aggregateBeerScore}
+        BeerListLength={beerList.length}
       />
     </div>
   );

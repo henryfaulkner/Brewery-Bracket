@@ -16,7 +16,7 @@ type BeerObject = {
 const ApiBeerScorecard: React.FC<Props> = (props) => {
   const [beerSelection, setBeerSelection]: [BeerObject[], any] = useState([]);
   const [selectedBeer, setSelectedBeer]: [BeerObject, any] = useState();
-  const [score, setScore]: [string, any] = useState("");
+  const [strScore, setStrScore]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
   const restrictScore = (e) => {
     const validScores = ["1", "2", "3", "4", "5", ""];
     if (e.target.value.length < 2 && validScores.includes(e.target.value)) {
-      setScore(e.target.value);
+      setStrScore(e.target.value);
     }
   };
 
@@ -88,14 +88,22 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
           type="text"
           placeholder="(1-5)"
           className={styles.ScoreBox}
-          value={score}
+          value={strScore}
           onChange={(e) => restrictScore(e)}
         />
       </div>
       <button
         onClick={() => {
-          if (selectedBeer.name !== "" && score !== "") {
-            props.AddBeerScore(selectedBeer.name, selectedBeer.id, score);
+          if (
+            selectedBeer !== undefined &&
+            selectedBeer.name !== "" &&
+            strScore !== ""
+          ) {
+            props.AddBeerScore(
+              selectedBeer.name,
+              selectedBeer.id,
+              parseInt(strScore)
+            );
           }
         }}
       >

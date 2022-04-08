@@ -30,7 +30,7 @@ const handler = async (
     AssociatedUserID: data.data().AssociatedUserID,
     AssociatedBreweryID: data.data().AssociatedBreweryID,
     AssociatedBreweryName: data.data().AssociatedBreweryName,
-    BeerScoreAggregate: data.data().BeerScoreAggregate,
+    AverageBeerScore: data.data().AverageBeerScore,
     EnvironmentScore: data.data().EnvironmentScore,
     LocationScore: data.data().LocationScore,
     DocumentID: data.id,

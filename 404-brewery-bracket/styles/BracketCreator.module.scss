@@ -1,6 +1,11 @@
 @import "variables.module.scss";
 @import "functions/mixins.scss";
 
+.BracketCreator {
+  display: flex;
+  flex-direction: row;
+}
+
 .pageContentContainer {
   margin: 0 30px;
 }

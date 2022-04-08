@@ -7,11 +7,15 @@ import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScore
 
 type Props = {
   Scorecard: BreweryDayScorecard;
-  AddBeerScore: (beerName, beerId, beerScore, isCustom?) => Promise<void>;
+  AddBeerScore: (
+    beerName: string,
+    beerId: string,
+    beerScore: number,
+    isCustom?: boolean
+  ) => Promise<void>;
 };
 
 const AddBeerScorecardContainer: React.FC<Props> = (props) => {
-  console.log("scorecard: " + JSON.stringify(props.Scorecard));
   return (
     <div>
       <ApiBeerScorecard
