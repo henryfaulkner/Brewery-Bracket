@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Scorecard.module.scss";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";
+import BeerScore from "../../pages/api/Firebase/Models/BeerScore";
 
 type Props = {
   Scorecard: BreweryDayScorecard;
+  AddBeerScore: (beerName, beerId, beerScore, IsCustom?) => Promise<void>;
 };
 
 type BeerObject = {
@@ -11,11 +13,11 @@ type BeerObject = {
   name: string;
 };
 
-let hasPulledData = false;
-
 const ApiBeerScorecard: React.FC<Props> = (props) => {
   const [beerSelection, setBeerSelection]: [BeerObject[], any] = useState([]);
+  const [selectedBeer, setSelectedBeer]: [BeerObject, any] = useState();
   const [score, setScore]: [string, any] = useState("");
+  const [hasPulledData, setHasPulledData] = useState(false);
 
   useEffect(() => {
     if (
@@ -24,7 +26,7 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
     ) {
       getBeerSelection();
 
-      hasPulledData = true;
+      setHasPulledData(true);
     }
   });
 
@@ -53,21 +55,33 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
       .then((response) => response.json())
       .then((response) => {
         console.log("beer response: " + JSON.stringify(response));
-        //response.map(beer => );
         setBeerSelection(response.beers);
       });
+  };
+
+  const findSelectedBeer = (beerId) => {
+    return beerSelection.find((beer) => beer.id === beerId);
   };
 
   return (
     <div className={styles.Card}>
       <h2>Api Beer Scorecard</h2>
       <div>
-        <select className={styles.Dropdown}>
+        <select
+          className={styles.Dropdown}
+          id="dropdown"
+          onChange={() => {
+            const selectValue: string = (
+              document.getElementById("dropdown") as HTMLInputElement
+            ).value;
+            setSelectedBeer(findSelectedBeer(selectValue));
+          }}
+        >
           <option value="none" selected disabled hidden>
             Select a Beer
           </option>
           {beerSelection.map((beer) => {
-            return <option value={beer.name}>{beer.name}</option>;
+            return <option value={beer.id}>{beer.name}</option>;
           })}
         </select>
         <input
@@ -78,7 +92,15 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
           onChange={(e) => restrictScore(e)}
         />
       </div>
-      <button>Add Score</button>
+      <button
+        onClick={() => {
+          if (selectedBeer.name !== "" && score !== "") {
+            props.AddBeerScore(selectedBeer.name, selectedBeer.id, score);
+          }
+        }}
+      >
+        Add Score
+      </button>
     </div>
   );
 };
