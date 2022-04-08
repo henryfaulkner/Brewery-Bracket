@@ -6,7 +6,7 @@ class BreweryDayScorecard implements IFirebaseDocument {
   public AssociatedBreweryID: string;
   public AssociatedBreweryName: string;
   public AssociatedUserID: string;
-  public BeerScoreAggregate: number;
+  public AverageBeerScore: number;
   public EnvironmentScore: number;
   public LocationScore: number;
 
@@ -20,8 +20,8 @@ class BreweryDayScorecard implements IFirebaseDocument {
       this.AssociatedBreweryName = json["AssociatedBreweryName"];
     if (json["AssociatedUserID"])
       this.AssociatedUserID = json["AssociatedUserID"];
-    if (json["BeerScoreAggregate"] !== NaN)
-      this.BeerScoreAggregate = json["BeerScoreAggregate"];
+    if (json["AverageBeerScore"] !== NaN)
+      this.AverageBeerScore = json["AverageBeerScore"];
     if (json["EnvironmentScore"] !== NaN)
       this.EnvironmentScore = json["EnvironmentScore"];
     if (json["LocationScore"] !== NaN)

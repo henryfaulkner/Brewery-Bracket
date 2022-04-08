@@ -53,7 +53,7 @@ const handler = async (
       AssociatedUserID: userId,
       AssociatedBreweryID: breweryId,
       AssociatedBreweryName: breweryName,
-      BeerScoreAggregate: 0,
+      AverageBeerScore: 0,
       EnvironmentScore: 0,
       LocationScore: 0,
     });
@@ -75,7 +75,7 @@ const handler = async (
           AssociatedUserID: data.data().AssociatedUserID,
           AssociatedBreweryID: data.data().AssociatedBreweryID,
           AssociatedBreweryName: data.data().AssociatedBreweryName,
-          BeerScoreAggregate: data.data().BeerScoreAggregate,
+          AverageBeerScore: data.data().AverageBeerScore,
           EnvironmentScore: data.data().EnvironmentScore,
           LocationScore: data.data().LocationScore,
           DocumentID: data.id,
