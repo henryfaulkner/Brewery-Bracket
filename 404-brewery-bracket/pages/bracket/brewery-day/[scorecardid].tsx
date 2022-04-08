@@ -4,15 +4,15 @@ import Portal from "../../../components/Portal";
 import BeerScoreList from "../../../components/Scorecard/BeerScoreList";
 import { useEffect, useState } from "react";
 import BreweryDayScorecard from "../../api/Firebase/Models/BreweryDayScorecard";
+import BeerScore from "../../api/Firebase/Models/BeerScore";
 import styles from "../../../styles/Scorecard.module.scss";
-
-let hasPulledData = false;
 
 const BreweryDay = () => {
   const router = useRouter();
   const [scorecard, setScorecard]: [BreweryDayScorecard, any] = useState(
     new BreweryDayScorecard({})
   );
+  const [beerList, setBeerList]: [BeerScore[], any] = useState([]);
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [hasPulledData, setHasPulledData] = useState(false);
 
@@ -21,6 +21,7 @@ const BreweryDay = () => {
       if (hasPulledData === false && router.isReady) {
         let { scorecardid } = router.query;
         await GetCurrentScorecard(scorecardid);
+        await GetExistingBeerScores(scorecardid);
 
         setHasPulledData(true);
       }
@@ -33,8 +34,6 @@ const BreweryDay = () => {
     const request = {
       DocumentID: scorecardid,
     };
-    //this comment makes the scorecard query work ????
-    console.log("scorecard id: " + scorecardid);
 
     await fetch("/api/Firebase/Endpoints/GetScorecardById", {
       method: "POST",
@@ -50,6 +49,49 @@ const BreweryDay = () => {
       });
   };
 
+  const GetExistingBeerScores = async (scorecardid) => {
+    const request = {
+      AssociatedScorecardID: scorecardid,
+    };
+
+    await fetch("/api/Firebase/Endpoints/GetScorecardBeerScores", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((res: JSON) => {
+        setBeerList(res);
+      });
+  };
+
+  const AddBeerScore = async (
+    beerName,
+    beerId,
+    beerScore,
+    isCustom = false
+  ) => {
+    const beerScoreObj = new BeerScore({
+      BeerName: beerName,
+      AssociatedBeerID: beerId,
+      Score: beerScore,
+      AssociatedScorecardID: scorecard.DocumentID,
+      IsCustom: isCustom,
+    });
+
+    setBeerList([...beerList, beerScoreObj]);
+
+    await fetch("/api/Firebase/Endpoints/AddBeerScore", {
+      method: "POST",
+      body: JSON.stringify(beerScoreObj),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  };
+
   const ChangeShowModal = () => {
     setShowModal(() => {
       if (showModal["display"] === "none") return { display: "" };
@@ -61,8 +103,11 @@ const BreweryDay = () => {
     <div>
       <h1>Brewery: {scorecard.AssociatedBreweryName}</h1>
       <div className={styles.Row}>
-        <BeerScoreList BeerScoreList={[<p>ooga booga</p>]} />
-        <AddBeerScorecardContainer Scorecard={scorecard} />
+        <BeerScoreList BeerScoreList={beerList} />
+        <AddBeerScorecardContainer
+          Scorecard={scorecard}
+          AddBeerScore={AddBeerScore}
+        />
       </div>
       <button onClick={ChangeShowModal}>Finalize Scorecard</button>
       <Portal

@@ -20,16 +20,13 @@ type Props = {
   Scorecard: BreweryDayScorecard;
 };
 
-let hasPulledData = false;
-
 const FinalizeScorecardModal: React.FC<Props> = (props) => {
   const [locValue, setLocValue] = useState(props.Scorecard.LocationScore);
   const [envValue, setEnvValue] = useState(props.Scorecard.EnvironmentScore);
+
   useEffect(() => {
     setLocValue(props.Scorecard.LocationScore);
     setEnvValue(props.Scorecard.EnvironmentScore);
-
-    hasPulledData = true;
   }, [props.Scorecard.LocationScore, props.Scorecard.EnvironmentScore]);
 
   const restrictScore = (e, currScore) => {
