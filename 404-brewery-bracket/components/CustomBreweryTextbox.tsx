@@ -25,8 +25,6 @@ const CustomBreweryTextbox = () => {
       name: inputText,
     };
 
-    console.log(JSON.stringify(customBreweryObject));
-
     const response = await fetch("/api/Firebase/Endpoints/AddCustomBrewery", {
       method: "POST",
       body: JSON.stringify(customBreweryObject),

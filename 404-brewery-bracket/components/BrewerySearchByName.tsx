@@ -224,7 +224,6 @@ const BrewerySearchByName = (props) => {
 
   const getCurrentUser = () => {
     if (checkCookies("auth-token")) {
-      console.log("bitch");
       setIsSignedIn(true);
     }
   };

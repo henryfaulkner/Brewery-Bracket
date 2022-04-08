@@ -36,8 +36,6 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
       environmentScore: envValue,
       averageBeerScore: props.AggregateBeerScore / props.BeerListLength,
     };
-    console.log("props.AggregateBeerScore: " + props.AggregateBeerScore);
-    console.log("props.BeerListLength: " + props.BeerListLength);
 
     await fetch("/api/Firebase/Endpoints/UpdateLocEnvAndAggScore", {
       method: "POST",

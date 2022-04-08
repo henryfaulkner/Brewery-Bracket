@@ -25,7 +25,6 @@ const BreweryDay = () => {
         await GetCurrentScorecard(scorecardid);
         await GetExistingBeerScores(scorecardid);
         AggregateExistingScores();
-        console.log("Existing Scores' total: " + aggregateBeerScore);
 
         setHasPulledData(true);
       }
@@ -49,7 +48,6 @@ const BreweryDay = () => {
       .then((response) => response.json())
       .then((res: JSON) => {
         setScorecard(new BreweryDayScorecard(res));
-        console.log("og scorecard: " + JSON.stringify(scorecard));
       });
   };
 
@@ -103,8 +101,6 @@ const BreweryDay = () => {
       },
     });
 
-    console.log(typeof aggregateBeerScore);
-    console.log(typeof aggregateBeerScore);
     setAggregateBeerScore(aggregateBeerScore + beerScoreObj.Score);
   };
 

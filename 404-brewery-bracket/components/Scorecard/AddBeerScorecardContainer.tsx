@@ -16,7 +16,6 @@ type Props = {
 };
 
 const AddBeerScorecardContainer: React.FC<Props> = (props) => {
-  console.log("scorecard: " + JSON.stringify(props.Scorecard));
   return (
     <div>
       <ApiBeerScorecard
