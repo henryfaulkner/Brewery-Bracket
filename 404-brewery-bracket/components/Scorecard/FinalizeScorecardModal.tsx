@@ -1,35 +1,24 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/dist/client/link";
 import styles from "../../styles/AdditionalInfoModal.module.scss";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";
-
-type Brewery = {
-  url: string;
-  address: string;
-};
-
-type CustomBreweryObject = {
-  name: string;
-  id: string;
-  address: string;
-  url: string;
-};
+import BeerScore from "../../pages/api/Firebase/Models/BeerScore";
 
 type Props = {
   showModal: {};
   setShowModal;
   Scorecard: BreweryDayScorecard;
+  AggregateBeerScore: number;
+  BeerListLength: number;
 };
-
-let hasPulledData = false;
 
 const FinalizeScorecardModal: React.FC<Props> = (props) => {
   const [locValue, setLocValue] = useState(props.Scorecard.LocationScore);
   const [envValue, setEnvValue] = useState(props.Scorecard.EnvironmentScore);
+
   useEffect(() => {
     setLocValue(props.Scorecard.LocationScore);
     setEnvValue(props.Scorecard.EnvironmentScore);
-
-    hasPulledData = true;
   }, [props.Scorecard.LocationScore, props.Scorecard.EnvironmentScore]);
 
   const restrictScore = (e, currScore) => {
@@ -40,14 +29,15 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
     return currScore;
   };
 
-  const UpdateLocAndEnvScore = async () => {
+  const UpdateLocEnvAndAggScore = async () => {
     const request = {
       DocumentID: props.Scorecard.DocumentID,
       locationScore: locValue,
       environmentScore: envValue,
+      averageBeerScore: props.AggregateBeerScore / props.BeerListLength,
     };
 
-    await fetch("/api/Firebase/Endpoints/UpdateLocAndEnvScore", {
+    await fetch("/api/Firebase/Endpoints/UpdateLocEnvAndAggScore", {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
@@ -95,15 +85,17 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
           >
             Close
           </button>
-          <button
-            className={styles.button2}
-            onClick={() => {
-              props.setShowModal({ display: "none" });
-              UpdateLocAndEnvScore();
-            }}
-          >
-            Finalize
-          </button>
+          <Link href="/bracket-creator">
+            <button
+              className={styles.button2}
+              onClick={() => {
+                props.setShowModal({ display: "none" });
+                UpdateLocEnvAndAggScore();
+              }}
+            >
+              Finalize
+            </button>
+          </Link>
         </div>
       </div>
     </div>

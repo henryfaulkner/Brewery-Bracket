@@ -1,3 +1,4 @@
+export const Brackets: string = "Brackets";
 export const BeerScore: string = "Beer Score";
 export const BreweryDay: string = "Brewery Day";
 export const BreweryDayScorecard: string = "Brewery Day Scorecard";
