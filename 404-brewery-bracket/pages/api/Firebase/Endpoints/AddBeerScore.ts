@@ -35,7 +35,7 @@ const handler = async (
     JSON.parse(JSON.stringify(beerScore))
   );
 
-  beerScore.SetDocumentID(data.id);
+  beerScore.SetDocumentID = data.id;
 
   res.status(200).json(beerScore);
   console.log(beerName + " added to beer score list.");

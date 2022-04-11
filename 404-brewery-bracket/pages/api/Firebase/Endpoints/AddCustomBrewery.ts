@@ -33,7 +33,7 @@ const handler = async (
     JSON.parse(JSON.stringify(customBrewery))
   );
 
-  customBrewery.SetDocumentID(data.id);
+  customBrewery.SetDocumentID = data.id;
 
   res.status(200).json(customBrewery);
   console.log(submittedBreweryName + " added to custom breweries.");

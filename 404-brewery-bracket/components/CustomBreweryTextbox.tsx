@@ -34,7 +34,7 @@ const CustomBreweryTextbox = () => {
     });
 
     const data = new CustomBrewery(await response.json());
-    setRecentAdditionId(data.GetDocumentID());
+    setRecentAdditionId(data.GetDocumentID);
   };
 
   return (
