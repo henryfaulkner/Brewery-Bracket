@@ -8,13 +8,13 @@
     justify-content: space-around;
     align-items: flex-end;
   
-    @include layout-for($desktopBreakpoint) {
+    @include layout-for(desktop) {
       flex-direction: row;
     }
-    @include layout-for($tabletBreakpoint) {
+    @include layout-for(tablet) {
       flex-direction: row;
     }
-    @include layout-for($mobileBreakpoint) {
+    @include layout-for(mobile) {
       flex-direction: column;
     }
   }

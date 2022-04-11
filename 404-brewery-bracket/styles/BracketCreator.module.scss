@@ -4,6 +4,7 @@
 .BracketCreator {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .pageContentContainer {
@@ -52,7 +53,7 @@
 .knownBreweries {
   margin: 0px 0 30px 0;
 
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     margin: 0px 0 65px 0;
   }
 }

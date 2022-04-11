@@ -8,8 +8,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 main {
-  padding: 50px;
-  @include layout-for($mobileBreakpoint) {
+  padding: 15px 50px;
+  @include layout-for(mobile) {
     padding: 16px;
   }
 }

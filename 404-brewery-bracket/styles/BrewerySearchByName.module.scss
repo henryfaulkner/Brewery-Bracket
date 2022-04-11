@@ -17,7 +17,7 @@
 
 .dropdown {
   position: absolute;
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     top: 20px;
   }
 }
@@ -31,26 +31,30 @@
   display: inline-block;
   position: absolute;
 
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     display: flex;
     flex-direction: column;
   }
 
   input:focus {
     position: absolute;
-    -webkit-transition: transform 1s ease-in-out;
+    -webkit-transition: transform 0.2s ease-in-out;
     transform: scale(3) translate(30%, -50%);
-    @include layout-for($mobileBreakpoint) {
-      -webkit-transition: transform 1s ease-in-out;
+    @include layout-for(mobile) {
+      -webkit-transition: transform 0.2s ease-in-out;
       transform: scale(2) translate(23%, -50%);
     }
   }
 }
 
 .autocompleteList {
+  height: 300px;
+  max-height: 300px;
+  min-width: 200px;
   padding: 0;
   position: absolute;
   top: 6px;
+  overflow: auto;
 }
 
 .btn {
@@ -59,7 +63,7 @@
   height: 22px;
   margin-left: 7px;
   border-color: $beer-yellow;
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     margin: 5px 0;
     width: 147px;
   }
