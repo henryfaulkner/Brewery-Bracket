@@ -5,28 +5,7 @@ import OptionsAccordion from "./OptionsAccordion";
 
 import { User } from "firebase/auth";
 
-type CurrentUserData = {
-  CurrentUser: User;
-};
-
-let currentUser: CurrentUserData = null;
-
 const Header = (props) => {
-  useEffect(() => {
-    getCurrentUser();
-  });
-
-  const getCurrentUser = async () => {
-    const response = await fetch("/api/Firebase/Endpoints/GetCurrentUser", {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-    currentUser = await response.json();
-  };
-
   return (
     <div className={styles.navBar}>
       <Link href="/">

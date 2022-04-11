@@ -6,13 +6,13 @@ type CurrentUserData = {
   CurrentUser: User;
 };
 
-let loadPage = false;
-
 const Account = (props) => {
+  const [hasPulledData, setHasPulledData] = useState(false);
+
   useEffect(() => {
-    if (loadPage === false) {
+    if (hasPulledData === false) {
       getCurrentUser();
-      loadPage = true;
+      setHasPulledData(true);
     }
   });
 
