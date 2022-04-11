@@ -18,20 +18,6 @@ const Header = (props) => {
           ["/login-form", "Signup / log-in"],
         ]}
       />
-      {/*
-        <p className={styles.headerLink} onClick={props.breweries}>
-          Breweries
-        </p>
-        <Link href="/account">
-          <p className={styles.headerLink} onClick={props.account}>
-            Account
-          </p>
-        </Link>
-        <Link href="/login-form">
-          <p className={styles.headerLink} onClick={props.account}>
-            Signup
-          </p>
-        </Link> */}
     </div>
   );
 };

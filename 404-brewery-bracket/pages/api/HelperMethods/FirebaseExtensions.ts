@@ -1,5 +1,6 @@
 import { initializeApp, FirebaseApp } from "firebase/app";
-import { getFirestore, Firestore, getDocs } from "firebase/firestore";
+import { getFirestore, Firestore } from "firebase/firestore";
+import { getAuth, User } from "firebase/auth";
 import { useState } from "react";
 
 function InitializeFirebase(): [FirebaseApp, Firestore] {
@@ -65,4 +66,10 @@ function GetAllBreweries(request) {
   return allBreweries;
 }
 
-export default { InitializeFirebase, GetAllBreweries };
+function GetCurrentUser(): User {
+  const firebase: [FirebaseApp, Firestore] = this.InitializeFirebase();
+  const auth = getAuth(firebase[0]);
+  return auth.currentUser;
+}
+
+export default { InitializeFirebase, GetAllBreweries, GetCurrentUser };

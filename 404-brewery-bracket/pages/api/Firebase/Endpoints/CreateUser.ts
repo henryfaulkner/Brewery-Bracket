@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { Firestore } from "firebase/firestore";
+import { Firestore, collection, addDoc } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
+import * as CollectionConstants from "../CollectionConstants";
+import User from "../Models/User";
 import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 
 type Data = {
@@ -22,6 +24,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      const userObj = new User({
+        UserID: userCredential.user.uid,
+        Email: userCredential.user.email,
+        Groups: [],
+      });
+      addDoc(
+        collection(firebase[1], CollectionConstants.Users),
+        JSON.parse(JSON.stringify(userObj))
+      ).then((res) => {
+        userObj.SetDocumentID(res.id);
+      });
 
       console.log("User creds: " + user);
       console.log("Email used: " + email);
