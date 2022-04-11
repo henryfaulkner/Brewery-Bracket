@@ -1,14 +1,14 @@
 import IFirebaseDocument from "./IFirebaseDocument";
 
-class Bracket implements IFirebaseDocument {
-  public DocumentID: string;
-  public BracketName: string;
-  public GroupID: string;
+class Group implements IFirebaseDocument {
+  private DocumentID: string;
+  public Users: string[]; //Document IDs
 
   public constructor(json) {
     if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
-    if (json["BracketName"]) this.BracketName = json["BracketName"];
-    if (json["GroupID"]) this.GroupID = json["GroupID"];
+    if (json["Users"]) {
+      this.Users = json["Users"];
+    }
   }
 
   get GetDocumentID(): string {
@@ -20,4 +20,4 @@ class Bracket implements IFirebaseDocument {
   }
 }
 
-export default Bracket;
+export default Group;

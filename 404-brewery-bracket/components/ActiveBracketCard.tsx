@@ -1,20 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/dist/client/link";
 import styles from "../styles/ActiveBracketCard.module.scss";
 
 const ActiveBracketCard = (props) => {
-  return props.override ? (
+  useEffect(() => {}, props.bracket);
+
+  return (
     <div className={styles.abCardCont}>
       <div className={styles.abCardBody}>
-        <Link href="/bracket-creator">
-          <span className={styles.addBracketCard}>+</span>
+        <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
+          <h1>{props.bracket.BracketName}</h1>
         </Link>
-      </div>
-    </div>
-  ) : (
-    <div className={styles.abCardCont}>
-      <div className={styles.abCardBody}>
-        <h1>{props.bracketName}</h1>
       </div>
     </div>
   );

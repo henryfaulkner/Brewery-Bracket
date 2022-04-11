@@ -24,13 +24,21 @@ function OptionsAccordion(props: OptionArray) {
 
   let mobileStructureOnClick = (
     <div className={styles.mobileLinks}>
-        <div className={styles.mobileLinksClose} onClick={() => setNavClicked(false)}>X</div>
-        {options}
+      <div
+        className={styles.mobileLinksClose}
+        onClick={() => setNavClicked(false)}
+      >
+        X
+      </div>
+      {options}
     </div>
-  )
+  );
 
   let mobileStructure = (
-    <div className={styles.mobileNav} onClick={() => setNavClicked(!navclicked)}>
+    <div
+      className={styles.mobileNav}
+      onClick={() => setNavClicked(!navclicked)}
+    >
       <div>
         <hr />
         <hr />
@@ -38,8 +46,12 @@ function OptionsAccordion(props: OptionArray) {
       </div>
       {navclicked ? mobileStructureOnClick : null}
     </div>
-  )
-  return <div className={styles.navContainer}>{size.isMobile ? mobileStructure : options}</div>;
+  );
+  return (
+    <div className={styles.navContainer}>
+      {size.isMobile ? mobileStructure : options}
+    </div>
+  );
 }
 
 function useWindowSize() {
@@ -48,7 +60,7 @@ function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
-    isMobile: false
+    isMobile: false,
   });
 
   useEffect(() => {
@@ -58,11 +70,12 @@ function useWindowSize() {
       // @ts-ignore
       function handleResize() {
         // Set window width/height to state
-        let mobileState = window.innerWidth <= parseInt(globalVariables.mobileBreakpoint);
+        let mobileState =
+          window.innerWidth <= parseInt(globalVariables.mobileBreakpoint);
         setWindowSize({
           width: window.innerWidth,
           height: window.innerHeight,
-          isMobile: mobileState
+          isMobile: mobileState,
         });
       }
 

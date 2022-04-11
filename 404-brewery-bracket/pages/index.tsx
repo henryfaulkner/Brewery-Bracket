@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ActiveBracketCard from "../components/ActiveBracketCard";
+import CreateBracketCard from "../components/CreateBracketCard";
 import Bracket from "./api/Firebase/Models/Bracket";
 
 import styles from "../styles/BracketCreator.module.scss";
@@ -30,17 +31,8 @@ const Home = () => {
       });
   };
 
-  const CreateBracket = async () => {
-    await fetch("/api/Firebase/Endpoints/CreateBracket", {
-      method: "POSt",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((res: JSON) => {
-        setBrackets([...brackets, res]);
-      });
+  const SetBracketsAfterACreation = (newBracket: Bracket) => {
+    setBrackets([...brackets, newBracket]);
   };
 
   return (
@@ -49,14 +41,11 @@ const Home = () => {
         <h2>Active Brackets</h2>
         <hr />
         <div className={styles.BracketCreator}>
-          <ActiveBracketCard override={true} />
+          <CreateBracketCard
+            SetBracketsAfterACreation={SetBracketsAfterACreation}
+          />
           {brackets.map((bracket: Bracket) => {
-            return (
-              <ActiveBracketCard
-                override={false}
-                bracketName={bracket.BracketName}
-              />
-            );
+            return <ActiveBracketCard bracket={bracket} />;
           })}
         </div>
       </div>

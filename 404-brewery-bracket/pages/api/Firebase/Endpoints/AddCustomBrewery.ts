@@ -4,7 +4,7 @@ import { Firestore, collection, addDoc } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
 import CustomBrewery from "../Models/CustomBrewery";
-import * as collectionConstants from "../CollectionConstants";
+import * as CollectionConstants from "../CollectionConstants";
 import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 
 var firebase: [FirebaseApp, Firestore] =
@@ -29,11 +29,11 @@ const handler = async (
   });
 
   const data = await addDoc(
-    collection(firebase[1], collectionConstants.CustomBreweries),
+    collection(firebase[1], CollectionConstants.CustomBreweries),
     JSON.parse(JSON.stringify(customBrewery))
   );
 
-  customBrewery.SetDocumentID(data.id);
+  customBrewery.SetDocumentID = data.id;
 
   res.status(200).json(customBrewery);
   console.log(submittedBreweryName + " added to custom breweries.");

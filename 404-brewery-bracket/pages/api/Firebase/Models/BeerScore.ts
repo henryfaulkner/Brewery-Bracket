@@ -19,11 +19,11 @@ class BeerScore implements IFirebaseDocument {
     if (json["IsCustom"] != undefined) this.IsCustom = json["IsCustom"];
   }
 
-  public GetDocumentID(): string {
+  get GetDocumentID(): string {
     return this.DocumentID;
   }
 
-  public SetDocumentID(DocumentID: string): void {
+  set SetDocumentID(DocumentID: string) {
     this.DocumentID = DocumentID;
   }
 }

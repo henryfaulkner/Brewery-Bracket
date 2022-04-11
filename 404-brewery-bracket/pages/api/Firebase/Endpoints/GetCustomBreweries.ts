@@ -37,7 +37,6 @@ const handler = async (
   });
 
   res.status(200).json(response);
-  console.log(response);
 };
 
 export default handler;
