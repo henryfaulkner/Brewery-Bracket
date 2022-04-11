@@ -28,11 +28,11 @@ class BreweryDayScorecard implements IFirebaseDocument {
       this.LocationScore = json["LocationScore"];
   }
 
-  public GetDocumentID(): string {
+  get GetDocumentID(): string {
     return this.DocumentID;
   }
 
-  public SetDocumentID(DocumentID: string): void {
+  set SetDocumentID(DocumentID: string) {
     this.DocumentID = DocumentID;
   }
 }

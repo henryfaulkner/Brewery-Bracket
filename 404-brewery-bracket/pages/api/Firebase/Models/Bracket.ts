@@ -1,7 +1,7 @@
 import IFirebaseDocument from "./IFirebaseDocument";
 
 class Bracket implements IFirebaseDocument {
-  private DocumentID: string;
+  public DocumentID: string;
   public BracketName: string;
   public GroupID: string;
 
@@ -11,11 +11,11 @@ class Bracket implements IFirebaseDocument {
     if (json["GroupID"]) this.GroupID = json["GroupID"];
   }
 
-  public GetDocumentID(): string {
+  get GetDocumentID(): string {
     return this.DocumentID;
   }
 
-  public SetDocumentID(DocumentID: string): void {
+  set SetDocumentID(DocumentID: string) {
     this.DocumentID = DocumentID;
   }
 }

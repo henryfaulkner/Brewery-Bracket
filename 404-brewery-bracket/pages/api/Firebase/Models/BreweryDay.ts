@@ -5,11 +5,11 @@ class BreweryDay implements IFirebaseDocument {
   public AssociatedBreweryID: string;
   public AssociatedBreweryName: string;
 
-  public GetDocumentID(): string {
+  get GetDocumentID(): string {
     return this.DocumentID;
   }
 
-  public SetDocumentID(DocumentID: string): void {
+  set SetDocumentID(DocumentID: string) {
     this.DocumentID = DocumentID;
   }
 }

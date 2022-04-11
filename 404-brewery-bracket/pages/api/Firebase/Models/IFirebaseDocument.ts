@@ -1,6 +1,6 @@
 interface IFirebaseDocument {
-  GetDocumentID: () => string;
-  SetDocumentID: (string) => void;
+  GetDocumentID: string;
+  SetDocumentID: string;
 }
 
 export default IFirebaseDocument;

@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         collection(firebase[1], CollectionConstants.Users),
         JSON.parse(JSON.stringify(userObj))
       ).then((res) => {
-        userObj.SetDocumentID(res.id);
+        userObj.SetDocumentID = res.id;
       });
 
       console.log("User creds: " + user);

@@ -9,7 +9,7 @@ import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
 import Group from "../Models/Group";
 
 type Data = {
-  statusMessage: string;
+  bracket: JSON;
 };
 
 var firebase: [FirebaseApp, Firestore] =
@@ -23,6 +23,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const bracketName: string = req.body["BracketName"];
   console.log("BracketName: " + bracketName);
 
+  let bracket: Bracket;
   const currUser = FirebaseExtensions.GetCurrentUser();
   const group = new Group({
     Users: [currUser.uid],
@@ -31,21 +32,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     collection(firebase[1], CollectionConstants.Groups),
     JSON.parse(JSON.stringify(group))
   ).then((res) => {
-    group.SetDocumentID(res.id);
+    group.SetDocumentID = res.id;
 
-    const bracket = new Bracket({
+    bracket = new Bracket({
       BracketName: bracketName,
-      GroupID: group.GetDocumentID(),
+      GroupID: group.GetDocumentID,
     });
     addDoc(
       collection(firebase[1], CollectionConstants.Brackets),
       JSON.parse(JSON.stringify(bracket))
     ).then((res) => {
-      bracket.SetDocumentID(res.id);
+      bracket.SetDocumentID = res.id;
     });
   });
 
-  res.status(200).json({ statusMessage: "Successfully call." });
+  res.status(200).json({ bracket: JSON.parse(JSON.stringify(bracket)) });
 };
 
 export default handler;

@@ -23,11 +23,11 @@ class CustomBrewery implements IFirebaseDocument {
     if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
   }
 
-  public GetDocumentID(): string {
+  get GetDocumentID(): string {
     return this.DocumentID;
   }
 
-  public SetDocumentID(DocumentID: string): void {
+  set SetDocumentID(DocumentID: string) {
     this.DocumentID = DocumentID;
   }
 }

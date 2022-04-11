@@ -31,7 +31,7 @@ const handler = async (
     docs.forEach((data) => {
       response.push(
         new Bracket({
-          DocumentID: data.data().DocumentID,
+          DocumentID: data.id,
           BracketName: data.data().BracketName,
           GroupID: data.data().GroupID,
         })
