@@ -4,7 +4,7 @@ import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 import { removeCookies } from "cookies-next";
 
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 
 type Data = {
   statusMessage: string;

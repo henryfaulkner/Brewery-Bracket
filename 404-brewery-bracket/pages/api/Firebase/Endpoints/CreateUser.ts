@@ -5,7 +5,7 @@ import { FirebaseApp } from "firebase/app";
 
 import * as CollectionConstants from "../CollectionConstants";
 import User from "../Models/User";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 
 type Data = {
   statusMessage: string;

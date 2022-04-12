@@ -5,7 +5,7 @@ import { FirebaseApp } from "firebase/app";
 
 import * as CollectionConstants from "../CollectionConstants";
 import Bracket from "../Models/Bracket";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 import Group from "../Models/Group";
 
 type Data = {

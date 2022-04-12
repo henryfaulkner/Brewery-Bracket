@@ -1,15 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { useContext } from "react";
 import { getAuth } from "firebase/auth";
 import { Firestore, collection, addDoc } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import { FirebaseContext } from "../../../../helpers/FirebaseContext";
 
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
+const firebase = useContext(FirebaseContext);
 const auth = getAuth(firebase[0]);
 
 const handler = async (

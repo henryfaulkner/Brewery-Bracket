@@ -3,7 +3,7 @@ import { getAuth, User } from "firebase/auth";
 import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 
 type Data = {
   CurrentUser: User | string;

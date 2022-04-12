@@ -10,7 +10,7 @@ import {
 import { FirebaseApp } from "firebase/app";
 
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 import Bracket from "../Models/Bracket";
 
 var firebase: [FirebaseApp, Firestore] =
