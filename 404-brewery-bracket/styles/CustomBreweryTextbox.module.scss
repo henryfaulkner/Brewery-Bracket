@@ -7,7 +7,7 @@
   height: 22px;
   margin-left: 7px;
   border-color: $beer-yellow;
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     margin: 5px 0;
     width: 147px;
   }
@@ -18,7 +18,7 @@
 }
 
 .wrapper {
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     display: flex;
     flex-direction: column;
   }

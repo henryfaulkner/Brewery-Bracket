@@ -37,7 +37,7 @@
 .inputRows {
   margin-bottom: 10%;
   width: 75%;
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     margin-bottom: 7%;
   }
 }
@@ -60,7 +60,7 @@
   margin-right: 15px;
   width: 80px;
   align-items: center;
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     display: flex;
     flex-direction: column;
     margin: 0 0 7px 0;
@@ -70,7 +70,7 @@
 .button2 {
   margin-left: 15px;
   width: 80px;
-  @include layout-for($mobileBreakpoint) {
+  @include layout-for(mobile) {
     display: flex;
     flex-direction: column;
     margin: 0;
