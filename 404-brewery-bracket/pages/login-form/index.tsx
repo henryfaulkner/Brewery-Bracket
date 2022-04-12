@@ -59,13 +59,15 @@ const LoginForm: React.FC = () => {
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginModal}>
-        <div className="image-container">
-          <Image
-            src="/Frothy-Beer.jpg"
-            alt="Frothy Beer"
-            layout="fill"
-            objectFit="contain"
-          ></Image>
+        <div className={styles.loginImageAligner}>
+          <div className={`image-container ${styles.loginImage}`}>
+            <Image
+              src="/Frothy-Beer.jpg"
+              alt="Frothy Beer"
+              layout="fill"
+              objectFit="contain"
+            ></Image>
+          </div>
         </div>
         <div className={styles.textBoxes}>
           <input
