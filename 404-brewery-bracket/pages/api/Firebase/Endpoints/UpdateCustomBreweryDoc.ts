@@ -11,7 +11,7 @@ import {
 import { FirebaseApp } from "firebase/app";
 
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 
 var firebase: [FirebaseApp, Firestore] =
   FirebaseExtensions.InitializeFirebase();

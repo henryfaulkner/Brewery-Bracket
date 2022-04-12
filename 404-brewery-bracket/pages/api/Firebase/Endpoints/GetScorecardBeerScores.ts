@@ -11,7 +11,7 @@ import { FirebaseApp } from "firebase/app";
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 
 var firebase: [FirebaseApp, Firestore] =
   FirebaseExtensions.InitializeFirebase();

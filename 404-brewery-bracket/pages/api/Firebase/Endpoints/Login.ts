@@ -4,7 +4,7 @@ import { Firestore } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 import { getCookie, setCookies } from "cookies-next";
 
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 
 type Data = {
   User: User;
@@ -35,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("error message: " + errorMessage);
     });
 
-  setCookies("auth-token", idToken, { req, res });
+  setCookies("auth-token", idToken, { req, res, maxAge: 60 * 15 });
   console.log("auth-token: " + getCookie("auth-token", { req, res }));
 
   return res.status(200).json(userData);

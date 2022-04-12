@@ -4,7 +4,7 @@ import { Firestore, collection, updateDoc, doc } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../HelperMethods/FirebaseExtensions";
+import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
 
 var firebase: [FirebaseApp, Firestore] =
