@@ -9,9 +9,9 @@
 .loginModal {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   max-width: 800px;
+
   div {
     display: flex;
     justify-content: space-evenly;
@@ -20,7 +20,23 @@
   }
 }
 
+.loginImageAligner {
+  display: block;
+
+}
+
+.loginImage {
+  min-width: 200px;
+  min-height: 200px;
+  width: 200px;
+  height: 200px;
+  span {
+    border-radius: 100%;
+  }
+}
+
 .textBoxes {
+
   input[type="text"],
   input[type="password"] {
     min-width: 300px;
@@ -49,7 +65,7 @@
     text-align: center;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    margin: 16px 0 !important;
+    margin: 16px 0;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
