@@ -25,6 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
   let bracket: Bracket;
   const currUser = FirebaseExtensions.GetCurrentUser();
+  console.log("currUser: " + currUser);
   const group = new Group({
     Users: [currUser.uid],
   });

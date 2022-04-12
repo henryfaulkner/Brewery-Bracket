@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from "react";
+import Portal from "./Portal";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
 import Link from "next/dist/client/link";
 import styles from "../styles/ActiveBracketCard.module.scss";
+import { checkCookies } from "cookies-next";
 
 const CreateBracketCard = (props) => {
   const [bracketID, setBracketID]: [string, any] = useState("");
+  const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
+  const [isSignedIn, setIsSignedIn]: [boolean, any] = useState(false);
+  const [hasPulledData, setHasPulledData]: [boolean, any] = useState(false);
+
+  useEffect(() => {
+    if (hasPulledData === false) {
+      if (checkCookies("auth-token")) {
+        setIsSignedIn(true);
+      } else {
+        setIsSignedIn(false);
+      }
+      setHasPulledData(true);
+    }
+  });
 
   const CreateBracket = async (bracketName: string) => {
     const request = {
@@ -31,9 +47,22 @@ const CreateBracketCard = (props) => {
   }
   console.log(JSON.stringify(props.bracket));
 
+  const ChangeShowModal = () => {
+    setShowModal(() => {
+      if (showModal["display"] === "none") return { display: "" };
+      else return { display: "none" };
+    });
+  };
+
+  console.log(showModal);
   return (
     <div className={styles.abCardCont}>
-      <div className={styles.abCardBody}>
+      <div
+        className={styles.abCardBody}
+        onClick={() => {
+          if (!isSignedIn) ChangeShowModal();
+        }}
+      >
         <span
           className={styles.addBracketCard}
           onClick={() => CreateBracket("Bracket " + getRandomInt(100))}
@@ -41,6 +70,11 @@ const CreateBracketCard = (props) => {
           +
         </span>
       </div>
+      <Portal
+        Type={"RedirectToLoginModal"}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 };

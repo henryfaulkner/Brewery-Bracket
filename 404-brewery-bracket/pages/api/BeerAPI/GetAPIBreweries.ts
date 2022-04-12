@@ -24,7 +24,12 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryObject[]>
 ) => {
-  let url = BaseUrl + `/brewer?count=10000`;
+  var lat = 33.932773841449226;
+  var long = -84.33987288817255;
+
+  let url =
+    BaseUrl +
+    `/location/nearby?latitude=${lat}&longitude=${long}&search_radius=1000&count=40 `;
   let username = process.env.beerapikey;
   let password = "";
 
