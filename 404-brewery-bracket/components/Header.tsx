@@ -7,7 +7,6 @@ import { User } from "firebase/auth";
 
 const Header = (props) => {
   const {user, username} = useContext(UserContext);
-  console.log("Username: " + username)
   return (
     <div className={styles.navBar}>
       <Link href="/">

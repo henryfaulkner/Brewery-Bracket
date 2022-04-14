@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Portal from "./Portal";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
 import Link from "next/dist/client/link";
 import styles from "../styles/ActiveBracketCard.module.scss";
-import { checkCookies } from "cookies-next";
+import { UserContext } from "../lib/context";
 
 const CreateBracketCard = (props) => {
   const [bracketID, setBracketID]: [string, any] = useState("");
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
-  const [isSignedIn, setIsSignedIn]: [boolean, any] = useState(false);
+  const {user, username} = useContext(UserContext);
   const [hasPulledData, setHasPulledData]: [boolean, any] = useState(false);
-
-  useEffect(() => {
-    if (hasPulledData === false) {
-      if (checkCookies("auth-token")) {
-        setIsSignedIn(true);
-      } else {
-        setIsSignedIn(false);
-      }
-      setHasPulledData(true);
-    }
-  });
 
   const CreateBracket = async (bracketName: string) => {
     const request = {
@@ -54,13 +43,12 @@ const CreateBracketCard = (props) => {
     });
   };
 
-  console.log(showModal);
   return (
     <div className={styles.abCardCont}>
       <div
         className={styles.abCardBody}
         onClick={() => {
-          if (!isSignedIn) ChangeShowModal();
+          if (!username) ChangeShowModal();
         }}
       >
         <span

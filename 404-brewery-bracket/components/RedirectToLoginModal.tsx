@@ -13,7 +13,7 @@ const RedirectToLoginModal: React.FC<Props> = (props) => {
       <div className={styles.modalForm}>
         <h2 className={styles.h2}>You'll need to login to do that.</h2>
 
-        <div className={styles.buttons}>
+        <div className={styles.buttonContainer}>
           <button
             className={styles.button1}
             onClick={() => props.setShowModal({ display: "none" })}
