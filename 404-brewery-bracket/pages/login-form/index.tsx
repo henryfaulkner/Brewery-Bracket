@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import styles from "../../styles/Login-Form.module.scss";
 import Image from "next/image";
-import { getCookie, setCookies } from "cookies-next";
-
-type authentication = {
-  email: string;
-  password: string;
-};
+import { UserContext } from "../../lib/context";
+import { useContext } from "react";
+import { auth } from "../../lib/firebase";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -14,46 +16,24 @@ const LoginForm: React.FC = () => {
   const [passwordVisibility, setPasswordVisibility] = useState("password");
 
   const tryLogin = async () => {
-    var auth: authentication = {
-      email: email,
-      password: password,
-    };
-
-    const response = await fetch("/api/Firebase/Endpoints/Login", {
-      method: "POST",
-      body: JSON.stringify(auth),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-
-    console.log("Login attempted");
+    await signInWithEmailAndPassword(auth, email, password);
   };
 
   const createUser = async () => {
-    var auth: authentication = {
-      email: email,
-      password: password,
-    };
-
-    const response = await fetch("/api/Firebase/Endpoints/CreateUser", {
-      method: "POST",
-      body: JSON.stringify(auth),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-
-    console.log("User creation attempted.");
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // We globally track auth state, so user auto updates
+        // Need to redirect/provide confirmation here
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // something perhaps
+      });
   };
 
   const logOut = async () => {
-    const response = await fetch("/api/Firebase/Endpoints/Logout", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
+    signOut(auth);
   };
 
   return (
