@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import { User } from "firebase/auth";
+import { UserContext } from "../../lib/context";
+import {useContext} from "react";
 
 type CurrentUserData = {
   CurrentUser: User;
@@ -31,6 +33,7 @@ const Account = (props) => {
     setCurrentUser(await response.json());
   };
 
+  const {user} = useContext(UserContext);
   return (
     <div>
       <div>

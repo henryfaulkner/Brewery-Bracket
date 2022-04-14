@@ -1,15 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { useContext } from "react";
-import { getAuth } from "firebase/auth";
-import { Firestore, collection, addDoc } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
+import { collection, addDoc } from "firebase/firestore";
+import { firestore } from '../../../../lib/firebase';
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
-import { FirebaseContext } from "../../../../helpers/FirebaseContext";
 
-const firebase = useContext(FirebaseContext);
-const auth = getAuth(firebase[0]);
+
 
 const handler = async (
   req: NextApiRequest,
@@ -30,7 +26,7 @@ const handler = async (
   });
 
   const data = await addDoc(
-    collection(firebase[1], collectionConstants.BeerScore),
+    collection(firestore, collectionConstants.BeerScore),
     JSON.parse(JSON.stringify(beerScore))
   );
 
