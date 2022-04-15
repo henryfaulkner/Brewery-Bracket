@@ -1,11 +1,11 @@
 import Header from "./Header";
-import Head from "./Head";
+import Head from "../components/CustomHead";
 
 
 export default function Layout({ children }) {
     return (
       <>
-      <Head />>
+      <Head />
         <Header />
         <main>{children}</main>
       </>
