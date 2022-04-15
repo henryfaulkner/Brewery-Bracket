@@ -16,7 +16,10 @@ const LoginForm: React.FC = () => {
   const [passwordVisibility, setPasswordVisibility] = useState("password");
 
   const tryLogin = async () => {
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password)
+    .then(user => {
+      
+    });
   };
 
   const createUser = async () => {

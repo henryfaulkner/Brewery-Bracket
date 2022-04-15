@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../../../components/Header";
 import styles from "../../../styles/Login-Form.module.scss";
 
 const Logout: React.FC = () => {

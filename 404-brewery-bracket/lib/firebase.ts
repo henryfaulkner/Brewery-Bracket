@@ -4,13 +4,13 @@ import { getFirestore, collection, where, getDocs, query, limit } from "firebase
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0EzSKGwRpYSlAI90w3eZjvvKfqDtWqk0",
-  authDomain: "brewery-bracket.firebaseapp.com",
-  projectId: "brewery-bracket",
-  storageBucket: "brewery-bracket.appspot.com",
-  messagingSenderId: "496691324253",
-  appId: "1:496691324253:web:97443dc8613950d666f4b4",
-  measurementId: "G-1RT51VZTRR"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID
 };
 
 function createFirebaseApp(firebaseConfig) {

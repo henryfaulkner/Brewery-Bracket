@@ -13,6 +13,7 @@ const CreateBracketCard = (props) => {
 
   const CreateBracket = async (bracketName: string) => {
     const request = {
+      userId: user.uid,
       BracketName: bracketName,
     };
     await fetch("/api/Firebase/Endpoints/CreateBracket", {

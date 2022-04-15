@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth } from "firebase/auth";
+import { useUserData } from "../../../../lib/hooks";
 import {
   collection,
   query,
@@ -13,13 +13,11 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
 
-const auth = getAuth();
-
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryDayScorecard>
 ) => {
-  const userId: string = auth.currentUser.uid ?? "";
+  const userId: string = req.body["userId"];
   //could be bracket Id but I think brewery scorecard for user should persistant
   const breweryId: string = req.body["breweryId"];
   const breweryName: string = req.body["breweryName"];

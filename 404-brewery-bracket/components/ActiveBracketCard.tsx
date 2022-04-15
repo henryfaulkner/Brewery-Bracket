@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Portal from "./Portal";
 import Link from "next/dist/client/link";
 import styles from "../styles/ActiveBracketCard.module.scss";
-import { checkCookies } from "cookies-next";
+import { UserContext } from "../lib/context";
 
 const ActiveBracketCard = (props) => {
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
-  const [isSignedIn, setIsSignedIn]: [boolean, any] = useState();
   const [isLink, setIsLink]: [Element[], any] = useState();
   const [hasPulledData, setHasPulledData] = useState(false);
+  const {user, username} = useContext(UserContext);
   useEffect(() => {
     if (hasPulledData === false) {
-      if (checkCookies("auth-token")) {
-        setIsSignedIn(true);
+      if (username) {
         setIsLink(
           <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
             <h1>{props.bracket.BracketName}</h1>
           </Link>
         );
       } else {
-        setIsSignedIn(false);
         setIsLink(<h1>{props.bracket.BracketName}</h1>);
       }
       setHasPulledData(true);
@@ -37,7 +35,7 @@ const ActiveBracketCard = (props) => {
     <div
       className={styles.abCardCont}
       onClick={() => {
-        if (!isSignedIn) ChangeShowModal();
+        if (!username) ChangeShowModal();
       }}
     >
       <div className={styles.abCardBody}>{isLink}</div>
