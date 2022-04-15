@@ -9,6 +9,7 @@ import {
   signOut,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import Router from "next/router";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const LoginForm: React.FC = () => {
   const tryLogin = async () => {
     await signInWithEmailAndPassword(auth, email, password)
     .then(user => {
-      
+      Router.push("/")
     });
   };
 
