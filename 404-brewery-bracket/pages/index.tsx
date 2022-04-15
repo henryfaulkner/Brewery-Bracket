@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ActiveBracketCard from "../components/ActiveBracketCard";
 import CreateBracketCard from "../components/CreateBracketCard";
 import Bracket from "./api/Firebase/Models/Bracket";
+import {UserContext} from "../lib/context"
 
 import styles from "../styles/BracketCreator.module.scss";
 
 const Home = () => {
   const [brackets, setBrackets]: [Bracket[], any] = useState([]);
   const [hasPulledData, setHasPulledData] = useState(false);
+  const {user, username} = useContext(UserContext)
 
   useEffect(() => {
     if (hasPulledData === false) {
@@ -19,16 +21,26 @@ const Home = () => {
 
   //will need to implement group id
   const GetAllBrackets = async () => {
-    await fetch("/api/Firebase/Endpoints/GetAllBrackets", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((res: JSON) => {
-        setBrackets(res);
-      });
+    try {
+      const request = {
+        userId: user.uid
+      }
+
+      await fetch("/api/Firebase/Endpoints/GetAllBrackets", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((res: JSON) => {
+          setBrackets(res);
+        });
+    }
+    catch {
+      return null
+    }
   };
 
   const SetBracketsAfterACreation = (newBracket: Bracket) => {
