@@ -1,22 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth } from "firebase/auth";
 import {
-  Firestore,
+  getFirestore,
   collection,
   query,
   where,
   getDocs,
 } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
-
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
-const auth = getAuth(firebase[0]);
 
 const handler = async (
   req: NextApiRequest,
@@ -24,7 +16,7 @@ const handler = async (
 ) => {
   const associatedScorecardId: string = req.body["AssociatedScorecardID"];
 
-  const collectionRef = collection(firebase[1], collectionConstants.BeerScore);
+  const collectionRef = collection(getFirestore(), collectionConstants.BeerScore);
   const q = await query(
     collectionRef,
     where("AssociatedScorecardID", "==", associatedScorecardId)

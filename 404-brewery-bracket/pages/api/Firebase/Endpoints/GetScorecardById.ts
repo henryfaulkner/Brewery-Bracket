@@ -1,16 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth } from "firebase/auth";
-import { Firestore, collection, getDoc, doc } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
+import { collection, getDoc, doc, getFirestore } from "firebase/firestore";
 
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
-
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
-const auth = getAuth(firebase[0]);
 
 const handler = async (
   req: NextApiRequest,
@@ -19,7 +11,7 @@ const handler = async (
   const scorecardId: string = req.body["DocumentID"];
 
   const collectionRef = collection(
-    firebase[1],
+    getFirestore(),
     collectionConstants.BreweryDayScorecard
   );
   console.log("scorecard id: " + scorecardId);

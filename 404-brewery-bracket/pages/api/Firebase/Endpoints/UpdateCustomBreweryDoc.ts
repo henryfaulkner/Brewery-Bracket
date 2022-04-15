@@ -1,22 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth } from "firebase/auth";
 import {
-  Firestore,
   collection,
   updateDoc,
   doc,
-  where,
-  query,
+  getFirestore,
 } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
 
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
-
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
-const auth = getAuth(firebase[0]);
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log("In handler");
@@ -25,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const url: string = req.body["url"];
 
   const collectionRef = collection(
-    firebase[1],
+    getFirestore(),
     collectionConstants.CustomBreweries
   );
 
