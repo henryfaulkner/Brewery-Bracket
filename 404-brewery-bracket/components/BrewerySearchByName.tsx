@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
 import CardList from "./CardList";
 import Card from "./Card";
 import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
+import {UserContext} from "../lib/context"
 import { User } from "firebase/auth";
-import { getCookie, checkCookies } from "cookies-next";
-
-type CurrentUserData = {
-  CurrentUser: User;
-};
 
 type BreweryObject = {
   id: string;
@@ -42,6 +38,7 @@ const BrewerySearchByName = (props) => {
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [hasPulledData, setHasPulledData] = useState(false);
+  const {user, username} = useContext(UserContext)
 
   const GetAllBreweries = async (request) => {
     let apiBreweries: BreweryObject[] = [];
@@ -93,7 +90,6 @@ const BrewerySearchByName = (props) => {
         limit: searchLimit,
       };
 
-      getCurrentUser();
       GetAllBreweries(request);
       setHasPulledData(true);
     }
@@ -179,12 +175,15 @@ const BrewerySearchByName = (props) => {
     breweryName
   ): Promise<BreweryDayScorecard> => {
     try {
+      const request = {
+        userId: user.uid,
+        breweryId: breweryId,
+        breweryName: breweryName,
+      }
+
       return await fetch("/api/Firebase/Endpoints/CreateOrGetScorecard", {
         method: "POST",
-        body: JSON.stringify({
-          breweryId: breweryId,
-          breweryName: breweryName,
-        }),
+        body: JSON.stringify(request),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
@@ -219,15 +218,6 @@ const BrewerySearchByName = (props) => {
     }
   };
 
-  //Get Auth User to see if user is signed in
-  const [isSignedIn, setIsSignedIn]: [boolean, any] = useState(false);
-
-  const getCurrentUser = () => {
-    if (checkCookies("auth-token")) {
-      setIsSignedIn(true);
-    }
-  };
-
   const ChangeShowModal = () => {
     setShowModal(() => {
       if (showModal["display"] === "none") return { display: "" };
@@ -247,8 +237,7 @@ const BrewerySearchByName = (props) => {
       <button
         className={styles.btn}
         onClick={() => {
-          console.log(isSignedIn);
-          if (isSignedIn) {
+          if (username) {
             AddBreweryCard(searchText);
           } else {
             ChangeShowModal();

@@ -23,7 +23,6 @@ First, make sure the following are installed
 - express
 - cors
 - dotenv
-- cookies-next
 
 These should automatically install if you run
 

@@ -10,8 +10,6 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import Bracket from "../Models/Bracket";
 
-const auth = getAuth();
-
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<Bracket[]>

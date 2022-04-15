@@ -3,7 +3,6 @@ import { collection, updateDoc, doc, getFirestore } from "firebase/firestore";
 
 import * as collectionConstants from "../CollectionConstants";
 
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const scorecardId: string = req.body["DocumentID"];
   const locationScore: number = req.body["locationScore"];

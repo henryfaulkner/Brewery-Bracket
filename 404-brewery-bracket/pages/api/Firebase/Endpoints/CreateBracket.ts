@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth } from "firebase/auth";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 
 import * as CollectionConstants from "../CollectionConstants";
@@ -16,13 +15,12 @@ type Data = {
 //The group will, by default, have one member, the owner/creator.
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const bracketName: string = req.body["BracketName"];
+  const userId = req.body["userId"]
   console.log("BracketName: " + bracketName);
 
   let bracket: Bracket;
-  const currUser = getAuth().currentUser;
-  console.log("currUser: " + currUser);
   const group = new Group({
-    Users: [currUser.uid],
+    Users: [userId],
   });
   addDoc(
     collection(getFirestore(), CollectionConstants.Groups),
