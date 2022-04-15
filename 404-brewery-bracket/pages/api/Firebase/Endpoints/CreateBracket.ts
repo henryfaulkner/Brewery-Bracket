@@ -1,21 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { Firestore, collection, addDoc } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 
 import * as CollectionConstants from "../CollectionConstants";
 import Bracket from "../Models/Bracket";
-import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 import Group from "../Models/Group";
 
 type Data = {
   bracket: JSON;
 };
 
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
 
-const auth = getAuth(firebase[0]);
 
 //Each bracket created will create a group.
 //The group will, by default, have one member, the owner/creator.
@@ -24,13 +19,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   console.log("BracketName: " + bracketName);
 
   let bracket: Bracket;
-  const currUser = FirebaseExtensions.GetCurrentUser();
+  const currUser = getAuth().currentUser;
   console.log("currUser: " + currUser);
   const group = new Group({
     Users: [currUser.uid],
   });
   addDoc(
-    collection(firebase[1], CollectionConstants.Groups),
+    collection(getFirestore(), CollectionConstants.Groups),
     JSON.parse(JSON.stringify(group))
   ).then((res) => {
     group.SetDocumentID = res.id;
@@ -40,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       GroupID: group.GetDocumentID,
     });
     addDoc(
-      collection(firebase[1], CollectionConstants.Brackets),
+      collection(getFirestore(), CollectionConstants.Brackets),
       JSON.parse(JSON.stringify(bracket))
     ).then((res) => {
       bracket.SetDocumentID = res.id;

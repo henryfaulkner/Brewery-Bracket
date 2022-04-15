@@ -1,26 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth } from "firebase/auth";
 import {
-  Firestore,
   collection,
   query,
   where,
   getDocs,
   addDoc,
   DocumentData,
-  QuerySnapshot,
-  QueryDocumentSnapshot,
+  getFirestore,
 } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
 
 import * as collectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
 
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
-const auth = getAuth(firebase[0]);
+const auth = getAuth();
 
 const handler = async (
   req: NextApiRequest,
@@ -32,7 +25,7 @@ const handler = async (
   const breweryName: string = req.body["breweryName"];
 
   const collectionRef = collection(
-    firebase[1],
+    getFirestore(),
     collectionConstants.BreweryDayScorecard
   );
   const q = await query(
@@ -59,7 +52,7 @@ const handler = async (
     });
 
     data = await addDoc(
-      collection(firebase[1], collectionConstants.BreweryDayScorecard),
+      collection(getFirestore(), collectionConstants.BreweryDayScorecard),
       JSON.parse(JSON.stringify(scorecard))
     );
 

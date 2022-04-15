@@ -1,27 +1,4 @@
-import { initializeApp, FirebaseApp } from "firebase/app";
-import { getFirestore, Firestore } from "firebase/firestore";
-import { getAuth, User } from "firebase/auth";
 import { useState } from "react";
-
-function InitializeFirebase(): [FirebaseApp, Firestore] {
-  const firebaseConfig = {
-    apiKey: process.env.FIREBASE_APIKEY,
-    authDomain: process.env.FIREBASE_AUTHDOMAIN,
-    projectId: process.env.FIREBASE_PROJECTID,
-    storageBucket: process.env.FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
-    appId: process.env.FIREBASE_APPID,
-    measurementId: process.env.FIREBASE_MEASUREMENTID,
-  };
-
-  // Initialize Firebase
-  const app: FirebaseApp = initializeApp(firebaseConfig);
-
-  // Create Firestore instance
-  const firestore: Firestore = getFirestore(app);
-
-  return [app, firestore];
-}
 
 type BreweryObject = {
   name: string;
@@ -66,10 +43,4 @@ function GetAllBreweries(request) {
   return allBreweries;
 }
 
-function GetCurrentUser(): User {
-  const firebase: [FirebaseApp, Firestore] = this.InitializeFirebase();
-  const auth = getAuth(firebase[0]);
-  return auth.currentUser;
-}
-
-export default { InitializeFirebase, GetAllBreweries, GetCurrentUser };
+export default {GetAllBreweries};

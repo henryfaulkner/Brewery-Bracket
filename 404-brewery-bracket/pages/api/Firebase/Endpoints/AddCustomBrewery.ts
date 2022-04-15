@@ -1,16 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getAuth } from "firebase/auth";
-import { Firestore, collection, addDoc } from "firebase/firestore";
-import { FirebaseApp } from "firebase/app";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 
 import CustomBrewery from "../Models/CustomBrewery";
 import * as CollectionConstants from "../CollectionConstants";
-import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
-
-var firebase: [FirebaseApp, Firestore] =
-  FirebaseExtensions.InitializeFirebase();
-
-const auth = getAuth(firebase[0]);
 
 const handler = async (
   req: NextApiRequest,
@@ -29,7 +21,7 @@ const handler = async (
   });
 
   const data = await addDoc(
-    collection(firebase[1], CollectionConstants.CustomBreweries),
+    collection(getFirestore(), CollectionConstants.CustomBreweries),
     JSON.parse(JSON.stringify(customBrewery))
   );
 
