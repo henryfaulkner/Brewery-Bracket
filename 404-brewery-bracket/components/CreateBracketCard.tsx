@@ -12,24 +12,29 @@ const CreateBracketCard = (props) => {
   const [hasPulledData, setHasPulledData]: [boolean, any] = useState(false);
 
   const CreateBracket = async (bracketName: string) => {
-    const request = {
-      userId: user.uid,
-      BracketName: bracketName,
-    };
-    await fetch("/api/Firebase/Endpoints/CreateBracket", {
-      method: "POST",
-      body: JSON.stringify(request),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        setBracketID(response["bracketID"]);
+    try {
+      const request = {
+        userId: user.uid,
+        BracketName: bracketName,
+      };
+      await fetch("/api/Firebase/Endpoints/CreateBracket", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          setBracketID(response["bracketID"]);
 
-        props.SetBracketsAfterACreation(new Bracket(response));
-        console.log("Bracket creation response: " + JSON.stringify(response));
-      });
+          props.SetBracketsAfterACreation(new Bracket(response));
+          console.log("Bracket creation response: " + JSON.stringify(response));
+        });
+    }
+    catch {
+      return null;
+    }
   };
 
   function getRandomInt(max) {
