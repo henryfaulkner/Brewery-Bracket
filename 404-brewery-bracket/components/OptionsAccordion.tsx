@@ -27,6 +27,7 @@ function OptionsAccordion(props: OptionArray) {
       <div
         className={styles.mobileLinksClose}
         onClick={() => setNavClicked(false)}
+        tabIndex={0} aria-label="Close navigation dropdown"
       >
         X
       </div>
@@ -37,7 +38,7 @@ function OptionsAccordion(props: OptionArray) {
   let mobileStructure = (
     <div
       className={styles.mobileNav}
-      onClick={() => setNavClicked(!navclicked)}
+      onClick={() => setNavClicked(!navclicked)} tabIndex={0} aria-label="Navigation dropdown"
     >
       <div>
         <hr />

@@ -31,3 +31,7 @@
     cursor: pointer;
     border-radius: 5px;
 }
+
+@mixin box-shadow-hoverstate($color) {
+    box-shadow: 2px 3px $color;
+}
