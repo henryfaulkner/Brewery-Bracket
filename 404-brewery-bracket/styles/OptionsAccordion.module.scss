@@ -21,6 +21,7 @@
   
   .optionsLink {
     font-weight: bold;
+    font-size: $font-size-large;
   }
 
   .mobileNav {
@@ -52,13 +53,15 @@
     .mobileLinks {
       position: relative;
       top: 10px;
-      right: 108px;
+      right: 158px;
 
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       padding: 15px;
 
-      width: 150px;
+      width: 200px;
+      height: 150px;
       border: 3px solid $beer-brown;
       border-radius: 5px;
       background-color: $beer-yellow;

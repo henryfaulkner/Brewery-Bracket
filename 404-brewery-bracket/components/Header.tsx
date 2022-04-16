@@ -10,7 +10,7 @@ const Header = (props) => {
   return (
     <div className={styles.navBar}>
       <Link href="/">
-        <h1>Brewery Bracket</h1>
+        <h1 tabIndex={0}>Brewery Bracket</h1>
       </Link>
       <OptionsAccordion
         options={[
