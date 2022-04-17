@@ -9,8 +9,6 @@ type Data = {
   bracket: JSON;
 };
 
-
-
 //Each bracket created will create a group.
 //The group will, by default, have one member, the owner/creator.
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
@@ -22,24 +20,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const group = new Group({
     Users: [userId],
   });
-  addDoc(
+ await addDoc(
     collection(getFirestore(), CollectionConstants.Groups),
     JSON.parse(JSON.stringify(group))
-  ).then((res) => {
+  ).then(async (res) => {
     group.SetDocumentID = res.id;
 
     bracket = new Bracket({
       BracketName: bracketName,
       GroupID: group.GetDocumentID,
     });
-    addDoc(
+    await addDoc(
       collection(getFirestore(), CollectionConstants.Brackets),
       JSON.parse(JSON.stringify(bracket))
     ).then((res) => {
-      bracket.SetDocumentID = res.id;
     });
   });
 
+  console.log(JSON.stringify(bracket))
   res.status(200).json({ bracket: JSON.parse(JSON.stringify(bracket)) });
 };
 

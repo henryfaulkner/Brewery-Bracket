@@ -6,7 +6,6 @@ import styles from "../styles/ActiveBracketCard.module.scss";
 import { UserContext } from "../lib/context";
 
 const CreateBracketCard = (props) => {
-  const [bracketID, setBracketID]: [string, any] = useState("");
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const {user, username} = useContext(UserContext);
   const [hasPulledData, setHasPulledData]: [boolean, any] = useState(false);
@@ -26,10 +25,13 @@ const CreateBracketCard = (props) => {
       })
         .then((response) => response.json())
         .then((response) => {
-          setBracketID(response["bracketID"]);
-
-          props.SetBracketsAfterACreation(new Bracket(response));
+          console.log("hello")
+          console.log(response)
+          response = new Bracket(JSON.parse(JSON.stringify(response.bracket)))
           console.log("Bracket creation response: " + JSON.stringify(response));
+
+          props.SetBracketsAfterACreation(response);
+          
         });
     }
     catch {
@@ -40,7 +42,6 @@ const CreateBracketCard = (props) => {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max).toString();
   }
-  console.log(JSON.stringify(props.bracket));
 
   const ChangeShowModal = () => {
     setShowModal(() => {

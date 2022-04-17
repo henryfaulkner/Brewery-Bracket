@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import IFirebaseDocument from "./IFirebaseDocument";
 
 class Bracket implements IFirebaseDocument {

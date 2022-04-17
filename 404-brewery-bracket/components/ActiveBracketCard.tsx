@@ -13,7 +13,7 @@ const ActiveBracketCard = (props) => {
     if (hasPulledData === false) {
       if (username) {
         setIsLink(
-          <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
+          <Link href={`/bracket-creator/${props.bracket.GetDocumentID}`}>
             <h1>{props.bracket.BracketName}</h1>
           </Link>
         );
