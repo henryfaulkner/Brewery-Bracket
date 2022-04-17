@@ -10,17 +10,17 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import Router from "next/router";
+import Portal from "../../components/Portal";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [uid, setUid] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState("password");
+  const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
 
   const tryLogin = async () => {
-    await signInWithEmailAndPassword(auth, email, password)
-    .then(user => {
-      Router.push("/")
-    });
+    await signInWithEmailAndPassword(auth, email, password);
   };
 
   const createUser = async () => {
@@ -28,6 +28,12 @@ const LoginForm: React.FC = () => {
       .then((userCredential) => {
         // We globally track auth state, so user auto updates
         // Need to redirect/provide confirmation here
+        tryLogin();
+        //Show Modal
+        setShowModal(() => {
+          if (showModal["display"] === "none") return { display: "" };
+          else return { display: "none" };
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -77,12 +83,23 @@ const LoginForm: React.FC = () => {
           <p>Show Password</p>*/}
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.loginButton} onClick={tryLogin}>
+          <button
+            className={styles.loginButton}
+            onClick={() => {
+              tryLogin();
+              Router.push("/");
+            }}
+          >
             Log in
           </button>
           <button className={styles.createUserButton} onClick={createUser}>
             Create Account
           </button>
+          <Portal
+            Type={"UsernameModal"}
+            showModal={showModal}
+            setShowModal={setShowModal}
+          />
         </div>
       </div>
       <a href="/login-form/logout" className={styles.logout} onClick={logOut}>

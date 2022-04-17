@@ -4,7 +4,7 @@ import CardList from "./CardList";
 import Card from "./Card";
 import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
-import {UserContext} from "../lib/context"
+import { UserContext } from "../lib/context";
 import { User } from "firebase/auth";
 
 type BreweryObject = {
@@ -34,11 +34,13 @@ let loadPage = false;
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
-  let [searchResults, setSearchResults]: [BreweryObject[], any] = useState([]);
+  const [searchResults, setSearchResults]: [BreweryObject[], any] = useState(
+    []
+  );
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [hasPulledData, setHasPulledData] = useState(false);
-  const {user, username} = useContext(UserContext)
+  const { user, username } = useContext(UserContext);
 
   const GetAllBreweries = async (request) => {
     let apiBreweries: BreweryObject[] = [];
@@ -179,7 +181,7 @@ const BrewerySearchByName = (props) => {
         userId: user.uid,
         breweryId: breweryId,
         breweryName: breweryName,
-      }
+      };
 
       return await fetch("/api/Firebase/Endpoints/CreateOrGetScorecard", {
         method: "POST",
