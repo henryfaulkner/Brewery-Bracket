@@ -26,7 +26,7 @@ const Home = () => {
         userId: user.uid
       }
 
-      await fetch("/api/Firebase/Endpoints/GetAllBrackets", {
+      await fetch("/api/Firebase/Endpoints/GetUsersBrackets", {
         method: "POST",
         body: JSON.stringify(request),
         headers: {
