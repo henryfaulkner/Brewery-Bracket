@@ -6,6 +6,7 @@ import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import { UserContext } from "../lib/context";
 import { User } from "firebase/auth";
+import TypeAheadDropdown from "./TypeAheadDropdown";
 
 type BreweryObject = {
   id: string;
@@ -26,11 +27,13 @@ type SearchRequest = {
 
 const searchLimit = 6;
 let searchResultsOptions: JSX.Element[] = [];
-let loadPage = false;
 
-//bug: if no result is long enough to fill space,
-//      the option block is too short
+//bug: if you select an autocomplete,
+//      you are blocked from useing the textbox
+//bug: if you click out of the textbox,
+//      the autocomplete is still visiable
 //bug: takes two letter to kick in autocomplete
+//refactor: separate dropdown list and textbox
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
@@ -254,9 +257,11 @@ const BrewerySearchByName = (props) => {
         setShowModal={setShowModal}
       />
 
-      <div className={styles.dropdown} style={dropdownStyle}>
-        <ul className={styles.autocompleteList}>{searchResultsOptions}</ul>
-      </div>
+      <TypeAheadDropdown
+        searchResultsOptions={searchResultsOptions}
+        dropdownStyle={dropdownStyle}
+        limit={searchLimit}
+      />
 
       <CardList breweryCards={breweryCards ?? []} />
     </div>
