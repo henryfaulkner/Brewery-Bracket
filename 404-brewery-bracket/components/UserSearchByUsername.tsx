@@ -44,7 +44,12 @@ const UserSearchByUsername = (props) => {
     updateInputValue(event.target.value);
     console.log("allUsers");
     console.log(props.allUsers);
-    searchResultsOptions = props.allUsers.map((searchResult: User) => {
+    const reducedAllUsers = props.allUsers.filter((user: User) => {
+      console.log("JSON.stringify(user)");
+      console.log(JSON.stringify(user));
+      return user.Username.startsWith(event.target.value);
+    });
+    searchResultsOptions = reducedAllUsers.map((searchResult: User) => {
       return (
         <li className={styles.autocompleteOption}>
           <a
