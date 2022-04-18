@@ -5,6 +5,7 @@ import User from "../Models/User";
 import * as collectionConstants from "../CollectionConstants";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<User[]>) => {
+  const collectionRef = collection(getFirestore(), collectionConstants.Users);
   const data = await getDocs(
     collection(getFirestore(), collectionConstants.Users)
   );
