@@ -5,7 +5,6 @@ import Card from "./Card";
 import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import { UserContext } from "../lib/context";
-import { User } from "firebase/auth";
 import TypeAheadDropdown from "./TypeAheadDropdown";
 
 type BreweryObject = {
@@ -33,9 +32,11 @@ let searchResultsOptions: JSX.Element[] = [];
 //bug: if you click out of the textbox,
 //      the autocomplete is still visiable
 //bug: takes two letter to kick in autocomplete
-//refactor: separate dropdown list and textbox
+//refactor: Pull all breweries on page load (getStaticProps)
+//refactor: Many similarities to UserSearchByUsername
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
+  //Might be able to be set on page load by getStaticProps
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
   const [searchResults, setSearchResults]: [BreweryObject[], any] = useState(
     []
@@ -108,6 +109,9 @@ const BrewerySearchByName = (props) => {
     updateInputValue(event.target.value);
     setSearchResults(await submitSearch(event));
   };
+  const updateInputValue = (value) => {
+    setSearchText(value);
+  };
 
   const controlAutocompleteOptions = async (localSearchResults) => {
     setDropdownStyle({ display: "none" });
@@ -132,10 +136,6 @@ const BrewerySearchByName = (props) => {
         );
       }
     );
-  };
-
-  const updateInputValue = (value) => {
-    setSearchText(value);
   };
 
   const submitSearch = async (event) => {

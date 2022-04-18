@@ -8,12 +8,14 @@ const ActiveBracketCard = (props) => {
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [isLink, setIsLink]: [Element[], any] = useState();
   const [hasPulledData, setHasPulledData] = useState(false);
-  const {user, username} = useContext(UserContext);
+  const { user, username } = useContext(UserContext);
   useEffect(() => {
     if (hasPulledData === false) {
-      if (username) {
+      if (user) {
+        console.log("props.bracket.GetDocumentID");
+        console.log(props.bracket.DocumentID);
         setIsLink(
-          <Link href={`/bracket-creator/${props.bracket.GetDocumentID}`}>
+          <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
             <h1>{props.bracket.BracketName}</h1>
           </Link>
         );
