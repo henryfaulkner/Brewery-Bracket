@@ -4,8 +4,8 @@ import CardList from "./CardList";
 import Card from "./Card";
 import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
-import {UserContext} from "../lib/context"
-import { User } from "firebase/auth";
+import { UserContext } from "../lib/context";
+import TypeAheadDropdown from "./TypeAheadDropdown";
 
 type BreweryObject = {
   id: string;
@@ -26,19 +26,25 @@ type SearchRequest = {
 
 const searchLimit = 6;
 let searchResultsOptions: JSX.Element[] = [];
-let loadPage = false;
 
-//bug: if no result is long enough to fill space,
-//      the option block is too short
+//bug: if you select an autocomplete,
+//      you are blocked from useing the textbox
+//bug: if you click out of the textbox,
+//      the autocomplete is still visiable
 //bug: takes two letter to kick in autocomplete
+//refactor: Pull all breweries on page load (getStaticProps)
+//refactor: Many similarities to UserSearchByUsername
 const BrewerySearchByName = (props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
+  //Might be able to be set on page load by getStaticProps
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
-  let [searchResults, setSearchResults]: [BreweryObject[], any] = useState([]);
+  const [searchResults, setSearchResults]: [BreweryObject[], any] = useState(
+    []
+  );
   const [dropdownStyle, setDropdownStyle] = useState({ display: "none" });
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [hasPulledData, setHasPulledData] = useState(false);
-  const {user, username} = useContext(UserContext)
+  const { user, username } = useContext(UserContext);
 
   const GetAllBreweries = async (request) => {
     let apiBreweries: BreweryObject[] = [];
@@ -103,6 +109,9 @@ const BrewerySearchByName = (props) => {
     updateInputValue(event.target.value);
     setSearchResults(await submitSearch(event));
   };
+  const updateInputValue = (value) => {
+    setSearchText(value);
+  };
 
   const controlAutocompleteOptions = async (localSearchResults) => {
     setDropdownStyle({ display: "none" });
@@ -127,10 +136,6 @@ const BrewerySearchByName = (props) => {
         );
       }
     );
-  };
-
-  const updateInputValue = (value) => {
-    setSearchText(value);
   };
 
   const submitSearch = async (event) => {
@@ -179,7 +184,7 @@ const BrewerySearchByName = (props) => {
         userId: user.uid,
         breweryId: breweryId,
         breweryName: breweryName,
-      }
+      };
 
       return await fetch("/api/Firebase/Endpoints/CreateOrGetScorecard", {
         method: "POST",
@@ -252,9 +257,11 @@ const BrewerySearchByName = (props) => {
         setShowModal={setShowModal}
       />
 
-      <div className={styles.dropdown} style={dropdownStyle}>
-        <ul className={styles.autocompleteList}>{searchResultsOptions}</ul>
-      </div>
+      <TypeAheadDropdown
+        searchResultsOptions={searchResultsOptions}
+        dropdownStyle={dropdownStyle}
+        limit={searchLimit}
+      />
 
       <CardList breweryCards={breweryCards ?? []} />
     </div>

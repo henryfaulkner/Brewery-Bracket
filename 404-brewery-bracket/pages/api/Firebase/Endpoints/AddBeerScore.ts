@@ -1,11 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { collection, addDoc } from "firebase/firestore";
-import { firestore } from '../../../../lib/firebase';
+import { firestore } from "../../../../lib/firebase";
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
-
-
 
 const handler = async (
   req: NextApiRequest,

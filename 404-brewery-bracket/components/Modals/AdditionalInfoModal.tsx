@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/AdditionalInfoModal.module.scss";
+import styles from "../../styles/AdditionalInfoModal.module.scss";
 
 type Brewery = {
   url: string;

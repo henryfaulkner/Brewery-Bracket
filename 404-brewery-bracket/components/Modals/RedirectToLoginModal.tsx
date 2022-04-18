@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/AdditionalInfoModal.module.scss";
+import styles from "../../styles/AdditionalInfoModal.module.scss";
 import Link from "next/link";
 
 type Props = {
