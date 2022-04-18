@@ -2,29 +2,31 @@ import React, { useContext, useEffect, useState } from "react";
 import ActiveBracketCard from "../components/ActiveBracketCard";
 import CreateBracketCard from "../components/CreateBracketCard";
 import Bracket from "./api/Firebase/Models/Bracket";
-import {UserContext} from "../lib/context"
+import { UserContext } from "../lib/context";
 
 import styles from "../styles/BracketCreator.module.scss";
 
 const Home = () => {
   const [brackets, setBrackets]: [Bracket[], any] = useState([]);
   const [hasPulledData, setHasPulledData] = useState(false);
-  const {user, username} = useContext(UserContext)
+  const { user, username } = useContext(UserContext);
 
   useEffect(() => {
     if (hasPulledData === false) {
       GetAllBrackets();
-
-      setHasPulledData(true);
     }
   });
 
-  //will need to implement group id
+  const SetBracketsAfterACreation = (newBracket: Bracket) => {
+    setBrackets([...brackets, newBracket]);
+  };
+
   const GetAllBrackets = async () => {
     try {
       const request = {
-        userId: user.uid
-      }
+        userId: user.uid,
+      };
+      console.log("fuck yeah");
 
       await fetch("/api/Firebase/Endpoints/GetUsersBrackets", {
         method: "POST",
@@ -35,16 +37,14 @@ const Home = () => {
       })
         .then((response) => response.json())
         .then((res: JSON) => {
+          console.log("fuck yeah");
           setBrackets(res);
+          setHasPulledData(true);
         });
+    } catch {
+      console.log("fuck");
+      return null;
     }
-    catch {
-      return null
-    }
-  };
-
-  const SetBracketsAfterACreation = (newBracket: Bracket) => {
-    setBrackets([...brackets, newBracket]);
   };
 
   return (
