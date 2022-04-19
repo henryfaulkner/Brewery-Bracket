@@ -6,18 +6,7 @@ import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import { UserContext } from "../lib/context";
 import TypeAheadDropdown from "./TypeAheadDropdown";
-
-type BreweryObject = {
-  id: string;
-  name: string;
-  description: string;
-  short_description: string;
-  url: string;
-  facebook_url: string;
-  twitter_url: string;
-  instagram_url: string;
-  address: string;
-};
+import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 
 type SearchRequest = {
   typeahead: string;
@@ -175,46 +164,19 @@ const BrewerySearchByName = (props) => {
   };
 
   //ADD CARD STUFF
-  const createOrGetScorecard = async (
-    breweryId,
-    breweryName
-  ): Promise<BreweryDayScorecard> => {
-    try {
-      const request = {
-        userId: user.uid,
-        breweryId: breweryId,
-        breweryName: breweryName,
-      };
-
-      return await fetch("/api/Firebase/Endpoints/CreateOrGetScorecard", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((res) => {
-          const scorecard = new BreweryDayScorecard(res);
-          return scorecard;
-        });
-    } catch (ex) {
-      return null;
-    }
+  const pushBreweryToBracket = async (breweryObj: BreweryObject) => {
+    const request = JSON.parse(JSON.stringify(breweryObj));
   };
 
   const [breweryCards, setBreweryCards] = useState([]);
   const AddBreweryCard = async (breweryName: string) => {
     try {
       const breweryObj = await submitValueSearch(breweryName);
-      const scorecard = await createOrGetScorecard(
-        breweryObj.id,
-        breweryObj.name
-      );
+      const breweryInBracket = await pushBreweryToBracket(breweryObj);
 
       const breweryCard = (
         <li style={{ listStyleType: "none" }}>
-          <Card scorecard={scorecard} />
+          <Card breweryObj={breweryObj} />
         </li>
       );
       setBreweryCards([...breweryCards, breweryCard]);
