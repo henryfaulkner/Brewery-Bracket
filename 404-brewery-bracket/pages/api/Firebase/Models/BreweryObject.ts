@@ -12,7 +12,7 @@ class BreweryObject implements IFirebaseDocument {
   public Address: string;
 
   public constructor(json) {
-    this.Name = json["Name"];
+    this.name = json["name"];
     this.Description = json["Description"];
     this.Short_Description = json["Short_Description"];
     this.Url = json["Url"];
@@ -20,15 +20,15 @@ class BreweryObject implements IFirebaseDocument {
     this.Twitter_Url = json["Twitter_Url"];
     this.Instagram_Url = json["Instagram_Url"];
     this.Address = json["Address"];
-    if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
+    if (json["id"]) this.id = json["id"];
   }
 
   get GetDocumentID(): string {
-    return this.DocumentID;
+    return this.id;
   }
 
   set SetDocumentID(DocumentID: string) {
-    this.DocumentID = DocumentID;
+    this.id = DocumentID;
   }
 }
 

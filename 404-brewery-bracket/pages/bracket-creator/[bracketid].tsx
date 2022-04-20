@@ -20,8 +20,6 @@ const BracketCreator = ({ allUsers }) => {
       if (!hasPulledData && router.isReady) {
         const { bracketid } = router.query;
         await GetCurrentBracket(bracketid);
-        console.log("b");
-        console.log(currBracket);
 
         setHasPulledData(true);
       }
@@ -46,8 +44,6 @@ const BracketCreator = ({ allUsers }) => {
       })
         .then((res) => res.json())
         .then((res) => {
-          // console.log("res.bracket");
-          // console.log(res.bracket);
           currBracket = new Bracket({
             DocumentID: res.bracket.DocumentID,
             BracketName: res.bracket.BracketName,
@@ -69,7 +65,7 @@ const BracketCreator = ({ allUsers }) => {
           <div className={styles.addBrewsCont}>
             <div className={styles.knownBreweries}>
               <h3>Add Brewery</h3>
-              <BrewerySearchByName />
+              <BrewerySearchByName BracketID={currBracket?.DocumentID ?? ""} />
             </div>
             <div className={styles.addCustomCont}>
               <div className={styles.labelInputPair}>

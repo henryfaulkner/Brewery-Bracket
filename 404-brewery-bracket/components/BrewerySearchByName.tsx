@@ -8,6 +8,10 @@ import { UserContext } from "../lib/context";
 import TypeAheadDropdown from "./TypeAheadDropdown";
 import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 
+type Props = {
+  BracketID: string;
+};
+
 type SearchRequest = {
   typeahead: string;
   limit: number;
@@ -23,7 +27,7 @@ let searchResultsOptions: JSX.Element[] = [];
 //bug: takes two letter to kick in autocomplete
 //refactor: Pull all breweries on page load (getStaticProps)
 //refactor: Many similarities to UserSearchByUsername
-const BrewerySearchByName = (props) => {
+const BrewerySearchByName = (props: Props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
   //Might be able to be set on page load by getStaticProps
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
@@ -165,14 +169,28 @@ const BrewerySearchByName = (props) => {
 
   //ADD CARD STUFF
   const pushBreweryToBracket = async (breweryObj: BreweryObject) => {
-    const request = JSON.parse(JSON.stringify(breweryObj));
+    console.log("BracketID: " + props.BracketID);
+    try {
+      const request = JSON.parse(JSON.stringify(breweryObj));
+      request["bracketid"] = props.BracketID;
+
+      return await fetch("/api/Firebase/Endpoints/PushBreweryToBracket", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+    } catch (exception) {
+      return null;
+    }
   };
 
   const [breweryCards, setBreweryCards] = useState([]);
   const AddBreweryCard = async (breweryName: string) => {
     try {
       const breweryObj = await submitValueSearch(breweryName);
-      const breweryInBracket = await pushBreweryToBracket(breweryObj);
+      await pushBreweryToBracket(breweryObj);
 
       const breweryCard = (
         <li style={{ listStyleType: "none" }}>
