@@ -6,17 +6,11 @@ import Portal from "./Portal";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import { UserContext } from "../lib/context";
 import TypeAheadDropdown from "./TypeAheadDropdown";
+import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 
-type BreweryObject = {
-  id: string;
-  name: string;
-  description: string;
-  short_description: string;
-  url: string;
-  facebook_url: string;
-  twitter_url: string;
-  instagram_url: string;
-  address: string;
+type Props = {
+  BracketID: string;
+  InitialCardList: JSX.Element[];
 };
 
 type SearchRequest = {
@@ -34,7 +28,7 @@ let searchResultsOptions: JSX.Element[] = [];
 //bug: takes two letter to kick in autocomplete
 //refactor: Pull all breweries on page load (getStaticProps)
 //refactor: Many similarities to UserSearchByUsername
-const BrewerySearchByName = (props) => {
+const BrewerySearchByName = (props: Props) => {
   const [searchText, setSearchText]: [string, any] = useState("");
   //Might be able to be set on page load by getStaticProps
   const [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState([]);
@@ -175,46 +169,35 @@ const BrewerySearchByName = (props) => {
   };
 
   //ADD CARD STUFF
-  const createOrGetScorecard = async (
-    breweryId,
-    breweryName
-  ): Promise<BreweryDayScorecard> => {
+  const pushBreweryToBracket = async (breweryObj: BreweryObject) => {
+    console.log("BracketID: " + props.BracketID);
     try {
-      const request = {
-        userId: user.uid,
-        breweryId: breweryId,
-        breweryName: breweryName,
-      };
+      const request = JSON.parse(JSON.stringify(breweryObj));
+      request["bracketid"] = props.BracketID;
 
-      return await fetch("/api/Firebase/Endpoints/CreateOrGetScorecard", {
+      return await fetch("/api/Firebase/Endpoints/PushBreweryToBracket", {
         method: "POST",
         body: JSON.stringify(request),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
-      })
-        .then((response) => response.json())
-        .then((res) => {
-          const scorecard = new BreweryDayScorecard(res);
-          return scorecard;
-        });
-    } catch (ex) {
+      });
+    } catch (exception) {
       return null;
     }
   };
 
-  const [breweryCards, setBreweryCards] = useState([]);
+  const [breweryCards, setBreweryCards]: [JSX.Element[], any] = useState(
+    props.InitialCardList
+  );
   const AddBreweryCard = async (breweryName: string) => {
     try {
       const breweryObj = await submitValueSearch(breweryName);
-      const scorecard = await createOrGetScorecard(
-        breweryObj.id,
-        breweryObj.name
-      );
+      await pushBreweryToBracket(breweryObj);
 
       const breweryCard = (
         <li style={{ listStyleType: "none" }}>
-          <Card scorecard={scorecard} />
+          <Card breweryObj={breweryObj} />
         </li>
       );
       setBreweryCards([...breweryCards, breweryCard]);

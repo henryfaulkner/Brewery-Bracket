@@ -85,7 +85,7 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
           >
             Close
           </button>
-          <Link href="/bracket-creator">
+          <Link href="/">
             <button
               className={styles.button2}
               onClick={() => {

@@ -4,14 +4,16 @@ import styles from "../../styles/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 import UserSearchByUsername from "../../components/UserSearchByUsername";
+import Card from "../../components/Card";
 import User from "../api/Firebase/Models/User";
 import { useRouter } from "next/router";
 import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
+import BreweryObject from "../api/Firebase/Models/BreweryObject";
 
 let currBracket: Bracket;
 
-const BracketCreator = ({ allUsers }) => {
+const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
   const router = useRouter();
   const [hasPulledData, setHasPulledData] = useState(false);
 
@@ -20,8 +22,6 @@ const BracketCreator = ({ allUsers }) => {
       if (!hasPulledData && router.isReady) {
         const { bracketid } = router.query;
         await GetCurrentBracket(bracketid);
-        console.log("b");
-        console.log(currBracket);
 
         setHasPulledData(true);
       }
@@ -46,8 +46,6 @@ const BracketCreator = ({ allUsers }) => {
       })
         .then((res) => res.json())
         .then((res) => {
-          // console.log("res.bracket");
-          // console.log(res.bracket);
           currBracket = new Bracket({
             DocumentID: res.bracket.DocumentID,
             BracketName: res.bracket.BracketName,
@@ -69,7 +67,16 @@ const BracketCreator = ({ allUsers }) => {
           <div className={styles.addBrewsCont}>
             <div className={styles.knownBreweries}>
               <h3>Add Brewery</h3>
-              <BrewerySearchByName />
+              <BrewerySearchByName
+                BracketID={currBracket?.DocumentID ?? ""}
+                InitialCardList={initialBreweriesInBracket.map((breweryObj) => {
+                  return (
+                    <li style={{ listStyleType: "none" }}>
+                      <Card breweryObj={breweryObj} />
+                    </li>
+                  );
+                })}
+              />
             </div>
             <div className={styles.addCustomCont}>
               <div className={styles.labelInputPair}>
@@ -97,8 +104,12 @@ const BracketCreator = ({ allUsers }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   let allUsers: User[] = [];
+  let initialBreweriesInBracket: BreweryObject[] = [];
+  initialBreweriesInBracket.push(
+    JSON.parse(JSON.stringify(new BreweryObject({})))
+  );
   await fetch(`${server}/api/Firebase/Endpoints/GetAllUsers`, {
     method: "GET",
     headers: {
@@ -112,9 +123,29 @@ export async function getServerSideProps() {
   console.log("getStaticProps allUsers:");
   console.log(allUsers);
 
+  // This gets screwed up by page reloads
+  const { bracketid } = context.query;
+  const request = { bracketid: bracketid };
+  await fetch(`${server}/api/Firebase/Endpoints/GetAllBreweriesInBracket`, {
+    method: "POST",
+    body: JSON.stringify(request),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log("res");
+      console.log(typeof res.breweries);
+      initialBreweriesInBracket = res.breweries.map((brewery) => {
+        return JSON.parse(JSON.stringify(brewery));
+      });
+    });
+
   return {
     props: {
       allUsers,
+      initialBreweriesInBracket,
     },
   };
 }
