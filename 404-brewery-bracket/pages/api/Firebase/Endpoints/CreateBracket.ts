@@ -43,9 +43,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     res.status(200).json({ bracket: JSON.parse(JSON.stringify(bracket)) });
   } catch (exception) {
     console.log(exception);
-    res
-      .status(700)
-      .json({ bracket: JSON.parse(JSON.stringify({ cum: "cum" })) });
+    res.status(500).json({ bracket: JSON.parse("{}") });
   }
 };
 

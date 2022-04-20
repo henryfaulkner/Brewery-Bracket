@@ -53,7 +53,6 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
           });
         });
     } catch (exception) {
-      console.log("fuck");
       return null;
     }
   };

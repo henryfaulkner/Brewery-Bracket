@@ -26,7 +26,6 @@ const Home = () => {
       const request = {
         userId: user.uid,
       };
-      console.log("fuck yeah");
 
       await fetch("/api/Firebase/Endpoints/GetUsersBrackets", {
         method: "POST",
@@ -37,12 +36,10 @@ const Home = () => {
       })
         .then((response) => response.json())
         .then((res: JSON) => {
-          console.log("fuck yeah");
           setBrackets(res);
           setHasPulledData(true);
         });
     } catch {
-      console.log("fuck");
       return null;
     }
   };
