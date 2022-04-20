@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
       collectionConstants.Brackets
     );
     const docRef = doc(collectionRef, bracketId);
-    const docSnapshot = await getDoc(docRef);
+    await getDoc(docRef);
     updateDoc(docRef, {
       Breweries: arrayUnion(JSON.parse(JSON.stringify(breweryObj))),
     });

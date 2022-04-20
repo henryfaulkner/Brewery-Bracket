@@ -10,6 +10,7 @@ import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 
 type Props = {
   BracketID: string;
+  InitialCardList: JSX.Element[];
 };
 
 type SearchRequest = {
@@ -186,7 +187,9 @@ const BrewerySearchByName = (props: Props) => {
     }
   };
 
-  const [breweryCards, setBreweryCards] = useState([]);
+  const [breweryCards, setBreweryCards]: [JSX.Element[], any] = useState(
+    props.InitialCardList
+  );
   const AddBreweryCard = async (breweryName: string) => {
     try {
       const breweryObj = await submitValueSearch(breweryName);

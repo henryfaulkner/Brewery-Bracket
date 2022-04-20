@@ -17,67 +17,73 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryDayScorecard>
 ) => {
-  const userId: string = req.body["userId"];
-  //could be bracket Id but I think brewery scorecard for user should persistant
-  const breweryId: string = req.body["breweryId"];
-  const breweryName: string = req.body["breweryName"];
+  try {
+    const userId: string = req.body["userId"];
+    //could be bracket Id but I think brewery scorecard for user should persistant
+    const breweryId: string = req.body["breweryId"];
+    const breweryName: string = req.body["breweryName"];
 
-  const collectionRef = collection(
-    getFirestore(),
-    collectionConstants.BreweryDayScorecard
-  );
-  const q = await query(
-    collectionRef,
-    where("AssociatedBreweryID", "==", breweryId),
-    where("AssociatedUserID", "==", userId)
-  );
-  const docs = await getDocs(q);
-
-  let scorecard: BreweryDayScorecard;
-
-  if (docs.empty) {
-    console.log("no documents.");
-
-    let data: DocumentData;
-
-    scorecard = new BreweryDayScorecard({
-      AssociatedUserID: userId,
-      AssociatedBreweryID: breweryId,
-      AssociatedBreweryName: breweryName,
-      AverageBeerScore: 0,
-      EnvironmentScore: 0,
-      LocationScore: 0,
-    });
-
-    data = await addDoc(
-      collection(getFirestore(), collectionConstants.BreweryDayScorecard),
-      JSON.parse(JSON.stringify(scorecard))
+    const collectionRef = collection(
+      getFirestore(),
+      collectionConstants.BreweryDayScorecard
     );
+    const q = await query(
+      collectionRef,
+      where("AssociatedBreweryID", "==", breweryId),
+      where("AssociatedUserID", "==", userId)
+    );
+    const docs = await getDocs(q);
 
-    scorecard.DocumentID = data.id;
-  } else {
-    console.log("found a document.");
+    let scorecard: BreweryDayScorecard;
 
-    let response: BreweryDayScorecard[] = [];
+    if (docs.empty) {
+      console.log("no documents.");
 
-    docs.forEach((data) => {
-      response.push(
-        new BreweryDayScorecard({
-          AssociatedUserID: data.data().AssociatedUserID,
-          AssociatedBreweryID: data.data().AssociatedBreweryID,
-          AssociatedBreweryName: data.data().AssociatedBreweryName,
-          AverageBeerScore: data.data().AverageBeerScore,
-          EnvironmentScore: data.data().EnvironmentScore,
-          LocationScore: data.data().LocationScore,
-          DocumentID: data.id,
-        })
+      let data: DocumentData;
+
+      scorecard = new BreweryDayScorecard({
+        AssociatedUserID: userId,
+        AssociatedBreweryID: breweryId,
+        AssociatedBreweryName: breweryName,
+        AverageBeerScore: 0,
+        EnvironmentScore: 0,
+        LocationScore: 0,
+      });
+
+      data = await addDoc(
+        collection(getFirestore(), collectionConstants.BreweryDayScorecard),
+        JSON.parse(JSON.stringify(scorecard))
       );
-    });
 
-    scorecard = response[0];
+      scorecard.DocumentID = data.id;
+    } else {
+      console.log("found a document.");
+
+      let response: BreweryDayScorecard[] = [];
+
+      docs.forEach((data) => {
+        response.push(
+          new BreweryDayScorecard({
+            AssociatedUserID: data.data().AssociatedUserID,
+            AssociatedBreweryID: data.data().AssociatedBreweryID,
+            AssociatedBreweryName: data.data().AssociatedBreweryName,
+            AverageBeerScore: data.data().AverageBeerScore,
+            EnvironmentScore: data.data().EnvironmentScore,
+            LocationScore: data.data().LocationScore,
+            DocumentID: data.id,
+          })
+        );
+      });
+
+      scorecard = response[0];
+    }
+
+    console.log("CreateOrGetScorecard Succeeded.");
+    res.status(200).json(scorecard);
+  } catch (exception) {
+    console.log("CreateOrGetScorecard Failed.");
+    res.status(500);
   }
-
-  res.status(200).json(scorecard);
 };
 
 export default handler;
