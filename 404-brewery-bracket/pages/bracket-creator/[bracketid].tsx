@@ -15,12 +15,14 @@ let currBracket: Bracket;
 
 const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
   const router = useRouter();
+  const [bracketIDState, setBracketIDState]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       if (!hasPulledData && router.isReady) {
         const { bracketid } = router.query;
+        setBracketIDState(bracketid);
         await GetCurrentBracket(bracketid);
 
         setHasPulledData(true);
@@ -68,13 +70,18 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
               <h3>Add Brewery</h3>
               <BrewerySearchByName
                 BracketID={currBracket?.DocumentID ?? ""}
-                InitialCardList={initialBreweriesInBracket.map((breweryObj, key: number) => {
-                  return (
-                    <li key={key} style={{ listStyleType: "none" }}>
-                      <Card breweryObj={breweryObj} />
-                    </li>
-                  );
-                })}
+                InitialCardList={initialBreweriesInBracket.map(
+                  (breweryObj, key: number) => {
+                    return (
+                      <li key={key} style={{ listStyleType: "none" }}>
+                        <Card
+                          bracketID={bracketIDState}
+                          breweryObj={breweryObj}
+                        />
+                      </li>
+                    );
+                  }
+                )}
               />
             </div>
             <div className={styles.addCustomCont}>
