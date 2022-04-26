@@ -13,9 +13,13 @@ export function useUserData() {
     let unsubscribe;
 
     if (user) {
-      const ref = collection(firestore, "Users");
+      const authUsername = collection(firestore, "Users", auth.currentUser.uid, "Username");
       // console.log("ref" + ref); // add listener here
-      setUsername("Logged In");
+      if(authUsername) {
+        setUsername(authUsername);
+      } else {
+        setUsername(null);
+      }
     } else {
       setUsername(null);
     }
