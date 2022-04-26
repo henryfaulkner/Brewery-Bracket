@@ -20,8 +20,10 @@ const handler = async (
   try {
     const userId: string = req.body["userId"];
     //could be bracket Id but I think brewery scorecard for user should persistant
-    const breweryId: string = req.body["breweryId"];
+    const breweryID: string = req.body["breweryID"];
     const breweryName: string = req.body["breweryName"];
+    const bracketID: string = req.body["bracketID"];
+    console.log("bracketID: " + bracketID);
 
     const collectionRef = collection(
       getFirestore(),
@@ -29,7 +31,7 @@ const handler = async (
     );
     const q = await query(
       collectionRef,
-      where("AssociatedBreweryID", "==", breweryId),
+      where("AssociatedBreweryID", "==", breweryID),
       where("AssociatedUserID", "==", userId)
     );
     const docs = await getDocs(q);
@@ -43,7 +45,8 @@ const handler = async (
 
       scorecard = new BreweryDayScorecard({
         AssociatedUserID: userId,
-        AssociatedBreweryID: breweryId,
+        AssociatedBracketID: bracketID,
+        AssociatedBreweryID: breweryID,
         AssociatedBreweryName: breweryName,
         AverageBeerScore: 0,
         EnvironmentScore: 0,

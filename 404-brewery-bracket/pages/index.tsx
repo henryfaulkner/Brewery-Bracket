@@ -5,6 +5,7 @@ import Bracket from "./api/Firebase/Models/Bracket";
 import { UserContext } from "../lib/context";
 
 import styles from "../styles/BracketCreator.module.scss";
+import DeleteIcon from "../components/DeleteIcon";
 
 const Home = () => {
   const [brackets, setBrackets]: [Bracket[], any] = useState([]);
@@ -44,6 +45,15 @@ const Home = () => {
     }
   };
 
+  const DeleteBracketFromList = (bracket: Bracket) => {
+    const newBrackets = brackets.filter(
+      (delBracket) => delBracket.DocumentID !== bracket.DocumentID
+    );
+    console.log("newBrackets");
+    console.log(newBrackets);
+    setBrackets(newBrackets);
+  };
+
   return (
     <div>
       <div>
@@ -54,7 +64,15 @@ const Home = () => {
             SetBracketsAfterACreation={SetBracketsAfterACreation}
           />
           {brackets.map((bracket: Bracket, key: number) => {
-            return <ActiveBracketCard key={key} bracket={bracket} />;
+            console.log("mapped bracket");
+            console.log(bracket);
+            return (
+              <ActiveBracketCard
+                key={key}
+                bracket={bracket}
+                DeleteBracketFromList={DeleteBracketFromList}
+              />
+            );
           })}
         </div>
       </div>
