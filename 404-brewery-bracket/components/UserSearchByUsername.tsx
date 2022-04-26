@@ -49,9 +49,9 @@ const UserSearchByUsername = (props) => {
       console.log(JSON.stringify(user));
       return user.Username.startsWith(event.target.value);
     });
-    searchResultsOptions = reducedAllUsers.map((searchResult: User) => {
+    searchResultsOptions = reducedAllUsers.map((searchResult: User, key: number) => {
       return (
-        <li className={styles.autocompleteOption}>
+        <li className={styles.autocompleteOption} key={key}>
           <a
             onClick={() => {
               updateInputValue(searchResult.Username);

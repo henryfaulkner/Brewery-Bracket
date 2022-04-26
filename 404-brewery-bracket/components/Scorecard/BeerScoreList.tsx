@@ -11,9 +11,9 @@ const BeerScoreList: React.FC<Props> = (props) => {
   return (
     <div className={styles.List}>
       <h2>Beer Score List</h2>
-      {props.BeerScoreList.map((beerScore) => {
+      {props.BeerScoreList.map((beerScore, key: number) => {
         return (
-          <p>
+          <p key={key}>
             {beerScore.BeerName} : {beerScore.Score}
           </p>
         );

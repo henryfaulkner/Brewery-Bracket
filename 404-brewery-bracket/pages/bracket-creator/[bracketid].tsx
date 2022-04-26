@@ -68,9 +68,9 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
               <h3>Add Brewery</h3>
               <BrewerySearchByName
                 BracketID={currBracket?.DocumentID ?? ""}
-                InitialCardList={initialBreweriesInBracket.map((breweryObj) => {
+                InitialCardList={initialBreweriesInBracket.map((breweryObj, key: number) => {
                   return (
-                    <li style={{ listStyleType: "none" }}>
+                    <li key={key} style={{ listStyleType: "none" }}>
                       <Card breweryObj={breweryObj} />
                     </li>
                   );
