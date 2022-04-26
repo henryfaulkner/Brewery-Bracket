@@ -53,8 +53,8 @@ const Home = () => {
           <CreateBracketCard
             SetBracketsAfterACreation={SetBracketsAfterACreation}
           />
-          {brackets.map((bracket: Bracket) => {
-            return <ActiveBracketCard bracket={bracket} />;
+          {brackets.map((bracket: Bracket, key: number) => {
+            return <ActiveBracketCard key={key} bracket={bracket} />;
           })}
         </div>
       </div>

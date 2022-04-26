@@ -115,9 +115,9 @@ const BrewerySearchByName = (props: Props) => {
     }
 
     searchResultsOptions = localSearchResults.map(
-      (searchResult: BreweryObject) => {
+      (searchResult: BreweryObject, key: number) => {
         return (
-          <li className={styles.autocompleteOption}>
+          <li className={styles.autocompleteOption} key={key}>
             <a
               onClick={() => {
                 updateInputValue(searchResult.name);

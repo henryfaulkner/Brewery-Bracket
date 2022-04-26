@@ -80,8 +80,8 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
           <option value="none" selected disabled hidden>
             Select a Beer
           </option>
-          {beerSelection.map((beer) => {
-            return <option value={beer.id}>{beer.name}</option>;
+          {beerSelection.map((beer, key: number) => {
+            return <option key={key} value={beer.id}>{beer.name}</option>;
           })}
         </select>
         <input

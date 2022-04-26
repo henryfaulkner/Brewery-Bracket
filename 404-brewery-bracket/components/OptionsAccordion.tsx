@@ -14,9 +14,9 @@ function OptionsAccordion(props: OptionArray) {
   const [navclicked, setNavClicked] = useState(false);
   const size = useWindowSize();
 
-  let options = props.options.map((locationNamePair) => {
+  let options = props.options.map((locationNamePair, key) => {
     return (
-      <Link href={locationNamePair[0]}>
+      <Link href={locationNamePair[0]} key={key}>
         <a className={styles.optionsLink}>{locationNamePair[1]}</a>
       </Link>
     );

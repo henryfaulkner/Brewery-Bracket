@@ -3,7 +3,7 @@ import styles from "../styles/Header.module.scss";
 import Link from "next/dist/client/link";
 import OptionsAccordion from "./OptionsAccordion";
 import { UserContext } from "../lib/context";
-import { User } from "firebase/auth";
+import { User, getAuth } from "firebase/auth";
 
 const Header = (props) => {
   const {user, username} = useContext(UserContext);
@@ -16,7 +16,7 @@ const Header = (props) => {
         options={[
           ["/", "Breweries"],
           ["/account", "Account"],
-          ["/login-form", username ? "Hello " : "Signup / log-in"],
+          ["/login-form", username ? "Hello ": "Signup / log-in"],
         ]}
       />
     </div>
