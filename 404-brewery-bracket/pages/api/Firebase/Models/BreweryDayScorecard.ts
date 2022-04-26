@@ -2,6 +2,7 @@ import IFirebaseDocument from "./IFirebaseDocument";
 
 class BreweryDayScorecard implements IFirebaseDocument {
   public DocumentID: string;
+  public AssociatedBracketID: string;
   public AssociatedBreweryDayID: string;
   public AssociatedBreweryID: string;
   public AssociatedBreweryName: string;
@@ -12,6 +13,8 @@ class BreweryDayScorecard implements IFirebaseDocument {
 
   public constructor(json) {
     if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
+    if (json["AssociatedBracketID"])
+      this.AssociatedBracketID = json["AssociatedBracketID"];
     if (json["AssociatedBreweryDayID"])
       this.AssociatedBreweryDayID = json["AssociatedBreweryDayID"];
     if (json["AssociatedBreweryID"])

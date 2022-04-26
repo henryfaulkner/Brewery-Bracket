@@ -1,5 +1,14 @@
 @import "variables.module.scss";
 
+.container {
+  position: relative;
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
 .abCardCont {
   background: $off-white;
   border: $beer-yellow 5px solid;
@@ -13,11 +22,6 @@
   transition: all ease 200ms;
   text-align: center;
 
-  &:hover,
-  &:focus,
-  &:active {
-    transform: scale(1.1);
-  }
   max-width: max-content;
 }
 

@@ -197,7 +197,7 @@ const BrewerySearchByName = (props: Props) => {
 
       const breweryCard = (
         <li style={{ listStyleType: "none" }}>
-          <Card breweryObj={breweryObj} />
+          <Card breweryObj={breweryObj} bracketID={props.BracketID} />
         </li>
       );
       setBreweryCards([...breweryCards, breweryCard]);
