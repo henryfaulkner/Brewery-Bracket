@@ -105,6 +105,9 @@ const LoginForm: React.FC = () => {
       <a href="/login-form/logout" className={styles.logout} onClick={logOut}>
         Logout
       </a>
+      <a href="/login-form/reset-password" className={styles.logout}>
+        Reset Password
+      </a>
     </div>
   );
 };
