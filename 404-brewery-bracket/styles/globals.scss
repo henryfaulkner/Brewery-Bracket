@@ -28,3 +28,6 @@ a {
   position: relative;
 }
 
+button {
+  @include default-button-styles();
+}

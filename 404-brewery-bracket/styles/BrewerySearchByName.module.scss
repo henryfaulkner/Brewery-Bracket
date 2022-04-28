@@ -1,33 +1,6 @@
 @import "variables.module.scss";
 @import "functions/mixins.scss";
 
-.autocompleteOption {
-  list-style-type: none;
-  font-size: 2em;
-  padding: 3px;
-  margin: 0;
-  border: 1px black solid;
-  color: grey;
-  background-color: rgb(250, 250, 229);
-}
-
-.autocompleteOption :hover {
-  background-color: $beer-yellow;
-}
-
-.dropdown {
-  position: absolute;
-
-  @include layout-for(mobile) {
-    top: 20px;
-  }
-}
-
-.dropdown div {
-  flex-grow: 1;
-  width: 0;
-}
-
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -42,32 +15,22 @@
 
   input {
     margin: auto;
-    &:focus {
-      position: absolute;
-      -webkit-transition: transform 0.2s ease-in-out;
-      transform: scale(3) translate(30%, -50%);
-
-      @include layout-for(mobile) {
+    @include layout-for(mobile) {
+      &:focus {
+        position: absolute;
         -webkit-transition: transform 0.2s ease-in-out;
-        transform: scale(2) translate(23%, -50%);
+        transform: scale(3) translate(30%, -50%);
+  
+        @include layout-for(mobile) {
+          -webkit-transition: transform 0.2s ease-in-out;
+          transform: scale(2) translate(23%, -50%);
+        }
       }
     }
   }
 }
 
-.autocompleteList {
-  margin-top: 30px;
-  height: 300px;
-  max-height: 300px;
-  min-width: 200px;
-  padding: 0;
-  position: absolute;
-  top: 6px;
-  overflow: auto;
-}
-
 .btn {
-  @include default-button-styles();
   width: unset; // Using flex grow for width
   font-size: $font-size-small;
   padding: 8px 16px;

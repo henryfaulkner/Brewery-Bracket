@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import styles from "../../styles/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
+import CardCurrentComp from "../../components/CardCurrentComp"
 
 let currBracket: Bracket;
 
@@ -17,6 +18,8 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
   const router = useRouter();
   const [bracketIDState, setBracketIDState]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
+  const input_addBrewery = useRef();
+  const [currentCards, setCurrentCards]: [Array<string>, any] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +62,24 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
     }
   };
 
+  const addBrewery = async () => {
+    if(input_addBrewery.current != null) {
+      console.log(currentCards);
+      let cards = currentCards;
+      cards.push(input_addBrewery.current.value)
+      setCurrentCards(cards);
+    }
+  }
+
+  const renderedCards = currentCards.map((name, key) => {
+    return (
+      <CardCurrentComp
+      key={key}
+      breweryName={name}
+      />
+    )
+  })
+
   return (
     <div>
       <h2>Add Breweries</h2>
@@ -70,19 +91,12 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
               <h3>Add Brewery</h3>
               <BrewerySearchByName
                 BracketID={currBracket?.DocumentID ?? ""}
-                InitialCardList={initialBreweriesInBracket.map(
-                  (breweryObj, key: number) => {
-                    return (
-                      <li key={key} style={{ listStyleType: "none" }}>
-                        <Card
-                          bracketID={bracketIDState}
-                          breweryObj={breweryObj}
-                        />
-                      </li>
-                    );
-                  }
-                )}
+                inputReference={input_addBrewery}
               />
+              <button 
+              className={styles.btn}
+              onClick={() => addBrewery()}
+              >Add</button>
             </div>
             <div className={styles.addCustomCont}>
               <div className={styles.labelInputPair}>
@@ -95,6 +109,9 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
           <div className={styles.verticalDividerDiv}></div>
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
+            <div className={styles.currentBreweriesCards}>
+              {renderedCards}
+            </div>
           </div>
         </div>
       </div>

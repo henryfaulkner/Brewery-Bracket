@@ -52,6 +52,13 @@
   flex-direction: column;
 }
 
+.currentBreweriesCards {
+  display: grid;
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-columns: auto auto auto auto;
+}
+
 .knownBreweries {
   margin: 0px 0 30px 0;
 
