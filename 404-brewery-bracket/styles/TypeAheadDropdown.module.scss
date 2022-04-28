@@ -47,9 +47,9 @@
         color: $white;
         background-color: $beer-dark-red;
         margin: 10px;
-    }
-
-    li :hover {
-        background-color: $beer-yellow;
+        &:hover {
+            background-color: $beer-yellow;
+            cursor: pointer;
+        }
     }
 }

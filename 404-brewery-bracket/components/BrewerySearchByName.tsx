@@ -104,7 +104,8 @@ const BrewerySearchByName = (props: Props) => {
           <li key={key}>
             <a
               onClick={() => {
-                updateInputValue(searchResult.name);
+                setSearchText(searchResult.name)
+                console.log(searchText)
                 controlAutocompleteOptions([]);
               }}
             >

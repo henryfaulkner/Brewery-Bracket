@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
-import CardCurrentComp from "../../components/CardCurrentComp"
+import CardCurrentComp from "../../components/CardCurrentComp";
 
 let currBracket: Bracket;
 
@@ -63,22 +63,11 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
   };
 
   const addBrewery = async () => {
-    if(input_addBrewery.current != null) {
+    if (input_addBrewery.current != null) {
+      setCurrentCards([...currentCards, input_addBrewery.current.value]);
       console.log(currentCards);
-      let cards = currentCards;
-      cards.push(input_addBrewery.current.value)
-      setCurrentCards(cards);
     }
-  }
-
-  const renderedCards = currentCards.map((name, key) => {
-    return (
-      <CardCurrentComp
-      key={key}
-      breweryName={name}
-      />
-    )
-  })
+  };
 
   return (
     <div>
@@ -93,10 +82,9 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
                 BracketID={currBracket?.DocumentID ?? ""}
                 inputReference={input_addBrewery}
               />
-              <button 
-              className={styles.btn}
-              onClick={() => addBrewery()}
-              >Add</button>
+              <button className={styles.btn} onClick={() => addBrewery()}>
+                Add
+              </button>
             </div>
             <div className={styles.addCustomCont}>
               <div className={styles.labelInputPair}>
@@ -110,7 +98,9 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
-              {renderedCards}
+              {currentCards.map((name, key) => {
+                return <CardCurrentComp breweryName={name} key={key} />;
+              })}
             </div>
           </div>
         </div>
