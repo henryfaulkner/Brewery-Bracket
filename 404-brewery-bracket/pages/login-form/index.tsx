@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import styles from "../../styles/Login-Form.module.scss";
 import Image from "next/image";
 import { UserContext } from "../../lib/context";
@@ -48,6 +49,16 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className={styles.loginPage}>
+      <Head>
+        <title>Login Page</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="Description"
+          content="Sign up for the best brewery bracket app on the market! It's completely Free!"
+        />
+        <meta name="Keywords" content="Brewery Bracket" />
+        <meta name="Keywords" content="Account" />
+      </Head>
       <div className={styles.loginModal}>
         <div className={styles.loginImageAligner}>
           <div className={`image-container ${styles.loginImage}`}>
