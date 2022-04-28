@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import AddBeerScorecardContainer from "../../../components/Scorecard/AddBeerScorecardContainer";
 import Portal from "../../../components/Portal";
@@ -113,6 +114,15 @@ const BreweryDay = () => {
 
   return (
     <div>
+      <Head>
+        <title>Scorecard Page</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="Description"
+          content="Give ratings to the current brewery."
+        />
+        <meta name="Keywords" content="Brewery Bracket" />
+      </Head>
       <h1>Brewery: {scorecard.AssociatedBreweryName}</h1>
       <div className={styles.Row}>
         <BeerScoreList BeerScoreList={beerList} />

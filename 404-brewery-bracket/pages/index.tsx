@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Head from "next/head";
 import ActiveBracketCard from "../components/ActiveBracketCard";
 import CreateBracketCard from "../components/CreateBracketCard";
 import Bracket from "./api/Firebase/Models/Bracket";
@@ -56,6 +57,20 @@ const Home = () => {
 
   return (
     <div>
+      <Head>
+        <title>Brewery Bracket Home Page</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="google-site-verification"
+          content="googlec9225a2b0c03c875.html"
+        />
+        <meta
+          name="Description"
+          content="Click here to facilitate brewery brackets with your friends and co-workers! Keep your favorite drinking spots competitive."
+        />
+        <meta name="Keywords" content="Brewery Bracket" />
+        <meta name="Keywords" content="Competition" />
+      </Head>
       <div>
         <h2>Active Brackets</h2>
         <hr />
