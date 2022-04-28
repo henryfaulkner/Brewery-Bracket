@@ -26,9 +26,9 @@
   input {
     margin: auto;
     &:focus {
-      position: absolute;
-      -webkit-transition: transform 0.2s ease-in-out;
-      transform: scale(3) translate(30%, -50%);
+      // position: absolute;
+      // -webkit-transition: transform 0.2s ease-in-out;
+      // transform: scale(3) translate(30%, -50%);
 
       @include layout-for(mobile) {
         -webkit-transition: transform 0.2s ease-in-out;

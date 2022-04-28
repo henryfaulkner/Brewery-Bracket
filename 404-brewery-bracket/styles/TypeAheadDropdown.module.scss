@@ -1,0 +1,55 @@
+@import "variables.module.scss";
+@import "functions/mixins.scss";
+
+.dropdown {
+    position: absolute;
+
+    @include layout-for(mobile) {
+        top: 20px;
+    }
+}
+
+.autocompleteList {
+    margin-top: 30px;
+    max-height: 300px;
+    min-width: 200px;
+    padding: 0;
+    position: absolute;
+    top: 6px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+        /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $beer-brown;
+        /* color of the scroll thumb */
+        border-radius: 20px;
+        /* roundness of the scroll thumb */
+        border: 1px solid $beer-yellow;
+        /* creates padding around scroll thumb */
+    }
+
+    li {
+        list-style-type: none;
+        font-size: 2em;
+        padding: 3px;
+        margin: 0;
+        border: 1px black solid;
+        border-radius: $border-radius-default;
+        color: $white;
+        background-color: $beer-dark-red;
+        margin: 10px;
+        &:hover {
+            background-color: $beer-yellow;
+            cursor: pointer;
+        }
+    }
+}

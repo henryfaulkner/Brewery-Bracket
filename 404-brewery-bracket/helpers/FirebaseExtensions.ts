@@ -1,46 +1,45 @@
-import { useState } from "react";
+import {server} from "../config";
+import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 
-type BreweryObject = {
-  name: string;
-  description: string;
-  short_description: string;
-  url: string;
-  facebook_url: string;
-  twitter_url: string;
-  instagram_url: string;
-  address: string;
-};
-
-function GetAllBreweries(request) {
-  var [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState();
-
-  //Call API breweries
-  fetch("/api/BeerAPI/GetApiBreweries", {
-    method: "POST",
-    body: JSON.stringify(request),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((response: BreweryObject[]) => {
-      setAllBreweries(response);
-    });
-
-  //Call Firestore breweries
-  fetch("/api/Firebase/Endpoints/GetCustomBreweries", {
-    method: "POST",
-    body: JSON.stringify({}),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((response: BreweryObject[]) => {
-      setAllBreweries([allBreweries, response]);
-    });
-
+const GetAllBreweries = async () => {
+  // Make this promise.all() for performance
+  let apiBreweries = await GetApiBreweries();
+  let customBrewries = await GetCustomBreweries();
+  let allBreweries: BreweryObject[];
+  if(apiBreweries != null && customBrewries != null) {
+    allBreweries = apiBreweries.concat(customBrewries);
+  } else if (apiBreweries != null && customBrewries == null) {
+    allBreweries = apiBreweries;
+  } else if (apiBreweries == null && customBrewries != null) {
+    allBreweries = customBrewries;
+  } else { // both null
+    allBreweries = [null];
+  }
   return allBreweries;
 }
 
-export default {GetAllBreweries};
+async function GetApiBreweries() {
+  let breweries: BreweryObject[];
+  //Call API breweries
+  const response = await fetch(`${server}/api/BeerAPI/GetAPIBreweries`);
+  if(response.ok) {
+    breweries = await response.json();
+  } else {
+    console.log(response);
+  }
+  return breweries;
+}
+
+async function GetCustomBreweries() {
+  let breweries: BreweryObject[];
+  //Call Firestore breweries
+  const response = await fetch(`${server}/api/BeerAPI/GetCustomBreweries`);
+  if(response.ok) {
+    breweries = await response.json();
+  } else {
+    console.log(response);
+  }
+  return breweries;
+}
+
+export default GetAllBreweries;

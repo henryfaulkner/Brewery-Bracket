@@ -7,7 +7,8 @@ import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 import DeleteIcon from "./DeleteIcon";
 
 type Props = {
-  breweryObj: BreweryObject;
+  breweryName: string;
+  breweryId: string;
   bracketID: string;
 };
 
@@ -21,7 +22,7 @@ const Card: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (hasPulledData === false) {
-      createOrGetScorecard(props.breweryObj.id, props.breweryObj.name);
+      createOrGetScorecard(props.breweryId, props.breweryName);
 
       setHasPulledData(true);
     }

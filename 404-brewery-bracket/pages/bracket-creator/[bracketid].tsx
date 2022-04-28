@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Head from "next/head";
+
 
 import styles from "../../styles/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
@@ -11,27 +12,37 @@ import { useRouter } from "next/router";
 import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
+import GetAllBreweries from "../../helpers/FirebaseExtensions";
 
 let currBracket: Bracket;
 
-const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
+type Props = {
+  allUsers: User[];
+  initialBrewriesInBracket: BreweryObject[];
+  allBreweries: BreweryObject[];
+};
+
+const BracketCreator = (props: Props) => {
   const router = useRouter();
-  const [bracketIDState, setBracketIDState]: [string, any] = useState("");
+  const [bracketID, setBracketID]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
+  const input_addBrewery = useRef();
+  const [currentCards, setCurrentCards]: [Array<string>, any] = useState([]);
+  const [breweryCardsRendered, setBreweryCardsRendered]: [
+    Array<BreweryObject>,
+    any
+  ] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       if (!hasPulledData && router.isReady) {
         const { bracketid } = router.query;
-        setBracketIDState(bracketid);
+        setBracketID(bracketid);
         await GetCurrentBracket(bracketid);
 
         setHasPulledData(true);
       }
     };
-
-    console.log("currBracket");
-    console.log(currBracket);
     fetchData();
   });
 
@@ -60,6 +71,16 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
     }
   };
 
+  const addBrewery = async (e) => {
+    if (input_addBrewery.current != null) {
+      let inputValue = input_addBrewery.current.value;
+      let breweryId = input_addBrewery.current.dataset.currentBreweryId;
+      setCurrentCards([...currentCards, [inputValue, breweryId]]);
+
+      // console.log(currentCards);
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -75,21 +96,17 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
           <div className={styles.addBrewsCont}>
             <div className={styles.knownBreweries}>
               <h3>Add Brewery</h3>
-              <BrewerySearchByName
-                BracketID={currBracket?.DocumentID ?? ""}
-                InitialCardList={initialBreweriesInBracket.map(
-                  (breweryObj, key: number) => {
-                    return (
-                      <li key={key} style={{ listStyleType: "none" }}>
-                        <Card
-                          bracketID={bracketIDState}
-                          breweryObj={breweryObj}
-                        />
-                      </li>
-                    );
-                  }
-                )}
-              />
+              <div className={styles.labelButtonPair}>
+                <BrewerySearchByName
+                  BracketID={currBracket?.DocumentID ?? ""}
+                  inputReference={input_addBrewery}
+                  breweriesToBeSearched={props.allBreweries}
+                />
+
+                <button className={styles.btn} onClick={(e) => addBrewery(e)}>
+                  Add
+                </button>
+              </div>
             </div>
             <div className={styles.addCustomCont}>
               <div className={styles.labelInputPair}>
@@ -102,6 +119,18 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
           <div className={styles.verticalDividerDiv}></div>
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
+            <div className={styles.currentBreweriesCards}>
+              {currentCards.map((breweryInformation, key) => {
+                return (
+                  <Card
+                    key={key}
+                    breweryName={breweryInformation[0]}
+                    breweryId={breweryInformation[1]}
+                    bracketID={bracketID}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -110,7 +139,10 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
       <hr />
       <div className={styles.pageContentContainer}>
         <div className={styles.addCustomCont}>
-          <UserSearchByUsername allUsers={allUsers} bracket={currBracket} />
+          <UserSearchByUsername
+            allUsers={props.allUsers}
+            bracket={currBracket}
+          />
         </div>
       </div>
     </div>
@@ -154,11 +186,12 @@ export async function getServerSideProps(context) {
         return JSON.parse(JSON.stringify(brewery));
       });
     });
-
+  const allBreweries = await GetAllBreweries();
   return {
     props: {
       allUsers,
       initialBreweriesInBracket,
+      allBreweries,
     },
   };
 }
