@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 
 import styles from "../../styles/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
@@ -61,6 +62,12 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
 
   return (
     <div>
+      <Head>
+        <title>Bracket Creator Page</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="Description" content="Add breweries to your bracket." />
+        <meta name="Keywords" content="Brewery Bracket" />
+      </Head>
       <h2>Add Breweries</h2>
       <hr />
       <div className={styles.pageContentContainer}>
