@@ -11,10 +11,17 @@ import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
 import CardCurrentComp from "../../components/CardCurrentComp";
+import GetAllBreweries from "../../helpers/FirebaseExtensions";
 
 let currBracket: Bracket;
 
-const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
+type Props = {
+  allUsers: User[];
+  initialBrewriesInBracket: BreweryObject[];
+  breweriesToBeSearched: BreweryObject[];
+};
+
+const BracketCreator = (props: Props) => {
   const router = useRouter();
   const [bracketIDState, setBracketIDState]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
@@ -31,9 +38,6 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
         setHasPulledData(true);
       }
     };
-
-    console.log("currBracket");
-    console.log(currBracket);
     fetchData();
   });
 
@@ -64,7 +68,8 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
 
   const addBrewery = async () => {
     if (input_addBrewery.current != null) {
-      setCurrentCards([...currentCards, input_addBrewery.current.value]);
+      let inputValue = input_addBrewery.current.value;
+      setCurrentCards([...currentCards, inputValue]);
       console.log(currentCards);
     }
   };
@@ -81,6 +86,7 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
               <BrewerySearchByName
                 BracketID={currBracket?.DocumentID ?? ""}
                 inputReference={input_addBrewery}
+                breweriesToBeSearched={props.breweriesToBeSearched}
               />
               <button className={styles.btn} onClick={() => addBrewery()}>
                 Add
@@ -110,7 +116,7 @@ const BracketCreator = ({ allUsers, initialBreweriesInBracket }) => {
       <hr />
       <div className={styles.pageContentContainer}>
         <div className={styles.addCustomCont}>
-          <UserSearchByUsername allUsers={allUsers} bracket={currBracket} />
+          <UserSearchByUsername allUsers={props.allUsers} bracket={currBracket} />
         </div>
       </div>
     </div>
@@ -154,11 +160,12 @@ export async function getServerSideProps(context) {
         return JSON.parse(JSON.stringify(brewery));
       });
     });
-
+    const allBreweries = null;
   return {
     props: {
       allUsers,
       initialBreweriesInBracket,
+      allBreweries
     },
   };
 }

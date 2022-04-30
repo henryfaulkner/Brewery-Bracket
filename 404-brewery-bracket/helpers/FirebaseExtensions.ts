@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 type BreweryObject = {
   name: string;
   description: string;
@@ -11,22 +9,38 @@ type BreweryObject = {
   address: string;
 };
 
-function GetAllBreweries(request) {
-  var [allBreweries, setAllBreweries]: [BreweryObject[], any] = useState();
+const GetAllBreweries = async () => {
+  // Make this promise.all() for performance
+  let apiBrewries = await GetApiBreweries();
+  let customBrewries = await GetCustomBreweries();
+  let allBreweries: BreweryObject[];
+  if(apiBrewries != null) {
+    allBreweries = apiBrewries.concat(customBrewries);
+  }
 
+
+  return allBreweries;
+}
+
+async function GetApiBreweries() {
+  let breweries: BreweryObject[];
   //Call API breweries
   fetch("/api/BeerAPI/GetApiBreweries", {
     method: "POST",
-    body: JSON.stringify(request),
+    // body: JSON.stringify({}),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
     .then((response) => response.json())
     .then((response: BreweryObject[]) => {
-      setAllBreweries(response);
+      breweries = response;
     });
+    return breweries;
+}
 
+async function GetCustomBreweries() {
+  let breweries: BreweryObject[];
   //Call Firestore breweries
   fetch("/api/Firebase/Endpoints/GetCustomBreweries", {
     method: "POST",
@@ -37,10 +51,9 @@ function GetAllBreweries(request) {
   })
     .then((response) => response.json())
     .then((response: BreweryObject[]) => {
-      setAllBreweries([allBreweries, response]);
+      breweries = response;
     });
-
-  return allBreweries;
+    return breweries;
 }
 
-export default {GetAllBreweries};
+export default GetAllBreweries;
