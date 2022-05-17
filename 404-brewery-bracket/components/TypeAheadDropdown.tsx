@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/BrewerySearchByName.module.scss";
+import styles from "../styles/TypeAheadDropdown.module.scss";
 
 type Props = {
   searchResultsOptions: JSX.Element[];
@@ -10,7 +10,7 @@ type Props = {
 const TypeAheadDropdown = (props: Props) => {
   return (
     <div className={styles.dropdown} style={props.dropdownStyle}>
-      <ul className={styles.autocompleteList}>{props.searchResultsOptions}</ul>
+      <ul className={styles.autocompleteList} style={props.dropdownStyle}>{props.searchResultsOptions}</ul>
     </div>
   );
 };
