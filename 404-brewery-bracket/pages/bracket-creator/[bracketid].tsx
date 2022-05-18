@@ -6,7 +6,7 @@ import styles from "../../styles/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 import UserSearchByUsername from "../../components/UserSearchByUsername";
-import Card from "../../components/Card";
+import Card from "../../components/CurrentCompetitionCard";
 import User from "../api/Firebase/Models/User";
 import { useRouter } from "next/router";
 import { server } from "../../config";
@@ -73,8 +73,10 @@ const BracketCreator = (props: Props) => {
 
   const addBrewery = async (e) => {
     if (input_addBrewery.current != null) {
-      let inputValue = input_addBrewery.current.value;
-      let breweryId = input_addBrewery.current.dataset.currentBreweryId;
+      // @ts-expect-error because one of us is a dummy and won't listen to my chaining operator
+      let inputValue = input_addBrewery?.current?.value;
+      // @ts-expect-error
+      let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
       setCurrentCards([...currentCards, [inputValue, breweryId]]);
 
       // console.log(currentCards);

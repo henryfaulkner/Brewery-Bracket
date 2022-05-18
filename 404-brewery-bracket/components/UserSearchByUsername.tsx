@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "../styles/BrewerySearchByName.module.scss";
-import CardList from "./CardList";
-import Card from "./Card";
-import Portal from "./Portal";
-import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
-import { UserContext } from "../lib/context";
 import User from "../pages/api/Firebase/Models/User";
 import TypeAheadDropdown from "./TypeAheadDropdown";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
@@ -25,7 +20,6 @@ let searchResultsOptions: JSX.Element[] = [];
 const UserSearchByUsername = (props) => {
   const [searchText, setSearchText] = useState("");
   const [dropdownStyle, setDropdownStyle] = useState();
-  const [searchResults, setSearchResults]: [[], any] = useState([]);
   const [hasPulledData, setHasPulledData]: [boolean, any] = useState(false);
 
   useEffect(() => {

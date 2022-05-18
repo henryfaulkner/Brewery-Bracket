@@ -1,5 +1,5 @@
 import { GetBreweriesNamesAndIds } from "../api/BeerAPI/catalog-beer";
-import Card from "../../components/Card";
+import Card from "../../components/CurrentCompetitionCard";
 import BracketCard from "../../components/Bracket";
 import Header from "../../components/Header";
 

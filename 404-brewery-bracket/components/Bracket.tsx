@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from "./Card";
+import Card from "./CurrentCompetitionCard";
 
 class Bracket extends React.Component {
     render() {
