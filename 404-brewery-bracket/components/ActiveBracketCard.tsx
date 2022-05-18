@@ -14,7 +14,6 @@ type Props = () => {
 const ActiveBracketCard = (props) => {
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
   const [isLink, setIsLink]: [Element[], any] = useState();
-  const [hasPulledData, setHasPulledData] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const { user, username } = useContext(UserContext);
   useEffect(() => {
