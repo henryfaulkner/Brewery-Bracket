@@ -20,17 +20,17 @@ const BracketPage = (props: Props) => {
   const numberOfRounds = Math.round(fakeData.length / 2);
 
   let theBracket;
-  for(let i = numberOfRounds; i > 0; --i) {
-    let tableElements = numberOfRounds * 2;
-    let gapCount = (tableElements * 2) - 2;
-    for(let x = tableElements; x > 0; --x) {
-      let operation = tableElements % 4;
-      switch(operation) {
-        case 0:
-          theBracket[x][i] = fakeData[numberOfGames]
-      }
-    }
-  }
+  // for(let i = numberOfRounds; i > 0; --i) {
+  //   let tableElements = numberOfRounds * 2;
+  //   let gapCount = (tableElements * 2) - 2;
+  //   for(let x = tableElements; x > 0; --x) {
+  //     let operation = tableElements % 4;
+  //     switch(operation) {
+  //       case 0:
+  //         theBracket[x][i] = fakeData[numberOfGames]
+  //     }
+  //   }
+  // }
 
   return (
     <div className={styles.breweryGrid}>
