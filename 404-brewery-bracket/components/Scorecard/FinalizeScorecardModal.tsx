@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/dist/client/link";
-import styles from "../../styles/AdditionalInfoModal.module.scss";
+import styles from "../../styles/components/AdditionalInfoModal.module.scss";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";
 import BeerScore from "../../pages/api/Firebase/Models/BeerScore";
 

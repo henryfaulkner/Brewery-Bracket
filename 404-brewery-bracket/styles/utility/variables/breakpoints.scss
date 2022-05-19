@@ -1,0 +1,9 @@
+$mobileBreakpoint: 600px;
+$tabletBreakpoint: 1000px;
+$desktopBreakpoint: 1280px;
+
+:export {
+    mobileBreakpoint: $mobileBreakpoint;
+    tabletBreakpoint: $tabletBreakpoint;
+    desktopBreakpoint: $desktopBreakpoint;
+}

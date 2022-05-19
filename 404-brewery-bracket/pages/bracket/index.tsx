@@ -1,4 +1,4 @@
-import styles from "../../styles/BreweryGrid.module.scss";
+import styles from "../../styles/pages/BreweryGrid.module.scss";
 
 type Props = {
   brewries: Array<string>;

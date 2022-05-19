@@ -1,0 +1,15 @@
+@mixin layout-for($viewport) {
+    @if $viewport==mobile {
+        @media only screen and (max-width: $mobileBreakpoint) {
+            @content;
+        }
+    } @else if $viewport==tablet {
+        @media only screen and (max-width: $tabletBreakpoint) {
+            @content;
+        }
+    } @else if $viewport==desktop {
+        @media only screen and (max-width: $desktopBreakpoint) {
+            @content;
+        }
+    }
+}

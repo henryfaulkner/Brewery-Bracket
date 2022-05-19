@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/dist/client/link";
-import styles from "../styles/Scorecard.module.scss";
+import styles from "../styles/components/Scorecard.module.scss";
 import ApiBeerScorecard from "./ApiBeerScorecard";
 import CustomBeerScorecard from "./CustomBeerScorecard";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";

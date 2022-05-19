@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/CustomBreweryTextbox.module.scss";
+import styles from "../styles/components/CustomBreweryTextbox.module.scss";
 import Portal from "./Portal";
 import CustomBrewery from "../pages/api/Firebase/Models/CustomBrewery";
 

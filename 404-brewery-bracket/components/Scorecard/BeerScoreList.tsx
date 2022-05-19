@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "../../styles/Scorecard.module.scss";
+import styles from "../../styles/components/Scorecard.module.scss";
 import BeerScore from "../../pages/api/Firebase/Models/BeerScore";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";
 

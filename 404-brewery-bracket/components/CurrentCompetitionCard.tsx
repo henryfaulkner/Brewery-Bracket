@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Link from "next/dist/client/link";
-import styles from "../styles/CurrentCompetitionCard.module.scss";
+import styles from "../styles/components/CurrentCompetitionCard.module.scss";
 import { UserContext } from "../lib/context";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";

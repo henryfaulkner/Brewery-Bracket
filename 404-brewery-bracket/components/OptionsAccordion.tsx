@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import styles from "../styles/OptionsAccordion.module.scss";
-import globalVariables from "../styles/variables.module.scss";
+import styles from "../styles/components/OptionsAccordion.module.scss";
+// import globalVariables from "../styles/utility/variables/breakpoints.scss";
 
 interface OptionArray {
   options: [location: string, displayName: string][];
@@ -72,7 +72,7 @@ function useWindowSize() {
       function handleResize() {
         // Set window width/height to state
         let mobileState =
-          window.innerWidth <= parseInt(globalVariables.mobileBreakpoint);
+          window.innerWidth <= parseInt(styles.mobileBreakpoint);
         setWindowSize({
           width: window.innerWidth,
           height: window.innerHeight,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import styles from "../styles/BrewerySearchByName.module.scss";
+import styles from "../styles/components/BrewerySearchByName.module.scss";
 import User from "../pages/api/Firebase/Models/User";
 import TypeAheadDropdown from "./TypeAheadDropdown";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
