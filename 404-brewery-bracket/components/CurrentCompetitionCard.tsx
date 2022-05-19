@@ -69,7 +69,7 @@ const Card: React.FC<Props> = (props) => {
       <Link href={`/bracket/brewery-day/${scorecard.DocumentID}`}>
         <div className={styles.abCardCont}>
           <div className={styles.abCardBody}>
-            <h1>{scorecard.AssociatedBreweryName}</h1>
+            <p className={styles.brewName}>{scorecard.AssociatedBreweryName}</p>
           </div>
         </div>
       </Link>

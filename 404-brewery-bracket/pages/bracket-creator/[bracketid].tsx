@@ -119,7 +119,7 @@ const BracketCreator = (props: Props) => {
             </div>
           </div>
 
-          <div className={styles.verticalDividerDiv}></div>
+          <div className={styles.dividerDiv}></div>
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
