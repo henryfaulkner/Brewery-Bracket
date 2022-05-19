@@ -13,6 +13,7 @@ import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
 import GetAllBreweries from "../../helpers/FirebaseExtensions";
+import Link from "next/link";
 
 let currBracket: Bracket;
 
@@ -135,6 +136,12 @@ const BracketCreator = (props: Props) => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className={styles.FIGHT}>
+        <Link href="/bracket">
+        <button>Go to the bracket</button>
+        </Link>
       </div>
 
       <h2>Add User to This Bracket</h2>

@@ -1,50 +1,36 @@
-import { GetBreweriesNamesAndIds } from "../api/BeerAPI/catalog-beer";
-import Card from "../../components/CurrentCompetitionCard";
-import BracketCard from "../../components/Bracket";
-import Header from "../../components/Header";
+import styles from "../../styles/BreweryGrid.module.scss";
 
-const Bracket = ({ allBreweriesData }) => {
-  //   var breweryNames = [];
+type Props = {
+  brewries: Array<string>;
+};
 
-  //   var breweryCards = allBreweriesData.map((breweryObj) => {
-  //     breweryNames.push(breweryObj.name);
-  //     return <Card name={breweryObj.name} />;
-  //   });
+const fakeData = [
+  "brew1",
+  "brew2",
+  "brew3",
+  "brew4",
+  "brew5",
+  "brew6",
+  "brew7",
+  "brew8",
+];
 
-  //   let brackets = [];
+const BracketPage = (props: Props) => {
+  const numberOfGames = fakeData.length - 1;
+  const numberOfRounds = Math.round(fakeData.length / 2);
 
-  //   while (breweryNames.length) {
-  //     let bracketCards = breweryNames.splice(0, 2);
-  //     let card1 = <Card name={bracketCards[0]} />;
-  //     let card2 = <Card name={bracketCards[1]} />;
-  //     brackets.push(<BracketCard card1={card1} card2={card2} />);
-  //   }
-
-  //   return (
-  //     <div className="container">
-  //       <Header />
-  //       <div className="bracket">{brackets}</div>
-  //     </div>
-  //   );
-  // };
-
-  // export async function getStaticProps() {
-  //   const allBreweriesData = await GetBreweriesNamesAndIds();
-  //   return {
-  //     props: {
-  //       allBreweriesData,
-  //     },
-  //   };
+  for(let i = numberOfRounds; i > 0; --i) {
+    let tableElements = numberOfRounds * 2;
+    
+  }
 
   return (
-    <div>
-      <div>
-        <div>
-          <h4>You have been logged out.</h4>
-        </div>
-      </div>
+    <div className={styles.breweryGrid}>
+      <table>
+        {}
+      </table>
     </div>
   );
 };
 
-export default Bracket;
+export default BracketPage;
