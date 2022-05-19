@@ -6,7 +6,7 @@ import BeerScoreList from "../../../components/Scorecard/BeerScoreList";
 import { useEffect, useState } from "react";
 import BreweryDayScorecard from "../../api/Firebase/Models/BreweryDayScorecard";
 import BeerScore from "../../api/Firebase/Models/BeerScore";
-import styles from "../../../styles/Scorecard.module.scss";
+import styles from "../../../styles/components/Scorecard.module.scss";
 
 const BreweryDay = () => {
   const router = useRouter();

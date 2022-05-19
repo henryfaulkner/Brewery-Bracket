@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import styles from "../../styles/Login-Form.module.scss";
+import styles from "../../styles/pages/Login-Form.module.scss";
 import Image from "next/image";
 import { UserContext } from "../../lib/context";
 import { useContext } from "react";

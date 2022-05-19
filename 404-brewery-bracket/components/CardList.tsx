@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/BrewerySearchByName.module.scss";
+import styles from "../styles/components/BrewerySearchByName.module.scss";
 
 const CardList = (props) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext} from "react";
-import styles from "../styles/Header.module.scss";
+import styles from "../styles/foundational/Header.module.scss";
 import Link from "next/dist/client/link";
 import OptionsAccordion from "./OptionsAccordion";
 import { UserContext } from "../lib/context";

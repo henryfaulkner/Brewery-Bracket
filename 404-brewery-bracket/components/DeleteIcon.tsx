@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Image from "next/image";
-import styles from "../styles/DeleteClickable.module.scss";
+import styles from "../styles/components/DeleteClickable.module.scss";
 import idleSVG from "../public/delete-white.svg";
 import hoverSVG from "../public/delete-gray-hover.svg";
 

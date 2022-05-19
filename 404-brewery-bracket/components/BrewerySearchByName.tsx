@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../styles/BrewerySearchByName.module.scss";
+import styles from "../styles/components/BrewerySearchByName.module.scss";
 import TypeAheadDropdown from "./TypeAheadDropdown";
 import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 

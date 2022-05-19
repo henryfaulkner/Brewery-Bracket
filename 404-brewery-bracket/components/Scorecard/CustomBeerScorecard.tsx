@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../styles/Scorecard.module.scss";
+import styles from "../../styles/components/Scorecard.module.scss";
 
 type Props = {
   AddBeerScore: (beerName, beerId, beerScore, IsCustom?) => Promise<void>;

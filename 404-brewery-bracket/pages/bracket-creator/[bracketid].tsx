@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 
 
-import styles from "../../styles/BracketCreator.module.scss";
+import styles from "../../styles/pages/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 import UserSearchByUsername from "../../components/UserSearchByUsername";

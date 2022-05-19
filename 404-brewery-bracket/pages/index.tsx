@@ -5,7 +5,7 @@ import CreateBracketCard from "../components/CreateBracketCard";
 import Bracket from "./api/Firebase/Models/Bracket";
 import { UserContext } from "../lib/context";
 
-import styles from "../styles/BracketCreator.module.scss";
+import styles from "../styles/pages/BracketCreator.module.scss";
 import DeleteIcon from "../components/DeleteIcon";
 
 const Home = () => {

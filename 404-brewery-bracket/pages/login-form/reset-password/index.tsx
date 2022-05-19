@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { auth } from "../../../lib/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
-import styles from "../../../styles/ResetPasswordPage.module.scss";
+import styles from "../../../styles/pages/ResetPasswordPage.module.scss";
 
 const ResetPasswordPage = () => {
   const [email, setEmail] = useState("");
