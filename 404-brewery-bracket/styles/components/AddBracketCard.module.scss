@@ -1,0 +1,34 @@
+@import "../utility/utility.scss";
+
+.addCardCont {
+  background: $beer-brown;
+  width: inherit;
+  border-radius: 0.6em;
+  margin: 1em;
+  padding: 15px 20px;
+  cursor: pointer;
+  @include card-shadow();
+  transition: all ease 200ms;
+  text-align: center;
+  position: relative;
+
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.1);
+  }
+  max-width: fit-content;
+}
+
+.addCardBody {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addBracketCard {
+  font-size: xxx-large;
+  width: 60px;
+}
