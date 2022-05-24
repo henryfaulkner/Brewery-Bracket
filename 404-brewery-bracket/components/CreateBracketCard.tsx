@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Portal from "./Portal";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
 import Link from "next/dist/client/link";
-import styles from "../styles/components/ActiveBracketCard.module.scss";
+import styles from "../styles/components/AddBracketCard.module.scss";
 import { UserContext } from "../lib/context";
 
 const CreateBracketCard = (props) => {
@@ -51,9 +51,9 @@ const CreateBracketCard = (props) => {
   };
 
   return (
-    <div className={styles.abCardCont}>
+    <button className={styles.addCardCont}>
       <div
-        className={styles.abCardBody}
+        className={styles.addCardBody}
         onClick={() => {
           if (!username) ChangeShowModal();
         }}
@@ -70,7 +70,7 @@ const CreateBracketCard = (props) => {
         showModal={showModal}
         setShowModal={setShowModal}
       />
-    </div>
+    </button>
   );
 };
 

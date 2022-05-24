@@ -16,17 +16,18 @@ const ActiveBracketCard = (props) => {
   const [isLink, setIsLink]: [Element[], any] = useState();
   const [isHover, setIsHover] = useState(false);
   const { user, username } = useContext(UserContext);
+  const ariaLinkLabel = "Go to " + props.bracket.BracketName;
   useEffect(() => {
     if (user) {
       console.log("props.bracket.GetDocumentID");
       console.log(props.bracket.DocumentID);
       setIsLink(
         <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
-          <h1>{props.bracket.BracketName}</h1>
+          <h3>{props.bracket.BracketName}</h3>
         </Link>
       );
     } else {
-      setIsLink(<h1>{props.bracket.BracketName}</h1>);
+      setIsLink(<h3>{props.bracket.BracketName}</h3>);
     }
   }, [props.bracket]);
 
@@ -61,16 +62,16 @@ const ActiveBracketCard = (props) => {
   };
 
   return (
-    <div
-      className={styles.abCardCont}
-      onClick={() => {
-        if (!username) ChangeShowModal();
-      }}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
-      {isHover && <DeleteIcon DeleteOnClick={DeleteBracket} />}
-      <div className={styles.abCardBody}>{isLink}</div>
+    <div className={styles.abCardCont}>
+      <div className={styles.abCardBody}>
+        {isLink}
+        <div className={styles.actionsContainer}>
+          <button aria-label="Delete Bracket" className={styles.delete} onClick={DeleteBracket}>X</button>
+          <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
+            <a aria-label={ariaLinkLabel} className={styles.procede}>-&gt;</a>
+        </Link>
+        </div>
+      </div>
       <Portal
         Type={"RedirectToLoginModal"}
         showModal={showModal}
