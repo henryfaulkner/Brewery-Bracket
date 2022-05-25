@@ -7,7 +7,7 @@ export default function CustomHead() {
       <title>Brewery Bracket Home Page</title>
       <meta 
         name="viewport" 
-        content="initial-scale=1.0, width=device-width" />
+        content="initial-scale=1.0, width=device-width maximum-scale=1" />
       <meta
         name="google-site-verification"
         content="googlec9225a2b0c03c875.html"
