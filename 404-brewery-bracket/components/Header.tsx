@@ -15,8 +15,7 @@ const Header = (props) => {
       <OptionsAccordion
         options={[
           ["/", "Breweries"],
-          ["/account", "Account"],
-          ["/login-form", username ? "Hello ": "Signup / log-in"],
+          [username ? "/account": "/login-form", username ? "Account": "Signup / log-in"],
         ]}
       />
     </div>
