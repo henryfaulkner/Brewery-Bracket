@@ -5,6 +5,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
+  position: relative;
 
   @include layout-for(tablet) {
     display: flex;
@@ -14,18 +15,14 @@
 
   input {
     margin: auto;
+
     @include layout-for(mobile) {
-      &:focus {
-        // position: absolute;
-        // -webkit-transition: transform 0.2s ease-in-out;
-        // transform: scale(3) translate(30%, -50%);
-  
-        @include layout-for(mobile) {
-          -webkit-transition: transform 0.2s ease-in-out;
-          transform: scale(2) translate(23%, -50%);
-        }
-      }
+      width: 100%;
+      height: 3.5em;
+      border: 2px solid black;
+      border-radius: $border-radius-default;
     }
+
     &:hover {
       cursor: pointer;
     }
@@ -36,6 +33,7 @@
   width: unset; // Using flex grow for width
   font-size: $font-size-small;
   padding: 8px 16px;
+
   &:hover {
     @include box-shadow-hoverstate($beer-brown);
   }
