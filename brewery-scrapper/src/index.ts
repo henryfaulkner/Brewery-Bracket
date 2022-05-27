@@ -18,23 +18,29 @@ let webUrlBeerList: string = "";
     var brewery: CustomBrewery = await fe.BreweryExists(breweryName)
     if(brewery) {
       console.log(`${breweryName} already exists.`)
-      const stillAddJson = readlineSync.question("Still want to add beers? (no to skip)")
-      if(stillAddJson === "no" || stillAddJson === "n") return;
+      const stillAddJson = readlineSync.question("Still want to add beers? (no to skip): ")
+      if(stillAddJson === "no" || stillAddJson === "n") process.exit();
     } else {
       webUrl = readlineSync.question("Web Url: ");
       webUrlBeerList = readlineSync.question("Web Url for the Beer List: ");
       brewery = await fe.AddCustomBrewery(breweryName, webUrl, webUrlBeerList)
     }
-    console.log(brewery)
 
-    //
+    // Pull JSON[] from .json file
     let json = require(`../assets/${breweryName}.json`)
     json = jp.RemoveLinksFromJson(json)
     
     json.map(beerObj => {
-      fe.AddBeer(beerObj.Name, brewery)
+      if(fe.BeerExists(beerObj.Name)){
+        console.log(`${beerObj.Name} already exists.`)
+      }
+      else {
+        fe.AddBeer(beerObj.Name, brewery)
+      }
     })
   } catch (exception) {
     console.log(`An error has occured: ${exception}`)
   }
+
+  process.exit()
 })();
