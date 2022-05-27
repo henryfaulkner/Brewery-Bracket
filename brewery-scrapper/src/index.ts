@@ -2,7 +2,6 @@ const fe = require("./FirestoreEndpoints.ts")
 const jp = require("./JsonParser.ts")
 var readlineSync = require('readline-sync');
 import CustomBrewery from "../Models/CustomBrewery";
-import CustomBeer from "../Models/CustomBeer";
 import * as FileStoreExtensions from "../config/firebase"
 
 //initialize firestore
