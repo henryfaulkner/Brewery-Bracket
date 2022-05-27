@@ -1,7 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, collection, where, getDocs, query, limit } from "firebase/firestore";
-import { firebaseConfig } from "./firebaseConfig"
+import { firebaseConfig } from "../config/firebaseConfig"
 
 function createFirebaseApp(firebaseConfig) {
   try {
