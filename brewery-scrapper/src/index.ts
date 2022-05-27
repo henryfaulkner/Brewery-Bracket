@@ -1,9 +1,9 @@
-const fi = require("./firestoreInteractor.ts")
-const jp = require("./jsonParser.ts")
+const fi = require("./FirestoreInteractor.ts")
+const jp = require("./JsonParser.ts")
 var readlineSync = require('readline-sync');
 import CustomBrewery from "../Models/CustomBrewery";
 import CustomBeer from "../Models/CustomBeer";
-import * as FileStoreExtensions from "./firebase"
+import * as FileStoreExtensions from "../config/firebase"
 
 //initialize firestore
 FileStoreExtensions.firestore;
@@ -26,7 +26,7 @@ const webUrlBeerList: string = readlineSync.question("Web Url for the Beer List:
 
     //
     let json = require(`../assets/${breweryName}.json`)
-    json = jp.remove_links_from_json(json)
+    json = jp.RemoveLinksFromJson(json)
     
     json.map(beerObj => {
       fi.AddBeer(new CustomBeer({
