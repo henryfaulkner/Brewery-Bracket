@@ -13,6 +13,12 @@ import {
     DocumentData
   } from "firebase/firestore";
 
+/** 
+* Check if a Brewery name exists in Firestore.
+* If it does, return it. 
+* @param string Brewery name
+* @returns CustomBrewery obj if already in database; Else, False.
+*/
 async function BreweryExists(breweryName: string) {
     const collectionRef = collection(getFirestore(), CollectionConstants.CustomBreweries);
     const q = await query(
@@ -42,6 +48,13 @@ async function BreweryExists(breweryName: string) {
     }
 }
 
+/** 
+* Add CustomBrewery object to Firestore
+* @param string Brewery name
+* @param string Website url of brewery
+* @param string Website url of brewery's beer list
+* @returns CustomBrewery, fully populated
+*/
 async function AddCustomBrewery(breweryName: string, webUrl: string, webUrlBeerList: string) {
     let customBrewery: CustomBrewery = new CustomBrewery({
         Name: breweryName,
@@ -72,7 +85,18 @@ async function BeerExists(beerObj: CustomBeer) {
 
 // TODO: This will add duplicates
 // TODO: We can do this in bulk to lower serverload
-async function AddBeer(beerObj: CustomBeer) {
+/** 
+* Add CustomBeer object to Firestore
+* @param string Beer name
+*/
+async function AddBeer(beerName: string, brewery: CustomBrewery) {
+    const beerObj: CustomBeer = new CustomBeer({
+        Name: beerName, 
+        AssociatedBreweryName: brewery.Name,
+        AssociatedBreweryID: brewery.DocumentID,
+        IsScrapped: true
+      })
+
     await addDoc(
         collection(getFirestore(), CollectionConstants.CustomBeers),
         JSON.parse(JSON.stringify(beerObj))
