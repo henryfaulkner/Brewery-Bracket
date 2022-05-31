@@ -6,12 +6,33 @@ import * as FileStoreExtensions from "../config/firebase"
 
 //initialize firestore
 FileStoreExtensions.firestore;
- 
-const breweryName: string = readlineSync.question('Enter BreweryName and File Prefix: ');
+
 let webUrl: string = "";
 let webUrlBeerList: string = "";
+let requestFileOrDir: string;
 
 (async () => {
+  while(true) {
+    requestFileOrDir = readlineSync.question('File or Directory: ')
+
+    switch(requestFileOrDir.toLowerCase()){
+      case "file": 
+        const breweryName: string = readlineSync.question('Enter BreweryName and File Prefix: ');
+        await PullAndUploadJson_One(breweryName);
+        process.exit();
+      case "directory":
+        const directoryName: string = readlineSync.question('Enter directory name/path: ');
+        await PullAndUploadJson_Many(directoryName);
+        process.exit();
+    }
+  }
+})();
+
+async function PullAndUploadJson_Many(directoryName: string) {
+  
+}
+
+async function PullAndUploadJson_One(breweryName: string) {
   try {
     // If brewery exists, get it
     // Else, make it and get it
@@ -41,6 +62,4 @@ let webUrlBeerList: string = "";
   } catch (exception) {
     console.log(`An error has occured: ${exception}`)
   }
-
-  process.exit()
-})();
+}
