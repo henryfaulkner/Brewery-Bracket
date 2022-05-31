@@ -89,9 +89,10 @@ async function BeerExists(beerName: string) {
         collectionRef,
         where("Name", "==", beerName)
     );
-    const docs: QuerySnapshot<DocumentData> = await getDocs(q);
+    
+    const docs = await getDocs(q);
 
-    if(docs.empty) return false
+    if(docs !== null || docs.empty) return false
     return true
 }
 
