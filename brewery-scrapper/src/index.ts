@@ -1,5 +1,6 @@
 const fe = require("./FirestoreEndpoints.ts")
 const jp = require("./JsonParser.ts")
+var fs = require('fs');
 var readlineSync = require('readline-sync');
 import CustomBrewery from "../Models/CustomBrewery";
 import * as FileStoreExtensions from "../config/firebase"
@@ -29,7 +30,18 @@ let requestFileOrDir: string;
 })();
 
 async function PullAndUploadJson_Many(directoryName: string) {
-  
+  const files = fs.readdirSync(`${directoryName}`);
+  console.log(files)
+  console.log(files.length)
+  for(let i = 0; i < files.length; i++) {
+    console.log("cum")
+    if(files[i].includes(".json")) {
+      console.log(`Processing ${files[i]}`);
+      const breweryName = files[i].replace(".json", "");
+      console.log(`Uploading ${breweryName}`);
+      await PullAndUploadJson_One(breweryName);
+    }
+  }
 }
 
 async function PullAndUploadJson_One(breweryName: string) {
