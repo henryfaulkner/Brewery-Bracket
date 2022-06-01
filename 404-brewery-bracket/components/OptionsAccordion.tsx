@@ -14,6 +14,15 @@ function OptionsAccordion(props: OptionArray) {
   const [navclicked, setNavClicked] = useState(false);
   const size = useWindowSize();
 
+  const handleKeyDown = (event, navState: boolean) => {
+    if(event.key === 'Enter') {
+      setNavClicked(navState);
+    }
+    if(event.key === 'Escape') {
+      setNavClicked(false);
+    }
+  }
+
   let options = props.options.map((locationNamePair, key) => {
     return (
       <Link href={locationNamePair[0]} key={key}>
@@ -24,13 +33,6 @@ function OptionsAccordion(props: OptionArray) {
 
   let mobileStructureOnClick = (
     <div className={styles.mobileLinks}>
-      <div
-        className={styles.mobileLinksClose}
-        onClick={() => setNavClicked(false)}
-        tabIndex={0} aria-label="Close navigation dropdown"
-      >
-        X
-      </div>
       {options}
     </div>
   );
@@ -39,6 +41,7 @@ function OptionsAccordion(props: OptionArray) {
     <div
       className={styles.mobileNav}
       onClick={() => setNavClicked(!navclicked)} tabIndex={0} aria-label="Navigation dropdown"
+      onKeyDown={() => handleKeyDown(event, !navclicked)}
     >
       <div>
         <hr />
