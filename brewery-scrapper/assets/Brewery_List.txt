@@ -1,0 +1,356 @@
+[
+    {
+        "Name": "Orpheus Brewing",
+        "Address": "1440 Dutch Valley Pl NE, Atlanta, GA 30324",
+        "Url": "https://www.orpheusbrewing.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Max Lager's Wood-Fired Grill & Brewery",
+        "Address": "320 Peachtree St NE, Atlanta, GA 30308",
+        "Url": "http://www.maxlagers.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "New Realm Brewing Co.",
+        "Address": "550 Somerset Terrace NE Unit 101, Atlanta, GA 30306",
+        "Url": "http://newrealmbrewing.com/atlanta/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Torched Hop Brewing Company",
+        "Address": "249 Ponce De Leon Ave NE, Atlanta, GA 30308",
+        "Url": "http://www.torchedhopbrewing.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "SweetWater Brewing Company",
+        "Address": "195 Ottley Dr NE, Atlanta, GA 30324",
+        "Url": "https://www.sweetwaterbrew.com/",
+        "BeerListUrl": "https://www.sweetwaterbrew.com/menu/"
+    },
+    {
+        "Name": "Fire Maker Brewing Company",
+        "Address": "975 Chattahoochee Ave NW, Atlanta, GA 30318",
+        "Url": "https://www.firemakerbeer.com/",
+        "BeerListUrl": "https://www.firemakerbeer.com/beer-list"
+    },
+    {
+        "Name": "Tucker Brewing Company",
+        "Address": "2003 S Bibb Dr, Tucker, GA 30084",
+        "Url": "https://tuckerbrewing.com/",
+        "BeerListUrl": "https://tuckerbrewing.com/"
+    },
+    {
+        "Name": "Eventide Brewing",
+        "Address": "1015 Grant St SE, Atlanta, GA 30315",
+        "Url": "http://www.eventidebrewing.com/",
+        "BeerListUrl": "https://www.toasttab.com/eventide-brewing-1015-grant-st"
+    },
+    {
+        "Name": "Scofflaw Brewing Co",
+        "Address": "1738 MacArthur Blvd NW, Atlanta, GA 30318",
+        "Url": "http://www.scofflawbeer.com/",
+        "BeerListUrl": "https://scofflawbeer.com/all-beers/"
+    },
+    {
+        "Name": "Wild Heaven Beer",
+        "Address": "135B Maple St, Avondale Estates, GA 30002",
+        "Url": "http://wildheavenbeer.com/",
+        "BeerListUrl": "https://wildheavenbeer.com/ourbeers"
+    },
+    {
+        "Name": "Atlanta Brewing Company",
+        "Address": "2323 Defoor Hills Rd NW, Atlanta, GA 30318",
+        "Url": "https://atlantabrewing.com/",
+        "BeerListUrl": "https://atlantabrewing.com/our-beers/"
+    },
+    {
+        "Name": "Halfway Crooks",
+        "Address": "60 Georgia Ave SE, Atlanta, GA 30312",
+        "Url": "https://www.halfwaycrooks.beer/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Best End Brewing Company",
+        "Address": "1036 White St SW, Atlanta, GA 30310",
+        "Url": "https://www.bestendbrewing.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Three Taverns Craft Brewery",
+        "Address": "121 New St, Decatur, GA 30030",
+        "Url": "http://www.threetavernsbrewery.com/",
+        "BeerListUrl": "https://untappd.com/threetaverns/beer?sort=most_popular"
+    },
+    {
+        "Name": "Bold Monk Brewing Co.",
+        "Address": "1737 Ellsworth Industrial Blvd NW suite d-1, Atlanta, GA 30318",
+        "Url": "https://www.boldmonkbrewingco.com/",
+        "BeerListUrl": "https://untappd.com/BoldMonkBrewingCo/beer"
+    },
+    {
+        "Name": "Second Self Beer Company",
+        "Address": "1317 Logan Cir NW, Atlanta, GA 30318",
+        "Url": "http://secondselfbeer.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Steady Hand Beer Co.",
+        "Address": "1611 Ellsworth Industrial Blvd NW UNIT F, Atlanta, GA 30318",
+        "Url": "http://www.steadyhandbeer.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Arches Brewing",
+        "Address": "3361 Dogwood Dr, Hapeville, GA 30354",
+        "Url": "http://www.archesbrewing.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "Biggerstaff Brewing Company",
+        "Address": "537 Edgewood Ave SE, Atlanta, GA 30312",
+        "Url": "http://biggerstaffbrewing.com/",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
+    }
+]
