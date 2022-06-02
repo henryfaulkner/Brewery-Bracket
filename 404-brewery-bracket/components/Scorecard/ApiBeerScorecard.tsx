@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/components/Scorecard.module.scss";
 import BreweryDayScorecard from "../../pages/api/Firebase/Models/BreweryDayScorecard";
-import BeerScore from "../../pages/api/Firebase/Models/BeerScore";
+import CustomBeer from "../../pages/api/Firebase/Models/CustomBeer";
 
 type Props = {
   Scorecard: BreweryDayScorecard;
   AddBeerScore: (beerName, beerId, beerScore, IsCustom?) => Promise<void>;
 };
 
-type BeerObject = {
-  id: string;
-  name: string;
-};
-
 const ApiBeerScorecard: React.FC<Props> = (props) => {
-  const [beerSelection, setBeerSelection]: [BeerObject[], any] = useState([]);
-  const [selectedBeer, setSelectedBeer]: [BeerObject, any] = useState();
+  const [beerSelection, setBeerSelection]: [CustomBeer[], any] = useState([]);
+  const [selectedBeer, setSelectedBeer]: [CustomBeer, any] = useState();
   const [strScore, setStrScore]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
 
@@ -45,7 +40,7 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
     console.log("All Scorecard: " + JSON.stringify(props.Scorecard));
     console.log("brewery id: " + props.Scorecard.AssociatedBreweryID);
 
-    await fetch("/api/BeerAPI/GetAllBeersFromGivenBrewery", {
+    await fetch("/api/Firebase/Endpoints/GetBeersFromBrewery", {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
@@ -60,7 +55,7 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
   };
 
   const findSelectedBeer = (beerId) => {
-    return beerSelection.find((beer) => beer.id === beerId);
+    return beerSelection.find((beer) => beer.DocumentID === beerId);
   };
 
   return (
@@ -81,7 +76,7 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
             Select a Beer
           </option>
           {beerSelection.map((beer, key: number) => {
-            return <option key={key} value={beer.id}>{beer.name}</option>;
+            return <option key={key} value={beer.DocumentID}>{beer.Name}</option>;
           })}
         </select>
         <input
@@ -96,12 +91,12 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
         onClick={() => {
           if (
             selectedBeer !== undefined &&
-            selectedBeer.name !== "" &&
+            selectedBeer.Name !== "" &&
             strScore !== ""
           ) {
             props.AddBeerScore(
-              selectedBeer.name,
-              selectedBeer.id,
+              selectedBeer.Name,
+              selectedBeer.DocumentID,
               parseInt(strScore)
             );
           }
