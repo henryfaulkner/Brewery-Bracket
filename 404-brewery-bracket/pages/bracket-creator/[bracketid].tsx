@@ -78,9 +78,10 @@ const BracketCreator = (props: Props) => {
       let inputValue = input_addBrewery?.current?.value;
       // @ts-expect-error
       let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
+      console.log(input_addBrewery)
+      console.log(inputValue)
+      console.log(breweryId)
       setCurrentCards([...currentCards, [inputValue, breweryId]]);
-
-      // console.log(currentCards);
     }
   };
 

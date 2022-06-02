@@ -33,13 +33,13 @@ const BrewerySearchByName = (props: Props) => {
           <li 
             key={key}
             onClick={() => {
-              setSearchText(searchResult.name);
-              setCurrentBrewId(searchResult.id);
+              setSearchText(searchResult.Name);
+              setCurrentBrewId(searchResult.DocumentID);
               console.log(searchText);
               controlAutocompleteOptions([]);
             }}
           >
-            {searchResult.name}
+            {searchResult.Name}
           </li>
         );
       }
@@ -54,7 +54,7 @@ const BrewerySearchByName = (props: Props) => {
       //if (numApproved > 20) break;
 
       //normalize strings
-      var breweryNameLower = brewery.name.toLowerCase();
+      var breweryNameLower = brewery.Name.toLowerCase();
       var typeaheadTextLower = inputText.toLowerCase();
 
       if (breweryNameLower.startsWith(typeaheadTextLower)) numApproved++;
