@@ -13,4 +13,28 @@ function RemoveLinksFromJson(json) {
     return result
 }
 
-module.exports = {RemoveLinksFromJson}
+/**
+ * 
+ * @param beerNames 
+ * @param beerStyles 
+ * @param abvs 
+ * @param ibus 
+ * @returns an array of json objects
+ */
+function ConstructBeerJsons(beerNames: string[], beerStyles: string[], abvs: string[], ibus: string[]) {
+    let jsons: {}[] = []
+
+    for(let i = 0; i < beerNames.length; i++) {
+        const json = {
+            "Name": beerNames[i],
+            "Style": beerStyles[i],
+            "ABV": abvs[i],
+            "IBU": ibus[i]    
+        }
+        jsons.push(json);
+    }
+
+    return jsons;
+}
+
+module.exports = {RemoveLinksFromJson, ConstructBeerJsons}

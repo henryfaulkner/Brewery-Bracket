@@ -52,9 +52,10 @@ async function BreweryExists(breweryName: string) {
 * @param string Brewery name
 * @param string Website url of brewery
 * @param string Website url of brewery's beer list
+* @param string Brewery address
 * @returns CustomBrewery, fully populated
 */
-async function AddCustomBrewery(breweryName: string, webUrl: string, webUrlBeerList: string) {
+async function AddCustomBrewery(breweryName: string, webUrl: string, webUrlBeerList: string, address: string) {
     let customBrewery: CustomBrewery = new CustomBrewery({
         Name: breweryName,
         Description: "",
@@ -64,7 +65,7 @@ async function AddCustomBrewery(breweryName: string, webUrl: string, webUrlBeerL
         Facebook_Url: "",
         Twitter_Url: "",
         Instagram_Url: "",
-        Address: "",
+        Address: address,
         IsScrapped: true
     });
 
@@ -101,9 +102,12 @@ async function BeerExists(beerName: string) {
 * Add CustomBeer object to Firestore
 * @param string Beer name
 */
-async function AddBeer(beerName: string, brewery: CustomBrewery) {
+async function AddBeer(json, brewery: CustomBrewery) {
     const beerObj: CustomBeer = new CustomBeer({
-        Name: beerName, 
+        Name: json.Name ?? "",
+        Style: json.Style ?? "",
+        ABV: json.ABV ?? "",
+        IBU: json.IBU ?? "",
         AssociatedBreweryName: brewery.Name,
         AssociatedBreweryID: brewery.DocumentID,
         IsScrapped: true
