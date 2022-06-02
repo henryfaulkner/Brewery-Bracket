@@ -113,8 +113,6 @@ async function AddBeer(json, brewery: CustomBrewery) {
         IsScrapped: true
       })
 
-      console.log(json)
-
     await addDoc(
         collection(getFirestore(), CollectionConstants.CustomBeers),
         JSON.parse(JSON.stringify(beerObj))

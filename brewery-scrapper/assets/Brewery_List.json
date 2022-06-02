@@ -14,74 +14,74 @@
         "UntappdBreweryUid": ""
     },
     {
-        "Name": "New Realm Brewing Co.",
+        "Name": "New Realm Brewing Company",
         "Address": "550 Somerset Terrace NE Unit 101, Atlanta, GA 30306",
         "Url": "http://newrealmbrewing.com/atlanta/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "NewRealmBrewingCompany"
     },
     {
         "Name": "Torched Hop Brewing Company",
         "Address": "249 Ponce De Leon Ave NE, Atlanta, GA 30308",
         "Url": "http://www.torchedhopbrewing.com/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "TorchedHopBrewingCompany"
     },
     {
         "Name": "SweetWater Brewing Company",
         "Address": "195 Ottley Dr NE, Atlanta, GA 30324",
         "Url": "https://www.sweetwaterbrew.com/",
         "BeerListUrl": "https://www.sweetwaterbrew.com/menu/",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "sweetwaterbrew"
     },
     {
         "Name": "Fire Maker Brewing Company",
         "Address": "975 Chattahoochee Ave NW, Atlanta, GA 30318",
         "Url": "https://www.firemakerbeer.com/",
         "BeerListUrl": "https://www.firemakerbeer.com/beer-list",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "firemakerbeer"
     },
     {
         "Name": "Tucker Brewing Company",
         "Address": "2003 S Bibb Dr, Tucker, GA 30084",
         "Url": "https://tuckerbrewing.com/",
         "BeerListUrl": "https://tuckerbrewing.com/",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "tuckerbrewingco"
     },
     {
         "Name": "Eventide Brewing",
         "Address": "1015 Grant St SE, Atlanta, GA 30315",
         "Url": "http://www.eventidebrewing.com/",
         "BeerListUrl": "https://www.toasttab.com/eventide-brewing-1015-grant-st",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "eventidebrewing"
     },
     {
         "Name": "Scofflaw Brewing Co",
         "Address": "1738 MacArthur Blvd NW, Atlanta, GA 30318",
         "Url": "http://www.scofflawbeer.com/",
         "BeerListUrl": "https://scofflawbeer.com/all-beers/",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "ScofflawBrewingCo"
     },
     {
         "Name": "Wild Heaven Beer",
         "Address": "135B Maple St, Avondale Estates, GA 30002",
         "Url": "http://wildheavenbeer.com/",
         "BeerListUrl": "https://wildheavenbeer.com/ourbeers",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "beerwildheaven"
     },
     {
         "Name": "Atlanta Brewing Company",
         "Address": "2323 Defoor Hills Rd NW, Atlanta, GA 30318",
         "Url": "https://atlantabrewing.com/",
         "BeerListUrl": "https://atlantabrewing.com/our-beers/",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "AtlantaBrewingCompany"
     },
     {
         "Name": "Halfway Crooks",
         "Address": "60 Georgia Ave SE, Atlanta, GA 30312",
         "Url": "https://www.halfwaycrooks.beer/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "halfwaycrooksbeer"
     },
     {
         "Name": "Best End Brewing Company",
@@ -95,42 +95,42 @@
         "Address": "121 New St, Decatur, GA 30030",
         "Url": "http://www.threetavernsbrewery.com/",
         "BeerListUrl": "https://untappd.com/threetaverns/beer?sort=most_popular",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "threetaverns"
     },
     {
         "Name": "Bold Monk Brewing Co.",
         "Address": "1737 Ellsworth Industrial Blvd NW suite d-1, Atlanta, GA 30318",
         "Url": "https://www.boldmonkbrewingco.com/",
         "BeerListUrl": "https://untappd.com/BoldMonkBrewingCo/beer",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "BoldMonkBrewingCo"
     },
     {
         "Name": "Second Self Beer Company",
         "Address": "1317 Logan Cir NW, Atlanta, GA 30318",
         "Url": "http://secondselfbeer.com/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "SecondSelfBeer"
     },
     {
         "Name": "Steady Hand Beer Co.",
         "Address": "1611 Ellsworth Industrial Blvd NW UNIT F, Atlanta, GA 30318",
         "Url": "http://www.steadyhandbeer.com/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "SteadyHandBeerCo"
     },
     {
         "Name": "Arches Brewing",
         "Address": "3361 Dogwood Dr, Hapeville, GA 30354",
         "Url": "http://www.archesbrewing.com/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "ArchesBrewing"
     },
     {
         "Name": "Biggerstaff Brewing Company",
         "Address": "537 Edgewood Ave SE, Atlanta, GA 30312",
         "Url": "http://biggerstaffbrewing.com/",
         "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "UntappdBreweryUid": "Biggerstaffbrewing"
     },
     {
         "Name": "",
