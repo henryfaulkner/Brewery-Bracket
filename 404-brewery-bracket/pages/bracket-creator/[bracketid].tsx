@@ -27,25 +27,23 @@ const BracketCreator = (props: Props) => {
   const [bracketID, setBracketID]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
   const input_addBrewery = useRef();
-  const [currentCards, setCurrentCards]: [Array<string>, any] = useState([]);
-  const [breweryCardsRendered, setBreweryCardsRendered]: [
-    Array<BreweryObject>,
-    any
-  ] = useState([]);
+  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!hasPulledData && router.isReady) {
-        const { bracketid } = router.query;
-        setBracketID(bracketid);
-        await GetCurrentBracket(bracketid);
+      const { bracketid } = router.query;
+      setBracketID(bracketid);
+      await GetCurrentBracket(bracketid);
+      initializeBreweryCardsRendered();
 
-        setHasPulledData(true);
-      }
+      setHasPulledData(true);
     };
-    fetchData();
+    if (!hasPulledData && router.isReady) {
+      fetchData();
+    }
   });
 
+  //TODO: Put in getServerSideProps
   const GetCurrentBracket = async (bracketId) => {
     const request = {
       bracketId: bracketId,
@@ -64,6 +62,7 @@ const BracketCreator = (props: Props) => {
             DocumentID: jsonRes.bracket.DocumentID,
             BracketName: jsonRes.bracket.BracketName,
             GroupID: jsonRes.bracket.GroupID,
+            Breweries: jsonRes.bracket.Breweries,
           });
         });
     } catch (exception) {
@@ -77,7 +76,7 @@ const BracketCreator = (props: Props) => {
       let inputValue = input_addBrewery?.current?.value;
       // @ts-expect-error
       let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
-      setCurrentCards([...currentCards, [inputValue, breweryId]]);
+      setBreweryCardsRendered([...breweryCardsRendered, [inputValue, breweryId]]);
       //GetBreweryByDocumentID
       const request = {
         breweryId: breweryId,
@@ -95,7 +94,6 @@ const BracketCreator = (props: Props) => {
           bracketId: bracketID,
           serializedBreweryJson: JSON.stringify(jsonRes["serializedBreweryJson"])
         } 
-        console.log(innerRequest)
         return fetch("/api/Firebase/Endpoints/AddBreweryToBracket", {
           method: "POST",
           body: JSON.stringify(innerRequest),
@@ -104,6 +102,15 @@ const BracketCreator = (props: Props) => {
           }
         })
       })
+    }
+  };
+
+  const initializeBreweryCardsRendered = () => {
+    if(currBracket.Breweries) {
+      setBreweryCardsRendered(currBracket.Breweries.map((breweryObj: BreweryObject) => {
+        return [breweryObj.Name, breweryObj.DocumentID];
+      }))
+
     }
   };
 
@@ -146,7 +153,7 @@ const BracketCreator = (props: Props) => {
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
-              {currentCards.map((breweryInformation, key) => {
+              {breweryCardsRendered.map((breweryInformation, key) => {
                 return (
                   <Card
                     key={key}
@@ -197,8 +204,6 @@ export async function getServerSideProps(context) {
     .then((res: User[]) => {
       allUsers = res;
     });
-  console.log("getStaticProps allUsers:");
-  console.log(allUsers);
 
   // This gets screwed up by page reloads
   const { bracketid } = context.query;
@@ -212,8 +217,6 @@ export async function getServerSideProps(context) {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("res");
-      console.log(typeof res.breweries);
       initialBreweriesInBracket = res.breweries.map((brewery) => {
         return JSON.parse(JSON.stringify(brewery));
       });
