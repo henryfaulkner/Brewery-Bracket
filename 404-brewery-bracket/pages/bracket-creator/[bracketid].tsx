@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 
-
 import styles from "../../styles/pages/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
@@ -60,11 +59,11 @@ const BracketCreator = (props: Props) => {
         },
       })
         .then((res) => res.json())
-        .then((res) => {
+        .then((jsonRes) => {
           currBracket = new Bracket({
-            DocumentID: res.bracket.DocumentID,
-            BracketName: res.bracket.BracketName,
-            GroupID: res.bracket.GroupID,
+            DocumentID: jsonRes.bracket.DocumentID,
+            BracketName: jsonRes.bracket.BracketName,
+            GroupID: jsonRes.bracket.GroupID,
           });
         });
     } catch (exception) {
@@ -78,10 +77,33 @@ const BracketCreator = (props: Props) => {
       let inputValue = input_addBrewery?.current?.value;
       // @ts-expect-error
       let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
-      console.log(input_addBrewery)
-      console.log(inputValue)
-      console.log(breweryId)
       setCurrentCards([...currentCards, [inputValue, breweryId]]);
+      //GetBreweryByDocumentID
+      const request = {
+        breweryId: breweryId,
+      };
+      fetch("/api/Firebase/Endpoints/GetBreweryByDocumentID", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json())
+      .then(jsonRes => {
+        // Add brewery to bracket
+        const innerRequest = {
+          bracketId: bracketID,
+          serializedBreweryJson: JSON.stringify(jsonRes["serializedBreweryJson"])
+        } 
+        console.log(innerRequest)
+        return fetch("/api/Firebase/Endpoints/AddBreweryToBracket", {
+          method: "POST",
+          body: JSON.stringify(innerRequest),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          }
+        })
+      })
     }
   };
 

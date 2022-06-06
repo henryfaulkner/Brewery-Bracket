@@ -9,7 +9,6 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 
-import Bracket from "../Models/Bracket";
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
 
@@ -19,27 +18,19 @@ type Status = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
   try {
-    const bracketId: string = req.body["bracketid"];
-    const id = req.body["id"];
-    const name = req.body["name"];
-    const Description = req.body["Description"];
-    const Short_Description = req.body["Short_Description"];
-    const Url = req.body["Url"];
-    const Facebook_Url = req.body["Facebook_Url"];
-    const Twitter_Url = req.body["Twitter_Url"];
-    const Instagram_Url = req.body["Instagram_Url"];
-    const Address = req.body["Address"];
+    const bracketId: string = req.body["bracketId"];
+    const breweryJson = JSON.parse(req.body["serializedBreweryJson"]);
 
     const breweryObj = new BreweryObject({
-      id: id,
-      name: name,
-      Description: Description ?? "",
-      Short_Description: Short_Description ?? "",
-      Url: Url ?? "",
-      Facebook_Url: Facebook_Url ?? "",
-      Twitter_Url: Twitter_Url ?? "",
-      Instagram_Url: Instagram_Url ?? "",
-      Address: Address ?? "",
+      DocumentID: breweryJson["DocumentID"],
+      Name: breweryJson["Name"],
+      Description: breweryJson["Description"] ?? "",
+      Short_Description: breweryJson["Short_Description"] ?? "",
+      Url: breweryJson["Url"] ?? "",
+      Facebook_Url: breweryJson["Facebook_Url"] ?? "",
+      Twitter_Url: breweryJson["Twitter_Url"] ?? "",
+      Instagram_Url: breweryJson["Instagram_Url"] ?? "",
+      Address: breweryJson["Address"] ?? "",
     });
 
     const collectionRef = collection(
