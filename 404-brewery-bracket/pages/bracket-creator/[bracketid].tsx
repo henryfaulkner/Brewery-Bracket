@@ -76,6 +76,14 @@ const BracketCreator = (props: Props) => {
       let inputValue = input_addBrewery?.current?.value;
       // @ts-expect-error
       let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
+
+      // Check if brewery is already in bracket
+      let hasBreweryInBracket: boolean = false;
+      breweryCardsRendered.forEach((card) => {
+        if(card.includes(breweryId)) hasBreweryInBracket = true;
+      })
+      if(hasBreweryInBracket) return;
+
       setBreweryCardsRendered([...breweryCardsRendered, [inputValue, breweryId]]);
       //GetBreweryByDocumentID
       const request = {
