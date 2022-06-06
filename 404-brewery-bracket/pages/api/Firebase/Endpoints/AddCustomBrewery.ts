@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 
-import CustomBrewery from "../Models/CustomBrewery";
+import BreweryObject from "../Models/BreweryObject";
 import * as CollectionConstants from "../CollectionConstants";
 
 const handler = async (
   req: NextApiRequest,
-  res: NextApiResponse<CustomBrewery>
+  res: NextApiResponse<BreweryObject>
 ) => {
   const submittedBreweryName: string = req.body["name"];
-  let customBrewery: CustomBrewery = new CustomBrewery({
+  let customBrewery: BreweryObject = new BreweryObject({
     Name: submittedBreweryName,
     Description: "",
     Short_Description: "",

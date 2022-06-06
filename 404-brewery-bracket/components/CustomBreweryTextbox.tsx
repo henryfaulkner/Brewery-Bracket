@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/components/CustomBreweryTextbox.module.scss";
 import Portal from "./Portal";
-import CustomBrewery from "../pages/api/Firebase/Models/CustomBrewery";
+import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 
 type CustomBreweryObject = {
   name: string;
@@ -33,7 +33,7 @@ const CustomBreweryTextbox = () => {
       },
     });
 
-    const data = new CustomBrewery(await response.json());
+    const data = new BreweryObject(await response.json());
     setRecentAdditionId(data.GetDocumentID);
   };
 
