@@ -1,16 +1,11 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from "../styles/components/OptionsAccordion.module.scss";
-// import globalVariables from "../styles/utility/variables/breakpoints.scss";
 
 interface OptionArray {
   options: [location: string, displayName: string][];
 }
 function OptionsAccordion(props: OptionArray) {
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
-  });
   const [navclicked, setNavClicked] = useState(false);
   const size = useWindowSize();
 
