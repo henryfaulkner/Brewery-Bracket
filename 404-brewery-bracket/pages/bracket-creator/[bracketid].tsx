@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 
-
 import styles from "../../styles/pages/BracketCreator.module.scss";
 import BrewerySearchByName from "../../components/BrewerySearchByName";
 import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
@@ -28,25 +27,23 @@ const BracketCreator = (props: Props) => {
   const [bracketID, setBracketID]: [string, any] = useState("");
   const [hasPulledData, setHasPulledData] = useState(false);
   const input_addBrewery = useRef();
-  const [currentCards, setCurrentCards]: [Array<string>, any] = useState([]);
-  const [breweryCardsRendered, setBreweryCardsRendered]: [
-    Array<BreweryObject>,
-    any
-  ] = useState([]);
+  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!hasPulledData && router.isReady) {
-        const { bracketid } = router.query;
-        setBracketID(bracketid);
-        await GetCurrentBracket(bracketid);
+      const { bracketid } = router.query;
+      setBracketID(bracketid);
+      await GetCurrentBracket(bracketid);
+      initializeBreweryCardsRendered();
 
-        setHasPulledData(true);
-      }
+      setHasPulledData(true);
     };
-    fetchData();
+    if (!hasPulledData && router.isReady) {
+      fetchData();
+    }
   });
 
+  //TODO: Put in getServerSideProps
   const GetCurrentBracket = async (bracketId) => {
     const request = {
       bracketId: bracketId,
@@ -60,11 +57,12 @@ const BracketCreator = (props: Props) => {
         },
       })
         .then((res) => res.json())
-        .then((res) => {
+        .then((jsonRes) => {
           currBracket = new Bracket({
-            DocumentID: res.bracket.DocumentID,
-            BracketName: res.bracket.BracketName,
-            GroupID: res.bracket.GroupID,
+            DocumentID: jsonRes.bracket.DocumentID,
+            BracketName: jsonRes.bracket.BracketName,
+            GroupID: jsonRes.bracket.GroupID,
+            Breweries: jsonRes.bracket.Breweries,
           });
         });
     } catch (exception) {
@@ -78,10 +76,49 @@ const BracketCreator = (props: Props) => {
       let inputValue = input_addBrewery?.current?.value;
       // @ts-expect-error
       let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
-      console.log(input_addBrewery)
-      console.log(inputValue)
-      console.log(breweryId)
-      setCurrentCards([...currentCards, [inputValue, breweryId]]);
+
+      // Check if brewery is already in bracket
+      let hasBreweryInBracket: boolean = false;
+      breweryCardsRendered.forEach((card) => {
+        if(card.includes(breweryId)) hasBreweryInBracket = true;
+      })
+      if(hasBreweryInBracket) return;
+
+      setBreweryCardsRendered([...breweryCardsRendered, [inputValue, breweryId]]);
+      //GetBreweryByDocumentID
+      const request = {
+        breweryId: breweryId,
+      };
+      fetch("/api/Firebase/Endpoints/GetBreweryByDocumentID", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json())
+      .then(jsonRes => {
+        // Add brewery to bracket
+        const innerRequest = {
+          bracketId: bracketID,
+          serializedBreweryJson: JSON.stringify(jsonRes["serializedBreweryJson"])
+        } 
+        return fetch("/api/Firebase/Endpoints/AddBreweryToBracket", {
+          method: "POST",
+          body: JSON.stringify(innerRequest),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          }
+        })
+      })
+    }
+  };
+
+  const initializeBreweryCardsRendered = () => {
+    if(currBracket.Breweries) {
+      setBreweryCardsRendered(currBracket.Breweries.map((breweryObj: BreweryObject) => {
+        return [breweryObj.Name, breweryObj.DocumentID];
+      }))
+
     }
   };
 
@@ -124,7 +161,7 @@ const BracketCreator = (props: Props) => {
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
-              {currentCards.map((breweryInformation, key) => {
+              {breweryCardsRendered.map((breweryInformation, key) => {
                 return (
                   <Card
                     key={key}
@@ -175,8 +212,6 @@ export async function getServerSideProps(context) {
     .then((res: User[]) => {
       allUsers = res;
     });
-  console.log("getStaticProps allUsers:");
-  console.log(allUsers);
 
   // This gets screwed up by page reloads
   const { bracketid } = context.query;
@@ -190,8 +225,6 @@ export async function getServerSideProps(context) {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log("res");
-      console.log(typeof res.breweries);
       initialBreweriesInBracket = res.breweries.map((brewery) => {
         return JSON.parse(JSON.stringify(brewery));
       });

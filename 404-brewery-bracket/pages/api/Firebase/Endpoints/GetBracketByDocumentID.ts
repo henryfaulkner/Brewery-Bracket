@@ -24,9 +24,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       DocumentID: data.id,
       BracketName: data.data().BracketName,
       GroupID: data.data().GroupID,
+      Breweries: data.data().Breweries,
     });
 
-    console.log(JSON.stringify(bracket));
     res
       .status(200)
       .json({ bracket: new Bracket(JSON.parse(JSON.stringify(bracket))) });
