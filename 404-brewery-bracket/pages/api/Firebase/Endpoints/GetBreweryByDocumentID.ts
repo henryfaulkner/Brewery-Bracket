@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import CustomBrewery from "../Models/CustomBrewery";
+import BreweryObject from "../Models/BreweryObject";
 import * as CollectionConstants from "../CollectionConstants";
 import { 
     getFirestore,
@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const collectionRef = collection(getFirestore(), CollectionConstants.CustomBreweries);
         const breweryDoc = doc(collectionRef, breweryId);
         const data = await getDoc(breweryDoc);
-        const brewery = new CustomBrewery({
+        const brewery = new BreweryObject({
             Name: data.data().Name,
             Description: data.data().Description,
             Short_Description: data.data().Short_Description,
