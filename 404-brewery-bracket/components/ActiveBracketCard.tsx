@@ -18,8 +18,6 @@ const ActiveBracketCard = (props) => {
   const ariaLinkLabel = "Go to " + props.bracket.BracketName;
   useEffect(() => {
     if (user) {
-      console.log("props.bracket.GetDocumentID");
-      console.log(props.bracket.DocumentID);
       setIsLink(
         <Link href={`/bracket-creator/${props.bracket.DocumentID}`}>
           <h3>{props.bracket.BracketName}</h3>
@@ -55,7 +53,6 @@ const ActiveBracketCard = (props) => {
 
       props.DeleteBracketFromList(props.bracket);
     } catch (exception) {
-      console.log("Error fetching the delete bracket endpoint.");
       return null;
     }
   };

@@ -34,7 +34,7 @@ const BracketCreator = (props: Props) => {
       const { bracketid } = router.query;
       setBracketID(bracketid);
       await GetCurrentBracket(bracketid);
-      initializeBreweryCardsRendered();
+      InitializeBreweryCardsRendered();
 
       setHasPulledData(true);
     };
@@ -70,7 +70,7 @@ const BracketCreator = (props: Props) => {
     }
   };
 
-  const addBrewery = async (e) => {
+  const AddBrewery = async (e) => {
     if (input_addBrewery.current != null) {
       // @ts-expect-error because one of us is a dummy and won't listen to my chaining operator
       let inputValue = input_addBrewery?.current?.value;
@@ -113,7 +113,16 @@ const BracketCreator = (props: Props) => {
     }
   };
 
-  const initializeBreweryCardsRendered = () => {
+  const RemoveBrewery = (breweryId) => {
+    setBreweryCardsRendered(
+      breweryCardsRendered.filter((card) => {
+        if(card == undefined) console.log("what the fuck!!");
+        if(!card.includes(breweryId)) return card;
+      })
+    );
+  }
+
+  const InitializeBreweryCardsRendered = () => {
     if(currBracket.Breweries) {
       setBreweryCardsRendered(currBracket.Breweries.map((breweryObj: BreweryObject) => {
         return [breweryObj.Name, breweryObj.DocumentID];
@@ -144,7 +153,7 @@ const BracketCreator = (props: Props) => {
                   breweriesToBeSearched={props.allBreweries}
                 />
 
-                <button className={styles.btn} onClick={(e) => addBrewery(e)}>
+                <button className={styles.btn} onClick={(e) => AddBrewery(e)}>
                   Add
                 </button>
               </div>
@@ -168,6 +177,7 @@ const BracketCreator = (props: Props) => {
                     breweryName={breweryInformation[0]}
                     breweryId={breweryInformation[1]}
                     bracketID={bracketID}
+                    RemoveBrewery={RemoveBrewery}
                   />
                 );
               })}

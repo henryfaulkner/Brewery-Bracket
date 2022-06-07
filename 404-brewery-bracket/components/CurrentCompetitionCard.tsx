@@ -10,6 +10,7 @@ type Props = {
   breweryName: string;
   breweryId: string;
   bracketID: string;
+  RemoveBrewery;
 };
 
 const Card: React.FC<Props> = (props) => {
@@ -56,7 +57,18 @@ const Card: React.FC<Props> = (props) => {
   };
 
   const DeleteScorecard = () => {
-    console.log("Delete Scorecard not implemented.");
+    props.RemoveBrewery(props.breweryId);
+    const request = {
+      bracketId: props.bracketID,
+      breweryId: props.breweryId,
+    };
+    fetch("/api/Firebase/Endpoints/DeleteBreweryInBracket", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
   };
 
   return (
