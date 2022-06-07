@@ -35,7 +35,6 @@ const BrewerySearchByName = (props: Props) => {
             onClick={() => {
               setSearchText(searchResult.Name);
               setCurrentBrewId(searchResult.DocumentID);
-              console.log(searchText);
               controlAutocompleteOptions([]);
             }}
           >
