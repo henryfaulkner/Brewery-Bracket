@@ -50,9 +50,6 @@ const Home = () => {
     const newBrackets = brackets.filter(
       (delBracket) => delBracket.DocumentID !== bracket.DocumentID
     );
-    console.log("newBrackets");
-    console.log(newBrackets);
-    setBrackets(newBrackets);
   };
 
   return (
@@ -65,8 +62,6 @@ const Home = () => {
             SetBracketsAfterACreation={SetBracketsAfterACreation}
           />
           {brackets.map((bracket: Bracket, key: number) => {
-            console.log("mapped bracket");
-            console.log(bracket);
             return (
               <ActiveBracketCard
                 key={key}

@@ -116,7 +116,6 @@ const BracketCreator = (props: Props) => {
   const RemoveBrewery = (breweryId) => {
     setBreweryCardsRendered(
       breweryCardsRendered.filter((card) => {
-        if(card == undefined) console.log("what the fuck!!");
         if(!card.includes(breweryId)) return card;
       })
     );

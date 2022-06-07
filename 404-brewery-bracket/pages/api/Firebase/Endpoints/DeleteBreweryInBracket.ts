@@ -20,25 +20,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
     const bracketId: string = req.body["bracketId"];
     const breweryId: string = req.body["breweryId"];
 
-    console.log("bracketId")
-    console.log(bracketId)
-    console.log("breweryId")
-    console.log(breweryId)
-
     const collectionRef = collection(
       getFirestore(),
       collectionConstants.Brackets
     );
-    console.log("bitch")
     const docRef = doc(collectionRef, bracketId);
-    console.log("bitch")
     const docSnapshot = await getDoc(docRef);
-    console.log("cum")
     const breweries = docSnapshot.data().Breweries;
 
     let newBreweryArr: BreweryObject[] = [];
     for(let i = 0; i < breweries.length; i++) {
-        console.log(breweries[i])
         if (breweries[i].DocumentID !== breweryId) newBreweryArr.push(breweries[i]);
     }
 

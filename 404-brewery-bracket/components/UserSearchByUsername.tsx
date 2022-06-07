@@ -25,8 +25,6 @@ const UserSearchByUsername = (props) => {
   useEffect(() => {
     if (hasPulledData === false) {
       setHasPulledData(true);
-      console.log("currBracket");
-      console.log(props.currBracket);
     }
 
     if (searchText == "") {
@@ -36,11 +34,7 @@ const UserSearchByUsername = (props) => {
 
   const typing = async (event) => {
     updateInputValue(event.target.value);
-    console.log("allUsers");
-    console.log(props.allUsers);
     const reducedAllUsers = props.allUsers.filter((user: User) => {
-      console.log("JSON.stringify(user)");
-      console.log(JSON.stringify(user));
       return user.Username.startsWith(event.target.value);
     });
     searchResultsOptions = reducedAllUsers.map((searchResult: User, key: number) => {

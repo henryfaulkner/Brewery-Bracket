@@ -23,7 +23,6 @@ const handler = async (
     const breweryID: string = req.body["breweryID"];
     const breweryName: string = req.body["breweryName"];
     const bracketID: string = req.body["bracketID"];
-    console.log("bracketID: " + bracketID);
 
     const collectionRef = collection(
       getFirestore(),

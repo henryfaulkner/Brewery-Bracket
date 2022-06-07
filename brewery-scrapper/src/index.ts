@@ -47,9 +47,7 @@ async function PullAndUploadJson_Many(directoryName: string) {
   const files = fs.readdirSync(`${directoryName}`);
   for(let i = 0; i < files.length; i++) {
     if(files[i].includes(".json")) {
-      console.log(`Processing ${files[i]}`);
       const breweryName = files[i].replace(".json", "");
-      console.log(`Uploading ${breweryName}`);
       await PullAndUploadJson_One(breweryName);
     }
   }

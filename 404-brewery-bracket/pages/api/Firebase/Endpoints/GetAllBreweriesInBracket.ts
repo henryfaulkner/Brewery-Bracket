@@ -27,8 +27,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
     );
     const docRef = doc(collectionRef, bracketId);
     const docSnapshot = await getDoc(docRef);
-    console.log("docSnapshot.data()");
-    console.log(docSnapshot.data());
     const breweries = docSnapshot.data().Breweries;
 
     console.log("Succeeded in adding brewery to bracket.");

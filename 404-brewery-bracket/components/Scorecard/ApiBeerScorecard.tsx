@@ -37,9 +37,6 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
       BreweryId: props.Scorecard.AssociatedBreweryID,
     };
 
-    console.log("All Scorecard: " + JSON.stringify(props.Scorecard));
-    console.log("brewery id: " + props.Scorecard.AssociatedBreweryID);
-
     await fetch("/api/Firebase/Endpoints/GetBeersFromBrewery", {
       method: "POST",
       body: JSON.stringify(request),
@@ -49,7 +46,6 @@ const ApiBeerScorecard: React.FC<Props> = (props) => {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("beer response: " + JSON.stringify(response));
         setBeerSelection(response.beers);
       });
   };

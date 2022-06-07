@@ -26,7 +26,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     let response: CustomBeer[] = [];
     
     data.forEach((doc) => {
-      console.log(doc)
       response.push(
         new CustomBeer({
           Name: doc.data().Name,

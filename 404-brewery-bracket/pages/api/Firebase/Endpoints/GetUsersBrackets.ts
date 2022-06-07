@@ -34,14 +34,6 @@ const handler = async (
       const bracketDocs: QuerySnapshot<DocumentData> = await getDocs(q2);
 
       for (const bracket of bracketDocs.docs) {
-        console.log("Each bracket.");
-        console.log(
-          JSON.stringify({
-            DocumentID: bracket.id,
-            BracketName: bracket.data().BracketName,
-            GroupID: bracket.data().GroupID,
-          })
-        );
         response.push(
           new Bracket({
             DocumentID: bracket.id,

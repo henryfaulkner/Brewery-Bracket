@@ -9,7 +9,6 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log("In handler");
   const customBreweryId: string = req.body["id"];
   const address: string = req.body["address"];
   const url: string = req.body["url"];

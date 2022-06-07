@@ -25,13 +25,8 @@ const CreateBracketCard = (props) => {
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log("hello")
-          console.log(response)
           response = new Bracket(JSON.parse(JSON.stringify(response.bracket)))
-          console.log("Bracket creation response: " + JSON.stringify(response));
-
           props.SetBracketsAfterACreation(response);
-          
         });
     }
     catch {

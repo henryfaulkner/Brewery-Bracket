@@ -36,11 +36,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       userObj.SetDocumentID = res.id;
     });
 
-    console.log("Email used: " + email);
-    console.log("Uid: " + uid);
-    console.log("Username: " + username);
+    
     console.log("Successfully created user");
-
     res.status(200).json({ statusMessage: "Successfully call." });
   } catch (exception) {
     console.log("Something went wrong.");

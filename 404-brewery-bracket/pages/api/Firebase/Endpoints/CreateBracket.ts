@@ -15,7 +15,6 @@ type Data = {
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const bracketName: string = req.body["BracketName"];
   const userId = req.body["userId"];
-  console.log("BracketName: " + bracketName);
 
   let bracket: Bracket;
   const group = new Group({
@@ -39,7 +38,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       ).then((res) => {});
     });
 
-    console.log(JSON.stringify(bracket));
     res.status(200).json({ bracket: JSON.parse(JSON.stringify(bracket)) });
   } catch (exception) {
     console.log(exception);
