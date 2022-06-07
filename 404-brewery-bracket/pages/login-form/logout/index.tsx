@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import styles from "../../../styles/pages/Login-Form.module.scss";
+import styles from "../../../styles/pages/LoginForm.module.scss";
 
 const Logout: React.FC = () => {
   return (

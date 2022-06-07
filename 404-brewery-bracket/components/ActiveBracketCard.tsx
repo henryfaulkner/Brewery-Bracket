@@ -3,7 +3,6 @@ import Portal from "./Portal";
 import Link from "next/dist/client/link";
 import styles from "../styles/components/ActiveBracketCard.module.scss";
 import { UserContext } from "../lib/context";
-import DeleteIcon from "./DeleteIcon";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
 
 type Props = () => {
