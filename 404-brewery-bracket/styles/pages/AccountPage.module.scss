@@ -1,0 +1,6 @@
+@import "../utility/utility.scss";
+
+.loginLink {
+    @include default-button-styles();
+    margin-left: 0;
+}

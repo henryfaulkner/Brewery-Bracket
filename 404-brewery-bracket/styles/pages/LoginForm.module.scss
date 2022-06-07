@@ -13,16 +13,18 @@
   max-width: 800px;
 
   div {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    // display: flex;
+    // justify-content: space-evenly;
+    // flex-wrap: wrap;
+    // margin-top: 20px;
   }
 }
 
 .loginImageAligner {
-  display: block;
-
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .loginImage {
@@ -30,16 +32,22 @@
   min-height: 200px;
   width: 200px;
   height: 200px;
+
   span {
     border-radius: 100%;
   }
 }
 
 .textBoxes {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
 
   input[type="text"],
   input[type="password"] {
     min-width: 300px;
+    max-height: 42px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -56,19 +64,42 @@
 }
 
 .buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
   button {
     @include default-button-styles();
   }
 }
 
-.logout {
-  color: $beer-red-link;
-  text-decoration: underline;
-  margin-top: 50px;
+.passwordBtnCont {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 0;
+}
+
+.showPasswordBtn {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+
+  font-size: $font-size-small;
 
   &:hover {
-    color: $beer-brown;
-    text-decoration: none;
-    cursor: pointer;
+    color: $beer-yellow;
   }
+}
+
+.hrLine {
+  width: 100%;
+  background-color: $black;
+}
+
+.createUserButton {
+  @include default-button-styles();
+  margin-left: 0;
 }

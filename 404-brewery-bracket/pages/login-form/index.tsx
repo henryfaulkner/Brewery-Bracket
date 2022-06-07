@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import styles from "../../styles/pages/Login-Form.module.scss";
+import styles from "../../styles/pages/LoginForm.module.scss";
 import Image from "next/image";
-import { UserContext } from "../../lib/context";
-import { useContext } from "react";
 import { auth } from "../../lib/firebase";
 import {
   signInWithEmailAndPassword,
@@ -77,21 +75,25 @@ const LoginForm: React.FC = () => {
             onChange={(event) => setEmail(event.target.value)}
             type="text"
           />
-          <input
-            placeholder="Password"
-            id="password"
-            onChange={(event) => setPassword(event.target.value)}
-            type={passwordVisibility}
-          />
-          {/* <input
-            type="checkbox"
-            onClick={() => {
-              passwordVisibility === "password"
-                ? setPasswordVisibility("text")
-                : setPasswordVisibility("password");
-            }}
-          /> 
-          <p>Show Password</p>*/}
+          <div className={styles.passwordBtnCont}>
+            <input
+              placeholder="Password"
+              id="password"
+              onChange={(event) => setPassword(event.target.value)}
+              type={passwordVisibility}
+            />
+            <button
+              className={styles.showPasswordBtn}
+              aria-label="Show or hide password"
+              onClick={() => {
+                passwordVisibility === "password"
+                  ? setPasswordVisibility("text")
+                  : setPasswordVisibility("password");
+              }}
+            >
+              Show Password
+            </button>
+          </div>
         </div>
         <div className={styles.buttonContainer}>
           <button
@@ -103,22 +105,19 @@ const LoginForm: React.FC = () => {
           >
             Log in
           </button>
-          <button className={styles.createUserButton} onClick={createUser}>
-            Create Account
-          </button>
+
           <Portal
             Type={"UsernameModal"}
             showModal={showModal}
             setShowModal={setShowModal}
           />
         </div>
+        <hr className={styles.hrLine}/>
+        <h3>Don't have an account?</h3>
+        <button className={styles.createUserButton} onClick={createUser}>
+          Create One
+        </button>
       </div>
-      <a href="/login-form/logout" className={styles.logout} onClick={logOut}>
-        Logout
-      </a>
-      <a href="/login-form/reset-password" className={styles.logout}>
-        Reset Password
-      </a>
     </div>
   );
 };
