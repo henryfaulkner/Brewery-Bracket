@@ -133,11 +133,318 @@
         "UntappdBreweryUid": "Biggerstaffbrewing"
     },
     {
+        "Name": "Elsewhere Brewing",
+        "Address": "1039 Grant St SE Suite B34, Atlanta, GA 30315",
+        "Url": "https://www.elsewherebrewing.co/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "ElsewhereBrewing"
+    },
+    {
+        "Name": "Atlantucky Brewing",
+        "Address": "170 Northside Dr SW suite 96, Atlanta, GA 30313",
+        "Url": "http://atlantucky.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "The Lost Druid Brewery",
+        "Address": "2866 Washington St, Avondale Estates, GA 30002",
+        "Url": "https://thelostdruid.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "TheLostDruid"
+    },
+    {
+        "Name": "Sabbath Brewing",
+        "Address": "530 Flat Shoals Ave SE, Atlanta, GA 30316",
+        "Url": "http://sabbathbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "SabbathBrewing"
+    },
+    {
+        "Name": "Red Hare Brewing Company",
+        "Address": "1998 Delk Industrial Blvd SE, Marietta, GA 30067",
+        "Url": "http://www.redharebrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "redharebrewing"
+    },
+    {
+        "Name": "Gate City Brewing Company",
+        "Address": "43 Magnolia St, Roswell, GA 30075",
+        "Url": "http://www.gatecitybrewingco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "GateCityBrewing"
+    },
+    {
+        "Name": "BlueTarp Brewing Co.",
+        "Address": "2316 Main St ste k, Tucker, GA 30084",
+        "Url": "http://bluetarpbrew.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "BlueTarpBrewingCo"
+    },
+    {
+        "Name": "Ironmonger Brewing Company",
+        "Address": "2129 NW Pkwy SE #105, Marietta, GA 30067",
+        "Url": "http://www.ironmongerbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "IronmongerBrewingCompany"
+    },
+    {
+        "Name": "Outrun Brewing Company",
+        "Address": "5368 E Mountain St, Stone Mountain, GA 30083",
+        "Url": "http://www.outrunbrewingco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "OutrunBrewingCompany"
+    },
+    {
+        "Name": "Round Trip Brewing Company",
+        "Address": "1279 Seaboard Industrial Blvd NW, Atlanta, GA 30318",
+        "Url": "https://roundtripbrewing.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp-listing",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "RoundTripBrewingCo"
+    },
+    {
+        "Name": "Pontoon Brewing Company",
+        "Address": "500, 8601 Dunwoody Pl, Sandy Springs, GA 30350",
+        "Url": "http://pontoonbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "PontoonBrewingCompany"
+    },
+    {
+        "Name": "Schoolhouse Brewing",
+        "Address": "840 Franklin Ct Suite 100, Marietta, GA 30067",
+        "Url": "http://www.schoolhousebeer.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "SchoolhouseBrewing"
+    },
+    {
+        "Name": "Sceptre Brewing Arts",
+        "Address": "630 East Lake Dr suite e, Decatur, GA 30030",
+        "Url": "https://www.sceptrebrewingarts.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "SceptreBrewingArts"
+    },
+    {
+        "Name": "Candler Rail Brewery",
+        "Address": "1660 DeKalb Ave NE, Atlanta, GA 30307",
+        "Url": "https://www.candlerrailbrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "Variant Brewing",
+        "Address": "66 Norcross St, Roswell, GA 30075",
+        "Url": "http://www.variantbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "VariantBrewingCompany"
+    },
+    {
+        "Name": "Hippin’ Hops Brewery",
+        "Address": "1308 Glenwood Ave SE, Atlanta, GA 30316",
+        "Url": "http://www.hippinhopsbrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "Little Cottage Brewery",
+        "Address": "120 Olive St Suite 500, Avondale Estates, GA 30002",
+        "Url": "http://www.littlecottagebrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "LittleCottageBrewery"
+    },
+    {
+        "Name": "Slow Pour Brewing Company",
+        "Address": "407 N Clayton St, Lawrenceville, GA 30046",
+        "Url": "http://slowpourbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "SlowPourBrewingCompany"
+    },
+    {
+        "Name": "Wrecking Bar Brewpub",
+        "Address": "292 Moreland Ave NE, Atlanta, GA 30307",
+        "Url": "http://www.wreckingbarbrewpub.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "WreckingBar"
+    },
+    {
+        "Name": "Six Bridges Brewing",
+        "Address": "11455 Lakefield Dr #300, Johns Creek, GA 30097",
+        "Url": "http://sixbridgesbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "SixBridgesBrewing"
+    },
+    {
+        "Name": "From the Earth Brewing Company",
+        "Address": "1570 Holcomb Bridge Rd, Roswell, GA 30076",
+        "Url": "https://www.ftebrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "FTEBrew"
+    },
+    {
+        "Name": "Anderby Brewing",
+        "Address": "110 Technology Pkwy STE 200, Peachtree Corners, GA 30092",
+        "Url": "https://www.anderbybrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "AnderbyBrewing"
+    },
+    {
+        "Name": "Line Creek Brewing Co.",
+        "Address": "150 Huddleston Rd STE 300, Peachtree City, GA 30269",
+        "Url": "http://www.linecreekbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "LineCreekBrewingCo"
+    },
+    {
+        "Name": "Jekyll Brewing",
+        "Address": "2855 Marconi Dr Ste 350, Alpharetta, GA 30005",
+        "Url": "https://www.jekyllbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "JekyllBrewing"
+    },
+    {
+        "Name": "High Card Brewery",
+        "Address": "2316 Main St, Tucker, GA 30084",
+        "Url": "http://www.highcardbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "HighCardBrewing"
+    },
+    {
+        "Name": "Burnt Hickory Brewery",
+        "Address": "2260 Moon Station Ct NW # 210, Kennesaw, GA 30144",
+        "Url": "http://www.burnthickorybrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "burnthickorybrewery"
+    },
+    {
+        "Name": "Currahee Brewing Company",
+        "Address": "25 S Main St, Alpharetta, GA 30009",
+        "Url": "https://www.curraheebrew.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "CurraheeBrewingCo"
+    },
+    {
+        "Name": "Dry County Brewing Company",
+        "Address": "1500 Lockhart Dr NW, Kennesaw, GA 30144",
+        "Url": "http://www.drycountybrewco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "DryCountyBrewingCompany"
+    },
+    {
+        "Name": "Kettlerock Brewing",
+        "Address": "6025 Peachtree Pkwy Suite #1, Peachtree Corners, GA 30092",
+        "Url": "http://kettlerockbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "Kettlehead_Brewing"
+    },
+    {
+        "Name": "StillFire Brewing",
+        "Address": "343 US-23, Suwanee, GA 30024",
+        "Url": "https://stillfirebrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "StillfireBrewing"
+    },
+    {
+        "Name": "Social Fox Brewing",
+        "Address": "20 Skin Alley, Norcross, GA 30071",
+        "Url": "http://socialfoxbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "SocialFoxBrewing"
+    },
+    {
+        "Name": "Reformation Brewery",
+        "Address": "105 Elm St, Woodstock, GA 30188",
+        "Url": "http://reformationbrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "ReformationBrewery"
+    },
+    {
+        "Name": "Abide Brewing Company",
+        "Address": "130 Werz Industrial Blvd, Newnan, GA 30263",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "AbideBrewingCompany"
+    },
+    {
+        "Name": "Inner Voice Brewing",
+        "Address": "308 W Ponce de Leon Ave Suite H, Decatur, GA 30030",
+        "Url": "http://www.innervoicebrewing.beer/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "InnerVoiceBrewing"
+    },
+    {
+        "Name": "Contrast Artisan Ales",
+        "Address": "5504 Peachtree Rd, Chamblee, GA 30341",
+        "Url": "https://www.contrastartisanales.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "ContrastFam"
+    },
+    {
+        "Name": "Glover Park Brewery",
+        "Address": "65 Atlanta St SE, Marietta, GA 30060",
+        "Url": "https://gloverparkbrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "Ironshield Brewing",
+        "Address": "457 N Chestnut St, Lawrenceville, GA 30046",
+        "Url": "https://www.ironshieldbrewing.com/?utm_source=google_search&utm_medium=google",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "IronshieldBrewing"
+    },
+    {
+        "Name": "Cultivation Brewery",
+        "Address": "650 Langford Dr, Norcross, GA 30071",
+        "Url": "http://www.cultivationbrew.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "CultivationBrewery"
+    },
+    {
+        "Name": "Cochran Mill Brewing Company",
+        "Address": "27 Word St, Fairburn, GA 30213",
+        "Url": "http://www.cochranmillbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "CochranMillBrewingCompany"
+    },
+    {
+        "Name": "6S Brewing Company",
+        "Address": "3111 Main St, Duluth, GA 30096",
+        "Url": "http://6sbeer.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "6SBrewingCompany"
+    },
+    {
+        "Name": "Monkey Wrench Brewing",
+        "Address": "3425 Martin Farm Rd, Suwanee, GA 30024",
+        "Url": "https://www.monkeywrenchbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "monkeywrenchbrewing"
+    },
+    {
+        "Name": "Horned Owl Brewing",
+        "Address": "2765 S Main St, Kennesaw, GA 30144",
+        "Url": "https://hornedowlbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "HornedOwlBrewing"
+    },
+    {
         "Name": "",
         "Address": "",
         "Url": "",
         "BeerListUrl": "",
         "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": ""
     },
     {
         "Name": "",
@@ -171,8 +478,7 @@
         "Name": "",
         "Address": "",
         "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "BeerListUrl": ""
     },
     {
         "Name": "",
@@ -206,8 +512,7 @@
         "Name": "",
         "Address": "",
         "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "BeerListUrl": ""
     },
     {
         "Name": "",
@@ -241,141 +546,7 @@
         "Name": "",
         "Address": "",
         "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
-    },
-    {
-        "Name": "",
-        "Address": "",
-        "Url": "",
-        "BeerListUrl": "",
-        "UntappdBreweryUid": ""
+        "BeerListUrl": ""
     },
     {
         "Name": "",
