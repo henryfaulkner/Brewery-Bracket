@@ -94,7 +94,7 @@ async function UploadJson_ManyUntappd(filePath) {
       if(brewery) {
         console.log(`${json[i].Name} already exists.`)
         const stillAddJson = readlineSync.question("Still want to add beers? (no to skip): ")
-        if(stillAddJson === "no" || stillAddJson === "n") process.exit();
+        if(stillAddJson === "no" || stillAddJson === "n") continue;
       } else {
         brewery = await fe.AddCustomBrewery(json[i].Name, json[i].Url, json[i].BeerListUrl, json[i].Address)
       }
