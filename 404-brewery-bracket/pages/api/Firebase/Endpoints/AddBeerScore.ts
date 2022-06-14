@@ -13,14 +13,13 @@ import * as collectionConstants from "../CollectionConstants";
  *      description: Adds a beerscore to a scorecard
  *      requestBody:
  *        content:
- *          application/json:    # Media type
- *            schema:            # Request body contents
+ *          application/json:   
+ *            schema:         
  *              AssociatedScorecardID: string
  *              BeerName: string
  *              AssociatedBeerID: string
  *              Score: integer
- *            example:           # Child of media type because we use $ref above
- *              # Properties of a referenced object
+ *            example:           
  *              AssociatedScorecardID: hWWNwskdGOnEdq0KIQ3S
  *              AssociatedBeerID: 0da95857-4917-4ccb-8430-f42a676a5704
  *              BeerName: Epicurious

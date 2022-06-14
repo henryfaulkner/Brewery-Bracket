@@ -18,12 +18,11 @@ type Data = {
  *      description: Each bracket created will create a group. The group will, by default, have one member, the owner/creator.
  *      requestBody:
  *        content:
- *          application/json:    # Media type
- *            schema:            # Request body contents
+ *          application/json: 
+ *            schema:           
  *              BracketName: string
  *              userId: string
- *            example:           # Child of media type because we use $ref above
- *              # Properties of a referenced object
+ *            example:         
  *              BracketName: Perficient's brewery bracket
  *              userId: hWWNwskdGOnEdq0KIQ3S
  *      responses:

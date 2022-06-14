@@ -17,12 +17,11 @@ import * as collectionConstants from "../CollectionConstants";
  *      description: Add a user's UID to a groups Users array. Will not add if the user already exists in the group.
  *      requestBody:
  *        content:
- *          application/json:    # Media type
- *            schema:            # Request body contents
+ *          application/json:   
+ *            schema:     
  *              userUid: string
  *              groupId: string
- *            example:           # Child of media type because we use $ref above
- *              # Properties of a referenced object
+ *            example:       
  *              userUid: hWWNwskdGOnEdq0KIQ3S
  *              groupId: hWWNwskdGOnEdq0KIQ3S
  *      responses:

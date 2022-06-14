@@ -16,6 +16,34 @@ type Data = {
   statusMessage: string;
 };
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/CreateUserDoc:
+ *    post:
+ *      summary: Create User Document
+ *      description: Create a User document.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              email: string
+ *              uid: string
+ *              username: string
+ *            example:
+ *              email: string
+ *              uid: hWWNwskdGOnEdq0KIQ3S
+ *              username: string
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties: 
+ *                  statusMessage: 
+ *                    type: string
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const email: string = req.body["email"];
   const uid: string = req.body["uid"];
