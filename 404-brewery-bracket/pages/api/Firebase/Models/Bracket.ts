@@ -3,6 +3,32 @@ import { CustomBeers } from "../CollectionConstants";
 import BreweryObject from "./BreweryObject";
 import IFirebaseDocument from "./IFirebaseDocument";
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Bracket:
+ *       type: object
+ *       properties:
+ *         DocumentID:
+ *           type: string
+ *           description: The Bracket DocumentID.
+ *           example: hWWNwskdGOnEdq0KIQ3S
+ *         BracketName:
+ *           type: string
+ *           description: The Bracket's name.
+ *           example: Perficient brewery bracket
+ *         GroupID:
+ *           type: string
+ *           description: The Group created for this bracket's DocumentID.
+ *           example: hWWNwskdGOnEdq0KIQ3S
+ *         Breweries:
+ *           type: array
+ *           items:
+ *            $ref: '#/components/schemas/BreweryObject'
+ *           description: List of breweries added to bracket.
+ *           example: []
+ */
 class Bracket implements IFirebaseDocument {
   public DocumentID: string;
   public BracketName: string;

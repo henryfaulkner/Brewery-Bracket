@@ -4,6 +4,16 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 import User from "../Models/User";
 import * as collectionConstants from "../CollectionConstants";
 
+/**
+ * @swagger
+ * /api/Firebase/Endpoints/GetAllUsers:
+ *   get:
+ *     summary: List Users
+ *     description: Returns all User documents
+ *     responses:
+ *       200:
+ *         description: User object list
+ */
 const handler = async (req: NextApiRequest, res: NextApiResponse<User[]>) => {
   const collectionRef = collection(getFirestore(), collectionConstants.Users);
   const data = await getDocs(

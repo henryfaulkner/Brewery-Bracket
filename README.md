@@ -18,7 +18,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the result (or whichever port it specifies).
 
+## REST API Documentation
+
+Our REST API is documented here: https://app.swaggerhub.com/apis/henryfaulkner/brewery-bracket/0.1.0#/
+
 ## Developing
+
 Your linter might be mad at you, initially. At the moment, we recommend going into your settings and disabling it.
 File >> Preferences >> Settings
 Search "eslint quiet", or just disable it entirely.

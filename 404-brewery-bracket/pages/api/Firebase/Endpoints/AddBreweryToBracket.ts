@@ -16,9 +16,37 @@ type Status = {
   status: string;
 };
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/AddBreweryToBracket:
+ *    post:
+ *      summary: Add Brewery to Bracket
+ *      description: Adds a Brewery document to a Bracket Document's Breweries list.
+ *      requestBody:
+ *        content:
+ *          application/json:    # Media type
+ *            schema:            # Request body contents
+ *              bracketId: string
+ *              serializedBreweryJson: string
+ *            example:           # Child of media type because we use $ref above
+ *              # Properties of a referenced object
+ *              bracketId: hWWNwskdGOnEdq0KIQ3S
+ *              serializedBreweryJson: {"Name":"Creature Comforts Brewing Company","Description":"","Short_Description":"","Url":"http://www.creaturecomfortsbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"271 W Hancock Ave, Athens, GA 30601","DocumentID":"Exen63googSMVqRoTC2b"}
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  status: 
+ *                    type: string
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
   try {
     const bracketId: string = req.body["bracketId"];
+    console.log(req.body["serializedBreweryJson"])
     const breweryJson = JSON.parse(req.body["serializedBreweryJson"]);
 
     const breweryObj = new BreweryObject({

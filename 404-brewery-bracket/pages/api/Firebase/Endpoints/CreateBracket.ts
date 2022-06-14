@@ -10,8 +10,34 @@ type Data = {
   bracket: JSON;
 };
 
-//Each bracket created will create a group.
-//The group will, by default, have one member, the owner/creator.
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/CreateBracket:
+ *    post:
+ *      summary: Create Bracket.
+ *      description: Each bracket created will create a group. The group will, by default, have one member, the owner/creator.
+ *      requestBody:
+ *        content:
+ *          application/json:    # Media type
+ *            schema:            # Request body contents
+ *              BracketName: string
+ *              userId: string
+ *            example:           # Child of media type because we use $ref above
+ *              # Properties of a referenced object
+ *              BracketName: Perficient's brewery bracket
+ *              userId: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  bracket: 
+ *                    type: object
+*/
+// TODO: why are we returning JSON and not the Bracket object ??
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const bracketName: string = req.body["BracketName"];
   const userId = req.body["userId"];

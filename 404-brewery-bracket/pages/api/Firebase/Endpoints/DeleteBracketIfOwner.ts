@@ -15,6 +15,32 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import { firestore } from "../../../../lib/firebase";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/DeleteBracketIfOwner:
+ *    delete:
+ *      summary: Delete Bracket
+ *      description: Delete a particular bracket. Ownership not yet implemented.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              bracketID: string
+ *              groupID: string
+ *            example:
+ *              bracketID: hWWNwskdGOnEdq0KIQ3S
+ *              groupID: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  success: 
+ *                    type: string
+*/
 // TBD Ownership conditional
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

@@ -8,6 +8,30 @@ import {
     getDoc,
   } from "firebase/firestore";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetBreweryByDocumentID:
+ *    post:
+ *      summary: Get Brewery by ID
+ *      description: Get Brewery By DocumentID.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              breweryId: string
+ *            example:
+ *              breweryId: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:      
+ *                  serializedBreweryJson: 
+ *                      $ref: '#/components/schemas/BreweryObject'
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const breweryId = req.body["breweryId"]

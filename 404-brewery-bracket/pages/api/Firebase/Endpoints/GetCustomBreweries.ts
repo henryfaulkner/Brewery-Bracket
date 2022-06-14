@@ -4,6 +4,22 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
 
+/**
+ * @swagger
+ * /api/Firebase/Endpoints/GetCustomBreweries:
+ *   get:
+ *     summary: List Breweries
+ *     description: Returns all Brewery documents
+ *     responses:
+ *       '200':
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: array
+ *                items:
+ *                  $ref: '#/components/schemas/CustomBeer'
+ *          description: Brewery objects list from Firestore
+ */
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryObject[]>

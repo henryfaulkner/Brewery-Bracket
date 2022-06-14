@@ -10,6 +10,29 @@ import {
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetScorecardBeerScores:
+ *    post:
+ *      summary: Get Beer Scores on Scorecard
+ *      description: Get all BeerScores on a particular Scorecard.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              AssociatedScorecardID: string
+ *            example:
+ *              AssociatedScorecardID: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: array
+ *                items:
+ *                  $ref: '#/components/schemas/BeerScore'
+*/
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BeerScore[]>

@@ -9,14 +9,33 @@ import {
 
 import * as collectionConstants from "../CollectionConstants";
 
-/**
- * Add a user's UID to a groups Users array.
- * Will not add if the user already exists in
- * the group.
- *
- * @param {NextApiRequest} res Next API route request
- * @param {NextApiResponse} res Next API route response
- */
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/AddUserToGroup:
+ *    post:
+ *      summary: Add User to Group.
+ *      description: Add a user's UID to a groups Users array. Will not add if the user already exists in the group.
+ *      requestBody:
+ *        content:
+ *          application/json:    # Media type
+ *            schema:            # Request body contents
+ *              userUid: string
+ *              groupId: string
+ *            example:           # Child of media type because we use $ref above
+ *              # Properties of a referenced object
+ *              userUid: hWWNwskdGOnEdq0KIQ3S
+ *              groupId: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  success: 
+ *                    type: string
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userUid: string = req.body["userUid"];
   const groupId: string = req.body["groupId"];
