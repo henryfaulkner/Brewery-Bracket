@@ -9,12 +9,33 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 
-import Bracket from "../Models/Bracket";
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
 
 type Status = {};
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/DeleteBreweryInBracket:
+ *    delete:
+ *      summary: Delete Brewery from Bracket
+ *      description: Delete a Brewery from a Bracket.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              bracketID: string
+ *              breweryID: string
+ *            example:
+ *              bracketID: hWWNwskdGOnEdq0KIQ3S
+ *              breweryID: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
   try {
     const bracketId: string = req.body["bracketId"];

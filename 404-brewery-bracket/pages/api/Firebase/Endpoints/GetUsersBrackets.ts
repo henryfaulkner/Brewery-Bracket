@@ -13,6 +13,29 @@ import * as collectionConstants from "../CollectionConstants";
 import { firestore } from "../../../../lib/firebase";
 import Bracket from "../Models/Bracket";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetUsersBracket:
+ *    post:
+ *      summary: Get My Brackets
+ *      description: Get all the User's Brackets.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              userId: string
+ *            example:
+ *              userId: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: array
+ *                items:
+ *                  $ref: '#/components/schemas/Bracket'
+*/
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<Bracket[]>

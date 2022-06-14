@@ -21,7 +21,7 @@ type Status = {
  *  /api/Firebase/Endpoints/AddBreweryToBracket:
  *    post:
  *      summary: Add Brewery to Bracket
- *      descrition: Adds a Brewery document to a Bracket Document's Breweries list.
+ *      description: Adds a Brewery document to a Bracket Document's Breweries list.
  *      requestBody:
  *        content:
  *          application/json:    # Media type
@@ -38,7 +38,10 @@ type Status = {
  *          content: 
  *            application/json:
  *              schema:
- *                status: string
+ *                type: object
+ *                properties:
+ *                  status: 
+ *                    type: string
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
   try {

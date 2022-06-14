@@ -9,7 +9,7 @@ import * as CollectionConstants from "../CollectionConstants";
  *  /api/Firebase/Endpoints/AddCustomBrewery:
  *    post:
  *      summary: Add Custom Brewery.
- *      descrition: Adds BreweryObject to CustomBreweries Collection.
+ *      description: Adds BreweryObject to CustomBreweries Collection.
  *      requestBody:
  *        content:
  *          application/json:    # Media type

@@ -10,6 +10,30 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import Bracket from "../Models/Bracket";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetBracketByDocumentID:
+ *    post:
+ *      summary: Get Bracket by ID
+ *      description: Get Bracket By DocumentID.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              bracketId: string
+ *            example:
+ *              bracketId: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  bracket: 
+ *                    $ref: '#/components/schemas/Bracket'
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const bracketId = req.body["bracketId"];
 

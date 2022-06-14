@@ -13,6 +13,33 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/CreateOrGetScorecard:
+ *    post:
+ *      summary: Create or Get Scorecard.
+ *      description: If a scorecard exists with a particular User and Brewery pair, return that Scorecard; else, make that Scorecard. This also adds the Scorecard to the current bracket.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              userId: string
+ *              breweryID: string
+ *              breweryName: string
+ *              bracketID: string
+ *            example:
+ *              userId: hWWNwskdGOnEdq0KIQ3S
+ *              breweryID: hWWNwskdGOnEdq0KIQ3S
+ *              breweryName: Creature Comforts Brewing Company
+ *              bracketID: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/BreweryDayScorecard'
+*/
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryDayScorecard>

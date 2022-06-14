@@ -12,6 +12,32 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import CustomBeer from "../Models/CustomBeer";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetBeersFromBrewery:
+ *    post:
+ *      summary: Get Breweries in Bracket
+ *      description: Return all Brewery objects in a Bracket document.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              BreweryId: string
+ *            example:
+ *              BreweryId: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  beers: 
+ *                    type: array
+ *                    items:
+ *                      $ref: '#/components/schemas/CustomBeer'
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const breweryId = req.body["BreweryId"];
 

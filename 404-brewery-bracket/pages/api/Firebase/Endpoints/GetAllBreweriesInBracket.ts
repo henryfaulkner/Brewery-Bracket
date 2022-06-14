@@ -17,6 +17,31 @@ type Status = {
   breweries: BreweryObject[];
 };
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetAllBreweriesInBracket:
+ *    post:
+ *      summary: Get Breweries in Bracket
+ *      description: Return all Brewery objects in a Bracket document.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              bracketID: string
+ *            example:
+ *              bracketID: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  breweries: 
+ *                    type: object
+*/
+// TODO: why are we returning JSON and not the Bracket object ??
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
   try {
     const bracketId: string = req.body["bracketid"];

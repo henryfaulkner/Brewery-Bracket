@@ -8,6 +8,31 @@ import {
 
 import * as collectionConstants from "../CollectionConstants";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/UpdateCustomBreweryDoc:
+ *    put:
+ *      summary: Update Custom Brewery Doc
+ *      description: Add an address and/or url to an existing Brewery.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              id: string
+ *              address: string
+ *              url: string
+ *            example:
+ *              id: hWWNwskdGOnEdq0KIQ3S
+ *              address: 271 W Hancock Ave, Athens, GA 30601
+ *              url: http://www.creaturecomfortsbeer.com/
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                type: object
+*/
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const customBreweryId: string = req.body["id"];
   const address: string = req.body["address"];

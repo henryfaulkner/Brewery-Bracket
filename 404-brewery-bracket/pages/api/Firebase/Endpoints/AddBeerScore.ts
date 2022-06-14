@@ -10,7 +10,7 @@ import * as collectionConstants from "../CollectionConstants";
  *  /api/Firebase/Endpoints/AddBeerScore:
  *    post:
  *      summary: Add BeerScore
- *      descrition: Adds a beerscore to a scorecard
+ *      description: Adds a beerscore to a scorecard
  *      requestBody:
  *        content:
  *          application/json:    # Media type

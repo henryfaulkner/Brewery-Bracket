@@ -14,7 +14,7 @@ import * as collectionConstants from "../CollectionConstants";
  *  /api/Firebase/Endpoints/AddUserToGroup:
  *    post:
  *      summary: Add User to Group.
- *      descrition: Add a user's UID to a groups Users array. Will not add if the user already exists in the group.
+ *      description: Add a user's UID to a groups Users array. Will not add if the user already exists in the group.
  *      requestBody:
  *        content:
  *          application/json:    # Media type
@@ -31,7 +31,10 @@ import * as collectionConstants from "../CollectionConstants";
  *          content: 
  *            application/json:
  *              schema:
- *                success: string
+ *                type: object
+ *                properties:
+ *                  success: 
+ *                    type: string
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userUid: string = req.body["userUid"];

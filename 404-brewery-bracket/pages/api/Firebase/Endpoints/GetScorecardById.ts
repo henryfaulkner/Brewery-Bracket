@@ -4,6 +4,27 @@ import { collection, getDoc, doc, getFirestore } from "firebase/firestore";
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
 
+/** 
+ * @swagger
+ *  /api/Firebase/Endpoints/GetScorecardById:
+ *    post:
+ *      summary: Get Scorecard by ID
+ *      description: Get Scorecard By DocumentID.
+ *      requestBody:
+ *        content:
+ *          application/json:
+ *            schema:
+ *              DocumentID: string
+ *            example:
+ *              DocumentID: hWWNwskdGOnEdq0KIQ3S
+ *      responses:
+ *        '200':
+ *          description: OK
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/BreweryDayScorecard'
+*/
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryDayScorecard>
