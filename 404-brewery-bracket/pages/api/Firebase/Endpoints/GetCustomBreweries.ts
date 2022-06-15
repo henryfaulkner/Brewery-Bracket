@@ -1,8 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import Cors from 'cors';
 
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['GET', 'POST', 'HEAD', 'OPTIONS'],
+})
 
 /**
  * @swagger
@@ -24,6 +30,8 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryObject[]>
 ) => {
+  await runMiddleware(req, res, cors);
+
   const data = await getDocs(
     collection(getFirestore(), collectionConstants.CustomBreweries)
   );
