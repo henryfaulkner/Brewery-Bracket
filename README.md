@@ -6,6 +6,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 We use [Github's Flow](https://docs.github.com/en/get-started/quickstart/github-flow) to collaberate and share code.
 
+## REST API Documentation
+
+Our REST API is documented here: https://app.swaggerhub.com/apis/henryfaulkner/brewery-bracket/0.1.0#/
+
 ## Getting Started
 
 Run npm install at both your top-level folder (wherever you installed the project) and the 404 folder.
@@ -17,10 +21,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the result (or whichever port it specifies).
-
-## REST API Documentation
-
-Our REST API is documented here: https://app.swaggerhub.com/apis/henryfaulkner/brewery-bracket/0.1.0#/
 
 ## Developing
 
