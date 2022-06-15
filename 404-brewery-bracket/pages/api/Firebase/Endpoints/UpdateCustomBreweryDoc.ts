@@ -7,6 +7,12 @@ import {
 } from "firebase/firestore";
 
 import * as collectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['PUT', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -34,6 +40,7 @@ import * as collectionConstants from "../CollectionConstants";
  *                type: object
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors);
   const customBreweryId: string = req.body["id"];
   const address: string = req.body["address"];
   const url: string = req.body["url"];

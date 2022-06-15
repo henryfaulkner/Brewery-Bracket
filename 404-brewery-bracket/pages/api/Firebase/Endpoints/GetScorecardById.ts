@@ -3,6 +3,12 @@ import { collection, getDoc, doc, getFirestore } from "firebase/firestore";
 
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -29,6 +35,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryDayScorecard>
 ) => {
+  await runMiddleware(req, res, cors);
   const scorecardId: string = req.body["DocumentID"];
 
   const collectionRef = collection(

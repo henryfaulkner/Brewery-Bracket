@@ -13,6 +13,13 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
 
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
+
 /** 
  * @swagger
  *  /api/Firebase/Endpoints/CreateOrGetScorecard:
@@ -44,6 +51,8 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryDayScorecard>
 ) => {
+  await runMiddleware(req, res, cors)
+
   try {
     const userId: string = req.body["userId"];
     //could be bracket Id but I think brewery scorecard for user should persistant

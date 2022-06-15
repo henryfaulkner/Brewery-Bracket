@@ -5,6 +5,12 @@ import * as CollectionConstants from "../CollectionConstants";
 import { firestore } from "../../../../lib/firebase";
 import Bracket from "../Models/Bracket";
 import Group from "../Models/Group";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+})
 
 type Data = {
   bracket: JSON;
@@ -38,6 +44,8 @@ type Data = {
 */
 // TODO: why are we returning JSON and not the Bracket object ??
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+  await runMiddleware(req, res, cors);
+
   const bracketName: string = req.body["BracketName"];
   const userId = req.body["userId"];
 

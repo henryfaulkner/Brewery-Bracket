@@ -12,6 +12,12 @@ import {
 import * as collectionConstants from "../CollectionConstants";
 import { firestore } from "../../../../lib/firebase";
 import Bracket from "../Models/Bracket";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -40,6 +46,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<Bracket[]>
 ) => {
+  await runMiddleware(req, res, cors);
   const userId = req.body["userId"];
   let response: Bracket[] = [];
 

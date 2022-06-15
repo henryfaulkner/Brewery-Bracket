@@ -11,6 +11,12 @@ import {
 
 import * as collectionConstants from "../CollectionConstants";
 import CustomBeer from "../Models/CustomBeer";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -39,6 +45,7 @@ import CustomBeer from "../Models/CustomBeer";
  *                      $ref: '#/components/schemas/CustomBeer'
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors);
   const breweryId = req.body["BreweryId"];
 
   try {

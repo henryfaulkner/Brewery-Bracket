@@ -3,6 +3,13 @@ import { collection, updateDoc, doc, getFirestore } from "firebase/firestore";
 
 import * as collectionConstants from "../CollectionConstants";
 
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['PUT', 'HEAD'],
+});
+
 /** 
  * @swagger
  *  /api/Firebase/Endpoints/UpdateLocEnvAndAggScore:
@@ -31,6 +38,7 @@ import * as collectionConstants from "../CollectionConstants";
  *                type: object
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors);
   const scorecardId: string = req.body["DocumentID"];
   const locationScore: number = req.body["locationScore"];
   const environmentScore: number = req.body["environmentScore"];

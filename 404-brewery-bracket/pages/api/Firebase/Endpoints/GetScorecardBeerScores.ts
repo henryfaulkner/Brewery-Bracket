@@ -9,6 +9,12 @@ import {
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -37,6 +43,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BeerScore[]>
 ) => {
+  await runMiddleware(req, res, cors);
   const associatedScorecardId: string = req.body["AssociatedScorecardID"];
 
   const collectionRef = collection(getFirestore(), collectionConstants.BeerScore);

@@ -3,7 +3,12 @@ import { collection, addDoc, getFirestore } from "firebase/firestore";
 
 import BreweryObject from "../Models/BreweryObject";
 import * as CollectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
 
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+})
 /** 
  * @swagger
  *  /api/Firebase/Endpoints/AddCustomBrewery:
@@ -29,6 +34,8 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BreweryObject>
 ) => {
+  await runMiddleware(req, res, cors)
+
   const submittedBreweryName: string = req.body["name"];
   let customBrewery: BreweryObject = new BreweryObject({
     Name: submittedBreweryName,

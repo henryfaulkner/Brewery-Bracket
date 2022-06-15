@@ -1,9 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { collection, addDoc } from "firebase/firestore";
 import { firestore } from "../../../../lib/firebase";
+import Cors from "cors";
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+})
 
 /** 
  * @swagger
@@ -36,6 +42,8 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<BeerScore>
 ) => {
+  runMiddleware(req, res, cors);
+
   const associatedScorecardId: string = req.body["AssociatedScorecardID"];
   const beerName: string = req.body["BeerName"];
   const beerId: string = req.body["AssociatedBeerID"];

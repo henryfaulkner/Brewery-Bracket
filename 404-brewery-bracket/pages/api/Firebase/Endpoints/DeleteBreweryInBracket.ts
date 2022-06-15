@@ -11,13 +11,19 @@ import {
 
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['PUT', 'HEAD'],
+});
 
 type Status = {};
 
 /** 
  * @swagger
  *  /api/Firebase/Endpoints/DeleteBreweryInBracket:
- *    delete:
+ *    put:
  *      summary: Delete Brewery from Bracket
  *      description: Delete a Brewery from a Bracket.
  *      requestBody:
@@ -37,6 +43,8 @@ type Status = {};
  *              schema:
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
+  await runMiddleware(req, res, cors)
+
   try {
     const bracketId: string = req.body["bracketId"];
     const breweryId: string = req.body["breweryId"];

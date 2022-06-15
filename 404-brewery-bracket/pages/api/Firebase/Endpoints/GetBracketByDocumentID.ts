@@ -9,6 +9,12 @@ import {
 
 import * as collectionConstants from "../CollectionConstants";
 import Bracket from "../Models/Bracket";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -35,6 +41,7 @@ import Bracket from "../Models/Bracket";
  *                    $ref: '#/components/schemas/Bracket'
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  runMiddleware(req, res, cors);
   const bracketId = req.body["bracketId"];
 
   try {
