@@ -12,7 +12,7 @@ import * as collectionConstants from "../CollectionConstants";
 import { runMiddleware } from "../../middleware";
 
 const cors = Cors({
-  methods: ['POST', 'HEAD'],
+  methods: ['POST', 'HEAD', 'OPTIONS'],
 })
 
 /** 
