@@ -12,6 +12,12 @@ import {
 import Bracket from "../Models/Bracket";
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 type Status = {
   breweries: BreweryObject[];
@@ -43,6 +49,7 @@ type Status = {
 */
 // TODO: why are we returning JSON and not the Bracket object ??
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
+  await runMiddleware(req, res, cors);
   try {
     const bracketId: string = req.body["bracketid"];
 

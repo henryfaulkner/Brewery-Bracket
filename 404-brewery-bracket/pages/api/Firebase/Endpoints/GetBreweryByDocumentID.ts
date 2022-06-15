@@ -7,6 +7,12 @@ import {
     doc,
     getDoc,
   } from "firebase/firestore";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -33,6 +39,7 @@ import {
  *                      $ref: '#/components/schemas/BreweryObject'
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    await runMiddleware(req, res, cors);
     try {
         const breweryId = req.body["breweryId"]
 

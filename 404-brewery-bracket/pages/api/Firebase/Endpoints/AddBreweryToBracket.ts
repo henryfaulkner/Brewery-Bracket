@@ -11,6 +11,12 @@ import {
 
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+})
 
 type Status = {
   status: string;
@@ -43,9 +49,9 @@ type Status = {
  *                    type: string
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
+  await runMiddleware(req, res, cors)
   try {
     const bracketId: string = req.body["bracketId"];
-    console.log(req.body["serializedBreweryJson"])
     const breweryJson = JSON.parse(req.body["serializedBreweryJson"]);
 
     const breweryObj = new BreweryObject({

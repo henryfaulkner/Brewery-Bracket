@@ -11,6 +11,12 @@ import { FirebaseApp } from "firebase/app";
 import * as CollectionConstants from "../CollectionConstants";
 import User from "../Models/User";
 import FirebaseExtensions from "../../../../helpers/FirebaseExtensions";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+});
 
 type Data = {
   statusMessage: string;
@@ -45,6 +51,8 @@ type Data = {
  *                    type: string
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+  await runMiddleware(req, res, cors);
+  
   const email: string = req.body["email"];
   const uid: string = req.body["uid"];
   const username: string = req.body["username"];

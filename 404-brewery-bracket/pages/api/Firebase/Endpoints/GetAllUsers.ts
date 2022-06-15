@@ -3,6 +3,12 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 import User from "../Models/User";
 import * as collectionConstants from "../CollectionConstants";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['GET', 'HEAD'],
+});
 
 /**
  * @swagger
@@ -15,6 +21,7 @@ import * as collectionConstants from "../CollectionConstants";
  *         description: User object list
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse<User[]>) => {
+  await runMiddleware(req, res, cors);
   const collectionRef = collection(getFirestore(), collectionConstants.Users);
   const data = await getDocs(
     collection(getFirestore(), collectionConstants.Users)

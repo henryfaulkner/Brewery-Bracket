@@ -14,6 +14,12 @@ import {
 
 import * as collectionConstants from "../CollectionConstants";
 import { firestore } from "../../../../lib/firebase";
+import Cors from 'cors';
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['DELETE', 'HEAD'],
+});
 
 /** 
  * @swagger
@@ -43,6 +49,8 @@ import { firestore } from "../../../../lib/firebase";
 */
 // TBD Ownership conditional
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors);
+
   try {
     const bracketID = req.body["bracketID"];
     const groupID = req.body["groupID"];
