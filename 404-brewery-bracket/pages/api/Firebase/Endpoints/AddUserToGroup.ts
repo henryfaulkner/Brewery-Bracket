@@ -6,8 +6,14 @@ import {
   updateDoc,
   arrayUnion
 } from "firebase/firestore";
+import Cors from 'cors'
 
 import * as collectionConstants from "../CollectionConstants";
+import { runMiddleware } from "../../middleware";
+
+const cors = Cors({
+  methods: ['POST', 'HEAD'],
+})
 
 /** 
  * @swagger
@@ -36,6 +42,8 @@ import * as collectionConstants from "../CollectionConstants";
  *                    type: string
 */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  await runMiddleware(req, res, cors);
+
   const userUid: string = req.body["userUid"];
   const groupId: string = req.body["groupId"];
 
