@@ -21,7 +21,7 @@ const cors = Cors({
 
 /** 
  * @swagger
- *  /api/Firebase/Endpoints/GetUsersBracket:
+ *  /api/Firebase/Endpoints/GetUsersBrackets:
  *    post:
  *      summary: Get My Brackets
  *      description: Get all the User's Brackets.
