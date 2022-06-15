@@ -14,11 +14,10 @@ import BreweryObject from "../api/Firebase/Models/BreweryObject";
 import GetAllBreweries from "../../helpers/FirebaseExtensions";
 import Link from "next/link";
 
-let currBracket: Bracket;
-
 type Props = {
   allUsers: User[];
   initialBrewriesInBracket: BreweryObject[];
+  currBracket: Bracket;
   allBreweries: BreweryObject[];
 };
 
@@ -33,7 +32,6 @@ const BracketCreator = (props: Props) => {
     const fetchData = async () => {
       const { bracketid } = router.query;
       setBracketID(bracketid);
-      await GetCurrentBracket(bracketid);
       InitializeBreweryCardsRendered();
 
       setHasPulledData(true);
@@ -42,33 +40,6 @@ const BracketCreator = (props: Props) => {
       fetchData();
     }
   });
-
-  //TODO: Put in getServerSideProps
-  const GetCurrentBracket = async (bracketId) => {
-    const request = {
-      bracketId: bracketId,
-    };
-    try {
-      await fetch("/api/Firebase/Endpoints/GetBracketByDocumentID", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((res) => res.json())
-        .then((jsonRes) => {
-          currBracket = new Bracket({
-            DocumentID: jsonRes.bracket.DocumentID,
-            BracketName: jsonRes.bracket.BracketName,
-            GroupID: jsonRes.bracket.GroupID,
-            Breweries: jsonRes.bracket.Breweries,
-          });
-        });
-    } catch (exception) {
-      return null;
-    }
-  };
 
   const AddBrewery = async (e) => {
     if (input_addBrewery.current != null) {
@@ -122,8 +93,8 @@ const BracketCreator = (props: Props) => {
   }
 
   const InitializeBreweryCardsRendered = () => {
-    if(currBracket.Breweries) {
-      setBreweryCardsRendered(currBracket.Breweries.map((breweryObj: BreweryObject) => {
+    if(props.currBracket.Breweries) {
+      setBreweryCardsRendered(props.currBracket.Breweries.map((breweryObj: BreweryObject) => {
         return [breweryObj.Name, breweryObj.DocumentID];
       }))
 
@@ -147,7 +118,7 @@ const BracketCreator = (props: Props) => {
               <h3>Add Brewery</h3>
               <div className={styles.labelButtonPair}>
                 <BrewerySearchByName
-                  BracketID={currBracket?.DocumentID ?? ""}
+                  BracketID={props.currBracket?.DocumentID ?? ""}
                   inputReference={input_addBrewery}
                   breweriesToBeSearched={props.allBreweries}
                 />
@@ -197,7 +168,7 @@ const BracketCreator = (props: Props) => {
         <div className={styles.addCustomCont}>
           <UserSearchByUsername
             allUsers={props.allUsers}
-            bracket={currBracket}
+            bracket={props.currBracket}
           />
         </div>
       </div>
@@ -232,18 +203,49 @@ export async function getServerSideProps(context) {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-    .then((res) => res.json())
-    .then((res) => {
-      initialBreweriesInBracket = res.breweries.map((brewery) => {
-        return JSON.parse(JSON.stringify(brewery));
-      });
+  .then((res) => res.json())
+  .then((res) => {
+    initialBreweriesInBracket = res.breweries.map((brewery) => {
+      return JSON.parse(JSON.stringify(brewery));
     });
+  });
+
   const allBreweries = await GetAllBreweries();
+
+  let currBracket;
+  const request2 = {
+    bracketId: bracketid,
+  };
+  try {
+    await fetch(`${server}/api/Firebase/Endpoints/GetBracketByDocumentID`, {
+      method: "POST",
+      body: JSON.stringify(request2),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((jsonRes) => {
+        console.log(jsonRes)
+        currBracket = new Bracket({
+          DocumentID: jsonRes.bracket.DocumentID,
+          BracketName: jsonRes.bracket.BracketName,
+          GroupID: jsonRes.bracket.GroupID,
+          Breweries: jsonRes.bracket.Breweries,
+        });
+      });
+  } catch (exception) {
+    console.log("Get curent bracket failed.")
+    currBracket = new Bracket({});
+  }
+  currBracket = JSON.parse(JSON.stringify(currBracket));
+  
   return {
     props: {
       allUsers,
       initialBreweriesInBracket,
       allBreweries,
+      currBracket
     },
   };
 }
