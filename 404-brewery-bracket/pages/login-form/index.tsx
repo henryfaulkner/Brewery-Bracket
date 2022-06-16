@@ -10,6 +10,8 @@ import {
 } from "firebase/auth";
 import Router from "next/router";
 import Portal from "../../components/Portal";
+import OpenEye from "../../components/svgs/OpenEye";
+import ClosedEye from "../../components/svgs/ClosedEye";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -72,11 +74,13 @@ const LoginForm: React.FC = () => {
           <input
             placeholder="Email"
             id="email"
+            className={styles.emailInput}
             onChange={(event) => setEmail(event.target.value)}
             type="text"
           />
           <div className={styles.passwordBtnCont}>
             <input
+              className={styles.passwordInput}
               placeholder="Password"
               id="password"
               onChange={(event) => setPassword(event.target.value)}
@@ -91,11 +95,12 @@ const LoginForm: React.FC = () => {
                   : setPasswordVisibility("password");
               }}
             >
-              Show Password
+              {passwordVisibility === "password" ? 
+              <OpenEye className={styles.openSVG} /> : <ClosedEye className={styles.closedSVG} />}
             </button>
           </div>
         </div>
-        <div className={styles.buttonContainer}>
+        <div className={styles.loginButtonContainer}>
           <button
             className={styles.loginButton}
             onClick={() => {

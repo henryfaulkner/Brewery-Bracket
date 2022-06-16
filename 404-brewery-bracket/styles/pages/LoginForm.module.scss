@@ -11,13 +11,6 @@
   flex-direction: column;
   width: 100%;
   max-width: 800px;
-
-  div {
-    // display: flex;
-    // justify-content: space-evenly;
-    // flex-wrap: wrap;
-    // margin-top: 20px;
-  }
 }
 
 .loginImageAligner {
@@ -38,6 +31,8 @@
   }
 }
 
+$maxInputBoxHeight: 42px;
+
 .textBoxes {
   display: flex;
   justify-content: space-evenly;
@@ -46,8 +41,7 @@
 
   input[type="text"],
   input[type="password"] {
-    min-width: 300px;
-    max-height: 42px;
+    max-height: $maxInputBoxHeight;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -63,7 +57,59 @@
   }
 }
 
-.buttonContainer {
+$maxWidthChildContainers: 375px;
+
+.emailInput {
+  max-width: $maxWidthChildContainers;
+  width: 100%;
+}
+
+.passwordBtnCont {
+  max-width: $maxWidthChildContainers;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.passwordInput {
+  width: 100%;
+}
+
+.showPasswordBtn {
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  min-height: $maxInputBoxHeight;
+  min-width: $maxInputBoxHeight;
+  max-height: $maxInputBoxHeight;
+  max-width: $maxInputBoxHeight;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: $font-size-small;
+
+  &:hover {
+    color: $beer-yellow;
+  }
+}
+
+.openSVG {
+  width: $maxInputBoxHeight - 4;
+  height: $maxInputBoxHeight - 4;
+}
+
+.closedSVG {
+  width: $maxInputBoxHeight;
+  height: $maxInputBoxHeight;
+}
+
+.loginButtonContainer {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -71,26 +117,6 @@
 
   button {
     @include default-button-styles();
-  }
-}
-
-.passwordBtnCont {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 0;
-}
-
-.showPasswordBtn {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  height: 20px;
-
-  font-size: $font-size-small;
-
-  &:hover {
-    color: $beer-yellow;
   }
 }
 
