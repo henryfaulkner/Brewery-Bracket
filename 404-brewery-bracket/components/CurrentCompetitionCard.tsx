@@ -17,17 +17,12 @@ const Card: React.FC<Props> = (props) => {
   const [scorecard, setScorecard]: [BreweryDayScorecard, any] = useState(
     new BreweryDayScorecard({})
   );
-  const [hasPulledData, setHasPulledData] = useState(false);
   const { user, username } = useContext(UserContext);
   const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
-    if (hasPulledData === false) {
-      createOrGetScorecard(props.breweryId, props.breweryName);
-
-      setHasPulledData(true);
-    }
-  }, []);
+    createOrGetScorecard(props.breweryId, props.breweryName);
+  }, [props.breweryId, props.breweryName]);
 
   const createOrGetScorecard = async (breweryId, breweryName) => {
     try {
@@ -49,7 +44,6 @@ const Card: React.FC<Props> = (props) => {
         .then((res) => {
           const tempScorecard = new BreweryDayScorecard(res);
           setScorecard(tempScorecard);
-          setHasPulledData(true);
         });
     } catch (ex) {
       return null;
@@ -81,7 +75,7 @@ const Card: React.FC<Props> = (props) => {
       <Link href={`/bracket/brewery-day/${scorecard.DocumentID}`}>
         <div className={styles.abCardCont}>
           <div className={styles.abCardBody}>
-            <p className={styles.brewName}>{scorecard.AssociatedBreweryName}</p>
+            <p className={styles.brewName}>{props.breweryName}</p>
           </div>
         </div>
       </Link>

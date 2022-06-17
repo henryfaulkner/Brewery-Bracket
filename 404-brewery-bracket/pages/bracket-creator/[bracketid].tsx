@@ -19,27 +19,22 @@ type Props = {
   initialBrewriesInBracket: BreweryObject[];
   currBracket: Bracket;
   allBreweries: BreweryObject[];
+  initialBreweryCardsRendered: Array<string>;
 };
 
 const BracketCreator = (props: Props) => {
   const router = useRouter();
   const [bracketID, setBracketID]: [string, any] = useState("");
-  const [hasPulledData, setHasPulledData] = useState(false);
   const input_addBrewery = useRef();
-  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState([]);
+  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState(props.initialBreweryCardsRendered);
 
   useEffect(() => {
     const fetchData = async () => {
       const { bracketid } = router.query;
       setBracketID(bracketid);
-      InitializeBreweryCardsRendered();
-
-      setHasPulledData(true);
     };
-    if (!hasPulledData && router.isReady) {
-      fetchData();
-    }
-  });
+    fetchData();
+  }, [router.isReady, breweryCardsRendered]);
 
   const AddBrewery = async (e) => {
     if (input_addBrewery.current != null) {
@@ -92,15 +87,6 @@ const BracketCreator = (props: Props) => {
     );
   }
 
-  const InitializeBreweryCardsRendered = () => {
-    if(props.currBracket.Breweries) {
-      setBreweryCardsRendered(props.currBracket.Breweries.map((breweryObj: BreweryObject) => {
-        return [breweryObj.Name, breweryObj.DocumentID];
-      }))
-
-    }
-  };
-
   return (
     <div>
       <Head>
@@ -141,6 +127,7 @@ const BracketCreator = (props: Props) => {
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
               {breweryCardsRendered.map((breweryInformation, key) => {
+                console.log(breweryInformation);
                 return (
                   <Card
                     key={key}
@@ -174,6 +161,14 @@ const BracketCreator = (props: Props) => {
       </div>
     </div>
   );
+};
+
+const InitializeBreweryCardsRendered = (currBracket) => {
+  if(currBracket.Breweries) {
+    return currBracket.Breweries.map((breweryObj: BreweryObject) => {
+      return [breweryObj.Name, breweryObj.DocumentID];
+    });
+  }
 };
 
 export async function getServerSideProps(context) {
@@ -239,13 +234,16 @@ export async function getServerSideProps(context) {
     currBracket = new Bracket({});
   }
   currBracket = JSON.parse(JSON.stringify(currBracket));
+
+  const initialBreweryCardsRendered = InitializeBreweryCardsRendered(currBracket);
   
   return {
     props: {
       allUsers,
       initialBreweriesInBracket,
       allBreweries,
-      currBracket
+      currBracket,
+      initialBreweryCardsRendered
     },
   };
 }
