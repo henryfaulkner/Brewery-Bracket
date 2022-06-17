@@ -163,7 +163,8 @@ const BracketCreator = (props: Props) => {
   );
 };
 
-const InitializeBreweryCardsRendered = (currBracket) => {
+const InitializeBreweryCardsRendered = async (currBracket) => {
+  if(currBracket.Breweries === undefined) return [];
   if(currBracket.Breweries) {
     return currBracket.Breweries.map((breweryObj: BreweryObject) => {
       return [breweryObj.Name, breweryObj.DocumentID];
@@ -235,7 +236,7 @@ export async function getServerSideProps(context) {
   }
   currBracket = JSON.parse(JSON.stringify(currBracket));
 
-  const initialBreweryCardsRendered = InitializeBreweryCardsRendered(currBracket);
+  const initialBreweryCardsRendered = await InitializeBreweryCardsRendered(currBracket);
   
   return {
     props: {
