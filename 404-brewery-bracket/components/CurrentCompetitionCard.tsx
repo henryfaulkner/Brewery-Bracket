@@ -20,10 +20,6 @@ const Card: React.FC<Props> = (props) => {
   const { user, username } = useContext(UserContext);
   const [isHover, setIsHover] = useState(false);
 
-  useEffect(() => {
-    createOrGetScorecard(props.breweryId, props.breweryName);
-  }, [props.breweryId, props.breweryName]);
-
   const createOrGetScorecard = async (breweryId, breweryName) => {
     try {
       const request = {
@@ -49,6 +45,8 @@ const Card: React.FC<Props> = (props) => {
       return null;
     }
   };
+  // Not most performant but it gets the link to render
+  if(scorecard.DocumentID === undefined) createOrGetScorecard(props.breweryId, props.breweryName);
 
   const DeleteScorecard = () => {
     props.RemoveBrewery(props.breweryId);
