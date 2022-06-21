@@ -26,6 +26,7 @@ type Props = {
 const BracketCreator = (props: Props) => {
   const router = useRouter();
   const [bracketID, setBracketID]: [string, any] = useState("");
+  const [bracketName, setBracketName]: [string, any] = useState(props.currBracket.BracketName)
   const input_addBrewery = useRef();
   const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState(props.initialBreweryCardsRendered);
 
@@ -96,7 +97,7 @@ const BracketCreator = (props: Props) => {
         <meta name="Description" content="Add breweries to your bracket." />
         <meta name="Keywords" content="Brewery Bracket" />
       </Head>
-      <h1>{props.currBracket.BracketName}</h1>
+      <h1>{bracketName}</h1>
       <h2>Add Breweries</h2>
       <hr />
       <div className={styles.pageContentContainer}>
@@ -167,6 +168,7 @@ const BracketCreator = (props: Props) => {
         <div className={styles.addCustomCont}>
           <UpdateBracketName
             bracketId={bracketID}
+            SetBracketName={setBracketName}
           />
         </div>
       </div>

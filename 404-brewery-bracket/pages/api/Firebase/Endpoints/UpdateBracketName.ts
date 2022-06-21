@@ -3,12 +3,14 @@ import {
   collection,
   updateDoc,
   doc,
+  getDoc,
 } from "firebase/firestore";
 import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import Cors from 'cors';
 import { runMiddleware } from "../../middleware";
+import Bracket from "../Models/Bracket";
 
 const cors = Cors({
   methods: ['PUT', 'HEAD'],
@@ -48,11 +50,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             collectionConstants.Brackets
         );
 
-        const document = doc(collectionRef, customBreweryId);
+        const documentRef = doc(collectionRef, customBreweryId);
 
-        const data = await updateDoc(document, {
+        await updateDoc(documentRef, {
             BracketName: name,
         });
+        const document = await getDoc(documentRef);
+
+        const data = new Bracket({
+            DocumentID: document.id,
+            BracketName: name,
+            GroupID: document.data().GroupID
+        })
 
         res.status(200).json(data);
         console.log(data);

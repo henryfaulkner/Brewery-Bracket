@@ -6,6 +6,7 @@ import Bracket from "../pages/api/Firebase/Models/Bracket";
 
 type Props = {
   bracketId: string;
+  SetBracketName: any;
 };
 
 const UpdateBracketName = (props: Props) => {
@@ -22,6 +23,9 @@ const UpdateBracketName = (props: Props) => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
+    }).then(res => res.json())
+    .then(res => {
+      props.SetBracketName(newName);
     });
   }
 
