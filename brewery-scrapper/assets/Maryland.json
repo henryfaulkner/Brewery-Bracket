@@ -1,0 +1,317 @@
+ [
+    {
+        "Name": "Checkerspot Brewing Company",
+        "Address": "1399 S Sharp St, Baltimore, MD 21230",
+        "Url": "http://www.checkerspotbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "CheckerSpotBrewingCo"
+    },
+    {
+        "Name": "Waverly Brewing Company",
+        "Address": "1625 Union Ave, Baltimore, MD 21211",
+        "Url": "http://waverlybrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "WaverlyBrewingCompany"
+    },
+    {
+        "Name": "Suspended Brewing Company",
+        "Address": "912 Washington Blvd, Baltimore, MD 21230",
+        "Url": "http://www.suspendedbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "Diamondback Brewing Company",
+        "Address": "1215 E Fort Ave #008, Baltimore, MD 21230",
+        "Url": "http://diamondbackbeer.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "DiamondbackBeer"
+    },
+    {
+        "Name": "Union Craft Brewing",
+        "Address": "1700 W 41st St #420, Baltimore, MD 21211",
+        "Url": "http://www.unioncraftbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "UnionCraft"
+    },
+    {
+        "Name": "Peabody Heights Brewery",
+        "Address": "401 E 30th St, Baltimore, MD 21218",
+        "Url": "http://www.peabodyheightsbrewery.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "PeabodyHeightsBrewery"
+    },
+    {
+        "Name": "Full Tilt Brewing",
+        "Address": "5604 York Rd, Baltimore, MD 21212",
+        "Url": "http://www.fulltiltbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "FullTiltBrewingCo"
+    },
+    {
+        "Name": "Nepenthe Brewing Co.",
+        "Address": "3626 Falls Rd, Baltimore, MD 21211",
+        "Url": "http://www.nepenthebrewingco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "NepentheBrewingCo"
+    },
+    {
+        "Name": "Mobtown Brewing Company",
+        "Address": "4015 Foster Ave #400, Baltimore, MD 21224",
+        "Url": "http://www.mobtownbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "mobtown"
+    },
+    {
+        "Name": "Wet City",
+        "Address": "223 W Chase St, Baltimore, MD 21201",
+        "Url": "http://wetcitybrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "WetCity"
+    },
+    {
+        "Name": "Guilford Hall Brewery",
+        "Address": "1611 Guilford Ave, Baltimore, MD 21202",
+        "Url": "http://www.guilfordhall.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "GuilfordHallBrewery"
+    },
+    {
+        "Name": "Oliver Brewing Company",
+        "Address": "4216 Shannon Dr, Baltimore, MD 21213",
+        "Url": "http://www.oliverbrewingco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "oliverbrewingco"
+    },
+    {
+        "Name": "Ministry of Brewing",
+        "Address": "1900 E Lombard St, Baltimore, MD 21231",
+        "Url": "https://ministryofbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "MinistryOfBrewing"
+    },
+    {
+        "Name": "Monument City Brewing Company",
+        "Address": "1 N Haven St, Baltimore, MD 21224",
+        "Url": "http://www.monumentcitybrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "Monument_City_Brewing"
+    },
+    {
+        "Name": "RavenBeer",
+        "Address": "8901 Yellow Brick Rd suite b, Baltimore, MD 21237",
+        "Url": "http://www.ravenbeer.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "https://untappd.com/heavyseasbeer"
+    },
+    {
+        "Name": "Heavy Seas Beer",
+        "Address": "4615 Hollins Ferry Rd, Halethorpe, MD 21227",
+        "Url": "http://www.hsbeer.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "heavyseasbeer"
+    },
+    {
+        "Name": "White Marsh Brewing Co",
+        "Address": "5022 Campbell Blvd # F, Baltimore, MD 21236",
+        "Url": "http://www.redbrickstation.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "RedBrickStation"
+    },
+    {
+        "Name": "DuClaw Brewing Company",
+        "Address": "8901 Yellow Brick Rd ste b, Rosedale, MD 21237",
+        "Url": "https://www.duclaw.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "DuClawBrewing"
+    },
+    {
+        "Name": "Pariah Brewing Company",
+        "Address": "1700 Union Ave Ste D, Baltimore, MD 21211",
+        "Url": "http://www.pariahbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "PariahBrewingCompany"
+    },
+    {
+        "Name": "Chubby Squirrel Brewing Company",
+        "Address": "10382 Willard Way, Fairfax, VA 22030",
+        "Url": "http://chubbysquirrelbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "ChubbySquirrelBrewingCompany"
+    },
+    {
+        "Name": "Pickett Brewing Company",
+        "Address": "",
+        "Url": "https://pickettbrewingco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "PickettBrewingCompany"
+    },
+    {
+        "Name": "The Brewer's Art",
+        "Address": "1106 N Charles St, Baltimore, MD 21201",
+        "Url": "http://www.thebrewersart.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "TheBrewersArt"
+    },
+    {
+        "Name": "Key Brewing Co.",
+        "Address": "2500 Grays Rd, Dundalk, MD 21222",
+        "Url": "http://www.keybrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "KeyBrewingCompany"
+    },
+    {
+        "Name": "B.C. Brewery",
+        "Address": "10950 Gilroy Rd Suite F, Hunt Valley, MD 21031",
+        "Url": "http://www.bcbrewerymd.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "bcbrewerymd"
+    },
+    {
+        "Name": "Farmacy Brewing",
+        "Address": "3100 Black Rock Rd, Reisterstown, MD 21136",
+        "Url": "http://www.farmacybrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "FarmacyBrewing"
+    },
+    {
+        "Name": "Charm City Meadworks",
+        "Address": "400 E Biddle St, Baltimore, MD 21202",
+        "Url": "http://www.charmcitymeadworks.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "CharmCityMead"
+    },
+    {
+        "Name": "American Brewery",
+        "Address": "1701 N Gay St, Baltimore, MD 21213",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "Inverness Brewing",
+        "Address": "16200 Markoe Rd, Monkton, MD 21111",
+        "Url": "http://www.invernessbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "Pooles Island Brewing Company",
+        "Address": "11695 Crossroads Cir Suite A, Middle River, MD 21220",
+        "Url": "https://www.poolesbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "PoolesIslandBrewingCo"
+    },
+    {
+        "Name": "Wico Street Beer Co",
+        "Address": "1100 Wicomico St Ste 1A, Baltimore, MD 21230",
+        "Url": "http://www.wicostreetbeerco.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "WicoStreetBeerCo"
+    },
+    {
+        "Name": "BJ's Restaurant & Brewhouse",
+        "Address": "101 E Joppa Rd, Baltimore, MD 21286",
+        "Url": "https://www.bjsrestaurants.com/locations/md/towson",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "BJs_Brewhouse"
+    },
+    {
+        "Name": "Falling Branch Brewery",
+        "Address": "825 Highland Rd, Street, MD 21154",
+        "Url": "https://www.fallingbranchbeer.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "FallingBranchBrewery"
+    },
+    {
+        "Name": "Jailbreak Brewing Company",
+        "Address": "9445 Washington Blvd N Ste F, Laurel, MD 20723",
+        "Url": "http://www.jailbreakbrewing.com/",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": "JailbreakBrewingCompany"
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    },
+    {
+        "Name": "",
+        "Address": "",
+        "Url": "",
+        "BeerListUrl": "",
+        "UntappdBreweryUid": ""
+    }
+ ]
