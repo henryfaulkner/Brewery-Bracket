@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 import Cors from 'cors';
 
 import BreweryObject from "../Models/BreweryObject";
@@ -33,7 +34,7 @@ const handler = async (
   await runMiddleware(req, res, cors);
 
   const data = await getDocs(
-    collection(getFirestore(), collectionConstants.CustomBreweries)
+    collection(firestore, collectionConstants.CustomBreweries)
   );
   let response: BreweryObject[] = [];
   data.forEach((doc) => {

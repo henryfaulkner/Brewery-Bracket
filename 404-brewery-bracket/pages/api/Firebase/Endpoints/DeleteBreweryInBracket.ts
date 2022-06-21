@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth } from "firebase/auth";
 import {
   collection,
-  getFirestore,
   doc,
   updateDoc,
   getDoc,
   arrayUnion,
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
@@ -50,7 +50,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
     const breweryId: string = req.body["breweryId"];
 
     const collectionRef = collection(
-      getFirestore(),
+      firestore,
       collectionConstants.Brackets
     );
     const docRef = doc(collectionRef, bracketId);

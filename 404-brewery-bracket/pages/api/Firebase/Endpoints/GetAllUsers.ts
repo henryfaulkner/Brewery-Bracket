@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import User from "../Models/User";
 import * as collectionConstants from "../CollectionConstants";
@@ -22,9 +23,9 @@ const cors = Cors({
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse<User[]>) => {
   await runMiddleware(req, res, cors);
-  const collectionRef = collection(getFirestore(), collectionConstants.Users);
+  const collectionRef = collection(firestore, collectionConstants.Users);
   const data = await getDocs(
-    collection(getFirestore(), collectionConstants.Users)
+    collection(firestore, collectionConstants.Users)
   );
   let response: User[] = [];
   data.forEach((doc) => {

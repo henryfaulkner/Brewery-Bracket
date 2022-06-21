@@ -8,7 +8,6 @@ import {
   getDocs,
   DocumentData,
   doc,
-  getFirestore,
   writeBatch,
 } from "firebase/firestore";
 
@@ -54,7 +53,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const bracketID = req.body["bracketID"];
     const groupID = req.body["groupID"];
-    const firestore = getFirestore();
 
     // Delete Bracket
     await deleteDoc(doc(firestore, collectionConstants.Brackets, bracketID));

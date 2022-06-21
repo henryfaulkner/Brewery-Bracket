@@ -3,9 +3,8 @@ import {
   collection,
   getDoc,
   doc,
-  getFirestore,
-  updateDoc,
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import Bracket from "../Models/Bracket";
@@ -46,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const collectionRef = collection(
-      getFirestore(),
+      firestore,
       collectionConstants.Brackets
     );
     const bracketDoc = doc(collectionRef, bracketId);

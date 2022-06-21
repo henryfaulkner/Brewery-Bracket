@@ -7,8 +7,8 @@ import {
   getDocs,
   addDoc,
   DocumentData,
-  getFirestore,
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
@@ -61,7 +61,7 @@ const handler = async (
     const bracketID: string = req.body["bracketID"];
 
     const collectionRef = collection(
-      getFirestore(),
+      firestore,
       collectionConstants.BreweryDayScorecard
     );
     const q = await query(
@@ -89,7 +89,7 @@ const handler = async (
       });
 
       data = await addDoc(
-        collection(getFirestore(), collectionConstants.BreweryDayScorecard),
+        collection(firestore, collectionConstants.BreweryDayScorecard),
         JSON.parse(JSON.stringify(scorecard))
       );
 

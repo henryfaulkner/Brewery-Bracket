@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import BreweryObject from "../Models/BreweryObject";
 import * as CollectionConstants from "../CollectionConstants";
@@ -49,7 +50,7 @@ const handler = async (
   });
 
   const data = await addDoc(
-    collection(getFirestore(), CollectionConstants.CustomBreweries),
+    collection(firestore, CollectionConstants.CustomBreweries),
     JSON.parse(JSON.stringify(customBrewery))
   );
 
