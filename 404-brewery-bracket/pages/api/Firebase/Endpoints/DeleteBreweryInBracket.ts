@@ -30,11 +30,11 @@ type Status = {};
  *        content:
  *          application/json:
  *            schema:
- *              bracketID: string
- *              breweryID: string
+ *              bracketId: string
+ *              breweryId: string
  *            example:
- *              bracketID: lTU5ASYAj66leyoHxxW0
- *              breweryID: Exen63googSMVqRoTC2b
+ *              bracketId: lTU5ASYAj66leyoHxxW0
+ *              breweryId: Exen63googSMVqRoTC2b
  *      responses:
  *        '200':
  *          description: OK

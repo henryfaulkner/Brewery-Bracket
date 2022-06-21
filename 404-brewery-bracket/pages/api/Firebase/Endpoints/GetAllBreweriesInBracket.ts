@@ -29,9 +29,9 @@ type Status = {
  *        content:
  *          application/json:
  *            schema:
- *              bracketID: string
+ *              bracketid: string
  *            example:
- *              bracketID: lTU5ASYAj66leyoHxxW0
+ *              bracketid: lTU5ASYAj66leyoHxxW0
  *      responses:
  *        '200':
  *          description: OK
