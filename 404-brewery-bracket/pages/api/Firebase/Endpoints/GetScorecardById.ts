@@ -22,7 +22,7 @@ const cors = Cors({
  *            schema:
  *              DocumentID: string
  *            example:
- *              DocumentID: hWWNwskdGOnEdq0KIQ3S
+ *              DocumentID: 9E2xxgPsBpgHJv7c4I6X
  *      responses:
  *        '200':
  *          description: OK

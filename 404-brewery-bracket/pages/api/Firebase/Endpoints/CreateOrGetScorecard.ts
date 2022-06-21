@@ -35,10 +35,10 @@ const cors = Cors({
  *              breweryName: string
  *              bracketID: string
  *            example:
- *              userId: hWWNwskdGOnEdq0KIQ3S
- *              breweryID: hWWNwskdGOnEdq0KIQ3S
+ *              userId: bZLTj1h9FBgEe1jj7FsexPPKmtF2
+ *              breweryID: Exen63googSMVqRoTC2b
  *              breweryName: Creature Comforts Brewing Company
- *              bracketID: hWWNwskdGOnEdq0KIQ3S
+ *              bracketID: lTU5ASYAj66leyoHxxW0
  *      responses:
  *        '200':
  *          description: OK

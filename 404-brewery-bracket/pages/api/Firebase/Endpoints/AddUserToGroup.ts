@@ -28,8 +28,8 @@ const cors = Cors({
  *              userUid: string
  *              groupId: string
  *            example:       
- *              userUid: hWWNwskdGOnEdq0KIQ3S
- *              groupId: hWWNwskdGOnEdq0KIQ3S
+ *              userUid: SeUq2sk0MHhhJ9NGBH4i
+ *              groupId: 0scfaRhmy0I41L7TexkO
  *      responses:
  *        '200':
  *          description: OK

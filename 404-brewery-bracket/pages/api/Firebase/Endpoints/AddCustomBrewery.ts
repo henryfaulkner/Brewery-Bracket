@@ -21,7 +21,7 @@ const cors = Cors({
  *            schema:         
  *              name: string
  *            example:        
- *              name: Creature Comforts Brewing Company
+ *              name: New Brewery In Town
  *      responses:
  *        '200':
  *          description: OK

@@ -25,7 +25,7 @@ const cors = Cors({
  *              environmentScore: string
  *              averageBeerScore: string
  *            example:
- *              scorecardId: hWWNwskdGOnEdq0KIQ3S
+ *              scorecardId: 9E2xxgPsBpgHJv7c4I6X
  *              locationScore: 4
  *              environmentScore: 2
  *              averageBeerScore: 3

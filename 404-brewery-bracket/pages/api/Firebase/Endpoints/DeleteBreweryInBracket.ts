@@ -33,8 +33,8 @@ type Status = {};
  *              bracketID: string
  *              breweryID: string
  *            example:
- *              bracketID: hWWNwskdGOnEdq0KIQ3S
- *              breweryID: hWWNwskdGOnEdq0KIQ3S
+ *              bracketID: lTU5ASYAj66leyoHxxW0
+ *              breweryID: Exen63googSMVqRoTC2b
  *      responses:
  *        '200':
  *          description: OK

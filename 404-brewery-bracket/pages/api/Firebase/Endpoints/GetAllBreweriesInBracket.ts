@@ -35,7 +35,7 @@ type Status = {
  *            schema:
  *              bracketID: string
  *            example:
- *              bracketID: hWWNwskdGOnEdq0KIQ3S
+ *              bracketID: lTU5ASYAj66leyoHxxW0
  *      responses:
  *        '200':
  *          description: OK

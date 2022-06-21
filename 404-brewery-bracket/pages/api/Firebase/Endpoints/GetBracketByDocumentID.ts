@@ -28,7 +28,7 @@ const cors = Cors({
  *            schema:
  *              bracketId: string
  *            example:
- *              bracketId: hWWNwskdGOnEdq0KIQ3S
+ *              bracketId: lTU5ASYAj66leyoHxxW0
  *      responses:
  *        '200':
  *          description: OK

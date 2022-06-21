@@ -28,7 +28,7 @@ const cors = Cors({
  *              address: string
  *              url: string
  *            example:
- *              id: hWWNwskdGOnEdq0KIQ3S
+ *              id: Exen63googSMVqRoTC2b
  *              address: 271 W Hancock Ave, Athens, GA 30601
  *              url: http://www.creaturecomfortsbeer.com/
  *      responses:

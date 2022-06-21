@@ -30,7 +30,7 @@ type Data = {
  *              userId: string
  *            example:         
  *              BracketName: Perficient's brewery bracket
- *              userId: hWWNwskdGOnEdq0KIQ3S
+ *              userId: bZLTj1h9FBgEe1jj7FsexPPKmtF2
  *      responses:
  *        '200':
  *          description: OK

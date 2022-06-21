@@ -26,7 +26,7 @@ const cors = Cors({
  *            schema:
  *              breweryId: string
  *            example:
- *              breweryId: hWWNwskdGOnEdq0KIQ3S
+ *              breweryId: Exen63googSMVqRoTC2b
  *      responses:
  *        '200':
  *          description: OK

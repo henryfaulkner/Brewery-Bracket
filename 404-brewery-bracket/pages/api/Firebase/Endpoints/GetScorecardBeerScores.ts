@@ -28,7 +28,7 @@ const cors = Cors({
  *            schema:
  *              AssociatedScorecardID: string
  *            example:
- *              AssociatedScorecardID: hWWNwskdGOnEdq0KIQ3S
+ *              AssociatedScorecardID: 9E2xxgPsBpgHJv7c4I6X
  *      responses:
  *        '200':
  *          description: OK

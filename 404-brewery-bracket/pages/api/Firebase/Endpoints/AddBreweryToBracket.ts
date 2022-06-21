@@ -35,7 +35,7 @@ type Status = {
  *              bracketId: string
  *              serializedBreweryJson: string
  *            example:     
- *              bracketId: hWWNwskdGOnEdq0KIQ3S
+ *              bracketId: 1MdnmknrirwWZcqGf00h
  *              serializedBreweryJson: {"Name":"Creature Comforts Brewing Company","Description":"","Short_Description":"","Url":"http://www.creaturecomfortsbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"271 W Hancock Ave, Athens, GA 30601","DocumentID":"Exen63googSMVqRoTC2b"}
  *      responses:
  *        '200':

@@ -26,9 +26,9 @@ const cors = Cors({
  *              AssociatedBeerID: string
  *              Score: integer
  *            example:           
- *              AssociatedScorecardID: hWWNwskdGOnEdq0KIQ3S
- *              AssociatedBeerID: 0da95857-4917-4ccb-8430-f42a676a5704
- *              BeerName: Epicurious
+ *              AssociatedScorecardID: 32ztBeeCpfrp3Xe20zAJ
+ *              AssociatedBeerID: 6JPddA9DbGjhk46c47iF
+ *              BeerName: Tropicalia
  *              Score: 3
  *      responses:
  *        '200':

@@ -36,9 +36,9 @@ type Data = {
  *              uid: string
  *              username: string
  *            example:
- *              email: string
- *              uid: hWWNwskdGOnEdq0KIQ3S
- *              username: string
+ *              email: example@gmail.com
+ *              uid: jgtdtujRoTbN5qZnMJxQOBF8Kbe2
+ *              username: John Smith
  *      responses:
  *        '200':
  *          description: OK

@@ -34,8 +34,8 @@ const cors = Cors({
  *              bracketID: string
  *              groupID: string
  *            example:
- *              bracketID: hWWNwskdGOnEdq0KIQ3S
- *              groupID: hWWNwskdGOnEdq0KIQ3S
+ *              bracketID: JJzjwpfSsBK64kKpsgae
+ *              groupID: dctjDCL347zQCR9ALIE4
  *      responses:
  *        '200':
  *          description: OK
