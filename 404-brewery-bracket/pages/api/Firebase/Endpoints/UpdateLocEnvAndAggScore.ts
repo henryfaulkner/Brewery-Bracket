@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { collection, updateDoc, doc, getFirestore } from "firebase/firestore";
+import { collection, updateDoc, doc } from "firebase/firestore";
 
 import * as collectionConstants from "../CollectionConstants";
 
 import Cors from 'cors';
 import { runMiddleware } from "../../middleware";
+import { firestore } from "../../../../lib/firebase";
 
 const cors = Cors({
   methods: ['PUT', 'HEAD'],
@@ -25,7 +26,7 @@ const cors = Cors({
  *              environmentScore: string
  *              averageBeerScore: string
  *            example:
- *              scorecardId: hWWNwskdGOnEdq0KIQ3S
+ *              scorecardId: 9E2xxgPsBpgHJv7c4I6X
  *              locationScore: 4
  *              environmentScore: 2
  *              averageBeerScore: 3
@@ -45,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const averageBeerScore: number = req.body["averageBeerScore"];
 
   const collectionRef = collection(
-    getFirestore(),
+    firestore,
     collectionConstants.BreweryDayScorecard
   );
 

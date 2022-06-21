@@ -31,7 +31,7 @@ const cors = Cors({
  *            schema:
  *              breweryName: string
  *            example:
- *              breweryName: hWWNwskdGOnEdq0KIQ3S
+ *              breweryName: Creature Comforts Brewing Company
  *      responses:
  *        '200':
  *          description: OK

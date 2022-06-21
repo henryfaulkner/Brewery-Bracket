@@ -2,11 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import BreweryObject from "../Models/BreweryObject";
 import * as CollectionConstants from "../CollectionConstants";
 import { 
-    getFirestore,
     collection,
     doc,
     getDoc,
   } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
+
 import Cors from 'cors';
 import { runMiddleware } from "../../middleware";
 
@@ -26,7 +27,7 @@ const cors = Cors({
  *            schema:
  *              breweryId: string
  *            example:
- *              breweryId: hWWNwskdGOnEdq0KIQ3S
+ *              breweryId: Exen63googSMVqRoTC2b
  *      responses:
  *        '200':
  *          description: OK
@@ -43,7 +44,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const breweryId = req.body["breweryId"]
 
-        const collectionRef = collection(getFirestore(), CollectionConstants.CustomBreweries);
+        const collectionRef = collection(firestore, CollectionConstants.CustomBreweries);
         const breweryDoc = doc(collectionRef, breweryId);
         const data = await getDoc(breweryDoc);
         const brewery = new BreweryObject({

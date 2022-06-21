@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getAuth } from "firebase/auth";
 import {
   collection,
-  getFirestore,
   doc,
   updateDoc,
   getDoc,
   arrayUnion,
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import BreweryObject from "../Models/BreweryObject";
 import * as collectionConstants from "../CollectionConstants";
@@ -35,7 +35,7 @@ type Status = {
  *              bracketId: string
  *              serializedBreweryJson: string
  *            example:     
- *              bracketId: hWWNwskdGOnEdq0KIQ3S
+ *              bracketId: 1MdnmknrirwWZcqGf00h
  *              serializedBreweryJson: {"Name":"Creature Comforts Brewing Company","Description":"","Short_Description":"","Url":"http://www.creaturecomfortsbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"271 W Hancock Ave, Athens, GA 30601","DocumentID":"Exen63googSMVqRoTC2b"}
  *      responses:
  *        '200':
@@ -67,7 +67,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
     });
 
     const collectionRef = collection(
-      getFirestore(),
+      firestore,
       collectionConstants.Brackets
     );
     const docRef = doc(collectionRef, bracketId);

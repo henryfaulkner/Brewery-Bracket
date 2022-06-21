@@ -3,8 +3,8 @@ import {
   collection,
   updateDoc,
   doc,
-  getFirestore,
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import Cors from 'cors';
@@ -28,7 +28,7 @@ const cors = Cors({
  *              address: string
  *              url: string
  *            example:
- *              id: hWWNwskdGOnEdq0KIQ3S
+ *              id: Exen63googSMVqRoTC2b
  *              address: 271 W Hancock Ave, Athens, GA 30601
  *              url: http://www.creaturecomfortsbeer.com/
  *      responses:
@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const url: string = req.body["url"];
 
   const collectionRef = collection(
-    getFirestore(),
+    firestore,
     collectionConstants.CustomBreweries
   );
 

@@ -8,7 +8,6 @@ import {
   getDocs,
   DocumentData,
   doc,
-  getFirestore,
   writeBatch,
 } from "firebase/firestore";
 
@@ -34,8 +33,8 @@ const cors = Cors({
  *              bracketID: string
  *              groupID: string
  *            example:
- *              bracketID: hWWNwskdGOnEdq0KIQ3S
- *              groupID: hWWNwskdGOnEdq0KIQ3S
+ *              bracketID: JJzjwpfSsBK64kKpsgae
+ *              groupID: dctjDCL347zQCR9ALIE4
  *      responses:
  *        '200':
  *          description: OK
@@ -54,7 +53,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const bracketID = req.body["bracketID"];
     const groupID = req.body["groupID"];
-    const firestore = getFirestore();
 
     // Delete Bracket
     await deleteDoc(doc(firestore, collectionConstants.Brackets, bracketID));

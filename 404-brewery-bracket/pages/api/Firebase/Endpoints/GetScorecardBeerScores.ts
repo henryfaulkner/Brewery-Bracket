@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import {
-  getFirestore,
   collection,
   query,
   where,
   getDocs,
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import BeerScore from "../Models/BeerScore";
 import * as collectionConstants from "../CollectionConstants";
@@ -28,7 +28,7 @@ const cors = Cors({
  *            schema:
  *              AssociatedScorecardID: string
  *            example:
- *              AssociatedScorecardID: hWWNwskdGOnEdq0KIQ3S
+ *              AssociatedScorecardID: 9E2xxgPsBpgHJv7c4I6X
  *      responses:
  *        '200':
  *          description: OK
@@ -46,7 +46,7 @@ const handler = async (
   await runMiddleware(req, res, cors);
   const associatedScorecardId: string = req.body["AssociatedScorecardID"];
 
-  const collectionRef = collection(getFirestore(), collectionConstants.BeerScore);
+  const collectionRef = collection(firestore, collectionConstants.BeerScore);
   const q = await query(
     collectionRef,
     where("AssociatedScorecardID", "==", associatedScorecardId)

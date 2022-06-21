@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import {
   collection,
   doc,
-  getFirestore,
   updateDoc,
   arrayUnion
 } from "firebase/firestore";
 import Cors from 'cors'
+import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import { runMiddleware } from "../../middleware";
@@ -28,8 +28,8 @@ const cors = Cors({
  *              userUid: string
  *              groupId: string
  *            example:       
- *              userUid: hWWNwskdGOnEdq0KIQ3S
- *              groupId: hWWNwskdGOnEdq0KIQ3S
+ *              userUid: SeUq2sk0MHhhJ9NGBH4i
+ *              groupId: 0scfaRhmy0I41L7TexkO
  *      responses:
  *        '200':
  *          description: OK
@@ -49,7 +49,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const collectionRef = collection(
-      getFirestore(),
+      firestore,
       collectionConstants.Groups
     );
       

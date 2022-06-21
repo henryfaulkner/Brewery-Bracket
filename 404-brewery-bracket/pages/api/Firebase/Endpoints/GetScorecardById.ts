@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { collection, getDoc, doc, getFirestore } from "firebase/firestore";
+import { collection, getDoc, doc } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import BreweryDayScorecard from "../Models/BreweryDayScorecard";
@@ -22,7 +23,7 @@ const cors = Cors({
  *            schema:
  *              DocumentID: string
  *            example:
- *              DocumentID: hWWNwskdGOnEdq0KIQ3S
+ *              DocumentID: 9E2xxgPsBpgHJv7c4I6X
  *      responses:
  *        '200':
  *          description: OK
@@ -39,7 +40,7 @@ const handler = async (
   const scorecardId: string = req.body["DocumentID"];
 
   const collectionRef = collection(
-    getFirestore(),
+    firestore,
     collectionConstants.BreweryDayScorecard
   );
   console.log("scorecard id: " + scorecardId);

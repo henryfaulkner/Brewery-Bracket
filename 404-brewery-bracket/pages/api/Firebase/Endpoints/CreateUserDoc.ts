@@ -4,9 +4,9 @@ import {
   Firestore,
   collection,
   addDoc,
-  getFirestore,
 } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
+import { firestore } from "../../../../lib/firebase";
 
 import * as CollectionConstants from "../CollectionConstants";
 import User from "../Models/User";
@@ -36,9 +36,9 @@ type Data = {
  *              uid: string
  *              username: string
  *            example:
- *              email: string
- *              uid: hWWNwskdGOnEdq0KIQ3S
- *              username: string
+ *              email: example@gmail.com
+ *              uid: jgtdtujRoTbN5qZnMJxQOBF8Kbe2
+ *              username: John Smith
  *      responses:
  *        '200':
  *          description: OK
@@ -66,7 +66,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       Groups: [],
     });
     addDoc(
-      collection(getFirestore(), CollectionConstants.Users),
+      collection(firestore, CollectionConstants.Users),
       JSON.parse(JSON.stringify(userObj))
     ).then((res) => {
       userObj.SetDocumentID = res.id;

@@ -31,7 +31,7 @@ const cors = Cors({
  *            schema:
  *              beerName: string
  *            example:
- *              beerName: Coors Light
+ *              beerName: Tropicalia
  *      responses:
  *        '200':
  *          description: OK

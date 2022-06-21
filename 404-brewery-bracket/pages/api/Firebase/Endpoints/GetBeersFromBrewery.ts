@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import {
   collection,
-  getFirestore,
   query,
   where,
   getDocs,
   QuerySnapshot,
   DocumentData
 } from "firebase/firestore";
+import { firestore } from "../../../../lib/firebase";
 
 import * as collectionConstants from "../CollectionConstants";
 import CustomBeer from "../Models/CustomBeer";
@@ -30,7 +30,7 @@ const cors = Cors({
  *            schema:
  *              BreweryId: string
  *            example:
- *              BreweryId: hWWNwskdGOnEdq0KIQ3S
+ *              BreweryId: 0sC0aVhjNPBjAZUyjGlR
  *      responses:
  *        '200':
  *          description: OK
@@ -49,7 +49,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const breweryId = req.body["BreweryId"];
 
   try {
-    const collectionRef = collection(getFirestore(), collectionConstants.CustomBeers);
+    const collectionRef = collection(firestore, collectionConstants.CustomBeers);
     const q = await query(
         collectionRef,
         where("AssociatedBreweryID", "==", breweryId)
