@@ -21,7 +21,12 @@ const LoginForm: React.FC = () => {
   const [showModal, setShowModal]: [{}, any] = useState({ display: "none" });
 
   const tryLogin = async () => {
-    await signInWithEmailAndPassword(auth, email, password);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch(exception) {
+      console.log("Could not sign in.")
+      console.log(exception)
+    }
   };
 
   const createUser = async () => {

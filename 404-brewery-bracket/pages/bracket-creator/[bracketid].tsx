@@ -13,6 +13,7 @@ import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
 import GetAllBreweries from "../../helpers/FirebaseExtensions";
 import Link from "next/link";
+import UpdateBracketName from "../../components/UpdateBracketName";
 
 type Props = {
   allUsers: User[];
@@ -95,6 +96,7 @@ const BracketCreator = (props: Props) => {
         <meta name="Description" content="Add breweries to your bracket." />
         <meta name="Keywords" content="Brewery Bracket" />
       </Head>
+      <h1>{props.currBracket.BracketName}</h1>
       <h2>Add Breweries</h2>
       <hr />
       <div className={styles.pageContentContainer}>
@@ -127,7 +129,6 @@ const BracketCreator = (props: Props) => {
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
               {breweryCardsRendered.map((breweryInformation, key) => {
-                console.log(breweryInformation);
                 return (
                   <Card
                     key={key}
@@ -156,6 +157,16 @@ const BracketCreator = (props: Props) => {
           <UserSearchByUsername
             allUsers={props.allUsers}
             bracket={props.currBracket}
+          />
+        </div>
+      </div>
+
+      <h2>Change name of bracket</h2>
+      <hr />
+      <div className={styles.pageContentContainer}>
+        <div className={styles.addCustomCont}>
+          <UpdateBracketName
+            bracketId={bracketID}
           />
         </div>
       </div>
