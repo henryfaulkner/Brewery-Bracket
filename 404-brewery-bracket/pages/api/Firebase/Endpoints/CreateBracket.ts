@@ -65,10 +65,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         BracketName: bracketName,
         GroupID: group.GetDocumentID,
       });
-      await addDoc(
+      const doc = await addDoc(
         collection(firestore, CollectionConstants.Brackets),
         JSON.parse(JSON.stringify(bracket))
-      ).then((res) => {});
+      );
+      bracket.DocumentID = doc.id;
     });
 
     res.status(200).json({ bracket: JSON.parse(JSON.stringify(bracket)) });

@@ -47,9 +47,9 @@ const Home = () => {
   };
 
   const DeleteBracketFromList = (bracket: Bracket) => {
-    const newBrackets = brackets.filter(
+    setBrackets(brackets.filter(
       (delBracket) => delBracket.DocumentID !== bracket.DocumentID
-    );
+    ))
   };
 
   return (

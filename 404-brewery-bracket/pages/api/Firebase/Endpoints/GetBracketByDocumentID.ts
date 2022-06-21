@@ -61,7 +61,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .status(200)
       .json({ bracket: new Bracket(JSON.parse(JSON.stringify(bracket))) });
   } catch (exception) {
-    res.status(500);
+    console.log("Could not get bracket by DocumentID.")
+    res.status(500).json({ bracket: new Bracket({})});
   }
 };
 
