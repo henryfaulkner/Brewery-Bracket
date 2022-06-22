@@ -9,8 +9,10 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "firebase": "^9.8.1",
+    "google-search-results-nodejs": "^2.1.0",
     "readline-sync": "^1.4.10",
     "request": "^2.88.2"
   },

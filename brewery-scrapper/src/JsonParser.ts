@@ -1,3 +1,6 @@
+import BreweryObject from "../Models/BreweryObject"
+const fs = require('fs');
+
 /** 
 * Remove Name_links if the Name property 
 * came from an anchor tag.
@@ -37,4 +40,12 @@ function ConstructBeerJsons(beerNames: string[], beerStyles: string[], abvs: str
     return jsons;
 }
 
-module.exports = {RemoveLinksFromJson, ConstructBeerJsons}
+function WriteBreweriesToJson(breweries: BreweryObject[], filepath: string) {
+    let data = JSON.stringify(breweries);
+    fs.writeFile(filepath, data, (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    });
+}
+
+module.exports = {RemoveLinksFromJson, ConstructBeerJsons, WriteBreweriesToJson}

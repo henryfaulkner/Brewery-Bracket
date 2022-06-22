@@ -10,6 +10,7 @@ class BreweryObject implements IFirebaseDocument {
   public Twitter_Url: string;
   public Instagram_Url: string;
   public Address: string;
+  public UntappdBreweryUid: string;
 
   public constructor(json) {
     this.name = json["name"];
@@ -20,6 +21,7 @@ class BreweryObject implements IFirebaseDocument {
     this.Twitter_Url = json["Twitter_Url"];
     this.Instagram_Url = json["Instagram_Url"];
     this.Address = json["Address"];
+    this.UntappdBreweryUid = json["UntappdBreweryUid"];
     if (json["id"]) this.id = json["id"];
   }
 

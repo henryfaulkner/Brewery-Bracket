@@ -1,0 +1,483 @@
+[
+{
+"name":"Checkerspot Brewing Company","Description":"No-frills taproom serving house brews. Taproom pouring house beers in a simple, industrial setting with music nights & brewery tours.","Short_Description":"","Url":"http://www.checkerspotbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1399 S Sharp St, Baltimore, MD 21230",
+"UntappdBreweryUid":"CheckerSpotBrewingCo"
+},
+{
+"name":"Suspended Brewing Company","Description":"","Short_Description":"","Url":"http://www.suspendedbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"912 Washington Blvd, Baltimore, MD 21230",
+"UntappdBreweryUid":""
+},
+{
+"name":"Guilford Hall Brewery","Description":"","Short_Description":"","Url":"http://www.guilfordhall.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1611 Guilford Ave, Baltimore, MD 21202",
+"UntappdBreweryUid":"GuilfordHallBrewery"
+},
+{
+"name":"Ministry of Brewing","Description":"","Short_Description":"","Url":"https://ministryofbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1900 E Lombard St, Baltimore, MD 21231",
+"UntappdBreweryUid":"MinistryOfBrewing"
+},
+{
+"name":"Diamondback Brewing Company","Description":"Brewery & taproom for craft beer. A rustic-meets-industrial brewery & taproom offering eight taps of craft beer in a chill space.","Short_Description":"","Url":"http://diamondbackbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1215 E Fort Ave #008, Baltimore, MD 21230",
+"UntappdBreweryUid":"DiamondbackBeer"
+},
+{
+"name":"Wet City","Description":"Hip craft beer bar with a diverse menu. Elevated bar bites, a rotating craft beer list & inventive cocktails in a minimalist space with TVs.","Short_Description":"","Url":"http://wetcitybrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"223 W Chase St, Baltimore, MD 21201",
+"UntappdBreweryUid":"WetCity"
+},
+{
+"name":"Pickett Brewing Company","Description":"","Short_Description":"","Url":"https://pickettbrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"",
+"UntappdBreweryUid":"PickettBrewingCompany"
+},
+{
+"name":"Peabody Heights Brewery","Description":"","Short_Description":"","Url":"http://www.peabodyheightsbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"401 E 30th St, Baltimore, MD 21218",
+"UntappdBreweryUid":"PeabodyHeightsBrewery"
+},
+{
+"name":"Mobtown Brewing Company","Description":"","Short_Description":"","Url":"http://www.mobtownbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4015 Foster Ave #400, Baltimore, MD 21224",
+"UntappdBreweryUid":"mobtown"
+},
+{
+"name":"Monument City Brewing Company","Description":"","Short_Description":"","Url":"http://www.monumentcitybrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1 N Haven St, Baltimore, MD 21224",
+"UntappdBreweryUid":"Monument_City_Brewing"
+},
+{
+    "Name": "Falling Branch Brewery",
+    "Address": "825 Highland Rd, Street, MD 21154",
+    "Url": "https://www.fallingbranchbeer.com/",
+    "BeerListUrl": "",
+    "UntappdBreweryUid": "FallingBranchBrewery"
+},
+{
+"name":"Wico Street Beer Co","Description":"","Short_Description":"","Url":"http://www.wicostreetbeerco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1100 Wicomico St Ste 1A, Baltimore, MD 21230",
+"UntappdBreweryUid":"WicoStreetBeerCo"
+},
+{
+"name":"Waverly Brewing Company","Description":"","Short_Description":"","Url":"http://waverlybrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1625 Union Ave, Baltimore, MD 21211",
+"UntappdBreweryUid":"WaverlyBrewingCompany"
+},
+{
+"name":"The Brewer's Art","Description":"Belgian brews & New American cuisine. Elegant spot for housemade Belgian-style brews & upscale New American eats in a former townhouse.","Short_Description":"","Url":"http://www.thebrewersart.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1106 N Charles St, Baltimore, MD 21201",
+"UntappdBreweryUid":"TheBrewersArt"
+},
+{
+"name":"Nepenthe Brewing Co.","Description":"","Short_Description":"","Url":"http://www.nepenthebrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"3626 Falls Rd, Baltimore, MD 21211",
+"UntappdBreweryUid":"NepentheBrewingCo"
+},
+{
+"name":"The Brewer's Cask","Description":"Relaxed tavern with craft beers & grub. Neighborhood hangout providing an array of craft beers on tap along with regional comfort foods.","Short_Description":"","Url":"http://www.brewerscask.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1236 Light St, Baltimore, MD 21230",
+"UntappdBreweryUid":""
+},
+{
+"name":"Union Craft Brewing","Description":"Chill taproom with weekly brewery tours. Relaxed taproom featuring craft beer & rotating food trucks plus free brewery tours every Saturday.","Short_Description":"","Url":"http://www.unioncraftbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1700 W 41st St #420, Baltimore, MD 21211",
+"UntappdBreweryUid":"UnionCraft"
+},
+{
+"name":"Oliver Brewing Company","Description":"","Short_Description":"","Url":"http://www.oliverbrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4216 Shannon Dr, Baltimore, MD 21213",
+"UntappdBreweryUid":"oliverbrewingco"
+},
+{
+"name":"Charm City Meadworks","Description":"Casual brewhouse serving pizza & beer. Relaxed brewhouse preparing craft beer & familiar pub grub, plus homemade pizzas.","Short_Description":"","Url":"http://www.charmcitymeadworks.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"400 E Biddle St, Baltimore, MD 21202",
+"UntappdBreweryUid":"CharmCityMead"
+},
+{
+"name":"Pariah Brewing Company","Description":"","Short_Description":"","Url":"http://www.pariahbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1700 Union Ave Ste D, Baltimore, MD 21211",
+"UntappdBreweryUid":"PariahBrewingCompany"
+},
+{
+"name":"Pratt Street Ale House","Description":"British-style brews & creative pub grub. Old brick taproom housing Oliver's Breweries, with British-style ales, creative pub fare & events.","Short_Description":"","Url":"http://www.prattstreetalehouse.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"206 W Pratt St, Baltimore, MD 21201",
+"UntappdBreweryUid":""
+},
+{
+"name":"Full Tilt Brewing","Description":"","Short_Description":"","Url":"http://www.fulltiltbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"5604 York Rd, Baltimore, MD 21212",
+"UntappdBreweryUid":"FullTiltBrewingCo"
+},
+{
+"name":"Heavy Seas Beer","Description":"Microbrewery with free tours & more. Simple local microbrewery featuring free tours, a beer-centric taproom, events & other activities.","Short_Description":"","Url":"http://www.hsbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4615 Hollins Ferry Rd, Halethorpe, MD 21227",
+"UntappdBreweryUid":"heavyseasbeer"
+},
+{
+"name":"Guinness Open Gate Brewery","Description":"Tours & drinks at a sleek brew facility. Huge modern complex with a taproom, biergarten & restaurant, plus guided tours & a brand store.","Short_Description":"","Url":"https://www.guinnessbrewerybaltimore.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"5001 Washington Blvd, Halethorpe, MD 21227",
+"UntappdBreweryUid":""
+},
+{
+"name":"Clipper City Brewing","Description":"","Short_Description":"","Url":"","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4615 Hollins Ferry Rd, Arbutus, MD 21227",
+"UntappdBreweryUid":""
+},
+{
+"name":"American Brewery","Description":"","Short_Description":"","Url":"","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1701 N Gay St, Baltimore, MD 21213",
+"UntappdBreweryUid":""
+},
+{
+"name":"DuClaw Brewing Company","Description":"","Short_Description":"","Url":"https://www.duclaw.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"8901 Yellow Brick Rd ste b, Rosedale, MD 21237",
+"UntappdBreweryUid":"DuClawBrewing"
+},
+{
+"name":"Eigenbrot Brewery","Description":"","Short_Description":"","Url":"https://baltimoreheritage.org/issue/eigenbrot-brewery/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1 Willard St, Baltimore, MD 21223",
+"UntappdBreweryUid":""
+},
+{
+"name":"RavenBeer","Description":"","Short_Description":"","Url":"http://www.ravenbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"8901 Yellow Brick Rd suite b, Baltimore, MD 21237",
+"UntappdBreweryUid":""
+},
+{
+"name":"White Marsh Brewing Co","Description":"","Short_Description":"","Url":"http://www.redbrickstation.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"5022 Campbell Blvd # F, Baltimore, MD 21236",
+"UntappdBreweryUid":"RedBrickStation"
+},
+{
+"name":"Key Brewing Co.","Description":"","Short_Description":"","Url":"http://www.keybrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"2500 Grays Rd, Dundalk, MD 21222",
+"UntappdBreweryUid":"KeyBrewingCompany"
+},
+{
+"name":"Carolina BrewTech","Description":"","Short_Description":"","Url":"https://www.carolinamicrobrewing.com/contact","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"709 E Ordnance Rd, Baltimore, MD 21226",
+"UntappdBreweryUid":""
+},
+{
+"name":"Pooles Island Brewing Company","Description":"","Short_Description":"","Url":"https://www.poolesbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"11695 Crossroads Cir Suite A, Middle River, MD 21220",
+"UntappdBreweryUid":"PoolesIslandBrewingCo"
+},
+{
+"name":"Sapwood Cellars Brewery","Description":"","Short_Description":"","Url":"https://sapwoodcellars.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"8980 MD-108 Suite MNO, Columbia, MD 21045",
+"UntappdBreweryUid":""
+},
+{
+"name":"Dempsey's Brew Pub and Restaurant","Description":"Camden Yards venue serving American fare. Year-round tavern in Camden Yards, named for an Orioles catcher & serving American fare & brews.","Short_Description":"","Url":"http://www.dempseysbaltimore.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"The Charm'tastic Mile, 333 W Camden St, Baltimore, MD 21201",
+"UntappdBreweryUid":""
+},
+{
+"name":"Max's Taphouse","Description":"Neighborhood pub with huge beer list. Local pub with a huge rotating selection of draft & bottled beers, plus BBQ & patio seating.","Short_Description":"","Url":"http://www.maxs.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"733 S Broadway, Baltimore, MD 21231",
+"UntappdBreweryUid":""
+},
+{
+"name":"B.C. Brewery","Description":"","Short_Description":"","Url":"http://www.bcbrewerymd.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"10950 Gilroy Rd Suite F, Hunt Valley, MD 21031",
+"UntappdBreweryUid":"bcbrewerymd"
+},
+{
+"name":"Black Flag Brewing Company","Description":"","Short_Description":"","Url":"http://www.blackflagbrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"9315 Snowden River Pkwy, Columbia, MD 21046",
+"UntappdBreweryUid":""
+},
+{
+"name":"Crooked Crab Brewing Company","Description":"","Short_Description":"","Url":"http://www.crookedcrabbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"8251 Telegraph Rd, Odenton, MD 21113",
+"UntappdBreweryUid":""
+},
+{
+"name":"Jailbreak Brewing Company","Description":"Craft beers in a contemporary taproom. Contemporary taproom from a craft brewery, offering tours & kosher-certified beer options.","Short_Description":"","Url":"http://www.jailbreakbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"9445 Washington Blvd N Ste F, Laurel, MD 20723",
+"UntappdBreweryUid":"JailbreakBrewingCompany"
+},
+{
+"name":"311 West Madison AVE craft beer & wine","Description":"Spacious, stylish spot for beer & wine. Vino & brews are offered in a cool & contemporary space with outdoor seating.","Short_Description":"","Url":"https://311-west-madison-ave-craft-beer-wine.business.site/?utm_source=gmb&utm_medium=referral","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"311 W Madison St, Baltimore, MD 21201",
+"UntappdBreweryUid":""
+},
+{
+"name":"Manor Hill Brewing","Description":"","Short_Description":"","Url":"http://manorhillbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4411 Manor Ln, Ellicott City, MD 21042",
+"UntappdBreweryUid":""
+},
+{
+"name":"The Brass Tap","Description":"Lively spot for craft beers & music. Festive pub with a patio offering myriad beer options, wine & TVs tuned to sports plus live music.","Short_Description":"","Url":"https://www.brasstapbeerbar.com/baltimore","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1205 W Mt Royal Ave, Baltimore, MD 21217",
+"UntappdBreweryUid":""
+},
+{
+"name":"City Brew Tours Baltimore","Description":"","Short_Description":"","Url":"http://www.citybrewtours.com/baltimore","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"",
+"UntappdBreweryUid":""
+},
+{
+"name":"AleCraft Brewery","Description":"","Short_Description":"","Url":"http://www.alecraftbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"319 S Main St Suite #100, Bel Air, MD 21014",
+"UntappdBreweryUid":""
+},
+{
+"name":"1623 Brewing Company","Description":"","Short_Description":"","Url":"http://www.1623brewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"5975 Exchange Dr Suite H-L, Eldersburg, MD 21784",
+"UntappdBreweryUid":""
+},
+{
+"name":"Leinie Lodge & Beer Garden","Description":"Lively bar & eatery with diverse beers. Energetic beer garden with a glass pavilion featuring pub grub & a mix of regional & imported brews.","Short_Description":"","Url":"https://www.powerplantlive.com/eat-and-drink/leinie-lodge-and-beer-garden","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4 Market Pl, Baltimore, MD 21202",
+"UntappdBreweryUid":""
+},
+{
+"name":"Notch 8 Brewery","Description":"","Short_Description":"","Url":"","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"10150 Junction Dr, Annapolis Junction, MD 20701",
+"UntappdBreweryUid":""
+},
+{
+"name":"BJ's Restaurant & Brewhouse","Description":"Chain for pub grub & house-brewed beer. Family-friendly chain outpost pairs familiar pub fare with an extensive list of house brews.","Short_Description":"","Url":"https://www.bjsrestaurants.com/locations/md/towson","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"101 E Joppa Rd, Baltimore, MD 21286",
+"UntappdBreweryUid":"BJs_Brewhouse"
+},
+{
+"name":"Lone Oak Farm Brewing Company","Description":"","Short_Description":"","Url":"https://loneoakbrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"5000 Olney Laytonsville Rd, Olney, MD 20832",
+"UntappdBreweryUid":""
+},
+{
+"name":"Mahaffey's Pub","Description":"Beer specialist with a pub grub menu. Serving a rotating selection of brews, this hangout offers pub fare & a beer club for regulars.","Short_Description":"","Url":"http://www.mahaffeyspub.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"2706 Dillon St, Baltimore, MD 21224",
+"UntappdBreweryUid":""
+},
+{
+"name":"Crossbar Der Biergarten","Description":"","Short_Description":"","Url":"http://www.crossbarbaltimore.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"18 E Cross St, Baltimore, MD 21230",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewery Fire","Description":"","Short_Description":"","Url":"http://www.breweryfire.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"4337 Old Taneytown Rd suite b, Taneytown, MD 21787",
+"UntappdBreweryUid":""
+},
+{
+"name":"Bluejacket","Description":"Beer & eats in historic, industrial digs. Microbrewery & restaurant serving craft beers & American eats in century-old former factory.","Short_Description":"","Url":"https://bluejacketdc.com/?utm_source=GMBlisting&utm_medium=organic&utm_campaign=SEO","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"300 Tingey St SE, Washington, DC 20003",
+"UntappdBreweryUid":""
+},
+{
+"name":"Old Ox Brewery","Description":"","Short_Description":"","Url":"http://oldoxbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"44652 Guilford Dr #114, Ashburn, VA 20147",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewers Hill","Description":"","Short_Description":"","Url":"http://brewershill.net/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1211 S Eaton St, Baltimore, MD 21224",
+"UntappdBreweryUid":""
+},
+{
+"name":"Victory Brewing Company Downingtown","Description":"Free brewery tours & a restaurant. Free tours are offered Friday to Sunday at this craft brewery with a casual on-site restaurant.","Short_Description":"","Url":"https://taprooms.victorybeer.com/victory-brewing-company-downingtown-d0da62874402","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"420 Acorn Ln, Downingtown, PA 19335",
+"UntappdBreweryUid":""
+},
+{
+"name":"The Brewer's Art Tavern","Description":"","Short_Description":"","Url":"https://tbatavern.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"13380 Clarksville Pike, Highland, MD 20777",
+"UntappdBreweryUid":""
+},
+{
+"name":"Mully's Brewery","Description":"","Short_Description":"","Url":"http://mullysbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"141 Schooner Ln, Prince Frederick, MD 20678",
+"UntappdBreweryUid":""
+},
+{
+"name":"1937 Brewing Co","Description":"","Short_Description":"","Url":"https://1937brewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"777 Delaware Park Blvd, Wilmington, DE 19804",
+"UntappdBreweryUid":""
+},
+{
+"name":"Threes Brewing","Description":"Bar for house brews & other beers. Bar serving draft beers by its own brewery, along with other craft brews & food by pop-up eateries.","Short_Description":"","Url":"https://shop.threesbrewing.com/pages/gowanus","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"333 Douglass St, Brooklyn, NY 11217",
+"UntappdBreweryUid":""
+},
+{
+"name":"Circa Brewing Co.","Description":"Wood-fired pizzas & house-brewed beers. Brewery serving its own pints plus Neapolitan pizzas & other plates in a polished, sizable space.","Short_Description":"","Url":"http://circabrewing.co/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"141 Lawrence St, Brooklyn, NY 11201",
+"UntappdBreweryUid":""
+},
+{
+"name":"Dogfish Head Craft Brewery","Description":"Brewery with a brewpub & tours. Sizable brewery & brewpub offering hearty food, an ample selection of beers on tap & tours.","Short_Description":"","Url":"http://www.dogfish.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"6 Cannery Village Center, Milton, DE 19968",
+"UntappdBreweryUid":""
+},
+{
+"name":"Strong Rope Brewery","Description":"","Short_Description":"","Url":"http://strongropebrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"574 President St, Brooklyn, NY 11215",
+"UntappdBreweryUid":""
+},
+{
+"name":"Greenpoint Beer & Ale Co.","Description":"Cavernous brewpub with eclectic grub. German-style brewpub crafting a variety of beer & grub in a cavernous space with communal seating.","Short_Description":"","Url":"http://www.greenpointbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1150 Manhattan Ave, Brooklyn, NY 11222",
+"UntappdBreweryUid":""
+},
+{
+"name":"Wild East Brewing Co.","Description":"","Short_Description":"","Url":"https://www.wildeastbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"623 Sackett St, Brooklyn, NY 11217",
+"UntappdBreweryUid":""
+},
+{
+"name":"Transmitter Brewing","Description":"Hub for farmhouse-style beers. Informal tasting room by a Long Island City-born craft brewery specializing in farmhouse ales.","Short_Description":"","Url":"http://www.transmitterbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"141 Flushing Ave building 77, Brooklyn, NY 11205",
+"UntappdBreweryUid":""
+},
+{
+"name":"Five Boroughs Brewing Co.","Description":"","Short_Description":"","Url":"http://www.fiveboroughs.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"215 47th St, Brooklyn, NY 11220",
+"UntappdBreweryUid":""
+},
+{
+"name":"902 Brewing Co .","Description":"","Short_Description":"","Url":"http://www.902brewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"101 Pacific Ave, Jersey City, NJ 07304",
+"UntappdBreweryUid":""
+},
+{
+"name":"18th Ward Brewing","Description":"","Short_Description":"","Url":"https://www.18thwardbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"300 Richardson St, Brooklyn, NY 11222",
+"UntappdBreweryUid":""
+},
+{
+"name":"Torch & Crown Brewing Company","Description":"","Short_Description":"","Url":"https://torchandcrown.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"12 Vandam St, New York, NY 10013",
+"UntappdBreweryUid":""
+},
+{
+"name":"Departed Soles Brewing Company","Description":"","Short_Description":"","Url":"http://www.departedsoles.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"150 Bay St #2a, Jersey City, NJ 07302",
+"UntappdBreweryUid":""
+},
+{
+"name":"The Bronx Brewery & Empanology","Description":"","Short_Description":"","Url":"http://www.thebronxbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"856 E 136th St, The Bronx, NY 10454",
+"UntappdBreweryUid":""
+},
+{
+"name":"Sixpoint Brewery","Description":"","Short_Description":"","Url":"http://sixpoint.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"40 Van Dyke St, Brooklyn, NY 11231",
+"UntappdBreweryUid":""
+},
+{
+"name":"Other Half Brewing Company","Description":"","Short_Description":"","Url":"http://otherhalfbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"195 Centre St, Brooklyn, NY 11231",
+"UntappdBreweryUid":""
+},
+{
+"name":"Fifth Hammer Brewing Company","Description":"","Short_Description":"","Url":"http://www.fifthhammerbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"10-28 46th Ave, Long Island City, NY 11101",
+"UntappdBreweryUid":""
+},
+{
+"name":"Rockaway Brewing Company","Description":"Craft-brew tastings & growler options. Hip microbrewery open on weekends, with experimental tastings & personal & party-size growlers.","Short_Description":"","Url":"http://rockawaybrewco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"46-01 5th St, Queens, NY 11101",
+"UntappdBreweryUid":""
+},
+{
+"name":"Montclair Brewery","Description":"","Short_Description":"","Url":"http://montclairbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"101 Walnut St, Montclair, NJ 07042",
+"UntappdBreweryUid":""
+},
+{
+"name":"Union Collective","Description":"","Short_Description":"","Url":"http://www.union-collective.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1700 W 41st St, Baltimore, MD 21211",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brooklyn Brewery","Description":"Microbrewery offering tastings & tours. Microbrewery with tastings & tours that offer an inside look at the creation process.","Short_Description":"","Url":"http://www.brooklynbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"79 N 11th St, Brooklyn, NY 11249",
+"UntappdBreweryUid":""
+},
+{
+"name":"Thimble Island Brewing Company","Description":"Craft brewery offering tastings & tours. Brewery producing ales, stouts & more, with tours, free tastings & growlers to take home.","Short_Description":"","Url":"https://www.thimbleislandbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"16 Business Park Dr, Branford, CT 06405",
+"UntappdBreweryUid":""
+},
+{
+"name":"Lonerider Brewing Company","Description":"Craft-beer makers with tours & kegs. Producers of craft brews like Sweet Josie & Deadeye Jack, with tours, growlers & kegs.","Short_Description":"","Url":"http://www.loneriderbeer.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"8816 Gulf Ct #100, Raleigh, NC 27617",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewers Hill Hub","Description":"","Short_Description":"","Url":"http://www.brewershillhub.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"3700 O'Donnell St Suite 200, Baltimore, MD 21224",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewery Bhavana","Description":"Dim sum, brews, books & flowers. Maker-inspired hub for craft beer, dim sum, books & flowers in a stylish space.","Short_Description":"","Url":"http://brewerybhavana.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"218 S Blount St, Raleigh, NC 27601",
+"UntappdBreweryUid":""
+},
+{
+"name":"Dockside Brewery","Description":"","Short_Description":"","Url":"https://www.docksidebrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"40 Bridgeport Ave, Milford, CT 06460",
+"UntappdBreweryUid":""
+},
+{
+"name":"Northampton Brewery","Description":"Pub grub & a rooftop beer garden. Rotating brew selection & hearty pub grub in a spacious spot with a rooftop beer garden & sunroom.","Short_Description":"","Url":"http://www.northamptonbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"11 Brewster Ct, Northampton, MA 01060",
+"UntappdBreweryUid":""
+},
+{
+"name":"Southern Tier Brewery Cleveland","Description":"","Short_Description":"","Url":"https://taprooms.stbcbeer.com/southern-tier-brewery-cleveland-5b6c1b355dcb","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"811 Prospect Ave E, Cleveland, OH 44115",
+"UntappdBreweryUid":""
+},
+{
+"name":"Spotted Octopus Brewing Co.","Description":"","Short_Description":"","Url":"https://octopusbrew.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"41 Edward St, Buffalo, NY 14202",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewery Ommegang","Description":"Belgian-style beers, tours & samples. Farmstead brewery featuring tours, tastings of its Belgian-style beers & cafe eats.","Short_Description":"","Url":"https://www.ommegang.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"656 Co Hwy 33, Cooperstown, NY 13326",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewery Ardennes Taproom & Kitchen","Description":"","Short_Description":"","Url":"http://breweryardennes.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"570 Snell Rd, Geneva, NY 14456",
+"UntappdBreweryUid":""
+},
+{
+"name":"Market Garden Brewery","Description":"Brewpub with creative American fare. American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.","Short_Description":"","Url":"http://marketgardenbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1947 W 25th St, Cleveland, OH 44113",
+"UntappdBreweryUid":""
+},
+{
+"name":"Lasting Joy Brewery","Description":"","Short_Description":"","Url":"https://lastingjoybrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"485 Lasher Rd, Tivoli, NY 12583",
+"UntappdBreweryUid":""
+},
+{
+"name":"Tree House Brewing Company - Charlton","Description":"Microbrewery with a rustic retail shop. The rustic retail shop of this small, artisan brewery has rotating craft beers & limited hours.","Short_Description":"","Url":"http://www.treehousebrew.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"129 Sturbridge Rd, Charlton, MA 01507",
+"UntappdBreweryUid":""
+},
+{
+"name":"Wormtown Brewery","Description":"","Short_Description":"","Url":"http://www.wormtownbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"72 Shrewsbury St #4, Worcester, MA 01604",
+"UntappdBreweryUid":""
+},
+{
+"name":"Market Garden Brewery Store & Tours","Description":"","Short_Description":"","Url":"http://www.marketgardenbrewerystore.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1849 W 24th St, Cleveland, OH 44113",
+"UntappdBreweryUid":""
+},
+{
+"name":"Hermit Thrush Brewery","Description":"","Short_Description":"","Url":"http://www.hermitthrushbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"29 High St #101c, Brattleboro, VT 05301",
+"UntappdBreweryUid":""
+},
+{
+"name":"Harpoon Brewery","Description":"Brewery tours, beer hall & a gift shop. This brewery, which offers tours, boasts a beer hall that serves pretzels, plus a gift shop.","Short_Description":"","Url":"https://www.harpoonbrewery.com/boston-brewery/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"306 Northern Ave, Boston, MA 02210",
+"UntappdBreweryUid":""
+},
+{
+"name":"Heist Brewery","Description":"Craft beers, grub & industrial environs. Inventive pub fare & craft beers produced on-site & served in an industrial setting with a patio.","Short_Description":"","Url":"http://www.heistbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"2909 N Davidson St STE 200, Charlotte, NC 28205",
+"UntappdBreweryUid":""
+},
+{
+"name":"Beech Mountain Brewing Company","Description":"","Short_Description":"","Url":"http://www.beechmountainbrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1007 Beech Mountain Pkwy, Beech Mountain, NC 28604",
+"UntappdBreweryUid":""
+},
+{
+"name":"D9 Brewing Uptown Charlotte","Description":"","Short_Description":"","Url":"http://d9brewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"650 E Brooklyn Vlg Ave Unit D, Charlotte, NC 28202",
+"UntappdBreweryUid":""
+},
+{
+"name":"Northampton Brewery","Description":"Pub grub & a rooftop beer garden. Rotating brew selection & hearty pub grub in a spacious spot with a rooftop beer garden & sunroom.","Short_Description":"","Url":"http://www.northamptonbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"11 Brewster Ct, Northampton, MA 01060",
+"UntappdBreweryUid":""
+},
+{
+"name":"Topside","Description":"Buzzy rooftop bar & restaurant. Stylish, airy rooftop bar & eatery offering local seafood specials plus cocktails & craft beers.","Short_Description":"","Url":"https://www.jdvhotels.com/hotels/maryland/baltimore/hotel-revival-baltimore/dining/topside?utm_source=google-local&utm_medium=organic&utm_campaign=gmb","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"101 W Monument St, Baltimore, MD 21201",
+"UntappdBreweryUid":""
+},
+{
+"name":"Perfect Brew Services","Description":"","Short_Description":"","Url":"http://www.perfectbrewservices.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1547 Ridgely St, Baltimore, MD 21230",
+"UntappdBreweryUid":""
+},
+{
+"name":"Spotted Octopus Brewing Co.","Description":"","Short_Description":"","Url":"https://octopusbrew.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"41 Edward St, Buffalo, NY 14202",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewery Ommegang","Description":"Belgian-style beers, tours & samples. Farmstead brewery featuring tours, tastings of its Belgian-style beers & cafe eats.","Short_Description":"","Url":"https://www.ommegang.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"656 Co Hwy 33, Cooperstown, NY 13326",
+"UntappdBreweryUid":""
+},
+{
+"name":"Southern Tier Brewery Cleveland","Description":"","Short_Description":"","Url":"https://taprooms.stbcbeer.com/southern-tier-brewery-cleveland-5b6c1b355dcb","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"811 Prospect Ave E, Cleveland, OH 44115",
+"UntappdBreweryUid":""
+},
+{
+"name":"Brewery Ardennes Taproom & Kitchen","Description":"","Short_Description":"","Url":"http://breweryardennes.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"570 Snell Rd, Geneva, NY 14456",
+"UntappdBreweryUid":""
+},
+{
+"name":"Lasting Joy Brewery","Description":"","Short_Description":"","Url":"https://lastingjoybrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"485 Lasher Rd, Tivoli, NY 12583",
+"UntappdBreweryUid":""
+},
+{
+"name":"Pickles Pub","Description":"Local institution for pub classics. Family friendly game-day institution serving classic pub grub to the neighborhood since 1988.","Short_Description":"","Url":"http://www.picklespub.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"520 Washington Blvd, Baltimore, MD 21201",
+"UntappdBreweryUid":""
+},
+{
+"name":"Tree House Brewing Company - Charlton","Description":"Microbrewery with a rustic retail shop. The rustic retail shop of this small, artisan brewery has rotating craft beers & limited hours.","Short_Description":"","Url":"http://www.treehousebrew.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"129 Sturbridge Rd, Charlton, MA 01507",
+"UntappdBreweryUid":""
+},
+{
+"name":"Market Garden Brewery","Description":"Brewpub with creative American fare. American gastropub with a patio, house beers, a distillery & a menu of creative sandwiches & tacos.","Short_Description":"","Url":"http://marketgardenbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1947 W 25th St, Cleveland, OH 44113",
+"UntappdBreweryUid":""
+},
+{
+"name":"Wormtown Brewery","Description":"","Short_Description":"","Url":"http://www.wormtownbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"72 Shrewsbury St #4, Worcester, MA 01604",
+"UntappdBreweryUid":""
+},
+{
+"name":"Heist Brewery","Description":"Craft beers, grub & industrial environs. Inventive pub fare & craft beers produced on-site & served in an industrial setting with a patio.","Short_Description":"","Url":"http://www.heistbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"2909 N Davidson St STE 200, Charlotte, NC 28205",
+"UntappdBreweryUid":""
+},
+{
+"name":"Hermit Thrush Brewery","Description":"","Short_Description":"","Url":"http://www.hermitthrushbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"29 High St #101c, Brattleboro, VT 05301",
+"UntappdBreweryUid":""
+},
+{
+"name":"D9 Brewing Uptown Charlotte","Description":"","Short_Description":"","Url":"http://d9brewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"650 E Brooklyn Vlg Ave Unit D, Charlotte, NC 28202",
+"UntappdBreweryUid":""
+},
+{
+"name":"Beech Mountain Brewing Company","Description":"","Short_Description":"","Url":"http://www.beechmountainbrewingco.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"1007 Beech Mountain Pkwy, Beech Mountain, NC 28604",
+"UntappdBreweryUid":""
+},
+{
+"name":"Harpoon Brewery","Description":"Brewery tours, beer hall & a gift shop. This brewery, which offers tours, boasts a beer hall that serves pretzels, plus a gift shop.","Short_Description":"","Url":"https://www.harpoonbrewery.com/boston-brewery/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"306 Northern Ave, Boston, MA 02210",
+"UntappdBreweryUid":""
+},
+{
+"name":"Shake Shack","Description":"Gourmet burger chain with frozen custard. Hip, counter-serve chain for gourmet takes on fast-food classics like burgers & frozen custard.","Short_Description":"","Url":"https://www.shakeshack.com/location/inner-harbor-md?utm_source=G&utm_medium=local&utm_campaign=google-local","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"400 E Pratt St, Baltimore, MD 21202",
+"UntappdBreweryUid":""
+},
+{
+"name":"Ironclad Brewery","Description":"","Short_Description":"","Url":"http://www.ironcladbrewery.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"115 N 2nd St, Wilmington, NC 28401",
+"UntappdBreweryUid":""
+},
+{
+"name":"Good Hops Brewing","Description":"","Short_Description":"","Url":"http://www.goodhopsbrewing.com/","Facebook_Url":"","Twitter_Url":"","Instagram_Url":"","Address":"811 Harper Ave, Carolina Beach, NC 28428",
+"UntappdBreweryUid":""}]

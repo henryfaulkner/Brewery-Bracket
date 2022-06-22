@@ -1,10 +1,12 @@
 const fe = require("./FirestoreEndpoints.ts");
 const jp = require("./JsonParser.ts");
 const us = require("./UntappdScrapping.ts");
+const gms = require("./GoogleMapsScrapping.ts");
 var fs = require('fs');
 var readlineSync = require('readline-sync');
 import CustomBrewery from "../Models/CustomBrewery";
 import * as FileStoreExtensions from "../config/firebase"
+import BreweryObject from "../Models/BreweryObject";
 
 //initialize firestore
 FileStoreExtensions.firestore;
@@ -17,30 +19,33 @@ let requestFileOrDir: string;
 main_loop();
 
 async function main_loop() {
-  requestFileOrDir = readlineSync.question('File or Directory or Untappd_Single or Untappd_File: ')
-  let breweryName: string = "";
-  let breweryUntappdUid: string = "";
+  const breweries: BreweryObject[] = await gms.ScrapGooglePage();
+  jp.WriteBreweriesToJson(breweries, "New-Maryland.json")
 
-  switch(requestFileOrDir.toLowerCase()){
-    case "file": 
-      breweryName = readlineSync.question('Enter BreweryName and File Prefix: ');
-      await Local_One(breweryName);
-      process.exit();
-    case "directory":
-      const directoryName: string = readlineSync.question('Enter directory name/path: ');
-      await Local_Many(directoryName);
-      process.exit();
-    case "untappd_single":
-      breweryName = readlineSync.question('Enter BreweryName: ');
-      breweryUntappdUid = readlineSync.question('Enter BreweryUntappdUid: ');
-      const jsons = await us.ScrapPage(breweryUntappdUid);
-      await Untappd_One(breweryName, jsons)
-      process.exit();
-    case "untappd_file":
-      const filePath = readlineSync.question('Enter file path: ');
-      await Untappd_Many(filePath)
-      process.exit();
-  }
+  // requestFileOrDir = readlineSync.question('File or Directory or Untappd_Single or Untappd_File: ')
+  // let breweryName: string = "";
+  // let breweryUntappdUid: string = "";
+
+  // switch(requestFileOrDir.toLowerCase()){
+  //   case "file": 
+  //     breweryName = readlineSync.question('Enter BreweryName and File Prefix: ');
+  //     await Local_One(breweryName);
+  //     process.exit();
+  //   case "directory":
+  //     const directoryName: string = readlineSync.question('Enter directory name/path: ');
+  //     await Local_Many(directoryName);
+  //     process.exit();
+  //   case "untappd_single":
+  //     breweryName = readlineSync.question('Enter BreweryName: ');
+  //     breweryUntappdUid = readlineSync.question('Enter BreweryUntappdUid: ');
+  //     const jsons = await us.ScrapPage(breweryUntappdUid);
+  //     await Untappd_One(breweryName, jsons)
+  //     process.exit();
+  //   case "untappd_file":
+  //     const filePath = readlineSync.question('Enter file path: ');
+  //     await Untappd_Many(filePath)
+  //     process.exit();
+  // }
 }
 
 async function Untappd_Many(filePath) {

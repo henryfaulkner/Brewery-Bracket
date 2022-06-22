@@ -39,3 +39,4 @@ yarn-error.log*
 
 /keys
 /src/firebaseConfig.ts
+.env
