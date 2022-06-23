@@ -48,9 +48,10 @@ const handler = async (
   const data = await getDoc(doc(collectionRef, scorecardId));
 
   const scorecard = new BreweryDayScorecard({
-    AssociatedUserID: data.data().AssociatedUserID,
+    AssociatedBracketID: data.data().AssociatedBracketID,
     AssociatedBreweryID: data.data().AssociatedBreweryID,
     AssociatedBreweryName: data.data().AssociatedBreweryName,
+    AssociatedUserID: data.data().AssociatedUserID,
     AverageBeerScore: data.data().AverageBeerScore,
     EnvironmentScore: data.data().EnvironmentScore,
     LocationScore: data.data().LocationScore,
