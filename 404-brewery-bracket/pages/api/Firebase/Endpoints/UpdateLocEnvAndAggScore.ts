@@ -41,9 +41,9 @@ const cors = Cors({
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await runMiddleware(req, res, cors);
   const scorecardId: string = req.body["DocumentID"];
-  const locationScore: number = req.body["locationScore"];
-  const environmentScore: number = req.body["environmentScore"];
-  const averageBeerScore: number = req.body["averageBeerScore"];
+  const locationScore: number = parseInt(req.body["locationScore"]);
+  const environmentScore: number = parseInt(req.body["environmentScore"]);
+  const averageBeerScore: number = parseInt(req.body["averageBeerScore"]);
 
   const collectionRef = collection(
     firestore,

@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../../../../lib/firebase";
 
-import BreweryObject from "../Models/BreweryObject";
+import BracketsBreweryObject from "../Models/BracketsBreweryObject";
 import * as collectionConstants from "../CollectionConstants";
 import Cors from 'cors';
 import { runMiddleware } from "../../middleware";
@@ -54,7 +54,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
     const bracketId: string = req.body["bracketId"];
     const breweryJson = JSON.parse(req.body["serializedBreweryJson"]);
 
-    const breweryObj = new BreweryObject({
+    const breweryObj = new BracketsBreweryObject({
       DocumentID: breweryJson["DocumentID"],
       Name: breweryJson["Name"],
       Description: breweryJson["Description"] ?? "",
@@ -64,6 +64,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
       Twitter_Url: breweryJson["Twitter_Url"] ?? "",
       Instagram_Url: breweryJson["Instagram_Url"] ?? "",
       Address: breweryJson["Address"] ?? "",
+      TotalAggregateScore: 0,
+      AggregateBeerScore: 0,
+      AggregateEnvironmentScore: 0,
+      AggregateLocationScore: 0,
     });
 
     const collectionRef = collection(

@@ -36,7 +36,6 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
       environmentScore: envValue,
       averageBeerScore: props.AggregateBeerScore / props.BeerListLength,
     };
-
     await fetch("/api/Firebase/Endpoints/UpdateLocEnvAndAggScore", {
       method: "POST",
       body: JSON.stringify(request),
@@ -44,6 +43,20 @@ const FinalizeScorecardModal: React.FC<Props> = (props) => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
+
+    const request2 = {
+      bracketId: props.Scorecard.AssociatedBracketID,
+      breweryId: props.Scorecard.AssociatedBreweryID
+    }
+    console.log("request2")
+    console.log(request2)
+    fetch("/api/Firebase/Endpoints/UpdateBracketsBrewery", {
+      method: "POST",
+      body: JSON.stringify(request2),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      }
+    })
   };
 
   return (
