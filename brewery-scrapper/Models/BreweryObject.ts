@@ -2,7 +2,7 @@ import IFirebaseDocument from "./IFirebaseDocument";
 
 class BreweryObject implements IFirebaseDocument {
   public id: string;
-  public name: string;
+  public Name: string;
   public Description: string;
   public Short_Description: string;
   public Url: string;
@@ -13,7 +13,7 @@ class BreweryObject implements IFirebaseDocument {
   public UntappdBreweryUid: string;
 
   public constructor(json) {
-    this.name = json["name"];
+    this.Name = json["Name"];
     this.Description = json["Description"];
     this.Short_Description = json["Short_Description"];
     this.Url = json["Url"];

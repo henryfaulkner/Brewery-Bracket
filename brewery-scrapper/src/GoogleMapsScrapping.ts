@@ -1,7 +1,5 @@
 import BreweryObject from "../Models/BreweryObject";
 
-const axios_1 = require("axios")
-const jp_1 = require("./JsonParser.ts")
 const SerpApi = require('google-search-results-nodejs');
 require('dotenv').config();
 const search = new SerpApi.GoogleSearch(process.env.SerpApiKey);
