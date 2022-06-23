@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Bracket from "../../components/Bracket";
 import styles from "../../styles/pages/BreweryGrid.module.scss";
 
 type Props = {
@@ -16,27 +18,27 @@ const fakeData = [
 ];
 
 const BracketPage = (props: Props) => {
-  let numberOfGames = fakeData.length - 1;
-  const numberOfRounds = Math.round(fakeData.length / 2);
+  const [rounds, setNumOfRounds] = useState(null);
 
   let theBracket;
-  // for(let i = numberOfRounds; i > 0; --i) {
-  //   let tableElements = numberOfRounds * 2;
-  //   let gapCount = (tableElements * 2) - 2;
-  //   for(let x = tableElements; x > 0; --x) {
-  //     let operation = tableElements % 4;
-  //     switch(operation) {
-  //       case 0:
-  //         theBracket[x][i] = fakeData[numberOfGames]
-  //     }
-  //   }
-  // }
+
+
 
   return (
     <div className={styles.breweryGrid}>
-      <table>
-        {}
-      </table>
+      <input
+            placeholder="Number of Rounds"
+            id="round-input"
+            className={styles.emailInput}
+            onChange={(event) => setNumOfRounds(event.target.value)}
+            type="text"
+      />
+
+      <Bracket
+        numberOfRounds={rounds}
+        breweries={fakeData}
+      />
+
     </div>
   );
 };

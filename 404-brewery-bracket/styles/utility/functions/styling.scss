@@ -58,3 +58,24 @@
 @mixin default-input-style() {
     border-radius: $border-radius-default;
 }
+
+@mixin default-scrollbar() {
+    &::-webkit-scrollbar {
+        width: 10px;
+        /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $beer-brown;
+        /* color of the scroll thumb */
+        border-radius: 20px;
+        /* roundness of the scroll thumb */
+        border: 1px solid $beer-yellow;
+        /* creates padding around scroll thumb */
+    }
+}
