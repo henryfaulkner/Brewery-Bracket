@@ -1,0 +1,21 @@
+@import "../utility/utility.scss";
+
+.bracketContainer {
+    display: flex;
+    max-width: 100vw;
+    overflow-x: scroll;
+    @include default-scrollbar();
+}
+
+.roundContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.contestantPairContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
