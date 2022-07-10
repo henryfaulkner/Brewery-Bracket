@@ -16,6 +16,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
 
+  
   @include layout-for(tablet) {
     display: flex;
     flex-direction: column-reverse;
@@ -28,10 +29,9 @@
       // position: absolute;
       // -webkit-transition: transform 0.2s ease-in-out;
       // transform: scale(3) translate(30%, -50%);
-
       @include layout-for(mobile) {
-        -webkit-transition: transform 0.2s ease-in-out;
-        transform: scale(2) translate(23%, -50%);
+        //-webkit-transition: transform 0.2s ease-in-out;
+        //transform: scale(2) translate(23%, -50%);
       }
     }
   }
