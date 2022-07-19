@@ -1,5 +1,6 @@
 import React, { Component, useEffect } from "react";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
+import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 import styles from "../styles/components/Bracket.module.scss";
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) => {
   let arrayOfRounds: number[] = [];
   let arrayOfContestants = [];
+  let breweries: BreweryObject[] = bracket.Breweries;
   // Generate last round first
   for (let i = numberOfRounds-1; i >= 0; i--) {
     arrayOfRounds.push(i);
@@ -17,12 +19,8 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
 
   let contestantFlag = false;
 
-  const ifNotEven = (key) => {
-    if(key !== bracket.Breweries.length-1){
-      return <button>{bracket.Breweries[key+1].Name}</button>
-    } else if(key === bracket.Breweries.length-1){
-      return <button>Placeholder</button>
-    }
+  const ifNotEven = (nextContestant: BreweryObject, key) => {
+    return <button>{nextContestant.Name}</button>
   }
 
   return (
@@ -38,34 +36,35 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
           }
           arrayOfContestants = [];
           for (let x = 0; x < numOfContestantPairs; x++) {
-            arrayOfContestants.push(x);
+            if(breweries.length > x) {
+              arrayOfContestants.push(breweries[x]);
+            } else {
+              arrayOfContestants.push(new BreweryObject({Name: "Placeholder"}));
+            }
           }
         }
-        console.log("arrayOfContestants.length")
-        console.log(arrayOfContestants.length)
         return (
           <div className={styles.roundContainer} key={key}>
-            {arrayOfContestants.map((contestantPair, key) => {
-              if(key % 2 == 0 && key > bracket.Breweries.length) {
-                console.log("cum")
-                return (
-                  <div className={styles.contestantPairContainer} key={key}>
-                    <button>Constestant 1</button>
-                    <button>Constestant 2</button>
-                  </div>
-                );
-              } else {
+            {arrayOfContestants.map((contestant: BreweryObject, key) => {
+              // if(key % 2 == 0 && key > breweries.length) {
+              //   return (
+              //     <div className={styles.contestantPairContainer} key={key}>
+              //       <button>Placeholder</button>
+              //       <button>Placeholder</button>
+              //     </div>
+              //   );
+              // } else {
                 if(key % 2 == 0) {
                   return (
                     <div className={styles.contestantPairContainer} key={key}>
-                      <button>{bracket.Breweries[key].Name}</button>
+                      <button>{contestant.Name}</button>
                       {
-                        ifNotEven(key)
+                        ifNotEven(arrayOfContestants[key+1], key)
                       }
                     </div>
                   );
                 }
-              }
+              //}
             })}
 
             {contestantFlag ? <button>Winner</button> : null}
