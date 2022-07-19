@@ -5,11 +5,11 @@ const gms = require("./GoogleMapsScrapping.ts");
 var fs = require('fs');
 var readlineSync = require('readline-sync');
 import CustomBrewery from "../Models/CustomBrewery";
-import * as FileStoreExtensions from "../config/firebase"
+import * as FirestoreExtensions from "../config/firebase"
 import BreweryObject from "../Models/BreweryObject";
 
 //initialize firestore
-FileStoreExtensions.firestore;
+FirestoreExtensions.firestore;
 
 let webUrl: string = "";
 let webUrlBeerList: string = "";
@@ -19,10 +19,7 @@ let requestFileOrDir: string;
 main_loop();
 
 async function main_loop() {
-  // const breweries: BreweryObject[] = await gms.ScrapGooglePage();
-  // jp.WriteBreweriesToJson(breweries, "New-Maryland.json")
-
-  requestFileOrDir = readlineSync.question('File or Directory or Untappd_Single or Untappd_File: ')
+  requestFileOrDir = readlineSync.question('File or Directory or Untappd_Single or Untappd_File or Maps: ')
   let breweryName: string = "";
   let breweryUntappdUid: string = "";
 
@@ -44,6 +41,13 @@ async function main_loop() {
     case "untappd_file":
       const filePath = readlineSync.question('Enter file path: ');
       await Untappd_Many(filePath)
+      process.exit();
+    case "maps":
+      const lat = readlineSync.question('Enter the latitude you want to search from: ');
+      const long = readlineSync.question('Enter the longitude you want to search from: ');
+      const breweries: BreweryObject[] = await gms.ScrapGooglePage(lat, long);
+      const state = readlineSync.question('Enter state you\'re scrapping: ');
+      jp.WriteBreweriesToJson(breweries, `${state}.json`)
       process.exit();
   }
 }

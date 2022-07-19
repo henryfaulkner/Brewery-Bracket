@@ -146,7 +146,7 @@ const BracketCreator = (props: Props) => {
       </div>
 
       <div className={styles.FIGHT}>
-        <Link href="/bracket">
+        <Link href={`/bracket/${bracketID}`}>
         <button>Go to the bracket</button>
         </Link>
       </div>

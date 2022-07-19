@@ -1,6 +1,6 @@
 import { stringify } from "querystring";
 import { CustomBeers } from "../CollectionConstants";
-import BreweryObject from "./BreweryObject";
+import BracketsBreweryObject from "./BracketsBreweryObject";
 import IFirebaseDocument from "./IFirebaseDocument";
 
 /**
@@ -33,7 +33,7 @@ class Bracket implements IFirebaseDocument {
   public DocumentID: string;
   public BracketName: string;
   public GroupID: string;
-  public Breweries: BreweryObject[];
+  public Breweries: BracketsBreweryObject[];
 
   public constructor(json) {
     if (json["DocumentID"]) this.DocumentID = json["DocumentID"];
@@ -41,7 +41,7 @@ class Bracket implements IFirebaseDocument {
     if (json["GroupID"]) this.GroupID = json["GroupID"];
     if (json["Breweries"]) {
       this.Breweries = json["Breweries"].map((breweryJson: {}) => {
-        return new BreweryObject(breweryJson)
+        return new BracketsBreweryObject(breweryJson)
       })
     }
   }
