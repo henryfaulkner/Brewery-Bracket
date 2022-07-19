@@ -12,7 +12,7 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
   let arrayOfRounds: number[] = [];
   let arrayOfContestants = [];
   let [breweries, setBreweries]: [BracketsBreweryObject[], any] = useState(() => {
-    // bubble sort
+    // bubble sort -> highest to lowest
     var isSwapped = false;
     let numBreweries = bracket.Breweries.length;
     for(let i = 0; i < numBreweries; i++) {
@@ -30,8 +30,6 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
         break;
       }
     }
-    console.log("bracket.Breweries")
-    console.log(bracket.Breweries)
     return bracket.Breweries
   })
 
