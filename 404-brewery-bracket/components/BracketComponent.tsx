@@ -64,7 +64,7 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
             if(breweries.length > x) {
               arrayOfContestants.push(breweries[x]);
             } else {
-              arrayOfContestants.push(new BracketsBreweryObject({Name: "Placeholder"}));
+              arrayOfContestants.push(new BracketsBreweryObject({Name: "Free Win"}));
             }
           }
 
