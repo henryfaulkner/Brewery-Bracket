@@ -6,6 +6,7 @@ import { UserContext } from "../../lib/context";
 type Props = {
   showModal: {};
   setShowModal;
+  tryLogin;
 };
 
 const RedirectToLoginModal: React.FC<Props> = (props) => {
@@ -26,6 +27,7 @@ const RedirectToLoginModal: React.FC<Props> = (props) => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
+    await props.tryLogin();
   };
 
   return (

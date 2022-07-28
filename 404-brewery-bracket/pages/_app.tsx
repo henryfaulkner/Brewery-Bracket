@@ -1,7 +1,6 @@
 import "../styles/foundational/globals.scss";
 import Layout from "../components/Layout";
 import { UserContext } from "../lib/context";
-
 import { useUserData } from '../lib/hooks';
 
 
