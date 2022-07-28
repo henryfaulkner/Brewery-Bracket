@@ -12,16 +12,16 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
   let arrayOfRounds: number[] = [];
   let arrayOfContestants = [];
   let [breweries, setBreweries]: [BracketsBreweryObject[], any] = useState(() => {
-    // bubble sort -> highest to lowest
+    // bubble sort -> lowest to highest
     var isSwapped = false;
     let numBreweries = bracket.Breweries.length;
-    for(let i = 0; i < numBreweries; i++) {
+    for(let i = numBreweries; i > 0; i--) {
       isSwapped = false;
-      for(var j = 0; j < ( numBreweries - i -1 ); j++) {
-        if(bracket.Breweries[j].TotalAggregateScore < bracket.Breweries[j+1].TotalAggregateScore) {
+      for(var j = ( numBreweries - i -1 ); j > 0; j--) {
+        if(bracket.Breweries[j].Order > bracket.Breweries[j-1].Order) {
           var temp = bracket.Breweries[j];
-          bracket.Breweries[j] = bracket.Breweries[j + 1];
-          bracket.Breweries[j+1] = temp;
+          bracket.Breweries[j] = bracket.Breweries[j - 1];
+          bracket.Breweries[j - 1] = temp;
           isSwapped = true;
         }
       }
@@ -32,11 +32,6 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
     }
     return bracket.Breweries
   })
-
-  const OrderBreweriesByScore = () => {
-    
-  }
-   useState(OrderBreweriesByScore());
 
   // Generate last round first
   for (let i = numberOfRounds-1; i >= 0; i--) {

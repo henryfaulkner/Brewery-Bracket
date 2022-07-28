@@ -66,6 +66,7 @@ class BracketsBreweryObject extends BreweryObject {
   public AggregateBeerScore: number;
   public AggregateEnvironmentScore: number;
   public AggregateLocationScore: number;
+  public Order: number;
 
   public constructor(json) {
     super(json);
@@ -73,6 +74,7 @@ class BracketsBreweryObject extends BreweryObject {
     this.AggregateBeerScore = json["AggregateBeerScore"] ?? 0;
     this.AggregateEnvironmentScore = json["AggregateEnvironmentScore"] ?? 0;
     this.AggregateLocationScore = json["AggregateLocationScore"] ?? 0;
+    this.Order = json["Order"] ?? 100;
   }
 }
 
