@@ -72,6 +72,7 @@ const Portal: React.FC<Props> = (props) => {
             <UsernameModal
               showModal={props.showModal}
               setShowModal={props.setShowModal}
+              tryLogin={props.tryLogin}
             />,
             document.body
           )

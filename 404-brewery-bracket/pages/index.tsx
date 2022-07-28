@@ -17,7 +17,7 @@ const Home = () => {
     if (hasPulledData === false) {
       GetAllBrackets();
     }
-  });
+  }, [user]);
 
   const SetBracketsAfterACreation = (newBracket: Bracket) => {
     setBrackets([...brackets, newBracket]);

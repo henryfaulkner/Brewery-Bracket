@@ -23,6 +23,8 @@ const LoginForm: React.FC = () => {
   const tryLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      Router.reload();
+      Router.push("/");
     } catch(exception) {
       console.log("Could not sign in.")
       console.log(exception)
@@ -34,17 +36,19 @@ const LoginForm: React.FC = () => {
       .then((userCredential) => {
         // We globally track auth state, so user auto updates
         // Need to redirect/provide confirmation here
-        tryLogin();
-        //Show Modal
-        setShowModal(() => {
-          if (showModal["display"] === "none") return { display: "" };
-          else return { display: "none" };
-        });
+        
+        
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // something perhaps
+      });
+
+      //Show Modal
+      setShowModal(() => {
+        if (showModal["display"] === "none") return { display: "" };
+        else return { display: "none" };
       });
   };
 
@@ -110,7 +114,6 @@ const LoginForm: React.FC = () => {
             className={styles.loginButton}
             onClick={() => {
               tryLogin();
-              Router.push("/");
             }}
           >
             Log in
@@ -120,6 +123,7 @@ const LoginForm: React.FC = () => {
             Type={"UsernameModal"}
             showModal={showModal}
             setShowModal={setShowModal}
+            tryLogin={tryLogin}
           />
         </div>
         <hr className={styles.hrLine}/>
