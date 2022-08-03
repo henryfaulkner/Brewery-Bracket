@@ -54,6 +54,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
     const bracketId: string = req.body["bracketId"];
     const breweryJson = JSON.parse(req.body["serializedBreweryJson"]);
 
+    const collectionRef = collection(
+      firestore,
+      collectionConstants.Brackets
+    );
+    const docRef = doc(collectionRef, bracketId);
+    const bracketDoc = await getDoc(docRef);
+
     const breweryObj = new BracketsBreweryObject({
       DocumentID: breweryJson["DocumentID"],
       Name: breweryJson["Name"],
@@ -68,14 +75,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Status>) => {
       AggregateBeerScore: 0,
       AggregateEnvironmentScore: 0,
       AggregateLocationScore: 0,
+      Order: bracketDoc.data().Breweries?.length ?? 0
     });
-
-    const collectionRef = collection(
-      firestore,
-      collectionConstants.Brackets
-    );
-    const docRef = doc(collectionRef, bracketId);
-    await getDoc(docRef);
+    
     updateDoc(docRef, {
       Breweries: arrayUnion(JSON.parse(JSON.stringify(breweryObj))),
     });

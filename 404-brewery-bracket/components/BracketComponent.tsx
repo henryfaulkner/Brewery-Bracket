@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import Bracket from "../pages/api/Firebase/Models/Bracket";
 import BracketsBreweryObject from "../pages/api/Firebase/Models/BracketsBreweryObject";
 import styles from "../styles/components/Bracket.module.scss";
+import DraggableBracketColumn from "./DraggableBracketColumn";
 
 type Props = {
   numberOfRounds: number;
@@ -10,18 +11,19 @@ type Props = {
 
 const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) => {
   let arrayOfRounds: number[] = [];
-  let arrayOfContestants = [];
+  let arrayOfContestants: BracketsBreweryObject[] = [];
   let [breweries, setBreweries]: [BracketsBreweryObject[], any] = useState(() => {
-    // bubble sort -> highest to lowest
+    // bubble sort -> lowest to highest
+    const tempBreweries = bracket.Breweries;
     var isSwapped = false;
-    let numBreweries = bracket.Breweries.length;
+    let numBreweries = tempBreweries.length;
     for(let i = 0; i < numBreweries; i++) {
       isSwapped = false;
-      for(var j = 0; j < ( numBreweries - i -1 ); j++) {
-        if(bracket.Breweries[j].TotalAggregateScore < bracket.Breweries[j+1].TotalAggregateScore) {
-          var temp = bracket.Breweries[j];
-          bracket.Breweries[j] = bracket.Breweries[j + 1];
-          bracket.Breweries[j+1] = temp;
+      for(var j = 0; j < (numBreweries - 1); j++) {
+        if(tempBreweries[j].Order > tempBreweries[j+1].Order) {
+          var temp = tempBreweries[j];
+          tempBreweries[j] = tempBreweries[j + 1];
+          tempBreweries[j + 1] = temp;
           isSwapped = true;
         }
       }
@@ -30,26 +32,18 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
         break;
       }
     }
-    return bracket.Breweries
+    return tempBreweries
   })
-
-  const OrderBreweriesByScore = () => {
-    
-  }
-   useState(OrderBreweriesByScore());
 
   // Generate last round first
   for (let i = numberOfRounds-1; i >= 0; i--) {
     arrayOfRounds.push(i);
   }
 
-  let contestantFlag = false;
-
-  
-
+  let contestantFlag: boolean = false;
   return (
     <div className={styles.bracketContainer}>
-      {arrayOfRounds.map((currentRound, key) => {
+      { arrayOfRounds.map((currentRound, key) => {
         if(currentRound === 1) return 
 
         let numOfContestantPairs = 0;
@@ -59,16 +53,23 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
             contestantFlag = true;
           }
           arrayOfContestants = [];
+          const tempBreweries = breweries
 
           for (let x = 0; x < numOfContestantPairs; x++) {
-            if(breweries.length > x) {
-              arrayOfContestants.push(breweries[x]);
+            // if(tempBreweries[(x*2)+1] !== undefined && currentRound < numberOfRounds-1){
+            //   if(tempBreweries[(x*2)].TotalAggregateScore > tempBreweries[(x*2)+1].TotalAggregateScore){
+            //     tempBreweries.splice((x*2)+1, 1)
+            //   } else {
+            //     tempBreweries.splice((x*2), 1)
+            //   }
+            // }
+
+            if(tempBreweries.length > x) {
+              arrayOfContestants.push(tempBreweries[x]);
             } else {
               arrayOfContestants.push(new BracketsBreweryObject({Name: "Free Win"}));
             }
           }
-
-          
         }
         return (
           <div className={styles.roundContainer} key={key}>

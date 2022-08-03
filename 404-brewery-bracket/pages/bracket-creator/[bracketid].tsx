@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Head from "next/head";
 
 import styles from "../../styles/pages/BracketCreator.module.scss";
@@ -7,87 +7,139 @@ import CustomBreweryTextbox from "../../components/CustomBreweryTextbox";
 import UserSearchByUsername from "../../components/UserSearchByUsername";
 import Card from "../../components/CurrentCompetitionCard";
 import User from "../api/Firebase/Models/User";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { server } from "../../config";
 import Bracket from "../api/Firebase/Models/Bracket";
 import BreweryObject from "../api/Firebase/Models/BreweryObject";
 import GetAllBreweries from "../../helpers/FirebaseExtensions";
 import Link from "next/link";
 import UpdateBracketName from "../../components/UpdateBracketName";
+import BracketsBreweryObject from "../api/Firebase/Models/BracketsBreweryObject";
 
 type Props = {
   allUsers: User[];
   initialBrewriesInBracket: BreweryObject[];
   currBracket: Bracket;
   allBreweries: BreweryObject[];
-  initialBreweryCardsRendered: Array<string>;
 };
 
 const BracketCreator = (props: Props) => {
-  const router = useRouter();
-  const [bracketID, setBracketID]: [string, any] = useState("");
+  const [bracketID, setBracketID]: [string, any] = useState(props.currBracket.DocumentID);
   const [bracketName, setBracketName]: [string, any] = useState(props.currBracket.BracketName)
   const input_addBrewery = useRef();
-  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState(props.initialBreweryCardsRendered);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { bracketid } = router.query;
-      setBracketID(bracketid);
-    };
-    fetchData();
-  }, [router.isReady, breweryCardsRendered]);
+  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<BracketsBreweryObject>, any] = useState(props.currBracket.Breweries);
 
   const AddBrewery = async (e) => {
-    if (input_addBrewery.current != null) {
-      // @ts-expect-error because one of us is a dummy and won't listen to my chaining operator
-      let inputValue = input_addBrewery?.current?.value;
-      // @ts-expect-error
-      let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
+    if (input_addBrewery.current == null) return;
 
-      // Check if brewery is already in bracket
-      let hasBreweryInBracket: boolean = false;
-      breweryCardsRendered.forEach((card) => {
-        if(card.includes(breweryId)) hasBreweryInBracket = true;
-      })
-      if(hasBreweryInBracket) return;
+    // @ts-expect-error because one of us is a dummy and won't listen to my chaining operator
+    let inputValue = input_addBrewery?.current?.value;
+    // @ts-expect-error
+    let breweryId = input_addBrewery?.current?.dataset.currentBreweryId;
 
-      setBreweryCardsRendered([...breweryCardsRendered, [inputValue, breweryId]]);
-      //GetBreweryByDocumentID
-      const request = {
-        breweryId: breweryId,
-      };
-      fetch("/api/Firebase/Endpoints/GetBreweryByDocumentID", {
+    // Check if brewery is already in bracket
+    let hasBreweryInBracket: boolean = false;
+    breweryCardsRendered?.forEach((card) => {
+      if(card.DocumentID.includes(breweryId)) hasBreweryInBracket = true;
+    })
+    if(hasBreweryInBracket) return;
+
+    if(breweryCardsRendered === undefined) {
+      setBreweryCardsRendered([new BracketsBreweryObject({
+        Name: inputValue, 
+        DocumentID: breweryId,
+        Order: 0
+      })]);
+    } else {
+      setBreweryCardsRendered([...breweryCardsRendered, new BracketsBreweryObject({
+        Name: inputValue, 
+        DocumentID: breweryId,
+        Order: breweryCardsRendered.length
+      })]);
+    }
+    
+    //GetBreweryByDocumentID
+    const request = {
+      breweryId: breweryId,
+    };
+    const res = await (await fetch("/api/Firebase/Endpoints/GetBreweryByDocumentID", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })).json();
+
+    try {
+      // Add brewery to bracket
+      const innerRequest = {
+        bracketId: bracketID,
+        serializedBreweryJson: JSON.stringify(res["serializedBreweryJson"])
+      } 
+      await fetch("/api/Firebase/Endpoints/AddBreweryToBracket", {
         method: "POST",
-        body: JSON.stringify(request),
+        body: JSON.stringify(innerRequest),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
-        },
-      }).then((res) => res.json())
-      .then(jsonRes => {
-        // Add brewery to bracket
-        const innerRequest = {
-          bracketId: bracketID,
-          serializedBreweryJson: JSON.stringify(jsonRes["serializedBreweryJson"])
-        } 
-        return fetch("/api/Firebase/Endpoints/AddBreweryToBracket", {
-          method: "POST",
-          body: JSON.stringify(innerRequest),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          }
-        })
-      })
+        }
+      })       
+    } catch(e) {
+      console.log("Failed AddBreweryToBracket.")
     }
   };
 
   const RemoveBrewery = (breweryId) => {
     setBreweryCardsRendered(
       breweryCardsRendered.filter((card) => {
-        if(!card.includes(breweryId)) return card;
+        if(!card.DocumentID.includes(breweryId)) return card;
       })
     );
   }
+
+  // NEED TO FINALIZE CHANGES TO props.currBracket.Breweries AT SOME POINT
+  const changeOrder = (newOrder, brewery: BracketsBreweryObject, passedIndex) => {
+    // Look for the brewery with the newOrder currently
+    // Give that brewery the arg[brewery]'s order
+    // Give arg[brewery] the newOrder
+    const tempBracket = breweryCardsRendered
+    for(let i = 0; i < tempBracket.length; i++) {
+      if(tempBracket[i].Order === parseInt(newOrder)) {
+        tempBracket[i].Order = brewery.Order;
+        tempBracket[passedIndex].Order = parseInt(newOrder);
+        //Rerenders component
+        setBreweryCardsRendered(tempBracket.slice());
+        break;
+      }
+    }
+  }
+
+  const updateBracketOrders = () => {
+    let bracket = props.currBracket
+    bracket.Breweries = breweryCardsRendered
+    const request = {
+      bracket: props.currBracket
+    }
+    console.log("props.currBracket")
+    console.log(props.currBracket)
+    fetch("/api/Firebase/Endpoints/UpdateBracketOrders", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      }
+    })
+  }
+
+  // @ts-ignore
+  const MyButton = React.forwardRef(({href}, ref) => {
+    return (
+      <button onClick={() => {
+        console.log(href)
+        updateBracketOrders()
+        Router.push(href)
+      }}>Go to the bracket</button>
+    )
+  })
 
   return (
     <div>
@@ -129,12 +181,13 @@ const BracketCreator = (props: Props) => {
           <div className={styles.currentBreweries}>
             <h3>The Current Competition</h3>
             <div className={styles.currentBreweriesCards}>
-              {breweryCardsRendered.map((breweryInformation, key) => {
+              {breweryCardsRendered?.map((breweryInformation, key) => {
                 return (
                   <Card
                     key={key}
-                    breweryName={breweryInformation[0]}
-                    breweryId={breweryInformation[1]}
+                    index={key}
+                    brewery={breweryInformation}
+                    changeOrder={changeOrder}
                     bracketID={bracketID}
                     RemoveBrewery={RemoveBrewery}
                   />
@@ -146,8 +199,8 @@ const BracketCreator = (props: Props) => {
       </div>
 
       <div className={styles.FIGHT}>
-        <Link href={`/bracket/${bracketID}`}>
-        <button>Go to the bracket</button>
+        <Link href={`/bracket/${bracketID}`} passHref>
+          <MyButton />
         </Link>
       </div>
 
@@ -174,15 +227,6 @@ const BracketCreator = (props: Props) => {
       </div>
     </div>
   );
-};
-
-const InitializeBreweryCardsRendered = async (currBracket) => {
-  if(currBracket.Breweries === undefined) return [];
-  if(currBracket.Breweries) {
-    return currBracket.Breweries.map((breweryObj: BreweryObject) => {
-      return [breweryObj.Name, breweryObj.DocumentID];
-    });
-  }
 };
 
 export async function getServerSideProps(context) {
@@ -248,16 +292,13 @@ export async function getServerSideProps(context) {
     currBracket = new Bracket({});
   }
   currBracket = JSON.parse(JSON.stringify(currBracket));
-
-  const initialBreweryCardsRendered = await InitializeBreweryCardsRendered(currBracket);
   
   return {
     props: {
       allUsers,
       initialBreweriesInBracket,
       allBreweries,
-      currBracket,
-      initialBreweryCardsRendered
+      currBracket
     },
   };
 }
