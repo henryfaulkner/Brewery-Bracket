@@ -14,15 +14,16 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
   let arrayOfContestants: BracketsBreweryObject[] = [];
   let [breweries, setBreweries]: [BracketsBreweryObject[], any] = useState(() => {
     // bubble sort -> lowest to highest
+    const tempBreweries = bracket.Breweries;
     var isSwapped = false;
-    let numBreweries = bracket.Breweries.length;
-    for(let i = numBreweries; i > 0; i--) {
+    let numBreweries = tempBreweries.length;
+    for(let i = 0; i < numBreweries; i++) {
       isSwapped = false;
-      for(var j = ( numBreweries - i -1 ); j > 0; j--) {
-        if(bracket.Breweries[j].Order > bracket.Breweries[j-1].Order) {
-          var temp = bracket.Breweries[j];
-          bracket.Breweries[j] = bracket.Breweries[j - 1];
-          bracket.Breweries[j - 1] = temp;
+      for(var j = 0; j < (numBreweries - 1); j++) {
+        if(tempBreweries[j].Order > tempBreweries[j+1].Order) {
+          var temp = tempBreweries[j];
+          tempBreweries[j] = tempBreweries[j + 1];
+          tempBreweries[j + 1] = temp;
           isSwapped = true;
         }
       }
@@ -31,7 +32,7 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
         break;
       }
     }
-    return bracket.Breweries
+    return tempBreweries
   })
 
   // Generate last round first
@@ -63,12 +64,12 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
 
           
         }
-        if(key === 0){
-          return (
-            <DraggableBracketColumn arrayOfContestants={arrayOfContestants} key={key} contestantFlag={contestantFlag}/>
-          )
-        }
-        else{
+        // if(key === 0){
+        //   return (
+        //     <DraggableBracketColumn arrayOfContestants={arrayOfContestants} key={key} contestantFlag={contestantFlag}/>
+        //   )
+        // }
+        // else{
           return (
             <div className={styles.roundContainer} key={key}>
               {arrayOfContestants.map((contestant: BracketsBreweryObject, key) => {
@@ -85,7 +86,7 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
               {contestantFlag ? <button>Winner</button> : null}
             </div>
           );
-        }
+        //}
       })}
     </div>
   );
