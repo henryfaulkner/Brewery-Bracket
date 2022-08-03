@@ -5,10 +5,12 @@ import { UserContext } from "../lib/context";
 import BreweryDayScorecard from "../pages/api/Firebase/Models/BreweryDayScorecard";
 import BreweryObject from "../pages/api/Firebase/Models/BreweryObject";
 import DeleteIcon from "./DeleteIcon";
+import BracketsBreweryObject from "../pages/api/Firebase/Models/BracketsBreweryObject";
 
 type Props = {
-  breweryName: string;
-  breweryId: string;
+  index: number;
+  brewery: BracketsBreweryObject;
+  changeOrder;
   bracketID: string;
   RemoveBrewery;
 };
@@ -21,8 +23,8 @@ const Card: React.FC<Props> = (props) => {
   const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
-    createOrGetScorecard(props.breweryId, props.breweryName);
-  }, [props.breweryId, props.bracketID])
+    createOrGetScorecard(props.brewery.DocumentID, props.brewery.Name);
+  }, [props.brewery.DocumentID, props.bracketID])
 
   const createOrGetScorecard = async (breweryId, breweryName) => {
     try {
@@ -51,10 +53,10 @@ const Card: React.FC<Props> = (props) => {
   };
 
   const DeleteScorecard = () => {
-    props.RemoveBrewery(props.breweryId);
+    props.RemoveBrewery(props.brewery.DocumentID);
     const request = {
       bracketId: props.bracketID,
-      breweryId: props.breweryId,
+      breweryId: props.brewery.DocumentID,
     };
     fetch("/api/Firebase/Endpoints/DeleteBreweryInBracket", {
       method: "POST",
@@ -75,10 +77,14 @@ const Card: React.FC<Props> = (props) => {
       <Link href={`/bracket/brewery-day/${scorecard.DocumentID}`}>
         <div className={styles.abCardCont}>
           <div className={styles.abCardBody}>
-            <p className={styles.brewName}>{props.breweryName}</p>
+            <p className={styles.brewName}>{props.brewery.Name}</p>
           </div>
         </div>
       </Link>
+      <div className={styles.order}>
+        <span>Order: </span>
+        <input placeholder={props.brewery.Order.toString()} onChange={(e) => props.changeOrder(e.target.value, props.brewery, props.index)}/>
+      </div>
     </div>
   );
 };

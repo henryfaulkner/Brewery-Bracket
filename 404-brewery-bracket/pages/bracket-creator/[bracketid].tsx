@@ -14,13 +14,13 @@ import BreweryObject from "../api/Firebase/Models/BreweryObject";
 import GetAllBreweries from "../../helpers/FirebaseExtensions";
 import Link from "next/link";
 import UpdateBracketName from "../../components/UpdateBracketName";
+import BracketsBreweryObject from "../api/Firebase/Models/BracketsBreweryObject";
 
 type Props = {
   allUsers: User[];
   initialBrewriesInBracket: BreweryObject[];
   currBracket: Bracket;
   allBreweries: BreweryObject[];
-  initialBreweryCardsRendered: Array<string>;
 };
 
 const BracketCreator = (props: Props) => {
@@ -28,7 +28,7 @@ const BracketCreator = (props: Props) => {
   const [bracketID, setBracketID]: [string, any] = useState("");
   const [bracketName, setBracketName]: [string, any] = useState(props.currBracket.BracketName)
   const input_addBrewery = useRef();
-  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<string>, any] = useState(props.initialBreweryCardsRendered);
+  const [breweryCardsRendered, setBreweryCardsRendered]: [Array<BracketsBreweryObject>, any] = useState(props.currBracket.Breweries);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +48,7 @@ const BracketCreator = (props: Props) => {
       // Check if brewery is already in bracket
       let hasBreweryInBracket: boolean = false;
       breweryCardsRendered.forEach((card) => {
-        if(card.includes(breweryId)) hasBreweryInBracket = true;
+        if(card.DocumentID.includes(breweryId)) hasBreweryInBracket = true;
       })
       if(hasBreweryInBracket) return;
 
@@ -84,9 +84,25 @@ const BracketCreator = (props: Props) => {
   const RemoveBrewery = (breweryId) => {
     setBreweryCardsRendered(
       breweryCardsRendered.filter((card) => {
-        if(!card.includes(breweryId)) return card;
+        if(!card.DocumentID.includes(breweryId)) return card;
       })
     );
+  }
+
+  // NEED TO FINALIZE CHANGES TO props.currBracket.Breweries AT SOME POINT
+  const changeOrder = (newOrder, brewery: BracketsBreweryObject, passedIndex) => {
+    // Look for the brewery with the newOrder currently
+    // Give that brewery the arg[brewery]'s order
+    // Give arg[brewery] the newOrder
+    for(let i = 0; i < props.currBracket.Breweries.length; i++) {
+      if(props.currBracket.Breweries[i].Order === parseInt(newOrder)) {
+        props.currBracket.Breweries[i].Order = brewery.Order;
+        props.currBracket.Breweries[passedIndex].Order = parseInt(newOrder);
+        //Rerenders component
+        setBreweryCardsRendered(props.currBracket.Breweries.slice());
+        break;
+      }
+    }
   }
 
   return (
@@ -133,8 +149,9 @@ const BracketCreator = (props: Props) => {
                 return (
                   <Card
                     key={key}
-                    breweryName={breweryInformation[0]}
-                    breweryId={breweryInformation[1]}
+                    index={key}
+                    brewery={breweryInformation}
+                    changeOrder={changeOrder}
                     bracketID={bracketID}
                     RemoveBrewery={RemoveBrewery}
                   />
@@ -147,7 +164,7 @@ const BracketCreator = (props: Props) => {
 
       <div className={styles.FIGHT}>
         <Link href={`/bracket/${bracketID}`}>
-        <button>Go to the bracket</button>
+          <button>Go to the bracket</button>
         </Link>
       </div>
 
@@ -174,15 +191,6 @@ const BracketCreator = (props: Props) => {
       </div>
     </div>
   );
-};
-
-const InitializeBreweryCardsRendered = async (currBracket) => {
-  if(currBracket.Breweries === undefined) return [];
-  if(currBracket.Breweries) {
-    return currBracket.Breweries.map((breweryObj: BreweryObject) => {
-      return [breweryObj.Name, breweryObj.DocumentID];
-    });
-  }
 };
 
 export async function getServerSideProps(context) {
@@ -248,16 +256,13 @@ export async function getServerSideProps(context) {
     currBracket = new Bracket({});
   }
   currBracket = JSON.parse(JSON.stringify(currBracket));
-
-  const initialBreweryCardsRendered = await InitializeBreweryCardsRendered(currBracket);
   
   return {
     props: {
       allUsers,
       initialBreweriesInBracket,
       allBreweries,
-      currBracket,
-      initialBreweryCardsRendered
+      currBracket
     },
   };
 }
