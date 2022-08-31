@@ -1,6 +1,5 @@
 @import "../utility/utility.scss";
 
-
 .BracketCreator {
   display: flex;
   flex-direction: row;
@@ -28,6 +27,7 @@
     align-items: center;
   }
 }
+
 .addBrewsCont {
   display: flex;
   flex-direction: column;
@@ -154,4 +154,27 @@
   column-gap: 10px;
   row-gap: 10px;
   grid-template-columns: auto auto auto auto;
+}
+
+.bracketSettings {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 25%;
+  @include layout-for(mobile) {
+    flex-direction: column;
+    margin: 0;
+  }
+}
+
+.bracketSetting {
+  display: flex;
+  flex-direction: column;
+  hr {
+    width: 100%;
+    margin: 5px 0 10px 0;
+  }
+
+  @include layout-for(tablet) {
+    margin: 0 10%;
+  }
 }

@@ -204,25 +204,31 @@ const BracketCreator = (props: Props) => {
         </Link>
       </div>
 
-      <h2>Add User to This Bracket</h2>
-      <hr />
-      <div className={styles.pageContentContainer}>
-        <div className={styles.addCustomCont}>
-          <UserSearchByUsername
-            allUsers={props.allUsers}
-            bracket={props.currBracket}
-          />
+      <div className={styles.bracketSettings}>
+        <div className={styles.bracketSetting}>
+          <h2>Add User</h2>
+          <hr />
+          <div className={styles.pageContentContainer}>
+            <div className={styles.addCustomCont}>
+              <UserSearchByUsername
+                allUsers={props.allUsers}
+                bracket={props.currBracket}
+              />
+            </div>
+          </div>
         </div>
-      </div>
 
-      <h2>Change name of bracket</h2>
-      <hr />
-      <div className={styles.pageContentContainer}>
-        <div className={styles.addCustomCont}>
-          <UpdateBracketName
-            bracketId={bracketID}
-            SetBracketName={setBracketName}
-          />
+        <div className={styles.bracketSetting}>
+          <h2>Change Bracket Name</h2>
+          <hr />
+          <div className={styles.pageContentContainer}>
+            <div className={styles.addCustomCont}>
+              <UpdateBracketName
+                bracketId={bracketID}
+                SetBracketName={setBracketName}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
