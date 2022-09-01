@@ -14,7 +14,7 @@ const Header = (props) => {
       </Link>
       <OptionsAccordion
         options={[
-          ["/", "Breweries"],
+          ["/", "Home"],
           [username ? "/account": "/login-form", username ? "Account": "Signup / log-in"],
         ]}
       />
