@@ -11,6 +11,7 @@
     min-width: 200px;
     padding: 0;
     position: absolute;
+    top: 30px;
     overflow: auto;
 
     @include layout-for(mobile) {
