@@ -83,7 +83,11 @@ const Card: React.FC<Props> = (props) => {
       </Link>
       <div className={styles.order}>
         <span>Order: </span>
-        <input placeholder={props.brewery.Order.toString()} onChange={(e) => props.changeOrder(e.target.value, props.brewery, props.index)}/>
+        <input 
+        placeholder={props.brewery.Order.toString()} 
+        onChange={(e) => props.changeOrder(e.target.value, props.brewery, props.index)}
+        onBlur={(e) => e.target.value = ""}
+        />
       </div>
     </div>
   );
