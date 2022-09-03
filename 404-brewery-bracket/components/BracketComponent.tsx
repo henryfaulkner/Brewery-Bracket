@@ -44,26 +44,45 @@ const BracketComponent: React.FC<Props> = ({ numberOfRounds, bracket }: Props) =
   return (
     <div className={styles.bracketContainer}>
       { arrayOfRounds.map((currentRound, key) => {
+        let tempBreweries = [];
         if(currentRound === 1) return 
 
         let numOfContestantPairs = 0;
         if (currentRound != numberOfRounds) {
-          numOfContestantPairs = Math.floor(Math.pow(2, currentRound) / 2);
+          if(key > 0) { 
+            for (let h = 0; h < currentRound; h++) { 
+              for(let i = 0; i < Math.round(breweries.length/2); i++) {
+                if(i == 0){
+                  if(breweries[0].TotalAggregateScore > breweries[1].TotalAggregateScore) tempBreweries.push(breweries[0]);
+                  else tempBreweries.push(breweries[1]);
+                  continue;
+                }
+                if(breweries[(i*2)+1] == undefined){
+                  tempBreweries.push(breweries[i*2]);
+                  break; // keep i*2
+                }
+                if(breweries.length == (i*2)+1) {
+                  if(breweries[i*2].TotalAggregateScore > breweries[(i*2)+1].TotalAggregateScore) tempBreweries.push(breweries[i*2]);
+                  else tempBreweries.push(breweries[(i*2)+1]);
+                  break; // keep i*2
+                }
+                if(breweries[i*2].TotalAggregateScore > breweries[(i*2)+1].TotalAggregateScore) tempBreweries.push(breweries[i*2]);
+                else tempBreweries.push(breweries[(i*2)+1]);
+              }
+            }
+          } else {
+            tempBreweries = breweries;
+          }
+          
+
+          // current round contestants are chosen here
+          numOfContestantPairs = Math.floor(Math.pow(2, currentRound)/2);
           if(numOfContestantPairs == 0) {
             contestantFlag = true;
           }
           arrayOfContestants = [];
-          const tempBreweries = breweries
 
           for (let x = 0; x < numOfContestantPairs; x++) {
-            // if(tempBreweries[(x*2)+1] !== undefined && currentRound < numberOfRounds-1){
-            //   if(tempBreweries[(x*2)].TotalAggregateScore > tempBreweries[(x*2)+1].TotalAggregateScore){
-            //     tempBreweries.splice((x*2)+1, 1)
-            //   } else {
-            //     tempBreweries.splice((x*2), 1)
-            //   }
-            // }
-
             if(tempBreweries.length > x) {
               arrayOfContestants.push(tempBreweries[x]);
             } else {
